@@ -1,0 +1,23 @@
+.wrapper-new {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+}
+
+textarea.form-control {
+    height: 200px;
+    width: 969px;
+    margin-left: 86px;
+}
+
+#icon {
+    width: 100%;
+}
+
+.form-group {
+    margin-left: 85px;
+    width: 970px;
+}

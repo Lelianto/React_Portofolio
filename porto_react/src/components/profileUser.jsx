@@ -1,11 +1,15 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/profileUser.css';
+import { withRouter, Link } from 'react-router-dom'
+import { connect } from 'unistore/react'
+import { store, actions } from '../store'
 
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
 
 class ProfileUser extends React.Component {
     render() {
+        console.log('cek status login', this.props.is_login)
         return (
             <div>
                 <div className='container user-full-name container-user'>
@@ -47,6 +51,11 @@ class ProfileUser extends React.Component {
                                 </label>
                             </div>
                             <div className='col-md-4'>
+                                <label>
+                                    <Link to='/sell'>
+                                        <button type="button" class="btn btn-success">Jual Buku</button>
+                                    </Link>
+                                </label>
                             </div>
                             <div className='col-md-4 button-logout'>
                                 <label>
@@ -61,4 +70,4 @@ class ProfileUser extends React.Component {
     }
 }
 
-export default ProfileUser;
+export default connect("Bearer, email, kata_sandi, is_login",actions)(withRouter(ProfileUser));

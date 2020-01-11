@@ -6,7 +6,8 @@ import Homepage from '../pages/index';
 import LoginPage from '../pages/login';
 import Profile from '../pages/profileUser';
 import BookDetail from '../pages/bookDetail';
-import Cart from '../pages/cartDetail'
+import Cart from '../pages/cartDetail';
+import UserSellBookPage from '../pages/userSellBook';
 
 const MainRoute = () => {
     return (
@@ -19,6 +20,7 @@ const MainRoute = () => {
                     <Route exact path='/profile' component={Profile} />
                     <Route exact path='/bookdetail' component={BookDetail} />
                     <Route exact path='/cart' component={Cart} />
+                    <Route exact path='/sell' component={UserSellBookPage} />
                 </Switch>
             </BrowserRouter>
         </Provider>
