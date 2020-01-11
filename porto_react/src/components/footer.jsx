@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/bootstrap.min.css'
 import '../styles/main.css';
+import { Link } from 'react-router-dom'
 import ig from '../images/instagram.png'
 import fb from '../images/facebook.png'
 import tw from '../images/twitter.png'
@@ -27,7 +28,7 @@ class Footer extends React.Component {
                     </div>
                     <div className="col-md-4 bottom-right">
                         <div>
-                            2020 kutubuku.com
+                        <p>Copyright &copy; 2020 by <Link to="/" style={{ color:'black', textDecoration:'none' }} >Kutubuku.com</Link></p>
                         </div>
                     </div>
                     <div className="col-md-1">

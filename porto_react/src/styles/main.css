@@ -118,7 +118,6 @@ header {
 .kategori {
     text-decoration: none;
     color: black;
-    padding: 15px;
 }
 
 .dropbtn {
@@ -137,7 +136,6 @@ header {
   }
   
 .dropdown-content {
-        margin-top: 10px;
         border-radius: 5%;
         display: none;
         position: absolute;
@@ -169,10 +167,11 @@ header {
 /* ---------- footer --------- */
 
 footer {
+    margin-top: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: #55d7c3;
-    position: fixed;
+    position: relative;
     width: 100%;
     bottom: 0px;
 }

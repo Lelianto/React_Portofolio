@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import Header from '../components/header'
 import Footer from '../components/footer'
-import Carousel from '../components/carousel'
+import Profile from '../components/profileUser'
 
 
-class HomePage extends Component {
+class ProfileUser extends Component {
   render() {
     return (
       <div>
         <Header/>
-        <Carousel/>
+        <Profile/>
       <p></p>
-        <Footer/>
+        <div>
+          <Footer/>
+        </div>
       </div>
     );
   }
 }
 
-export default HomePage;
+export default ProfileUser;

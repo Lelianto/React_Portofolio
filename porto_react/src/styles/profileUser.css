@@ -1,0 +1,31 @@
+.container-user {
+    padding-left: 250px;
+    padding-right: 250px;
+    text-align: left;
+}
+
+.alamat-email {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.user-full-name {
+    padding-top: 50px;
+}
+
+.border-user {
+    border-bottom: rgb(210, 223, 202) 1px solid;
+    padding-bottom: 15px;
+}
+
+.all-genres-checkbox {
+    margin-bottom: 30px;
+}
+
+.button-logout {
+    
+}
+
+.space-under-button {
+    margin-bottom: 40px;
+}

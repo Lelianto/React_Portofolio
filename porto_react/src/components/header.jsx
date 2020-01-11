@@ -1,9 +1,10 @@
 import React from 'react';
 import '../styles/main.css';
-import '../styles/bootstrap.min.css'
-import profile from '../images/profile.png'
-import cart from '../images/cart.webp'
-
+import '../styles/bootstrap.min.css';
+import profile from '../images/profile.png';
+import cart from '../images/cart.webp';
+import { Link } from 'react-router-dom';
+ 
 
 class Header extends React.Component {
     render (){
@@ -39,13 +40,13 @@ class Header extends React.Component {
                         <nav>
                             <ul className="list-unstyled navigate">
                                 <li className="navi1">
-                                    <a href="">
+                                    <Link to="/login">
                                         <img className="navi2" src={profile} alt=""/>
-                                        </a></li>
+                                        </Link></li>
                                 <li className="navi1">
-                                    <a href="">
+                                    <Link to="">
                                         <img className="navi3" src={cart} alt=""/>
-                                        </a></li>
+                                        </Link></li>
                             </ul>
                         </nav>
                     </div>
