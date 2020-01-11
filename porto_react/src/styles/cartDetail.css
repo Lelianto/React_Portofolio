@@ -1,0 +1,16 @@
+.cart-book-detail {
+    border: rgb(210, 223, 202) 1px solid;
+    display: flex;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+}
+
+textarea{
+    width: 107px;
+    height: 30px;
+}
+
+.detail-book-cart{
+    text-align:left;
+}

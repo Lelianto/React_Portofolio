@@ -5,7 +5,8 @@ import { store } from '../store';
 import Homepage from '../pages/index';
 import LoginPage from '../pages/login';
 import Profile from '../pages/profileUser';
-import BookDetail from '../pages/bookDetail'
+import BookDetail from '../pages/bookDetail';
+import Cart from '../pages/cartDetail'
 
 const MainRoute = () => {
     return (
@@ -17,6 +18,7 @@ const MainRoute = () => {
                     <Route exact path='/login' component={LoginPage} />
                     <Route exact path='/profile' component={Profile} />
                     <Route exact path='/bookdetail' component={BookDetail} />
+                    <Route exact path='/cart' component={Cart} />
                 </Switch>
             </BrowserRouter>
         </Provider>

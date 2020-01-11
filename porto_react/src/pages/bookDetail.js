@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import Header from '../components/header'
 import Footer from '../components/footer'
-import BookDetail from '../components/bookDetail'
+import BookDetails from '../components/bookDetails'
 
-
-class ProfileUser extends Component {
+class BookDetail extends Component {
   render() {
     return (
       <div>
         <Header/>
-        <BookDetail/>
+        <BookDetails/>
       <p></p>
         <div>
           <Footer/>
@@ -19,4 +18,4 @@ class ProfileUser extends Component {
   }
 }
 
-export default ProfileUser;
+export default BookDetail;

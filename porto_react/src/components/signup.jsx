@@ -4,12 +4,12 @@ import '../styles/bootstrap.min.css'
 import logo from '../images/navigasi-logo.png';
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'unistore/react'
-import { store, actions } from '../store'
+import { store, actions } from '../store';
 
-class SignIn extends React.Component {
+class SignUp extends React.Component {
 
-    doLogin = async () => {
-        await this.props.postLogin()
+    doSignUp = async () => {
+        await this.props.postSignUp()
         console.warn('string cek', this.props.is_login)
         if (this.props.is_login){
             this.props.history.push("/profile");
@@ -30,6 +30,13 @@ class SignIn extends React.Component {
                         type="text" 
                         id="login" 
                         className="fadeIn second" 
+                        name="nama_lengkap" 
+                        placeholder="Nama Lengkap"
+                        onChange={e => this.props.changeInput(e)} />
+                        <input 
+                        type="text" 
+                        id="login" 
+                        className="fadeIn second" 
                         name="email" 
                         placeholder="Email"
                         onChange={e => this.props.changeInput(e)} />
@@ -44,7 +51,7 @@ class SignIn extends React.Component {
                         type="submit" 
                         className="fadeIn fourth" 
                         value="Log In" 
-                        onClick={this.doLogin}/>
+                        onClick={this.doSignUp}/>
                     </form>
 
                 {/* <!-- Remind Passowrd --> */}
@@ -57,5 +64,5 @@ class SignIn extends React.Component {
         )
     }
 }
-// export default SignIn;
-export default connect("Bearer, email, kata_sandi, is_login",actions)(withRouter(SignIn));
+// export default SignUp;
+export default connect("nama_lengkap, email, kata_sandi, is_login",actions)(withRouter(SignUp));
