@@ -3,12 +3,29 @@ import axios from 'axios';
 
 const initialState = {
     isLoading:true,
+    token:'',
     photo:'',
     nama_lengkap:'',
     email:'',
     kata_sandi:'',
     is_login: false,
-    Bearer:''
+    Bearer:'',
+    judul:'',
+    penulis:'',
+    jumlah_halaman:'',
+    tanggal_terbit:'',
+    isbn:'',
+    genre:'',
+    bahasa:'',
+    penerbit:'',
+    berat:'',
+    lebar:'',
+    panjang:'',
+    jenis_cover:'',
+    status:'',
+    harga:'',
+    stok:'',
+    foto_buku:'',
 }
 
 export const store = createStore(initialState)
@@ -73,15 +90,79 @@ export const actions = store => ({
 
     await axios(req)
         .then(response => {
+          // console.log('cek token', response.data.token)
               store.setState({
-                  "is_login": true
+                  "is_login": true,
+                  "token":response.data.token
               });
-          //   return response
+          console.log('cek state token', store.getState().token)
         })
         .catch(error => {
             return false
     })
-}
+  },
+
+  postBook : async (state) => {
+    const judul = state.judul
+    const penulis = state.penulis
+    const jumlah_halaman = state.jumlah_halaman
+    const tanggal_terbit = state.tanggal_terbit
+    const isbn = state.isbn
+    const genre = state.genre
+    const bahasa = state.bahasa
+    const penerbit = state.penerbit
+    const berat = state.besar
+    const lebar = state.lebar
+    const panjang = state.panjang
+    const jenis_cover = state.jenis_cover
+    const status = state.status
+    const harga = state.harga
+    const stok = state.stok
+    const foto_buku = state.foto_buku
+    const sinopsis = state.sinopsis
+    const mydata = {
+      judul : judul,
+      penulis : penulis,
+      jumlah_halaman : jumlah_halaman,
+      tanggal_terbit : tanggal_terbit,
+      isbn : isbn,
+      genre : genre,
+      bahasa : bahasa,
+      penerbit : penerbit,
+      berat : berat,
+      lebar : lebar,
+      panjang : panjang,
+      jenis_cover : jenis_cover,
+      status : status,
+      harga : harga,
+      stok : stok,
+      foto_buku : foto_buku,
+      sinopsis : sinopsis
+    };
+    console.warn('isi email', genre)
+
+    const req = {
+      method: "post",
+      url: "http://0.0.0.0:1250/book",
+      headers: {
+        Authorization: "Bearer " + store.getState().token
+      },
+    //   params: {
+
+    //   }
+      data: mydata
+    };
+
+    await axios(req)
+        .then(response => {
+          return response
+        })
+        .catch(error => {
+          return false
+    })
+  }
+
+
   });
 
 
