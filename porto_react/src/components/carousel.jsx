@@ -1,10 +1,10 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
-import slider1 from '../images/slider1.jpg';
-import slider2 from '../images/slider2.jpg';
-import slider3 from '../images/slider3.jpg';
-import slider4 from '../images/slider4.jpg';
-import slider5 from '../images/slider5.jpg';
+import promo1 from '../images/promo1.jpg';
+import promo2 from '../images/promo2.jpg';
+import promo3 from '../images/promo3.jpg';
+import promo4 from '../images/promo4.jpg';
+import promo5 from '../images/promo5.jpg';
 
 class Carousel extends React.Component {
 
@@ -13,19 +13,19 @@ class Carousel extends React.Component {
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src={slider1} alt="First slide" />
+                        <img class="d-block w-100" src={promo1} alt="First slide" />
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src={slider2} alt="Second slide" />
+                        <img class="d-block w-100" src={promo2} alt="Second slide" />
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src={slider3} alt="Third slide"/>
+                        <img class="d-block w-100" src={promo3} alt="Third slide"/>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src={slider4} alt="Fourth slide"/>
+                        <img class="d-block w-100" src={promo4} alt="Fourth slide"/>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src={slider5} alt="Fifth slide"/>
+                        <img class="d-block w-100" src={promo5} alt="Fifth slide"/>
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

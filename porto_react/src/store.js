@@ -2,7 +2,9 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    books:[],
     bookById:[],
+    userById:[],
     id:'',
     isLoading:true,
     token:'',

@@ -4,11 +4,48 @@ import '../styles/profileUser.css';
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
+import axios from 'axios'
 
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
 
 class ProfileUser extends React.Component {
+
+    handleSignOut = async () => {
+        await localStorage.removeItem('token');
+        await localStorage.removeItem('is_login');
+        console.warn('cek log out', localStorage.getItem('token'))
+        this.props.history.push("/");
+    };
+
+    componentDidMount = () => {
+
+        const req = {
+        method: "get",
+        url: "http://0.0.0.0:1250/user/7",
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem('token')
+        },
+        params: {
+            
+        }
+        }; 
+        console.log(req)
+        axios(req)
+            .then(function (response) {
+                store.setState({ userById: response.data, isLoading:false})
+                console.log(response.data)
+                return response
+            })
+            .catch(function (error){
+                store.setState({ isLoading: false})
+            })
+    };
+
     render() {
+        const { userById } = this.props
+        const nama_lengkap = userById.nama_lengkap
+        const email = userById.email
+
         if (localStorage.getItem('token') == null){
             return <Redirect to={{ pathname: "/login" }} />;
         } else {
@@ -17,14 +54,14 @@ class ProfileUser extends React.Component {
                     <div className='container user-full-name container-user'>
                         <div className='row'>
                             <div className='col-md-6'>
-                                <h3 className='border-user'>Hai, USER FULL NAME</h3>
+                                <h3 className='border-user'>Hai, {nama_lengkap}</h3>
                             </div>
                         </div>
                     </div>
                     <div className='container alamat-email container-user'>
                         <div className='row'>
                             <div className='col-md-12'>
-                                Alamat Email : User@email.com
+                                Alamat email : {email}
                             </div>
                         </div>
                     </div>
@@ -61,7 +98,7 @@ class ProfileUser extends React.Component {
                                 </div>
                                 <div className='col-md-4 button-logout'>
                                     <label>
-                                        <button type="button" class="btn btn-success">Log Out</button>
+                                        <button type="button" class="btn btn-success" onClick={this.handleSignOut}>Log Out</button>
                                     </label>
                                 </div>
                             </div>
@@ -73,4 +110,4 @@ class ProfileUser extends React.Component {
     }
 }
 
-export default connect("Bearer, email, kata_sandi, is_login",actions)(withRouter(ProfileUser));
+export default connect("Bearer, userById, email, kata_sandi, is_login",actions)(withRouter(ProfileUser));

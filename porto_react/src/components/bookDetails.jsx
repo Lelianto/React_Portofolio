@@ -26,6 +26,7 @@ class BookDetail extends React.Component {
         axios(req)
             .then(function (response) {
                 store.setState({ bookById: response.data, isLoading:false})
+                console.log(response.data)
                 return response
             })
             .catch(function (error){

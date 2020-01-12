@@ -1,0 +1,33 @@
+.box-all-books {
+    border: 1px gainsboro solid;
+    margin-top: 30px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.box-all-books-photo {
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.box-all-books-title {
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.box-all-books-writer {
+    margin-top: 10px;
+    text-align: left;
+    font-size: 12px;
+    color: silver;
+}
+
+.box-all-books-price {
+    margin-top: 10px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: bold;
+    color: crimson;
+    padding-bottom: 14px;
+}
