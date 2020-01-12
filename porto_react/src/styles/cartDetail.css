@@ -11,6 +11,27 @@ textarea{
     height: 30px;
 }
 
-.detail-book-cart{
+.detail-book-cart1{
     text-align:left;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 24px;
+}
+.detail-book-cart2{
+    text-align:left;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: silver;
+}
+.detail-book-cart3{
+    text-align:left;
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.detail-book-cart4{
+    text-align:left;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: crimson;
 }

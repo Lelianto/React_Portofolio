@@ -10,6 +10,14 @@ import axios from 'axios'
 
 class BookDetail extends React.Component {
 
+    doAddCart = async () => {
+        await this.props.addCartItem()
+        // console.warn('string cek', localStorage.getItem('is_login'))
+        if (localStorage.getItem('token') !== null){
+            this.props.history.push("/cart");
+        }
+    }
+
     doDelete = async () => {
         await this.props.deleteItem()
         // console.warn('string cek', localStorage.getItem('is_login'))
@@ -62,8 +70,8 @@ class BookDetail extends React.Component {
         const stok = bookById.stok * 1
         const foto_buku = bookById.foto_buku
         const sinopsis = bookById.sinopsis
-        // console.log('id user', id)
-        if (localStorage.getItem('user_id')==bookById.user_id) {
+        console.log('email user', bookById.email)
+        if (localStorage.getItem('email')==bookById.email_user) {
             return (
                 <div>
                     <div className='container' style={{paddingTop: '150px'}}>
@@ -177,7 +185,7 @@ class BookDetail extends React.Component {
                                 <div className='row'>
                                     <div className='col-md-12' style={{ paddingTop:'55px'}}>
                                         <label>
-                                            <button type="button" class="btn btn-success">Masukkan Ke Keranjang</button>
+                                            <button type="button" class="btn btn-success" onClick={this.doAddCart}>Masukkan Ke Keranjang</button>
                                         </label>
                                     </div>
                                 </div>

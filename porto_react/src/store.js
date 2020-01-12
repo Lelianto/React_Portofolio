@@ -2,6 +2,7 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    carts:[],
     book_id:'',
     books:[],
     bookById:[],
@@ -160,7 +161,7 @@ export const actions = store => ({
     await axios(req)
         .then(response => {
           console.log('user id', response.data.user_id)
-          localStorage.setItem('user_id', response.data.user_id)
+          // localStorage.setItem('user_id', response.data.user_id)
           return response
         })
         .catch(error => {
@@ -250,6 +251,47 @@ export const actions = store => ({
           return false
     })
   },
+
+  addCartItem : async (state) => {
+    console.log('ISI STATE ADD CART', state.bookById)
+    const book_id = state.bookById.id
+    const judul = state.bookById.judul
+    const penulis = state.bookById.penulis
+    const jenis_cover = state.bookById.jenis_cover
+    const foto_buku = state.bookById.foto_buku
+    const harga = state.bookById.harga
+    const stok = state.bookById.stok
+    const berat = state.bookById.berat
+    const status_jual = state.bookById.status
+    const buybook = {
+      book_id : book_id,
+      judul : judul,
+      penulis : penulis,
+      berat : berat,
+      jenis_cover : jenis_cover,
+      harga : harga,
+      stok : stok,
+      foto_buku : foto_buku,
+      status_jual : status_jual
+    };
+    const req = {
+      method: "post",
+      url: "http://0.0.0.0:1250/cart/add",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem('token')
+      },
+      data: buybook
+    };
+    console.log('CEK ISI BUY BOOK', buybook)
+    await axios(req)
+        .then(response => {
+          console.log('data di CART', response.data)
+          return response
+        })
+        .catch(error => {
+          return false
+    })
+  }
 
   });
 

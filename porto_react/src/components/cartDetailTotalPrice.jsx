@@ -6,7 +6,7 @@ class CartDetailTotalPrice extends React.Component {
     render() {
         return (
             <div>
-                <div className='container' style={{marginTop:'30px'}}>
+                <div className='container' style={{paddingTop:'120px'}}>
                     <div className='col-md-12' style={{ backgroundColor: 'aliceblue', borderRadius: '5%', marginBottom:'250px' }}>
                         <div className='row' style={{ paddingTop:'25px', paddingLeft: '23px', paddingRight: '23px'}} >
                             <div className='col-md-6'>Subtotal</div>
