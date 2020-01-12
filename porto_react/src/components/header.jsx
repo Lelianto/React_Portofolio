@@ -45,7 +45,7 @@ class Header extends React.Component {
                                         <img className="navi2" src={profile} alt=""/>
                                         </Link></li>
                                 <li className="navi1">
-                                    <Link to="">
+                                    <Link to="/cart">
                                         <img className="navi3" src={cart} alt=""/>
                                         </Link></li>
                             </ul>

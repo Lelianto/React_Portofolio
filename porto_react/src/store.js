@@ -2,6 +2,7 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    total_price:0,
     carts:[],
     book_id:'',
     books:[],
@@ -39,7 +40,8 @@ export const store = createStore(initialState)
 export const actions = store => ({
   changeInput : async (state,e) => {
     await store.setState({ [e.target.name]: e.target.value });
-    await console.warn('berat',state.berat)
+    // await console.warn('name',[e.target.name])
+    // await console.warn('value',e.target)
   },
 
   postSignUp : async (state) => {
@@ -260,7 +262,7 @@ export const actions = store => ({
     const jenis_cover = state.bookById.jenis_cover
     const foto_buku = state.bookById.foto_buku
     const harga = state.bookById.harga
-    const stok = state.bookById.stok
+    const stok = 1
     const berat = state.bookById.berat
     const status_jual = state.bookById.status
     const buybook = {
@@ -291,6 +293,45 @@ export const actions = store => ({
         .catch(error => {
           return false
     })
+  },
+
+  Calculate : async (state) => {
+    // console.log('isi STATE CART email', state.carts.email)
+    // console.log('isi STATE CART status cart', state.carts.status_cart)
+  //   const listInCart = state.carts.filter(item => {
+  //     if (item.email == localStorage.getItem('email') && item.foto_buku !== null && item.judul !== null && item.harga !== null && item.status_cart == false && item.berat !== null) {
+  //         return item;
+  //     }
+  //     return false
+  //   });
+  //   listInCart.map((input,index)=> {
+  //     console.log('hasil stok', input)
+  //     console.log('hasil store', store.getState().carts[index])
+  //   }
+  //   )
+
+  // console.log('isi CART', listInCart)
+    const req = {
+      method: "get",
+      url: "http://0.0.0.0:1250/cart/total",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem('token')
+      }
+    };
+    console.log(req)
+    await axios(req)
+        .then(response => {
+          store.setState({
+            "total_price": response.data
+          })
+          console.log('isi', response.data)
+          return response
+        })
+        .catch(error => {
+          return false
+    })
+
+
   }
 
   });

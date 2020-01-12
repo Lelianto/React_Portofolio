@@ -7,9 +7,15 @@ import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'
 
-const perulangan = ['1','2','3','4']
+const perulangan = ['1','2','3','4','5','6','7','8','9','10']
 
 class CartDetail extends React.Component {
+    doTotalPrice = async () => {
+        await this.props.Calculate()
+        if (localStorage.getItem('token') !== null){
+            this.props.history.push("/cart");
+        }
+    }
 
     componentDidMount = () => {
         const req = {
@@ -42,11 +48,12 @@ class CartDetail extends React.Component {
             }
             return false
         })
-        console.log('isi CART', listInCart)
+        // console.log('isi CART', listInCart)
         return (
             <div>
                 <div className='container' style={{paddingTop:'120px'}}>
                     <div className='row'>
+                        <form onSubmit={e => e.preventDefault()}>
                         {listInCart.map((content,i)=>
                         <div>
                             <div className='col-md-12 cart-book-detail'>
@@ -76,9 +83,13 @@ class CartDetail extends React.Component {
                                     </div>
                                 </div>
                                 <div className='col-sm-3'>
-                                    <div className='col-sm-12' style={{fontSize: '11px', marginBottom: '10px'}}>Tuliskan Jumlah Buku</div>
                                     <div>
-                                    <textarea name="jumlah" pattern="[1-9]{1,30}" id="jumlah"></textarea>
+                                        <label for="exampleFormControlSelect1">Banyak Pembelian</label>
+                                        <select class="form-control" id="exampleFormControlSelect1" name='stok' onChange={e => this.props.changeInput(e)}required>
+                                            {perulangan.map((total,i) =>
+                                            <option value={total}>{total}</option>
+                                            )}
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -89,10 +100,11 @@ class CartDetail extends React.Component {
                         <div>
                             <div className='col-md-12' style={{ paddingTop:'25px', marginBottom: '25px'}}>
                                 <label>
-                                    <button type="button" class="btn btn-success">Finalisasi Jumlah Beli</button>
+                                    <button type="button" class="btn btn-success" onClick={this.doTotalPrice}>Finalisasi Jumlah Beli</button>
                                 </label>
                             </div>
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -101,4 +113,4 @@ class CartDetail extends React.Component {
 }
 
 // export default CartDetail;
-export default connect("carts, book_id, token, is_login, judul, penulis, status, harga, foto_buku",actions)(withRouter(CartDetail));
+export default connect("carts, token, is_login",actions)(withRouter(CartDetail));
