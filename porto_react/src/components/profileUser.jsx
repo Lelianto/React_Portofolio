@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/profileUser.css';
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 
@@ -9,64 +9,67 @@ const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','
 
 class ProfileUser extends React.Component {
     render() {
-        console.log('cek status login', this.props.is_login)
-        return (
-            <div>
-                <div className='container user-full-name container-user'>
-                    <div className='row'>
-                        <div className='col-md-6'>
-                            <h3 className='border-user'>Hai, USER FULL NAME</h3>
+        if (localStorage.getItem('token') == null){
+            return <Redirect to={{ pathname: "/login" }} />;
+        } else {
+            return (
+                <div>
+                    <div className='container user-full-name container-user'>
+                        <div className='row'>
+                            <div className='col-md-6'>
+                                <h3 className='border-user'>Hai, USER FULL NAME</h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className='container alamat-email container-user'>
-                    <div className='row'>
-                        <div className='col-md-12'>
-                            Alamat Email : User@email.com
+                    <div className='container alamat-email container-user'>
+                        <div className='row'>
+                            <div className='col-md-12'>
+                                Alamat Email : User@email.com
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className='container alamat-email container-user'>
-                    <div className='row'>
-                        <div className='col-md-12'>
-                            Pilih Genre Favoritmu :
+                    <div className='container alamat-email container-user'>
+                        <div className='row'>
+                            <div className='col-md-12'>
+                                Pilih Genre Favoritmu :
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className='container container-user'>
-                    <form onSubmit={e => e.preventDefault()}>
-                        <div className='row all-genres-checkbox'>
-                            {allGenres.map((genre,index) =>
+                    <div className='container container-user'>
+                        <form onSubmit={e => e.preventDefault()}>
+                            <div className='row all-genres-checkbox'>
+                                {allGenres.map((genre,index) =>
+                                    <div className='col-md-4'>
+                                        <label>
+                                            <input type="checkbox" name="genre" className='list-genre' value={genre}/>{genre}
+                                        </label>
+                                    </div>
+                                )}
+                            </div>
+                            <div className='row space-under-button'>
                                 <div className='col-md-4'>
                                     <label>
-                                        <input type="checkbox" name="genre" className='list-genre' value={genre}/>{genre}
+                                        <button type="button" class="btn btn-success">Success</button>
                                     </label>
                                 </div>
-                            )}
-                        </div>
-                        <div className='row space-under-button'>
-                            <div className='col-md-4'>
-                                <label>
-                                    <button type="button" class="btn btn-success">Success</button>
-                                </label>
+                                <div className='col-md-4'>
+                                    <label>
+                                        <Link to='/sell'>
+                                            <button type="button" class="btn btn-success">Jual Buku</button>
+                                        </Link>
+                                    </label>
+                                </div>
+                                <div className='col-md-4 button-logout'>
+                                    <label>
+                                        <button type="button" class="btn btn-success">Log Out</button>
+                                    </label>
+                                </div>
                             </div>
-                            <div className='col-md-4'>
-                                <label>
-                                    <Link to='/sell'>
-                                        <button type="button" class="btn btn-success">Jual Buku</button>
-                                    </Link>
-                                </label>
-                            </div>
-                            <div className='col-md-4 button-logout'>
-                                <label>
-                                    <button type="button" class="btn btn-success">Log Out</button>
-                                </label>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }
 

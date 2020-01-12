@@ -2,6 +2,8 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    bookById:[],
+    id:'',
     isLoading:true,
     token:'',
     photo:'',
@@ -18,21 +20,22 @@ const initialState = {
     genre:'',
     bahasa:'',
     penerbit:'',
-    berat:'',
-    lebar:'',
-    panjang:'',
+    berat:0,
+    lebar:0,
+    panjang:0,
     jenis_cover:'',
     status:'',
-    harga:'',
-    stok:'',
+    harga:0,
+    stok:0,
     foto_buku:'',
 }
 
 export const store = createStore(initialState)
 
 export const actions = store => ({
-  changeInput : (state,e) => {
-    store.setState({ [e.target.name]: e.target.value });
+  changeInput : async (state,e) => {
+    await store.setState({ [e.target.name]: e.target.value });
+    await console.warn('berat',state.berat)
   },
 
   postSignUp : async (state) => {
@@ -91,11 +94,13 @@ export const actions = store => ({
     await axios(req)
         .then(response => {
           // console.log('cek token', response.data.token)
-              store.setState({
-                  "is_login": true,
-                  "token":response.data.token
-              });
-          console.log('cek state token', store.getState().token)
+              // store.setState({
+              //     "is_login": true,
+              //     "token":response.data.token
+              // });
+              localStorage.setItem("is_login", true);
+              localStorage.setItem("token", response.data.token);
+          // console.log('cek state token', store.getState().token)
         })
         .catch(error => {
             return false
@@ -111,16 +116,16 @@ export const actions = store => ({
     const genre = state.genre
     const bahasa = state.bahasa
     const penerbit = state.penerbit
-    const berat = state.besar
-    const lebar = state.lebar
-    const panjang = state.panjang
+    const berat = state.berat * 1
+    const lebar = state.lebar * 1
+    const panjang = state.panjang * 1
     const jenis_cover = state.jenis_cover
     const status = state.status
-    const harga = state.harga
-    const stok = state.stok
+    const harga = state.harga * 1
+    const stok = state.stok * 1
     const foto_buku = state.foto_buku
     const sinopsis = state.sinopsis
-    const mydata = {
+    const mybook = {
       judul : judul,
       penulis : penulis,
       jumlah_halaman : jumlah_halaman,
@@ -139,20 +144,18 @@ export const actions = store => ({
       foto_buku : foto_buku,
       sinopsis : sinopsis
     };
-    console.warn('isi email', genre)
+    console.log('isi berat', typeof(berat))
 
     const req = {
       method: "post",
       url: "http://0.0.0.0:1250/book",
       headers: {
-        Authorization: "Bearer " + store.getState().token
+        Authorization: "Bearer " + localStorage.getItem('token')
       },
-    //   params: {
-
-    //   }
-      data: mydata
+      data: mybook
     };
-
+    console.warn('isi local token',localStorage.getItem('token'))
+    console.warn('isi mybook', mybook)
     await axios(req)
         .then(response => {
           return response
@@ -160,7 +163,19 @@ export const actions = store => ({
         .catch(error => {
           return false
     })
-  }
+  },
+
+  getItem: state => {
+    axios
+      .get("http://api.raden.top/barang/barangpelapak")
+      .then(response => {
+        store.setState({ data: response.data });
+        console.log(response);
+      })
+      .catch(error => {
+        console.log("terdapat eror ini :", error);
+      });
+  },
 
 
   });

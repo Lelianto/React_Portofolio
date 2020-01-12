@@ -13,8 +13,8 @@ class UserUpload extends React.Component {
 
     doAddBook = async () => {
         await this.props.postBook()
-        console.warn('string cek', this.props.is_login)
-        if (this.props.is_login){
+        console.warn('string cek', localStorage.getItem('is_login'))
+        if (localStorage.getItem('token') !== null){
             this.props.history.push("/profile");
         }
     }
@@ -67,18 +67,20 @@ class UserUpload extends React.Component {
 
                         <div class="form-group" style={{marginTop:'10px'}}>
                             <label for="exampleFormControlSelect1">Pilih Genre Bukumu</label>
-                            <select class="form-control" id="exampleFormControlSelect1" onClick={e => this.props.changeInput(e)} required>
+                            <select class="form-control" id="exampleFormControlSelect1" name='genre' onChange={e => this.props.changeInput(e)}required>
+                                <option value=''>Pilihan</option>
                                 {allGenres.map((genre,i) =>
-                                <option>{genre}</option>
+                                <option value={genre}>{genre}</option>
                                 )}
                             </select>
                         </div>
 
                         <div class="form-group" style={{marginTop:'10px'}}>
                             <label for="exampleFormControlSelect1">Pilih Bahasa Bukumu</label>
-                            <select class="form-control" id="exampleFormControlSelect1" onClick={e => this.props.changeInput(e)} required>
-                                <option>Bahasa Indonesia</option>
-                                <option>Bahasa Inggris</option>
+                            <select class="form-control" id="exampleFormControlSelect1" name='bahasa' onChange={e => this.props.changeInput(e)} required>
+                                <option value=''>Pilihan</option>
+                                <option value='Bahasa Indonesia'>Bahasa Indonesia</option>
+                                <option value='Bahasa Inggris'>Bahasa Inggris</option>
                             </select>
                         </div>
 
@@ -119,9 +121,10 @@ class UserUpload extends React.Component {
 
                         <div class="form-group" style={{marginTop:'10px'}}>
                             <label for="exampleFormControlSelect1">Pilih Status Bukumu</label>
-                            <select class="form-control" id="exampleFormControlSelect1" onClick={e => this.props.changeInput(e)} required>
-                                <option>Ready Stock</option>
-                                <option>Pre-Order</option>
+                            <select class="form-control" id="exampleFormControlSelect1" name='status' onChange={e => this.props.changeInput(e)} required>
+                                <option value=''>Pilihan</option>
+                                <option value='Ready Stock' >Ready Stock</option>
+                                <option value='Pre-Order'>Pre-Order</option>
                             </select>
                         </div>
 
@@ -162,4 +165,4 @@ class UserUpload extends React.Component {
     }
 }
 // export default UserUpload;
-export default connect("Bearer, email, kata_sandi, is_login",actions)(withRouter(UserUpload));
+export default connect("Bearer,bahasa,status, genre, is_login",actions)(withRouter(UserUpload));

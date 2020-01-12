@@ -3,7 +3,7 @@ import '../styles/main.css';
 import '../styles/bootstrap.min.css';
 import profile from '../images/profile.png';
 import cart from '../images/cart.webp';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
  
 
 class Header extends React.Component {
@@ -40,7 +40,7 @@ class Header extends React.Component {
                         <nav>
                             <ul className="list-unstyled navigate">
                                 <li className="navi1">
-                                    <Link to="/login">
+                                    <Link to="/profile">
                                         <img className="navi2" src={profile} alt=""/>
                                         </Link></li>
                                 <li className="navi1">

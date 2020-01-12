@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/masuk.css';
 import '../styles/bootstrap.min.css'
 import logo from '../images/navigasi-logo.png';
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 
@@ -10,13 +10,17 @@ class SignIn extends React.Component {
 
     doLogin = async () => {
         await this.props.postLogin()
-        console.warn('string cek', this.props.is_login)
-        if (this.props.is_login){
+        console.warn('string cek', localStorage.getItem('is_login'))
+        if (localStorage.getItem('token') !== null){
             this.props.history.push("/profile");
         }
     }
 
     render() {
+        if (localStorage.getItem('token') !== null){
+            alert('Email atau Password Anda Salah...')
+            return <Redirect to={{ pathname: "/profile" }} />;
+        } else {        
         return (
         <div className="wrapper fadeInDown">
             <div id="formContent">
@@ -55,7 +59,8 @@ class SignIn extends React.Component {
             </div>
             </div>
         )
+        }
     }
 }
-// export default SignIn;
+
 export default connect("Bearer, email, kata_sandi, is_login",actions)(withRouter(SignIn));
