@@ -8,13 +8,14 @@ import { store, actions } from '../store'
 
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
 
+
 class UserUpload extends React.Component {
 
-    doAddBook = async () => {
-        await this.props.postBook()
+    doUpdateBook = async () => {
+        await this.props.updateBook()
         console.warn('string cek', localStorage.getItem('is_login'))
         if (localStorage.getItem('token') !== null){
-            this.props.history.push("/");
+            this.props.history.push("/profile");
         }
     }
 
@@ -155,7 +156,7 @@ class UserUpload extends React.Component {
                         type="submit" 
                         className="fadeIn fourth" 
                         value="Mulai Jual Buku" 
-                        onClick={this.doAddBook}/>
+                        onClick={this.doUpdateBook}/>
                     </form>
             </div>
             </div>

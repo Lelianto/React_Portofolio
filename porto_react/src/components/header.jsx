@@ -16,7 +16,8 @@ class Header extends React.Component {
 
                     </div>
                     <div className="col-md-1 logo-name">
-                        <h4 className="toko">kutubuku.com</h4>
+                        <Link to='/' style={{textDecoration:'none'}}>
+                        <h4 className="toko">kutubuku.com</h4></Link>
                     </div>
                     <div className="col-md-2">
                         <div className="dropdown">

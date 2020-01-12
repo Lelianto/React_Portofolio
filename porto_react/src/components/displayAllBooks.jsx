@@ -10,6 +10,15 @@ import axios from 'axios'
 
 class AllBooks extends React.Component {
 
+    goToBook = async (book) => {
+        console.warn('cek isi buku', book.id)
+        // localStorage.setItem("book_id", book.id);
+        store.setState({ book_id: book.id })
+        // console.warn('cek isi buku', store.getState().book_id)
+        this.props.history.push("/bookdetail/"+store.getState().book_id);
+        // window.open("/bookdetail/"+localStorage.getItem('book_id'))
+        }
+
     componentDidMount = () => {
 
         const req = {
@@ -51,7 +60,7 @@ class AllBooks extends React.Component {
                                 <div className='col-md-12 box-all-books-photo'>
                                     <img style={{ width:'100%'}} src={book.foto_buku} alt=""/>
                                 </div>
-                                <div className='col-md-12 box-all-books-title'>{book.judul}</div>
+                                <div className='col-md-12 box-all-books-title' onClick={event => this.goToBook(book)}>{book.judul}</div>
                                 <div className='col-md-12 box-all-books-writer'>{book.penulis}</div>
                                 <div className='col-md-12 box-all-books-price'>Rp {book.harga}</div>
                             </div>
@@ -64,4 +73,4 @@ class AllBooks extends React.Component {
 }
 
 // export default AllBooks;
-export default connect("books, token, is_login, judul, penulis, jumlah_halaman,tanggal_terbit, isbn, genre, bahasa, penerbit, berat, lebar, panjang, jenis_cover, status, harga, stok, foto_buku, sinopsis",actions)(withRouter(AllBooks));
+export default connect("books, book_id, token, is_login, judul, penulis, status, harga, foto_buku",actions)(withRouter(AllBooks));

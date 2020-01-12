@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
+import '../styles/carousel.css';
 import promo1 from '../images/promo1.jpg';
 import promo2 from '../images/promo2.jpg';
 import promo3 from '../images/promo3.jpg';
@@ -10,7 +11,7 @@ class Carousel extends React.Component {
 
     render() {
         return (
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style={{paddingTop: '95px'}}>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img class="d-block w-100" src={promo1} alt="First slide" />
