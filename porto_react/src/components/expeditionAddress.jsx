@@ -10,12 +10,12 @@ import axios from 'axios'
 // const perulangan = ['1','2','3','4','5','6','7','8','9','10']
 
 class CartDetail extends React.Component {
-    // doTotalPrice = async () => {
-    //     await this.props.Calculate()
-    //     if (localStorage.getItem('token') !== null){
-    //         this.props.history.push("/cart");
-    //     }
-    // }
+    doExpeditionPrice = async () => {
+        await this.props.CalculateExpeditionPrice()
+        if (localStorage.getItem('token') !== null){
+            this.props.history.push("/expedition");
+        }
+    }
 
     // componentDidMount = () => {
     //     const req = {
@@ -126,7 +126,7 @@ class CartDetail extends React.Component {
                                 <div>
                                     <div style={{ paddingTop:'25px', marginBottom: '25px'}}>
                                         <label>
-                                            <button type="button" class="btn btn-success" onClick={this.doTotalPrice}>Hitung Ongkir</button>
+                                            <button type="button" class="btn btn-success" onClick={this.doExpeditionPrice}>Hitung Ongkir</button>
                                         </label>
                                     </div>
                                 </div>

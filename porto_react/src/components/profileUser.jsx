@@ -13,6 +13,7 @@ class ProfileUser extends React.Component {
     handleSignOut = async () => {
         await localStorage.removeItem('token');
         await localStorage.removeItem('is_login');
+        await localStorage.removeItem('email');
         console.warn('cek log out', localStorage.getItem('token'))
         this.props.history.push("/");
     };

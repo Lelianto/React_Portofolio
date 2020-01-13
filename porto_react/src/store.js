@@ -297,21 +297,6 @@ export const actions = store => ({
   },
 
   Calculate : async (state) => {
-    // console.log('isi STATE CART email', state.carts.email)
-    // console.log('isi STATE CART status cart', state.carts.status_cart)
-  //   const listInCart = state.carts.filter(item => {
-  //     if (item.email == localStorage.getItem('email') && item.foto_buku !== null && item.judul !== null && item.harga !== null && item.status_cart == false && item.berat !== null) {
-  //         return item;
-  //     }
-  //     return false
-  //   });
-  //   listInCart.map((input,index)=> {
-  //     console.log('hasil stok', input)
-  //     console.log('hasil store', store.getState().carts[index])
-  //   }
-  //   )
-
-  // console.log('isi CART', listInCart)
     const req = {
       method: "get",
       url: "http://0.0.0.0:1250/cart/total",
@@ -333,7 +318,53 @@ export const actions = store => ({
     })
 
 
-  }
+  },
+
+  CalculateExpeditionPrice : async (state) => {
+    const nama_jalan = state.nama_jalan
+    const rt_rw = state.rt_rw
+    const kelurahan = state.kelurahan
+    const kecamatan = state.kecamatan
+    const kota_kabupaten = state.kota_kabupaten
+    const provinsi = state.provinsi
+    const kode_pos = state.kode_pos
+    const nomor_telepon = state.nomor_telepon
+    console.log('KOTA', kota_kabupaten)
+    const myaddress = {
+      nama_jalan: nama_jalan,
+      rt_rw: rt_rw,
+      kelurahan: kelurahan,
+      kecamatan : kecamatan,
+      kota_kabupaten : kota_kabupaten,
+      provinsi : provinsi,
+      kode_pos : kode_pos,
+      nomor_telepon : nomor_telepon
+    };
+    console.log('isi my address', myaddress)
+
+    const req = {
+      method: "post",
+      url: "http://0.0.0.0:1250/payment/ongkir",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem('token')
+      },
+      data: myaddress
+    };
+    console.warn('isi local token',localStorage.getItem('token'))
+    console.warn('isi mybook', myaddress)
+    await axios(req)
+        .then(response => {
+          console.log('ongkir', response.data)
+          store.setState({
+            'ongkos_kirim':response.data
+          })
+          // localStorage.setItem('user_id', response.data.user_id)
+          return response
+        })
+        .catch(error => {
+          return false
+    })
+  },
 
   });
 
