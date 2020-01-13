@@ -390,10 +390,7 @@ export const actions = store => ({
     })
   },
 
-  searchBook : async (state,e) => {
-    await store.setState({ [e.target.name]: e.target.value });
-    console.warn('isi state', state)
-    console.warn('kategori', store.getState().kategori)
+  searchBook : async (state) => {
     const req = {
       method: "get",
       url: "http://0.0.0.0:1250/book/search?keyword="+store.getState().keyword,

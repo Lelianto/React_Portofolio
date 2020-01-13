@@ -59,7 +59,7 @@ class Header extends React.Component {
                                     <input class="form-control mr-sm-2" 
                                     style={{ width:"90%"}} 
                                     type="search" 
-                                    placeholder="Search Your Destination City" 
+                                    placeholder="Cari Judul atau Penulis Buku" 
                                     aria-label="Search"
                                     id="keyword"
                                     name="keyword"
