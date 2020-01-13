@@ -36,6 +36,7 @@ class SignUp extends React.Component {
                         <input 
                         type="text" 
                         id="login" 
+                        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
                         className="fadeIn second" 
                         name="email" 
                         placeholder="Email"

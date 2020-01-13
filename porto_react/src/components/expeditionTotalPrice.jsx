@@ -9,7 +9,7 @@ class CartDetailTotalPrice extends React.Component {
     doPay = async () => {
         await this.props.FinalTransactionPayment()
         if (localStorage.getItem('token') !== null){
-            this.props.history.push("/");
+            this.props.history.push("/payment");
         }
     }
 

@@ -12,6 +12,7 @@ import UserUpdatingBook from '../pages/userUpdatingBook';
 import ExpeditionDetail from '../pages/expeditionDetail';
 import SearchBook from '../pages/searchBook';
 import CategoryBook from '../pages/categoryBook';
+import PaymentConfirmation from '../pages/paymentConfirmation'
 
 const MainRoute = () => {
     return (
@@ -29,6 +30,7 @@ const MainRoute = () => {
                     <Route exact path='/expedition' component={ExpeditionDetail} />
                     <Route exact path='/search' component={SearchBook} />
                     <Route exact path='/category' component={CategoryBook} />
+                    <Route exact path='/payment' component={PaymentConfirmation} />
                 </Switch>
             </BrowserRouter>
         </Provider>

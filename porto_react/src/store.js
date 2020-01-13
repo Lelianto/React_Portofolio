@@ -2,6 +2,9 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    kode_pemesanan:'',
+    tanggal_pemesanan:'',
+    total_pembayaran:'',
     userId:'',
     listResults:[],
     listCategory:[],
@@ -374,6 +377,11 @@ export const actions = store => ({
     await axios(req)
         .then(response => {
           console.log('isi final payment',response.data)
+          store.setState({
+            'total_pembayaran':response.data.total_biaya,
+            'tanggal_pemesanan':response.data.tanggal_pemesanan,
+            'kode_pemesanan':response.data.nomor_pemesanan
+          })
           return response
         })
         .catch(error => {
