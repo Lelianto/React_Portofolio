@@ -49,7 +49,7 @@ class CartDetailTotalPrice extends React.Component {
                         <div className='row'>
                             <div className='col-md-12' style={{ paddingTop:'55px', marginBottom: '25px'}}>
                                 <label>
-                                    <button type="button" class="btn btn-success">Masukkan Ke Keranjang</button>
+                                    <button type="button" class="btn btn-success">Bayar</button>
                                 </label>
                             </div>
                         </div>

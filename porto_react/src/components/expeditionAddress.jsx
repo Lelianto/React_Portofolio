@@ -17,31 +17,7 @@ class CartDetail extends React.Component {
         }
     }
 
-    // componentDidMount = () => {
-    //     const req = {
-    //     method: "get",
-    //     url: "http://0.0.0.0:1250/cart/allcart",
-    //     headers: {
-    //         Authorization: "Bearer " + localStorage.getItem('token')
-    //     },
-    //     params: {
-            
-    //     }
-    //     }; 
-    //     console.log(req)
-    //     axios(req)
-    //         .then(function (response) {
-    //             store.setState({ carts: response.data, isLoading:false})
-    //             console.log(response.data)
-    //             return response
-    //         })
-    //         .catch(function (error){
-    //             store.setState({ isLoading: false})
-    //         })
-    // };
-
     render() {
-        // console.log('isi CART', listInCart)
         return (
             <div>
                 <div className='container' style={{paddingTop:'120px'}}>

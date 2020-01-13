@@ -50,7 +50,7 @@ class SignUp extends React.Component {
                         <input 
                         type="submit" 
                         className="fadeIn fourth" 
-                        value="Log In" 
+                        value="SignUp" 
                         onClick={this.doSignUp}/>
                     </form>
 

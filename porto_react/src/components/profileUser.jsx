@@ -22,7 +22,7 @@ class ProfileUser extends React.Component {
 
         const req = {
         method: "get",
-        url: "http://0.0.0.0:1250/user/7",
+        url: "http://0.0.0.0:1250/user/9",
         headers: {
             Authorization: "Bearer " + localStorage.getItem('token')
         },
@@ -44,6 +44,7 @@ class ProfileUser extends React.Component {
 
     render() {
         const { userById } = this.props
+        console.log('ISI nama lengkap', userById)
         const nama_lengkap = userById.nama_lengkap
         const email = userById.email
 
