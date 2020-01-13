@@ -9,7 +9,8 @@ import BookDetail from '../pages/bookDetail';
 import Cart from '../pages/cartDetail';
 import UserSellBookPage from '../pages/userSellBook';
 import UserUpdatingBook from '../pages/userUpdatingBook';
-import ExpeditionDetail from '../pages/expeditionDetail'
+import ExpeditionDetail from '../pages/expeditionDetail';
+import SearchBook from '../pages/searchBook'
 
 const MainRoute = () => {
     return (
@@ -20,11 +21,12 @@ const MainRoute = () => {
                     <Route exact path="/" component={Homepage} />
                     <Route exact path='/login' component={LoginPage} />
                     <Route exact path='/profile' component={Profile} />
-                    <Route exact path='/bookdetail/:id' component={BookDetail} />
+                    <Route path='/bookdetail/:id' component={BookDetail} />
                     <Route exact path='/cart' component={Cart} />
                     <Route exact path='/sell' component={UserSellBookPage} />
                     <Route exact path='/updateproduct' component={UserUpdatingBook} />
                     <Route exact path='/expedition' component={ExpeditionDetail} />
+                    <Route exact path='/search' component={SearchBook} />
                 </Switch>
             </BrowserRouter>
         </Provider>

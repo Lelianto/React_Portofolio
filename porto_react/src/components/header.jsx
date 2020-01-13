@@ -3,11 +3,21 @@ import '../styles/main.css';
 import '../styles/bootstrap.min.css';
 import profile from '../images/profile.png';
 import cart from '../images/cart.webp';
-import { Link, Redirect } from 'react-router-dom';
- 
+import { Link, Redirect,  withRouter } from 'react-router-dom';
+import { connect } from 'unistore/react'
+import { store, actions } from '../store'
 
 class Header extends React.Component {
+    doSearchBook = async () => {
+        await this.props.searchBook()
+        // console.warn('string cek', localStorage.getItem('is_login'))
+        if (localStorage.getItem('token') !== null){
+            this.props.history.push("/search");
+        }
+    }
+
     render (){
+        console.log('isi props', this.props.changeInput)
         return (
         <header>
             <div className="container-fluid">
@@ -33,23 +43,30 @@ class Header extends React.Component {
                         </div>
                     </div>
                     <div className="col-md-6 search">
-                            <form onSubmit={e => e.preventDefault()}>
+                        <form onSubmit={e => e.preventDefault()}>
                         <div className='row'>
-                                <div className='col-md-9'>
-                                    <div className="active-cyan-4 mb-4">
-                                        <input className="form-control" type="text" placeholder="Cari judul buku atau penulis" aria-label="Search" />
-                                    </div>
+                            <div className='col-md-9'>
+                                <div className="active-cyan-4 mb-4">
+                                    <input class="form-control mr-sm-2" 
+                                    style={{ width:"90%"}} 
+                                    type="search" 
+                                    placeholder="Search Your Destination City" 
+                                    aria-label="Search"
+                                    id="keyword"
+                                    name="keyword"
+                                    onChange={(e) => this.props.changeInput(e)}/>
                                 </div>
-                                <div className='col-md-3'>
-                                    <div className="active-cyan-4 mb-4" style={{marginLeft:'-135px', paddingTop:'15px'}}>
-                                        <button class="btn btn-info my-sm-0" 
-                                        type="submit"
-                                        onClick={() => this.cariKotaData()}
-                                        >Search</button>
-                                    </div>
+                            </div>
+                            <div className='col-md-3'>
+                                <div className="active-cyan-4 mb-4" style={{marginLeft:'-135px', paddingTop:'15px'}}>
+                                    <button class="btn btn-info my-sm-0" 
+                                    type="submit"
+                                    onClick={this.doSearchBook}
+                                    >Search</button>
                                 </div>
+                            </div>
                         </div>
-                            </form>
+                        </form>
                     </div>
 
                     <div className="col-md-2 user_in">
@@ -73,4 +90,5 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+// export default Header;
+export default connect("keyword, is_login",actions)(withRouter(Header));

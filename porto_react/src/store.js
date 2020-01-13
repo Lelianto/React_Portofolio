@@ -2,6 +2,7 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    listResults:[],
     ongkos_kirim:0,
     total_price:0,
     carts:[],
@@ -34,14 +35,18 @@ const initialState = {
     harga:0,
     stok:0,
     foto_buku:'',
+    keyword:''
 }
 
 export const store = createStore(initialState)
 
 export const actions = store => ({
   changeInput : async (state,e) => {
+    // console.log('nilai e', e.target.value)
+    // console.log('isi name', e.target.name)
+    // console.log('isi initial', initialState.keyword)
     await store.setState({ [e.target.name]: e.target.value });
-    // await console.warn('name',[e.target.name])
+    console.warn('keyword', store.getState().keyword)
     // await console.warn('value',e.target)
   },
 
@@ -385,6 +390,28 @@ export const actions = store => ({
     })
   },
 
+  searchBook : async (state) => {
+    console.warn('isi state', state)
+    const req = {
+      method: "get",
+      url: "http://0.0.0.0:1250/book/search?keyword="+store.getState().keyword,
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem('token')
+      }
+    };
+
+    await axios(req)
+        .then(response => {
+          console.log('isi searching',response.data)
+          store.setState({
+            'listResults':response.data
+          })
+          return response
+        })
+        .catch(error => {
+          return false
+    })
+  }
   });
 
 
