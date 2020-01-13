@@ -14,6 +14,7 @@ class BookDetail extends React.Component {
         await this.props.addCartItem()
         // console.warn('string cek', localStorage.getItem('is_login'))
         if (localStorage.getItem('token') !== null){
+            alert('Buku telah dimasukkan ke dalam Keranjang')
             this.props.history.push("/");
         }
     }
@@ -25,7 +26,7 @@ class BookDetail extends React.Component {
             this.props.history.push("/");
         }
     }
-
+    
     componentDidMount = () => {
         // localStorage.getItem('book_id')
         const req = {
@@ -41,8 +42,9 @@ class BookDetail extends React.Component {
         console.log(req)
         axios(req)
             .then(function (response) {
+                // console.log('ISI RESPON DATA', response.data)
                 store.setState({ bookById: response.data, isLoading:false})
-                console.log(response.data)
+                // console.log(response.data)
                 return response
             })
             .catch(function (error){
@@ -51,9 +53,13 @@ class BookDetail extends React.Component {
     };
 
     render() {
-        console.log('cek isi buku asli',store.getState().bookById)
+        // console.log('cek isi buku asli',store.getState().bookById)
+        // console.log('cek isi buku asli 2i23232',this.props.bookById[0])
+        // const seluruh_buku = this.props.bookById[0]
+        // console.log('isi seluruh', seluruh_buku.judul)
         const { bookById } = this.props
         const judul = bookById.judul
+        console.log('JUDUL', judul)
         const penulis = bookById.penulis
         const jumlah_halaman = bookById.jumlah_halaman
         const tanggal_terbit = bookById.tanggal_terbit
@@ -70,8 +76,76 @@ class BookDetail extends React.Component {
         const stok = bookById.stok * 1
         const foto_buku = bookById.foto_buku
         const sinopsis = bookById.sinopsis
-        console.log('email user', bookById.email)
+        console.log('CEK EMAIL ', bookById.email_user)
         if (localStorage.getItem('email')==bookById.email_user) {
+            return (
+                <div>
+                    <div className='container' style={{paddingTop: '150px'}}>
+                        <div className='row'>
+                            <div className='col-md-4 book-photo'>
+                                <img style={{width:'100%'}} src={foto_buku}></img>
+                            </div>
+                            <div className='col-md-5'>
+                                <div className='row'>
+                                    <div className='col-sm-12 book-title'>{judul}</div>
+                                    <div className='col-sm-12 book-status'>{status}</div>
+                                    <div className='col-sm-12 book-writer'>{penulis}</div>
+                                    <div className='col-sm-12'>
+                                        <div className='row list-detail'>
+                                            <div className='col-sm-5 book-detail-content'>Jumlah Halaman</div>
+                                            <div className='col-sm-7 book-detail-content'>{jumlah_halaman}</div>
+                                            <div className='col-sm-5 book-detail-content'>Tanggal Terbit</div>
+                                            <div className='col-sm-7 book-detail-content'>{tanggal_terbit}</div>
+                                            <div className='col-sm-5 book-detail-content'>ISBN</div>
+                                            <div className='col-sm-7 book-detail-content'>{isbn}</div>
+                                            <div className='col-sm-5 book-detail-content'>Genre</div>
+                                            <div className='col-sm-7 book-detail-content'>{genre}</div>
+                                            <div className='col-sm-5 book-detail-content'>Bahasa</div>
+                                            <div className='col-sm-7 book-detail-content'>{bahasa}</div>
+                                            <div className='col-sm-5 book-detail-content'>Penerbit</div>
+                                            <div className='col-sm-7 book-detail-content'>{penerbit}</div>
+                                            <div className='col-sm-5 book-detail-content'>Berat</div>
+                                            <div className='col-sm-7 book-detail-content'>{berat} kg</div>
+                                            <div className='col-sm-5 book-detail-content'>Lebar</div>
+                                            <div className='col-sm-7 book-detail-content'>{lebar} cm</div>
+                                            <div className='col-sm-5 book-detail-content'>Panjang</div>
+                                            <div className='col-sm-7 book-detail-content'>{panjang} cm</div>
+                                            <div className='col-sm-5 book-detail-content'>Stok</div>
+                                            <div className='col-sm-7 book-detail-content'>{stok} exemplar</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='col-md-3' style={{ backgroundColor: 'aliceblue', borderRadius: '5%', marginBottom:'250px' }}>
+                                <div className='row' style={{ paddingTop:'25px', paddingLeft: '10px', paddingRight: '10px'}} >
+                                    <div className='col-md-6'>{jenis_cover}</div>
+                                    <div className='col-md-6'>Rp {harga}</div>
+                                </div>
+                                <div className='row'>
+                                    <div className='col-md-12' style={{ paddingTop:'55px'}}>
+                                        <label><Link to='/updateproduct'>
+                                            <button type="button" class="btn btn-success">Update</button></Link>
+                                        </label>
+                                    </div>
+                                    <div className='col-md-12' style={{ paddingTop:'55px'}}>
+                                        <label>
+                                            <button type="button" class="btn btn-success" onClick={this.doDelete}>Delete</button>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='row'>
+                            <div className='col-md-12 book-description'>Deskripsi</div>
+                            <div className='col-md-12 book-description-content'>
+                                {sinopsis}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        } 
+        else if (localStorage.getItem('email')==='lian@alterra.id'){
             return (
                 <div>
                     <div className='container' style={{paddingTop: '150px'}}>

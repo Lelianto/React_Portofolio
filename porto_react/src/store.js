@@ -2,6 +2,7 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    bookOwn:[],
     kode_pemesanan:'',
     tanggal_pemesanan:'',
     total_pembayaran:'',
