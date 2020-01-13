@@ -366,6 +366,25 @@ export const actions = store => ({
     })
   },
 
+  FinalTransactionPayment : async (state) => {
+    const req = {
+      method: "post",
+      url: "http://0.0.0.0:1250/payment_confirm/bill",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem('token')
+      }
+    };
+
+    await axios(req)
+        .then(response => {
+          console.log('isi final payment',response.data)
+          return response
+        })
+        .catch(error => {
+          return false
+    })
+  },
+
   });
 
 

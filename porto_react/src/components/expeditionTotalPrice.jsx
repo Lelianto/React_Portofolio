@@ -6,6 +6,13 @@ import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'
 class CartDetailTotalPrice extends React.Component {
+    doPay = async () => {
+        await this.props.FinalTransactionPayment()
+        if (localStorage.getItem('token') !== null){
+            this.props.history.push("/");
+        }
+    }
+
     componentDidMount = () => {
         const req = {
             method: "get",
@@ -49,7 +56,7 @@ class CartDetailTotalPrice extends React.Component {
                         <div className='row'>
                             <div className='col-md-12' style={{ paddingTop:'55px', marginBottom: '25px'}}>
                                 <label>
-                                    <button type="button" class="btn btn-success">Bayar</button>
+                                    <button type="button" class="btn btn-success"onClick={this.doPay}>Bayar</button>
                                 </label>
                             </div>
                         </div>
