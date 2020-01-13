@@ -33,10 +33,25 @@ class Header extends React.Component {
                         </div>
                     </div>
                     <div className="col-md-6 search">
-                        <div className="active-cyan-4 mb-4">
-                            <input className="form-control" type="text" placeholder="Cari judul buku atau penulis" aria-label="Search" />
+                            <form onSubmit={e => e.preventDefault()}>
+                        <div className='row'>
+                                <div className='col-md-9'>
+                                    <div className="active-cyan-4 mb-4">
+                                        <input className="form-control" type="text" placeholder="Cari judul buku atau penulis" aria-label="Search" />
+                                    </div>
+                                </div>
+                                <div className='col-md-3'>
+                                    <div className="active-cyan-4 mb-4" style={{marginLeft:'-135px', paddingTop:'15px'}}>
+                                        <button class="btn btn-info my-sm-0" 
+                                        type="submit"
+                                        onClick={() => this.cariKotaData()}
+                                        >Search</button>
+                                    </div>
+                                </div>
                         </div>
+                            </form>
                     </div>
+
                     <div className="col-md-2 user_in">
                         <nav>
                             <ul className="list-unstyled navigate">
