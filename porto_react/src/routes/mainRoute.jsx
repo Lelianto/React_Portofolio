@@ -10,7 +10,8 @@ import Cart from '../pages/cartDetail';
 import UserSellBookPage from '../pages/userSellBook';
 import UserUpdatingBook from '../pages/userUpdatingBook';
 import ExpeditionDetail from '../pages/expeditionDetail';
-import SearchBook from '../pages/searchBook'
+import SearchBook from '../pages/searchBook';
+import CategoryBook from '../pages/categoryBook';
 
 const MainRoute = () => {
     return (
@@ -27,6 +28,7 @@ const MainRoute = () => {
                     <Route exact path='/updateproduct' component={UserUpdatingBook} />
                     <Route exact path='/expedition' component={ExpeditionDetail} />
                     <Route exact path='/search' component={SearchBook} />
+                    <Route exact path='/category' component={CategoryBook} />
                 </Switch>
             </BrowserRouter>
         </Provider>

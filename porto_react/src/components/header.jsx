@@ -7,12 +7,21 @@ import { Link, Redirect,  withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 
+const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
+
 class Header extends React.Component {
     doSearchBook = async () => {
         await this.props.searchBook()
         // console.warn('string cek', localStorage.getItem('is_login'))
         if (localStorage.getItem('token') !== null){
             this.props.history.push("/search");
+        }
+    }
+
+    doSearchCategoryBook = async (e) => {
+        await this.props.categoryBook(e)
+        if (localStorage.getItem('token') !== null){
+            this.props.history.push("/category");
         }
     }
 
@@ -32,14 +41,14 @@ class Header extends React.Component {
                     <div className="col-md-2">
                         <div className="dropdown">
                             <button className="dropbtn">
-                                <a className="kategori" href="">Kategori</a></button>
-                            <div className="dropdown-content">
-                                <a href="#">Romantis</a>
-                                <div className="dropdown-divider"></div>
-                                <a href="#">Komedi</a>
-                                <div className="dropdown-divider"></div>
-                                <a href="#">Fan Fiction</a>
-                            </div>
+                                <p className="kategori" href="">Kategori</p></button>
+                                <select className="dropdown-content" name='kategori' onClick={e => this.doSearchCategoryBook(e)}>
+                                <option style={{fontSize:'11px'}} value=''>Pilihan</option>
+                                {allGenres.map((genre,i)=>
+                                <option style={{fontSize:'11px'}} value={genre}>
+                                {genre}</option>
+                                )}
+                                </select>
                         </div>
                     </div>
                     <div className="col-md-6 search">
@@ -91,4 +100,4 @@ class Header extends React.Component {
 }
 
 // export default Header;
-export default connect("keyword, is_login",actions)(withRouter(Header));
+export default connect("keyword, kategori, is_login",actions)(withRouter(Header));

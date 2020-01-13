@@ -7,8 +7,7 @@ import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'
 
-
-class SearchResults extends React.Component {
+class CategoryFilterResult extends React.Component {
 
     goToBook = async (book) => {
         store.setState({ book_id: book.id })
@@ -16,8 +15,8 @@ class SearchResults extends React.Component {
         }
 
     render() {
-        const { listResults } = this.props
-        const displayAvailableBooks = listResults.filter(item => {
+        const { listCategory } = this.props
+        const displayAvailableBooks = listCategory.filter(item => {
             if (item.foto_buku !== null && item.judul !== null && item.penulis !== null && item.harga !== null && item.berat !== null) {
                 return item;
             }
@@ -44,5 +43,5 @@ class SearchResults extends React.Component {
     }
 }
 
-// export default SearchResults;
-export default connect("listResults, books, book_id, token, is_login, judul, penulis, status, harga, foto_buku",actions)(withRouter(SearchResults));
+// export default CategoryFilterResult;
+export default connect("listCategory, books, book_id, token, is_login, judul, penulis, status, harga, foto_buku",actions)(withRouter(CategoryFilterResult));

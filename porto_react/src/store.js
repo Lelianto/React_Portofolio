@@ -2,7 +2,9 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    userId:'',
     listResults:[],
+    listCategory:[],
     ongkos_kirim:0,
     total_price:0,
     carts:[],
@@ -35,19 +37,16 @@ const initialState = {
     harga:0,
     stok:0,
     foto_buku:'',
-    keyword:''
+    keyword:'',
+    kategori:''
 }
 
 export const store = createStore(initialState)
 
 export const actions = store => ({
   changeInput : async (state,e) => {
-    // console.log('nilai e', e.target.value)
-    // console.log('isi name', e.target.name)
-    // console.log('isi initial', initialState.keyword)
     await store.setState({ [e.target.name]: e.target.value });
-    console.warn('keyword', store.getState().keyword)
-    // await console.warn('value',e.target)
+    console.warn('kategori', store.getState().kategori)
   },
 
   postSignUp : async (state) => {
@@ -97,15 +96,12 @@ export const actions = store => ({
       headers: {
         "Content-Type": "application/json"
       },
-    //   params: {
-
-    //   }
       data: mydata
     };
 
     await axios(req)
         .then(response => {
-          console.log('cek token', response.data)
+          console.log('CEK ID', response.data)
               // localStorage.setItem("id", response.data.id);
               localStorage.setItem("email", email);
               localStorage.setItem("is_login", true);
@@ -154,7 +150,6 @@ export const actions = store => ({
       foto_buku : foto_buku,
       sinopsis : sinopsis
     };
-    console.log('isi berat', typeof(berat))
 
     const req = {
       method: "post",
@@ -164,12 +159,8 @@ export const actions = store => ({
       },
       data: mybook
     };
-    console.warn('isi local token',localStorage.getItem('token'))
-    console.warn('isi mybook', mybook)
     await axios(req)
         .then(response => {
-          console.log('user id', response.data.user_id)
-          // localStorage.setItem('user_id', response.data.user_id)
           return response
         })
         .catch(error => {
@@ -390,8 +381,10 @@ export const actions = store => ({
     })
   },
 
-  searchBook : async (state) => {
+  searchBook : async (state,e) => {
+    await store.setState({ [e.target.name]: e.target.value });
     console.warn('isi state', state)
+    console.warn('kategori', store.getState().kategori)
     const req = {
       method: "get",
       url: "http://0.0.0.0:1250/book/search?keyword="+store.getState().keyword,
@@ -406,6 +399,29 @@ export const actions = store => ({
           store.setState({
             'listResults':response.data
           })
+          return response
+        })
+        .catch(error => {
+          return false
+    })
+  },
+
+  categoryBook : async (state,e) => {
+    store.setState({ [e.target.name]: e.target.value });
+    const req = {
+      method: "get",
+      url: "http://0.0.0.0:1250/book/category?keyword="+store.getState().kategori,
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem('token')
+      }
+    };
+
+    await axios(req)
+        .then(response => {
+          store.setState({
+            'listCategory':response.data
+          })
+          this.props.history.push('/category')
           return response
         })
         .catch(error => {
