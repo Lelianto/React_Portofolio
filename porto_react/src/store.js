@@ -2,6 +2,7 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    ongkos_kirim:0,
     total_price:0,
     carts:[],
     book_id:'',

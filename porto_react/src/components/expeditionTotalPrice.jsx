@@ -28,18 +28,28 @@ class CartDetailTotalPrice extends React.Component {
           })
     };
     render() {
+        const { total_price, ongkos_kirim } = this.props
+        const total_payment = total_price + ongkos_kirim
         return (
             <div>
                 <div className='container' style={{paddingTop:'120px'}}>
                     <div className='col-md-12' style={{ backgroundColor: 'aliceblue', borderRadius: '5%', marginBottom:'250px' }}>
-                        <div className='row' style={{ paddingTop:'25px', paddingLeft: '23px', paddingRight: '23px'}} >
+                        <div className='row' style={{ paddingTop:'25px', paddingLeft: '23px', paddingRight: '23px', textAlign:'left'}} >
                             <div className='col-md-6'>Subtotal</div>
-                            <div className='col-md-6'>Rp {this.props.total_price}</div>
+                            <div className='col-md-6'>Rp {total_price}</div>
+                        </div>
+                        <div className='row' style={{ paddingTop:'25px', paddingLeft: '23px', paddingRight: '23px', textAlign:'left'}} >
+                            <div className='col-md-6'>Ongkos Kirim</div>
+                            <div className='col-md-6'>Rp {ongkos_kirim}</div>
+                        </div>
+                        <div className='row' style={{ paddingTop:'25px', paddingLeft: '23px', paddingRight: '23px', textAlign:'left'}} >
+                            <div className='col-md-6'>Total Bayar</div>
+                            <div className='col-md-6'>Rp {total_payment}</div>
                         </div>
                         <div className='row'>
                             <div className='col-md-12' style={{ paddingTop:'55px', marginBottom: '25px'}}>
-                                <label><Link to='/expedition'>
-                                    <button type="button" class="btn btn-success">Masukkan Ke Keranjang</button></Link>
+                                <label>
+                                    <button type="button" class="btn btn-success">Masukkan Ke Keranjang</button>
                                 </label>
                             </div>
                         </div>
@@ -52,4 +62,4 @@ class CartDetailTotalPrice extends React.Component {
 }
 
 // export default CartDetailTotalPrice;
-export default connect("carts, total_price, token, is_login",actions)(withRouter(CartDetailTotalPrice));
+export default connect("carts, total_price, ongkos_kirim, token, is_login",actions)(withRouter(CartDetailTotalPrice));

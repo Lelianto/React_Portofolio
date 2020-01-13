@@ -8,7 +8,8 @@ import Profile from '../pages/profileUser';
 import BookDetail from '../pages/bookDetail';
 import Cart from '../pages/cartDetail';
 import UserSellBookPage from '../pages/userSellBook';
-import UserUpdatingBook from '../pages/userUpdatingBook'
+import UserUpdatingBook from '../pages/userUpdatingBook';
+import ExpeditionDetail from '../pages/expeditionDetail'
 
 const MainRoute = () => {
     return (
@@ -23,6 +24,7 @@ const MainRoute = () => {
                     <Route exact path='/cart' component={Cart} />
                     <Route exact path='/sell' component={UserSellBookPage} />
                     <Route exact path='/updateproduct' component={UserUpdatingBook} />
+                    <Route exact path='/expedition' component={ExpeditionDetail} />
                 </Switch>
             </BrowserRouter>
         </Provider>
