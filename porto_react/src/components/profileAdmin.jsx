@@ -30,17 +30,11 @@ class ProfileUser extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className='container alamat-email container-user'>
+ 
+                    <div className='container container-user' style={{marginTop:'20px'}}>
                         <div className='row'>
-                            <div className='col-md-12'>
-                                Pilih Genre Favoritmu :
-                            </div>
-                        </div>
-                    </div>
-                    <div className='container container-user'>
-                        <div className='row'>
-                            <div className='col-md-3'>
-                                <button>Semua User</button>
+                            <div className='col-md-3'><Link to='/users'>
+                                <button>Semua User</button></Link>
                             </div>
                             <div className='col-md-3'>
                                 <button>Semua Produk</button>

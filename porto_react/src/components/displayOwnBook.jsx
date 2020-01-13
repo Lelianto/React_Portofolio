@@ -15,29 +15,29 @@ class DisplayOwnBook extends React.Component {
         this.props.history.push("/bookdetail/"+store.getState().book_id);
         }
     
-        componentDidMount = () => {
+    componentDidMount = () => {
 
-            const req = {
-            method: "get",
-            url: "http://0.0.0.0:1250/book/mine",
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('token')
-            },
-            params: {
-                
-            }
-            }; 
-            console.log(req)
-            axios(req)
-                .then(function (response) {
-                    store.setState({ bookOwn: response.data, isLoading:false})
-                    console.log(response.data)
-                    return response
-                })
-                .catch(function (error){
-                    store.setState({ isLoading: false})
-                })
-        };
+        const req = {
+        method: "get",
+        url: "http://0.0.0.0:1250/book/mine",
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem('token')
+        },
+        params: {
+            
+        }
+        }; 
+        console.log(req)
+        axios(req)
+            .then(function (response) {
+                store.setState({ bookOwn: response.data, isLoading:false})
+                console.log(response.data)
+                return response
+            })
+            .catch(function (error){
+                store.setState({ isLoading: false})
+            })
+    };
 
     render() {
         const { bookOwn } = this.props
