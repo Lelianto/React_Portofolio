@@ -17,6 +17,7 @@ import DisplayAllUser from '../pages/adminAllUser';
 import DisplayAllBook from '../pages/adminAllBook';
 import DisplayAllCart from '../pages/adminAllCart';
 import DisplayAllPayment from '../pages/adminAllPayment';
+import NotMatch from '../pages/notMatch';
 
 const MainRoute = () => {
     return (
@@ -39,6 +40,7 @@ const MainRoute = () => {
                     <Route exact path='/books' component={DisplayAllBook} />
                     <Route exact path='/carts' component={DisplayAllCart} />
                     <Route exact path='/payments' component={DisplayAllPayment} />
+                    <Route component={NotMatch} />
                 </Switch>
             </BrowserRouter>
         </Provider>
