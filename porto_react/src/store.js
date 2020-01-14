@@ -475,6 +475,35 @@ export const actions = store => ({
         .catch(error => {
           return false
     })
+  },
+
+  updateBuy : async (state) => {
+    
+    const listBuy = state.totalBeli
+    console.log('isi list buy', listBuy)
+
+    for (const product of listBuy) {
+      const buybook = {
+        stok : product.stok
+      };
+      const req = {
+        method: "put",
+        url: "http://0.0.0.0:1250/cart/product/"+product.id,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem('token')
+        },
+        data: buybook
+      };
+      console.log('CEK UPDATE BOOK', buybook)
+      await axios(req)
+          .then(response => {
+            console.log('data uPDATE CART', response.data)
+            return response
+          })
+          .catch(error => {
+            return false
+      })
+    }
   }
   });
 

@@ -47,6 +47,7 @@ class CartDetail extends React.Component {
     }
 
     doTotalPrice = async () => {
+        await this.props.updateBuy()
         await this.props.Calculate()
         if (localStorage.getItem('token') !== null){
             this.props.history.push("/cart");
@@ -102,9 +103,9 @@ class CartDetail extends React.Component {
                                 <div className='col-sm-3'>
                                     <div>
                                         <label for="exampleFormControlSelect1">Banyak Pembelian</label>
-                                        <select class="form-control" id={content.book_id} name='stok' onChange={e => this.props.changeInputCart(e)}required>
+                                        <select class="form-control" id={content.id} name='stok' onChange={e => this.props.changeInputCart(e)}required>
                                             {perulangan.map((total,i) =>
-                                            <option id={content.book_id}  value={total}>{total}</option>
+                                            <option id={content.id}  value={total}>{total}</option>
                                             )}
                                         </select>
                                     </div>
