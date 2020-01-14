@@ -36,16 +36,15 @@ class Header extends React.Component {
                     </div>
                     <div className="col-md-1 logo-name">
                         <Link to='/' style={{textDecoration:'none'}}>
-                        <h4 className="toko">kutubuku.com</h4></Link>
+                        <h4 className="toko">Kutubuku.com</h4></Link>
                     </div>
                     <div className="col-md-2">
                         <div className="dropdown">
                             <button className="dropbtn">
                                 <p className="kategori" >Kategori</p></button>
                                 <select className="dropdown-content" name='kategori' onClick={e => this.doSearchCategoryBook(e)}>
-                                <option style={{fontSize:'11px'}} value=''>Pilihan</option>
                                 {allGenres.map((genre,i)=>
-                                <option style={{fontSize:'11px'}} value={genre}>
+                                <option style={{fontSize:'20px'}} value={genre}>
                                 {genre}</option>
                                 )}
                                 </select>
@@ -67,7 +66,7 @@ class Header extends React.Component {
                                 </div>
                             </div>
                             <div className='col-md-3'>
-                                <div className="active-cyan-4 mb-4" style={{marginLeft:'-135px', paddingTop:'15px'}}>
+                                <div className="active-cyan-4 mb-4" style={{marginLeft:'-135px'}}>
                                     <button class="btn btn-info my-sm-0" 
                                     type="submit"
                                     onClick={this.doSearchBook}

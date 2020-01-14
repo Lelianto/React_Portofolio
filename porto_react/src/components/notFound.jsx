@@ -4,7 +4,6 @@ import '../styles/style.css';
 import { withRouter, Link, Redirect } from 'react-router-dom'
 
 class NotMatch extends React.Component {
-
     render() {
         return (
             <body>
@@ -12,7 +11,7 @@ class NotMatch extends React.Component {
                     <div class="notfound">
                         <div class="notfound-404">
                             <h1>Oops!</h1>
-                            <h2 style={{fontSize:'20px'}}>Halaman yang kamu cari, tidak tersedia.</h2>
+                            <h2 style={{fontSize:'20px'}}>Terjadi kesalahan, tidak tersedia.</h2>
                         </div>
                         <Link to="/">Kembali ke Beranda</Link>
                     </div>

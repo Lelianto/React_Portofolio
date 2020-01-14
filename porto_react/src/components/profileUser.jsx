@@ -1,8 +1,10 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/profileUser.css';
+import '../styles/loading.css'
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
+import NotFound from './notFound'
 import { store, actions } from '../store'
 import axios from 'axios'
 
@@ -37,13 +39,40 @@ class ProfileUser extends React.Component {
                 console.log(response.data)
                 return response
             })
-            .catch(function (error){
+            .catch((error)=>{
                 store.setState({ isLoading: false})
+                if(error==404){
+                    return (
+                        <div>
+                            <NotFound/>
+                        </div>
+                    )
+                }
             })
     };
 
     render() {
-        const { userData } = this.props
+        const { userData, isLoading } = this.props
+        if(isLoading){
+            return (
+            <div>
+              <body style={{paddingTop:'200px'}}>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-md-5'>
+                  </div>
+                  <div className='col-md-2'>
+                    <div class="loader"></div>
+                  </div>
+                  <div className='col-md-5'>
+                  </div>
+                </div>
+               
+              </div>
+            </body>
+            </div>
+            )
+          }
         if (localStorage.getItem('token') == null){
             return <Redirect to={{ pathname: "/login" }} />;
         } else {
@@ -63,30 +92,10 @@ class ProfileUser extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className='container alamat-email container-user'>
-                        <div className='row'>
-                            <div className='col-md-12'>
-                                Pilih Genre Favoritmu :
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div className='container container-user'>
-                        <form onSubmit={e => e.preventDefault()}>
-                            <div className='row all-genres-checkbox'>
-                                {allGenres.map((genre,index) =>
-                                    <div className='col-md-4'>
-                                        <label>
-                                            <input type="checkbox" name="genre" className='list-genre' value={genre}/>{genre}
-                                        </label>
-                                    </div>
-                                )}
-                            </div>
+                    
                             <div className='row space-under-button'>
-                                <div className='col-md-4'>
-                                    <label>
-                                        <button type="button" class="btn btn-success">Success</button>
-                                    </label>
-                                </div>
                                 <div className='col-md-4'>
                                     <label>
                                         <Link to='/sell'>
@@ -94,13 +103,16 @@ class ProfileUser extends React.Component {
                                         </Link>
                                     </label>
                                 </div>
+                                <div className='col-md-4'>
+                                    
+                                </div>
                                 <div className='col-md-4 button-logout'>
                                     <label>
                                         <button type="button" class="btn btn-success" onClick={this.handleSignOut}>Log Out</button>
                                     </label>
                                 </div>
                             </div>
-                        </form>
+                        
                     </div>
                 </div>
             )
@@ -108,4 +120,4 @@ class ProfileUser extends React.Component {
     }
 }
 
-export default connect("userData, userById, email, kata_sandi, is_login",actions)(withRouter(ProfileUser));
+export default connect("userData, userById, email, kata_sandi, is_login, isLoading",actions)(withRouter(ProfileUser));

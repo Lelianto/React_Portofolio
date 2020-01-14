@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/bookDetail.css';
-import bookphoto from '../images/book.jpg'
+import '../styles/loading.css'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
@@ -27,7 +27,6 @@ class BookDetail extends React.Component {
     }
     
     componentDidMount = () => {
-        // localStorage.getItem('book_id')
         const req = {
         method: "get",
         url: "http://0.0.0.0:1250/book/edit/" + store.getState().book_id ,
@@ -41,9 +40,7 @@ class BookDetail extends React.Component {
         console.log(req)
         axios(req)
             .then(function (response) {
-                // console.log('ISI RESPON DATA', response.data)
                 store.setState({ bookById: response.data, isLoading:false})
-                // console.log(response.data)
                 return response
             })
             .catch(function (error){
@@ -54,7 +51,6 @@ class BookDetail extends React.Component {
     render() {
         const { bookById } = this.props
         const judul = bookById.judul
-        console.log('JUDUL', judul)
         const penulis = bookById.penulis
         const jumlah_halaman = bookById.jumlah_halaman
         const tanggal_terbit = bookById.tanggal_terbit
@@ -71,7 +67,26 @@ class BookDetail extends React.Component {
         const stok = bookById.stok * 1
         const foto_buku = bookById.foto_buku
         const sinopsis = bookById.sinopsis
-        console.log('CEK EMAIL ', bookById.email_user)
+        if(this.props.isLoading){
+            return (
+            <div>
+              <body style={{paddingTop:'200px'}}>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-md-5'>
+                  </div>
+                  <div className='col-md-2'>
+                    <div class="loader"></div>
+                  </div>
+                  <div className='col-md-5'>
+                  </div>
+                </div>
+               
+              </div>
+            </body>
+            </div>
+            )
+          }
         if (localStorage.getItem('email')==bookById.email_user) {
             return (
                 <div>
@@ -273,5 +288,4 @@ class BookDetail extends React.Component {
     }
 }
 
-// export default BookDetail;
-export default connect("bookById, book_id, token, is_login, judul, penulis, jumlah_halaman,tanggal_terbit, isbn, genre, bahasa, penerbit, berat, lebar, panjang, jenis_cover, status, harga, stok, foto_buku, sinopsis",actions)(withRouter(BookDetail));
+export default connect("bookById, book_id, token, is_login, judul, penulis, jumlah_halaman,tanggal_terbit, isbn, genre, bahasa, penerbit, berat, lebar, panjang, jenis_cover, status, harga, stok, foto_buku, sinopsis, isLoading",actions)(withRouter(BookDetail));

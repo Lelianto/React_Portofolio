@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/cartDetail.css';
-import photo from '../images/book.jpg';
+import '../styles/loading.css'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
@@ -18,6 +18,26 @@ class CartDetail extends React.Component {
     }
 
     render() {
+        if(this.props.isLoading){
+            return (
+            <div>
+              <body style={{paddingTop:'200px'}}>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-md-5'>
+                  </div>
+                  <div className='col-md-2'>
+                    <div class="loader"></div>
+                  </div>
+                  <div className='col-md-5'>
+                  </div>
+                </div>
+               
+              </div>
+            </body>
+            </div>
+            )
+          }
         return (
             <div>
                 <div className='container' style={{paddingTop:'120px'}}>
@@ -115,5 +135,4 @@ class CartDetail extends React.Component {
     }
 }
 
-// export default CartDetail;
-export default connect("carts, token, is_login",actions)(withRouter(CartDetail));
+export default connect("carts, token, is_login, isLoading",actions)(withRouter(CartDetail));

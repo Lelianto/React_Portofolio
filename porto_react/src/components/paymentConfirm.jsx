@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/profileUser.css';
+import '../styles/loading.css';
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
@@ -18,7 +19,26 @@ class PaymentConfirm extends React.Component {
 
     render() {
         const { kode_pemesanan, tanggal_pemesanan, total_pembayaran } = this.props
-
+        if(this.props.isLoading){
+            return (
+            <div>
+              <body style={{paddingTop:'200px'}}>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-md-5'>
+                  </div>
+                  <div className='col-md-2'>
+                    <div class="loader"></div>
+                  </div>
+                  <div className='col-md-5'>
+                  </div>
+                </div>
+               
+              </div>
+            </body>
+            </div>
+            )
+          }
         if (localStorage.getItem('token') == null){
             return <Redirect to={{ pathname: "/login" }} />;
         } else {
@@ -53,7 +73,7 @@ class PaymentConfirm extends React.Component {
                                 Total Pembayaran
                             </div>
                             <div className='col-md-6' style={{marginTop:'30px'}}>
-                                {total_pembayaran}
+                                Rp. {total_pembayaran}
                             </div>
                         </div>
                         <div className='row' style={{marginTop:'30px'}}>
@@ -66,4 +86,4 @@ class PaymentConfirm extends React.Component {
     }
 }
 
-export default connect("kode_pemesanan, tanggal_pemesanan, total_pembayaran, kata_sandi, is_login",actions)(withRouter(PaymentConfirm));
+export default connect("kode_pemesanan, tanggal_pemesanan, total_pembayaran, kata_sandi, is_login, isLoading",actions)(withRouter(PaymentConfirm));

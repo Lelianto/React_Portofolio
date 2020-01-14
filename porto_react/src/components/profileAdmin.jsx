@@ -31,20 +31,24 @@ class ProfileUser extends React.Component {
                         </div>
                     </div>
  
-                    <div className='container container-user' style={{marginTop:'20px'}}>
+                    <div className='container' style={{marginTop:'20px', marginLeft:'105px'}}>
                         <div className='row'>
-                            <div className='col-md-3'><Link to='/users'>
-                                <button>Semua User</button></Link>
+                            <div className='btn btn-success col-md-2'><Link to='/users' style={{textDecoration:'none', color:'white'}}>
+                                <p style={{paddingTop:'15px'}}>Semua User</p></Link>
                             </div>
-                            <div className='col-md-3'><Link to='/books'>
-                                <button>Semua Produk</button></Link>
+                            <div className='col-md-1'></div>
+                            <div className='btn btn-success col-md-2'><Link to='/books' style={{textDecoration:'none', color:'white'}}>
+                                <p style={{paddingTop:'15px'}}>Semua Produk</p></Link>
                             </div>
-                            <div className='col-md-3'>
-                                <button>Semua Cart</button>
+                            <div className='col-md-1'></div>
+                            <div className='btn btn-success col-md-2'><Link to='/carts' style={{textDecoration:'none', color:'white'}}>
+                                <p style={{paddingTop:'15px'}}>Semua Cart</p></Link>
                             </div>
-                            <div className='col-md-3'>
-                                <button>Semua Transaksi</button>
+                            <div className='col-md-1'></div>
+                            <div className='btn btn-success col-md-2' ><Link to='/payments' style={{textDecoration:'none', color:'white'}}>
+                                <p style={{paddingTop:'15px'}}>Semua Transaksi</p></Link>
                             </div>
+                            <div className='col-md-1'></div>
                         </div>
                     </div>
                 </div>

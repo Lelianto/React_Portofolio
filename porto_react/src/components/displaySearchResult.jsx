@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/allBooks.css';
 import '../styles/style.css';
-import bookphoto from '../images/book.jpg'
+import '../styles/loading.css'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
@@ -24,6 +24,26 @@ class SearchResults extends React.Component {
             }
             return false
         });
+        if(this.props.isLoading){
+            return (
+            <div>
+              <body style={{paddingTop:'200px'}}>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-md-5'>
+                  </div>
+                  <div className='col-md-2'>
+                    <div class="loader"></div>
+                  </div>
+                  <div className='col-md-5'>
+                  </div>
+                </div>
+               
+              </div>
+            </body>
+            </div>
+            )
+          }
         return (
             <div className='container' style={{paddingTop:'110px'}}>
                 <div className='row'>
@@ -46,4 +66,4 @@ class SearchResults extends React.Component {
 }
 
 // export default SearchResults;
-export default connect("listResults, books, book_id, token, is_login, judul, penulis, status, harga, foto_buku",actions)(withRouter(SearchResults));
+export default connect("listResults, books, book_id, token, is_login, judul, penulis, status, harga, foto_buku, isLoading",actions)(withRouter(SearchResults));

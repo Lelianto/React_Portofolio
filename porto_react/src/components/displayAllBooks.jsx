@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/allBooks.css';
+import '../styles/loading.css'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
@@ -50,6 +51,26 @@ class AllBooks extends React.Component {
             }
             return false
         });
+        if(this.props.isLoading){
+            return (
+            <div>
+              <body style={{paddingTop:'200px'}}>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-md-5'>
+                  </div>
+                  <div className='col-md-2'>
+                    <div class="loader"></div>
+                  </div>
+                  <div className='col-md-5'>
+                  </div>
+                </div>
+               
+              </div>
+            </body>
+            </div>
+            )
+          }
         return (
             <div className='container' style={{marginTop:'40px'}}>
                 <div className='row'>
@@ -71,5 +92,4 @@ class AllBooks extends React.Component {
     }
 }
 
-// export default AllBooks;
 export default connect("books, book_id, token, is_login, judul, penulis, status, harga, foto_buku,isLoading",actions)(withRouter(AllBooks));

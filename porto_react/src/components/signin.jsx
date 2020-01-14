@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/masuk.css';
 import '../styles/bootstrap.min.css'
+import '../styles/loading.css'
 import logo from '../images/navigasi-logo.png';
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
@@ -17,6 +18,26 @@ class SignIn extends React.Component {
     }
 
     render() {
+        if(this.props.isLoading){
+            return (
+            <div>
+              <body style={{paddingTop:'200px'}}>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-md-5'>
+                  </div>
+                  <div className='col-md-2'>
+                    <div class="loader"></div>
+                  </div>
+                  <div className='col-md-5'>
+                  </div>
+                </div>
+               
+              </div>
+            </body>
+            </div>
+            )
+          }
         if (localStorage.getItem('token') !== null){
             alert('Email atau Password Anda Salah...')
             return <Redirect to={{ pathname: "/profile" }} />;
@@ -63,4 +84,4 @@ class SignIn extends React.Component {
     }
 }
 
-export default connect("Bearer, email, kata_sandi, is_login",actions)(withRouter(SignIn));
+export default connect("Bearer, email, kata_sandi, is_login, isLoading",actions)(withRouter(SignIn));

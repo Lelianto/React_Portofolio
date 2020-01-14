@@ -5,7 +5,7 @@
 }
 
 .alamat-email {
-    padding-top: 10px;
+    padding-top: 30px;
     padding-bottom: 10px;
 }
 
@@ -15,11 +15,7 @@
 
 .border-user {
     border-bottom: rgb(210, 223, 202) 1px solid;
-    padding-bottom: 15px;
-}
-
-.all-genres-checkbox {
-    margin-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 .button-logout {
@@ -27,5 +23,6 @@
 }
 
 .space-under-button {
-    margin-bottom: 40px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }

@@ -15,6 +15,8 @@ import CategoryBook from '../pages/categoryBook';
 import PaymentConfirmation from '../pages/paymentConfirmation';
 import DisplayAllUser from '../pages/adminAllUser';
 import DisplayAllBook from '../pages/adminAllBook';
+import DisplayAllCart from '../pages/adminAllCart';
+import DisplayAllPayment from '../pages/adminAllPayment';
 
 const MainRoute = () => {
     return (
@@ -35,6 +37,8 @@ const MainRoute = () => {
                     <Route exact path='/payment' component={PaymentConfirmation} />
                     <Route exact path='/users' component={DisplayAllUser} />
                     <Route exact path='/books' component={DisplayAllBook} />
+                    <Route exact path='/carts' component={DisplayAllCart} />
+                    <Route exact path='/payments' component={DisplayAllPayment} />
                 </Switch>
             </BrowserRouter>
         </Provider>

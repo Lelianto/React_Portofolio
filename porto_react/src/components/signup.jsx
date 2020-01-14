@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/masuk.css';
 import '../styles/bootstrap.min.css'
+import '../styles/loading.css'
 import logo from '../images/navigasi-logo.png';
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'unistore/react'
@@ -17,6 +18,26 @@ class SignUp extends React.Component {
     }
 
     render() {
+        if(this.props.isLoading){
+            return (
+            <div>
+              <body style={{paddingTop:'200px'}}>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-md-5'>
+                  </div>
+                  <div className='col-md-2'>
+                    <div class="loader"></div>
+                  </div>
+                  <div className='col-md-5'>
+                  </div>
+                </div>
+               
+              </div>
+            </body>
+            </div>
+            )
+          }
         return (
         <div className="wrapper fadeInDown">
             <div id="formContent">
@@ -65,5 +86,5 @@ class SignUp extends React.Component {
         )
     }
 }
-// export default SignUp;
-export default connect("nama_lengkap, email, kata_sandi, is_login",actions)(withRouter(SignUp));
+
+export default connect("nama_lengkap, email, kata_sandi, is_login, isLoading",actions)(withRouter(SignUp));
