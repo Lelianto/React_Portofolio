@@ -28,6 +28,11 @@ class ProfileUser extends React.Component {
                             <div className='col-md-6'>
                                 <h3 className='border-user'>Hai, ADMIN</h3>
                             </div>
+                            <div className='col-md-4 button-logout'>
+                                <label>
+                                    <button type="button" class="btn btn-success" onClick={this.handleSignOut}>Log Out</button>
+                                </label>
+                            </div>
                         </div>
                     </div>
  

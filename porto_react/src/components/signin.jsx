@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/masuk.css';
 import '../styles/bootstrap.min.css'
 import '../styles/loading.css'
-import logo from '../images/navigasi-logo.png';
+import logo from '../images/logo.png';
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
@@ -46,7 +46,7 @@ class SignIn extends React.Component {
         <div className="wrapper fadeInDown">
             <div id="formContent">
                 <div className="fadeIn first">
-                <img style={{ marginTop:'30px', marginBottom:'30px'}} src={logo} id="icon" alt="User Icon" />
+                <img style={{ marginTop:'60px', marginBottom:'60px', width:'50%'}} src={logo} id="icon" alt="User Icon" />
                 </div>
 
                     {/* <!-- Login Form --> */}
@@ -59,7 +59,7 @@ class SignIn extends React.Component {
                         placeholder="Email"
                         onChange={e => this.props.changeInput(e)} />
                         <input 
-                        type="text" 
+                        type="password" 
                         id="password" 
                         className="fadeIn third" 
                         name="kata_sandi" 
