@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/allBooks.css';
-import bookphoto from '../images/book.jpg'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
@@ -44,7 +43,7 @@ class AllBooks extends React.Component {
     };
 
     render() {
-        const { books } = this.props
+        const { books, isLoading } = this.props
         const displayAvailableBooks = books.filter(item => {
             if (item.foto_buku !== null && item.judul !== null && item.penulis !== null && item.harga !== null && item.berat !== null) {
                 return item;
@@ -73,4 +72,4 @@ class AllBooks extends React.Component {
 }
 
 // export default AllBooks;
-export default connect("books, book_id, token, is_login, judul, penulis, status, harga, foto_buku",actions)(withRouter(AllBooks));
+export default connect("books, book_id, token, is_login, judul, penulis, status, harga, foto_buku,isLoading",actions)(withRouter(AllBooks));

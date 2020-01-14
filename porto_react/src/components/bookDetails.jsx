@@ -53,10 +53,6 @@ class BookDetail extends React.Component {
     };
 
     render() {
-        // console.log('cek isi buku asli',store.getState().bookById)
-        // console.log('cek isi buku asli 2i23232',this.props.bookById[0])
-        // const seluruh_buku = this.props.bookById[0]
-        // console.log('isi seluruh', seluruh_buku.judul)
         const { bookById } = this.props
         const judul = bookById.judul
         console.log('JUDUL', judul)
