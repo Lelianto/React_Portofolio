@@ -102,9 +102,9 @@ class CartDetail extends React.Component {
                                 <div className='col-sm-3'>
                                     <div>
                                         <label for="exampleFormControlSelect1">Banyak Pembelian</label>
-                                        <select class="form-control" id="exampleFormControlSelect1" name='stok' onChange={e => this.props.changeInput(e)}required>
+                                        <select class="form-control" id={content.book_id} name='stok' onChange={e => this.props.changeInputCart(e)}required>
                                             {perulangan.map((total,i) =>
-                                            <option value={total}>{total}</option>
+                                            <option id={content.book_id}  value={total}>{total}</option>
                                             )}
                                         </select>
                                     </div>

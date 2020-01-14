@@ -10,8 +10,8 @@ import { store, actions } from '../store'
 
 class CategoryPage extends Component {
   render() {
-    const { listResults } = this.props
-    if( listResults.length == 0) {
+    const { listCategory } = this.props
+    if( listCategory.length === 0) {
       return (
         <div>
           <Header/>
@@ -33,4 +33,4 @@ class CategoryPage extends Component {
   }
 }
 
-export default connect("listResults, email, is_login",actions)(withRouter(CategoryPage));
+export default connect("listCategory, email, is_login",actions)(withRouter(CategoryPage));

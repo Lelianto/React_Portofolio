@@ -41,7 +41,7 @@ class Header extends React.Component {
                     <div className="col-md-2">
                         <div className="dropdown">
                             <button className="dropbtn">
-                                <p className="kategori" href="">Kategori</p></button>
+                                <p className="kategori" >Kategori</p></button>
                                 <select className="dropdown-content" name='kategori' onClick={e => this.doSearchCategoryBook(e)}>
                                 <option style={{fontSize:'11px'}} value=''>Pilihan</option>
                                 {allGenres.map((genre,i)=>

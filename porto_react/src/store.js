@@ -2,6 +2,7 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    userData:[],
     cart_id:0,
     adminAllBook:[],
     allUser:[],
@@ -42,7 +43,8 @@ const initialState = {
     jenis_cover:'',
     status:'',
     harga:0,
-    stok:0,
+    totalBeli:[],
+    stok:[],
     foto_buku:'',
     keyword:'',
     kategori:''
@@ -52,8 +54,21 @@ export const store = createStore(initialState)
 
 export const actions = store => ({
   changeInput : async (state,e) => {
-    await store.setState({ [e.target.name]: e.target.value });
+    await store.setState({ [e.target.name]: e.target.value});
     console.warn('kategori', store.getState().kategori)
+  },
+
+  changeInputCart : async (state,e) => {
+    console.warn('eeee', e.target);
+    console.warn('eeee', e.target.value);
+    console.warn('keyyy', e.target.key);
+    
+    await store.setState({ 
+      'stok':{ id: e.target.id,
+        [e.target.name]: e.target.value}
+    });
+    state.totalBeli.push(store.getState().stok)
+    console.warn('Isi stok', state.totalBeli)
   },
 
   postSignUp : async (state) => {
@@ -440,6 +455,7 @@ export const actions = store => ({
 
   categoryBook : async (state,e) => {
     store.setState({ [e.target.name]: e.target.value });
+    console.log('isi kategori', store.getState().kategori)
     const req = {
       method: "get",
       url: "http://0.0.0.0:1250/book/category?keyword="+store.getState().kategori,
@@ -453,8 +469,8 @@ export const actions = store => ({
           store.setState({
             'listCategory':response.data
           })
-          this.props.history.push('/category')
-          return response
+          console.log('isi list kategori', store.getState().listCategory)
+          // return response
         })
         .catch(error => {
           return false

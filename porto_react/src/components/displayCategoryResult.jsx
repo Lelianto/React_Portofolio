@@ -22,6 +22,7 @@ class CategoryFilterResult extends React.Component {
             }
             return false
         });
+        console.log('ISI List', this.props.listCategory)
         return (
             <div className='container' style={{paddingTop:'110px'}}>
                 <div className='row'>

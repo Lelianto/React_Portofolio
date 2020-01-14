@@ -18,8 +18,32 @@ class ProfileUser extends React.Component {
         this.props.history.push("/");
     };
 
+    componentDidMount = () => {
+
+        const req = {
+        method: "get",
+        url: "http://0.0.0.0:1250/user/profile",
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem('token')
+        },
+        params: {
+            
+        }
+        }; 
+        console.log(req)
+        axios(req)
+            .then(function (response) {
+                store.setState({ userData: response.data, isLoading:false})
+                console.log(response.data)
+                return response
+            })
+            .catch(function (error){
+                store.setState({ isLoading: false})
+            })
+    };
+
     render() {
-        const email = localStorage.getItem('email')
+        const { userData } = this.props
         if (localStorage.getItem('token') == null){
             return <Redirect to={{ pathname: "/login" }} />;
         } else {
@@ -28,14 +52,14 @@ class ProfileUser extends React.Component {
                     <div className='container user-full-name container-user'>
                         <div className='row'>
                             <div className='col-md-6'>
-                                <h3 className='border-user'>Hai, {email}</h3>
+                                <h3 className='border-user'>Hai, {userData.nama_lengkap}</h3>
                             </div>
                         </div>
                     </div>
                     <div className='container alamat-email container-user'>
                         <div className='row'>
                             <div className='col-md-12'>
-                                Alamat email : {email}
+                                Alamat email : {userData.email}
                             </div>
                         </div>
                     </div>
@@ -84,4 +108,4 @@ class ProfileUser extends React.Component {
     }
 }
 
-export default connect("Bearer, userById, email, kata_sandi, is_login",actions)(withRouter(ProfileUser));
+export default connect("userData, userById, email, kata_sandi, is_login",actions)(withRouter(ProfileUser));
