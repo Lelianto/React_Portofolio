@@ -2,6 +2,7 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    cart_id:0,
     adminAllBook:[],
     allUser:[],
     bookOwn:[],

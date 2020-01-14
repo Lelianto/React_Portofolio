@@ -10,6 +10,29 @@ import axios from 'axios'
 const perulangan = ['1','2','3','4','5','6','7','8','9','10']
 
 class CartDetail extends React.Component {
+
+    getAllCart = ()=> {
+        const req = {
+            method: "get",
+            url: "http://0.0.0.0:1250/cart/allcart",
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('token')
+            },
+            params: {
+                
+            }
+            }; 
+            console.log(req)
+            axios(req)
+                .then(function (response) {
+                    store.setState({ carts: response.data, isLoading:false})
+                    console.log(response.data)
+                    return response
+                })
+                .catch(function (error){
+                    store.setState({ isLoading: false})
+                })
+    }
     doTotalPrice = async () => {
         await this.props.Calculate()
         if (localStorage.getItem('token') !== null){
@@ -18,26 +41,7 @@ class CartDetail extends React.Component {
     }
 
     componentDidMount = () => {
-        const req = {
-        method: "get",
-        url: "http://0.0.0.0:1250/cart/allcart",
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem('token')
-        },
-        params: {
-            
-        }
-        }; 
-        console.log(req)
-        axios(req)
-            .then(function (response) {
-                store.setState({ carts: response.data, isLoading:false})
-                console.log(response.data)
-                return response
-            })
-            .catch(function (error){
-                store.setState({ isLoading: false})
-            })
+        this.getAllCart()
     };
 
     render() {
@@ -91,6 +95,9 @@ class CartDetail extends React.Component {
                                             )}
                                         </select>
                                     </div>
+                                    <button style={{fontSize:'12px', marginTop:'30px'}}>
+                                        Hapus dari Keranjang
+                                    </button>
                                 </div>
                             </div>
                             <div className='col-md-1'>
