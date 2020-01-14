@@ -26,7 +26,7 @@ class CartDetail extends React.Component {
             axios(req)
                 .then(function (response) {
                     store.setState({ carts: response.data, isLoading:false})
-                    console.log(response.data)
+                    console.log('ISI Response Data',response.data)
                     return response
                 })
                 .catch(function (error){
@@ -42,7 +42,7 @@ class CartDetail extends React.Component {
         await this.props.deleteCartItem()
         if (localStorage.getItem('token') !== null){
             this.getAllCart()
-            this.props.history.push("/books");
+            this.props.history.push("/cart");
         }
     }
 
@@ -65,7 +65,7 @@ class CartDetail extends React.Component {
             }
             return false
         })
-        // console.log('isi CART', listInCart)
+        console.log('isi CART', listInCart)
         return (
             <div>
                 <div className='container' style={{paddingTop:'120px'}}>
@@ -108,7 +108,7 @@ class CartDetail extends React.Component {
                                             )}
                                         </select>
                                     </div>
-                                    <button onClick={} style={{fontSize:'12px', marginTop:'30px'}}>
+                                    <button onClick={()=>this.doDeleteCart(content.id)} style={{fontSize:'12px', marginTop:'30px'}}>
                                         Hapus dari Keranjang
                                     </button>
                                 </div>

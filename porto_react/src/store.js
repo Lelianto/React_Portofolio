@@ -198,6 +198,29 @@ export const actions = store => ({
     })
   },
 
+  deleteCartItem : async (state) => {
+    const req = {
+      method: "delete",
+      url: "http://0.0.0.0:1250/cart/product/"+state.cart_id,
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem('token')
+      }
+    };
+    console.log('isi req delete', req)
+    await axios(req)
+        .then(response => {
+          console.log('cek token', response.data)
+              // localStorage.setItem("id", response.data.id);
+              store.setState({
+                  book_id:''
+              })
+          // console.log('cek state token', store.getState().token)
+        })
+        .catch(error => {
+            return false
+    })
+  },
+
   updateBook : async (state) => {
     const judul = state.judul
     const penulis = state.penulis
