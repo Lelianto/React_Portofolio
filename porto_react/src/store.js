@@ -2,6 +2,7 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    adminAllBook:[],
     allUser:[],
     bookOwn:[],
     kode_pemesanan:'',

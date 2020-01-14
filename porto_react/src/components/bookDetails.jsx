@@ -21,7 +21,6 @@ class BookDetail extends React.Component {
 
     doDelete = async () => {
         await this.props.deleteItem()
-        // console.warn('string cek', localStorage.getItem('is_login'))
         if (localStorage.getItem('token') !== null){
             this.props.history.push("/");
         }

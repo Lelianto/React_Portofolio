@@ -36,8 +36,8 @@ class ProfileUser extends React.Component {
                             <div className='col-md-3'><Link to='/users'>
                                 <button>Semua User</button></Link>
                             </div>
-                            <div className='col-md-3'>
-                                <button>Semua Produk</button>
+                            <div className='col-md-3'><Link to='/books'>
+                                <button>Semua Produk</button></Link>
                             </div>
                             <div className='col-md-3'>
                                 <button>Semua Cart</button>

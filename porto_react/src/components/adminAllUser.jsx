@@ -39,19 +39,34 @@ class AccessAllUser extends React.Component {
         return (
             <div className='container' style={{paddingTop:'110px'}}>
                 <div className='row'>
-                    {allUser.map((user,i) =>
-                    <div>
-                        <div className='col-md-12' style={{marginTop:'15px'}}>
-                            {user.id}
-                        </div>
+                    <div className='col-md-3'>
+                    </div>
+                    <div className='col-md-1' style={{border:'1px black solid'}}>
+                        <div style={{borderBottom:'1px black solid'}}>ID User</div>
+                        {allUser.map((user,i) =>
+                            <div className='col-md-12' style={{marginTop:'15px'}}>
+                                {user.id}
+                            </div>
+                        )}
+                    </div>
+                    <div className='col-md-2' style={{border:'1px black solid'}}>
+                        <div style={{borderBottom:'1px black solid'}}>Nama Lengkap</div>
+                        {allUser.map((user,i) =>
                         <div className='col-md-12' style={{marginTop:'15px'}}>
                             {user.nama_lengkap}
                         </div>
+                        )}
+                    </div>
+                    <div className='col-md-3' style={{border:'1px black solid'}}>
+                        <div style={{borderBottom:'1px black solid'}}>Alamat Email</div>
+                        {allUser.map((user,i) =>
                         <div className='col-md-12' style={{marginTop:'15px'}}>
                             {user.email}
                         </div>
+                        )}
                     </div>
-                    )}
+                    <div className='col-md-3'>
+                    </div>
                 </div>
             </div>
         )
