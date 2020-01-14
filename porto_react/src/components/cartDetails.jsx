@@ -33,6 +33,19 @@ class CartDetail extends React.Component {
                     store.setState({ isLoading: false})
                 })
     }
+
+    doDeleteCart = async (e) => {
+        console.log('isi target e', e)
+        store.setState({
+            'cart_id': e
+        })
+        await this.props.deleteCartItem()
+        if (localStorage.getItem('token') !== null){
+            this.getAllCart()
+            this.props.history.push("/books");
+        }
+    }
+
     doTotalPrice = async () => {
         await this.props.Calculate()
         if (localStorage.getItem('token') !== null){
@@ -95,7 +108,7 @@ class CartDetail extends React.Component {
                                             )}
                                         </select>
                                     </div>
-                                    <button style={{fontSize:'12px', marginTop:'30px'}}>
+                                    <button onClick={} style={{fontSize:'12px', marginTop:'30px'}}>
                                         Hapus dari Keranjang
                                     </button>
                                 </div>
