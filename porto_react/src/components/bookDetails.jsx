@@ -26,7 +26,7 @@ class BookDetail extends React.Component {
     }
     
     // Fungsi untuk mengambil data buku sesuai ID
-    componentDidMount = () => {
+    componentDidMount = async () => {
         const req = {
         method: "get",
         url: "http://0.0.0.0:1250/book/edit/" + this.props.match.params.id ,
@@ -34,37 +34,22 @@ class BookDetail extends React.Component {
             Authorization: "Bearer " + localStorage.getItem('token')
         }
         }; 
-        axios(req)
-            .then(function (response) {
+        console.warn('isi param', req)
+        await axios(req)
+            .then(function(response) {
                 store.setState({ bookById: response.data, isLoading:false})
+                console.warn('isi response', response.data)
                 return response
             })
             .catch(function(error){
                 store.setState({ isLoading: false})
-                switch (error.response.status) {
-                    case 401 :
-                        this.props.history.push('/401')
-                        break
-                    case 403 :
-                        this.props.history.push('/403')
-                        break
-                    case 404 :
-                        this.props.history.push('/404')
-                        break
-                    case 422 :
-                        this.props.history.push('/422')
-                        break
-                    case 500 :
-                        this.props.history.push('/500')
-                        break
-                    default :
-                        break
-                }
+                console.warn('isi error', error)
             })
     };
 
     render() {
         const { bookById } = this.props
+        console.log('isi loading', this.props.isLoading)
         const judul = bookById.judul
         const penulis = bookById.penulis
         const jumlah_halaman = bookById.jumlah_halaman
@@ -102,7 +87,7 @@ class BookDetail extends React.Component {
             </div>
             )
           }
-        if (localStorage.getItem('email')==bookById.email_user) {
+        else if (localStorage.getItem('email')==bookById.email_user) {
             return (
                 <div>
                     <div className='container' style={{paddingTop: '150px'}}>

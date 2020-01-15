@@ -11,12 +11,8 @@ import axios from 'axios'
 class AllBooks extends React.Component {
 
     goToBook = async (book) => {
-        console.warn('cek isi buku', book.id)
-        // localStorage.setItem("book_id", book.id);
         store.setState({ book_id: book.id })
-        // console.warn('cek isi buku', store.getState().book_id)
         this.props.history.push("/bookdetail/"+store.getState().book_id);
-        // window.open("/bookdetail/"+localStorage.getItem('book_id'))
         }
 
     componentDidMount = () => {
@@ -62,7 +58,7 @@ class AllBooks extends React.Component {
             }
             return false
         });
-        if(this.props.isLoading){
+        if(isLoading){
             return (
             <div>
               <body style={{paddingTop:'200px'}}>

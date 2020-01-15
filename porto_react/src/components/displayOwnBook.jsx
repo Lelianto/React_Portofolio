@@ -31,7 +31,7 @@ class DisplayOwnBook extends React.Component {
         axios(req)
             .then(function (response) {
                 store.setState({ bookOwn: response.data, isLoading:false})
-                console.log(response.data)
+                console.log('ISI DATA',response.data)
                 return response
             })
             .catch((error)=>{
