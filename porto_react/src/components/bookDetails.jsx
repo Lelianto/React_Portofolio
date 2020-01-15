@@ -7,18 +7,17 @@ import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'
 
-
 class BookDetail extends React.Component {
-
+    // Fungsi untuk menambahkan produk ke keranjang
     doAddCart = async () => {
         await this.props.addCartItem()
-        // console.warn('string cek', localStorage.getItem('is_login'))
         if (localStorage.getItem('token') !== null){
             alert('Buku telah ditambahkan ke dalam Keranjang')
             this.props.history.push("/");
         }
     }
 
+    // Fungsi untuk menghapus buku oleh User (Buku milik sendiri)
     doDelete = async () => {
         await this.props.deleteItem()
         if (localStorage.getItem('token') !== null){
@@ -26,24 +25,21 @@ class BookDetail extends React.Component {
         }
     }
     
+    // Fungsi untuk mengambil data buku sesuai ID
     componentDidMount = () => {
         const req = {
         method: "get",
-        url: "http://0.0.0.0:1250/book/edit/" + store.getState().book_id ,
+        url: "http://0.0.0.0:1250/book/edit/" + this.props.match.params.id ,
         headers: {
             Authorization: "Bearer " + localStorage.getItem('token')
-        },
-        params: {
-            
         }
         }; 
-        console.log(req)
         axios(req)
             .then(function (response) {
                 store.setState({ bookById: response.data, isLoading:false})
                 return response
             })
-            .catch((error)=>{
+            .catch(function(error){
                 store.setState({ isLoading: false})
                 switch (error.response.status) {
                     case 401 :
@@ -307,4 +303,4 @@ class BookDetail extends React.Component {
     }
 }
 
-export default connect("bookById, book_id, token, is_login, judul, penulis, jumlah_halaman,tanggal_terbit, isbn, genre, bahasa, penerbit, berat, lebar, panjang, jenis_cover, status, harga, stok, foto_buku, sinopsis, isLoading",actions)(withRouter(BookDetail));
+export default connect("bookById, book_id, isLoading",actions)(withRouter(BookDetail));

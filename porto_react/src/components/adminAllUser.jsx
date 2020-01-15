@@ -8,22 +8,18 @@ import axios from 'axios'
 
 
 class AccessAllUser extends React.Component {
+    // Fungsi untuk mengambil semua list user dari database
     getAllUser = () => {
         const req = {
             method: "get",
             url: "http://0.0.0.0:1250/user",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
-            },
-            params: {
-                
             }
             }; 
-            console.log(req)
             axios(req)
                 .then(function (response) {
                     store.setState({ allUser: response.data, isLoading:false})
-                    console.log(response.data)
                     return response
                 })
                 .catch((error)=>{
@@ -49,8 +45,9 @@ class AccessAllUser extends React.Component {
                     }
                 })
     }
+
+    // Fungsi untuk menghapus user dari database sesuai ID
     doDelete = async (e) => {
-        console.log('isi ID USER', e)
         store.setState({
             'id_user': e
         })
@@ -61,13 +58,13 @@ class AccessAllUser extends React.Component {
         }
     }
 
+    // Untuk menjalankan Fungsi getAllUser
     componentDidMount = () => {
         this.getAllUser()
     };
 
     render() {
         const { allUser } = this.props
-        console.log('ISI ALL USER', allUser)
         return (
             <div className='container' style={{fontSize:'12px', paddingTop:'110px'}}>
                 <div className='row'>
@@ -111,5 +108,4 @@ class AccessAllUser extends React.Component {
     }
 }
 
-// export default AccessAllUser;
-export default connect("allUser, token, is_login",actions)(withRouter(AccessAllUser));
+export default connect("allUser, isLoading",actions)(withRouter(AccessAllUser));

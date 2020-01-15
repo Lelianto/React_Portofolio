@@ -1,30 +1,25 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/allBooks.css';
-import bookphoto from '../images/book.jpg'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter} from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'
 
 
 class AccessAllBook extends React.Component {
-    getListBuku =()=>{
+    // Fungsi untuk mengambil semua list buku dari database
+    getListBook =()=>{
         const req = {
             method: "get",
             url: "http://0.0.0.0:1250/book",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
-            },
-            params: {
-                
             }
             }; 
-            console.log(req)
             axios(req)
                 .then(function (response) {
                     store.setState({ adminAllBook: response.data, isLoading:false})
-                    console.log(response.data)
                     return response
                 })
                 .catch((error)=>{
@@ -51,25 +46,25 @@ class AccessAllBook extends React.Component {
                 })
     }
     
+    // Fungsi untuk menghapus buku dari database sesuai ID
     doDelete = async (e) => {
-        console.log('isi target e', e)
         store.setState({
             'book_id': e
         })
         await this.props.deleteItem()
         if (localStorage.getItem('token') !== null){
-            this.getListBuku()
+            this.getListBook()
             this.props.history.push("/books");
         }
     }
     
+    // Untuk menjalankan Fungsi getListBook
     componentDidMount = () => {
-        this.getListBuku()
+        this.getListBook()
     };
 
     render() {
         const { adminAllBook } = this.props
-        console.log('ISI ALL book', adminAllBook)
         return (
             <div className='container-fluid' style={{paddingTop:'110px'}}>
                 <div className='row'>
@@ -151,5 +146,4 @@ class AccessAllBook extends React.Component {
     }
 }
 
-// export default AccessAllBook;
-export default connect("adminAllBook, token, is_login",actions)(withRouter(AccessAllBook));
+export default connect("adminAllBook, isLoading",actions)(withRouter(AccessAllBook));

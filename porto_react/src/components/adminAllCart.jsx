@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/allBooks.css';
-import bookphoto from '../images/book.jpg'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
@@ -9,23 +8,18 @@ import axios from 'axios'
 
 
 class AccessAllCarts extends React.Component {
-    
+    // Fungsi untuk mengambil semua list cart dari database
     getAllCart = () => {
         const req = {
             method: "get",
             url: "http://0.0.0.0:1250/cart/allcart",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
-            },
-            params: {
-                
             }
             }; 
-            console.log(req)
             axios(req)
                 .then(function (response) {
                     store.setState({ adminAllCart: response.data, isLoading:false})
-                    console.log(response.data)
                     return response
                 })
                 .catch((error)=>{
@@ -51,8 +45,9 @@ class AccessAllCarts extends React.Component {
                     }
                 })
     }
+
+    // Fungsi untuk menghapus cart dari database sesuai ID
     doDelete = async (e) => {
-        console.log('isi ID Cart', e)
         store.setState({
             'id_cart': e
         })
@@ -63,13 +58,13 @@ class AccessAllCarts extends React.Component {
         }
     }
 
+    // Untuk menjalankan Fungsi getListCart
     componentDidMount = () => {
         this.getAllCart()
     };
 
     render() {
         const { adminAllCart } = this.props
-        console.log('ISI ALL CART', adminAllCart)
         return (
             <div className='container' style={{paddingTop:'110px', fontSize:'12px'}}>
                 <div className='row'>
@@ -143,4 +138,4 @@ class AccessAllCarts extends React.Component {
     }
 }
 
-export default connect("adminAllCart, id_cart, token, is_login",actions)(withRouter(AccessAllCarts));
+export default connect("adminAllCart, isLoading , id_cart",actions)(withRouter(AccessAllCarts));

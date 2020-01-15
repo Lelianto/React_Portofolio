@@ -40,7 +40,7 @@ const MainRoute = () => {
                     <Route exact path='/updateproduct' component={UserUpdatingBook} />
                     <Route exact path='/expedition' component={ExpeditionDetail} />
                     <Route exact path='/search' component={SearchBook} />
-                    <Route exact path='/category' component={CategoryBook} />
+                    <Route path='/category' component={CategoryBook} />
                     <Route exact path='/payment' component={PaymentConfirmation} />
                     <Route exact path='/users' component={DisplayAllUser} />
                     <Route exact path='/books' component={DisplayAllBook} />

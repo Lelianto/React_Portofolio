@@ -12,7 +12,6 @@ const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','
 class Header extends React.Component {
     doSearchBook = async () => {
         await this.props.searchBook()
-        // console.warn('string cek', localStorage.getItem('is_login'))
         if (localStorage.getItem('token') !== null){
             this.props.history.push("/search");
         }

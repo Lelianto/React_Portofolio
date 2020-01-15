@@ -1,29 +1,25 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/allBooks.css';
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'
 
 
 class AccessAllPayments extends React.Component {
+    // Fungsi untuk mengambil semua list payment dari database
     getAllPayment = () => {
         const req = {
             method: "get",
             url: "http://0.0.0.0:1250/payment_confirm/all",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
-            },
-            params: {
-                
             }
             }; 
-            console.log('',req)
             axios(req)
                 .then(function (response) {
                     store.setState({ adminAllPayment: response.data, isLoading:false})
-                    console.log('isi',response.data)
                     return response
                 })
                 .catch((error)=>{
@@ -50,6 +46,7 @@ class AccessAllPayments extends React.Component {
                 })
     }
 
+    // Untuk menjalankan Fungsi getListPayment
     componentDidMount = () => {
         this.getAllPayment()
     };
@@ -98,4 +95,4 @@ class AccessAllPayments extends React.Component {
     }
 }
 
-export default connect("adminAllPayment, token, is_login",actions)(withRouter(AccessAllPayments));
+export default connect("adminAllPayment, isLoading",actions)(withRouter(AccessAllPayments));
