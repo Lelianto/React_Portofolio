@@ -2,6 +2,7 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    id_payment:'',
     id_cart:'',
     id_user:'',
     adminAllPayment:[],

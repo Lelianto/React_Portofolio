@@ -19,6 +19,12 @@ import DisplayAllCart from '../pages/adminAllCart';
 import DisplayAllPayment from '../pages/adminAllPayment';
 import NotMatch from '../pages/notMatch';
 
+import Error401 from '../pages/error401Pages';
+import Error403 from '../pages/error403Pages';
+import Error404 from '../pages/error404Pages';
+import Error422 from '../pages/error422Pages';
+import Error500 from '../pages/error500Pages';
+
 const MainRoute = () => {
     return (
         <Provider store={store}>
@@ -40,6 +46,11 @@ const MainRoute = () => {
                     <Route exact path='/books' component={DisplayAllBook} />
                     <Route exact path='/carts' component={DisplayAllCart} />
                     <Route exact path='/payments' component={DisplayAllPayment} />
+                    <Route exact path='/401' component={Error401} />
+                    <Route exact path='/403' component={Error403} />
+                    <Route exact path='/404' component={Error404} />
+                    <Route exact path='/422' component={Error422} />
+                    <Route exact path='/500' component={Error500} />
                     <Route component={NotMatch} />
                 </Switch>
             </BrowserRouter>

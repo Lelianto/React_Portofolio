@@ -29,8 +29,27 @@ class CartDetail extends React.Component {
                     console.log('ISI Response Data',response.data)
                     return response
                 })
-                .catch(function (error){
+                .catch((error)=>{
                     store.setState({ isLoading: false})
+                    switch (error.response.status) {
+                        case 401 :
+                            this.props.history.push('/401')
+                            break
+                        case 403 :
+                            this.props.history.push('/403')
+                            break
+                        case 404 :
+                            this.props.history.push('/404')
+                            break
+                        case 422 :
+                            this.props.history.push('/422')
+                            break
+                        case 500 :
+                            this.props.history.push('/500')
+                            break
+                        default :
+                            break
+                    }
                 })
     }
 

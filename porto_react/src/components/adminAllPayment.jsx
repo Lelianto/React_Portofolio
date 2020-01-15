@@ -8,28 +8,50 @@ import axios from 'axios'
 
 
 class AccessAllPayments extends React.Component {
-    
-    componentDidMount = () => {
+    getAllPayment = () => {
         const req = {
-        method: "get",
-        url: "http://0.0.0.0:1250/payment_confirm/all",
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem('token')
-        },
-        params: {
-            
-        }
-        }; 
-        console.log('',req)
-        axios(req)
-            .then(function (response) {
-                store.setState({ adminAllPayment: response.data, isLoading:false})
-                console.log('isi',response.data)
-                return response
-            })
-            .catch(function (error){
-                store.setState({ isLoading: false})
-            })
+            method: "get",
+            url: "http://0.0.0.0:1250/payment_confirm/all",
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('token')
+            },
+            params: {
+                
+            }
+            }; 
+            console.log('',req)
+            axios(req)
+                .then(function (response) {
+                    store.setState({ adminAllPayment: response.data, isLoading:false})
+                    console.log('isi',response.data)
+                    return response
+                })
+                .catch((error)=>{
+                    store.setState({ isLoading: false})
+                    switch (error.response.status) {
+                        case 401 :
+                            this.props.history.push('/401')
+                            break
+                        case 403 :
+                            this.props.history.push('/403')
+                            break
+                        case 404 :
+                            this.props.history.push('/404')
+                            break
+                        case 422 :
+                            this.props.history.push('/422')
+                            break
+                        case 500 :
+                            this.props.history.push('/500')
+                            break
+                        default :
+                            break
+                    }
+                })
+    }
+
+    componentDidMount = () => {
+        this.getAllPayment()
     };
 
     render() {
