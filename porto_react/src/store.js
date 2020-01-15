@@ -1,58 +1,59 @@
 import createStore from 'unistore';
 import axios from 'axios';
 
+// Initialization global state
 const initialState = {
-    id_payment:'',
-    id_cart:'',
-    id_user:'',
-    adminAllPayment:[],
-    adminAllCart:[],
-    userData:[],
-    cart_id:0,
-    adminAllBook:[],
-    allUser:[],
-    bookOwn:[],
-    kode_pemesanan:'',
-    tanggal_pemesanan:'',
-    total_pembayaran:'',
-    userId:'',
-    listResults:[],
-    listCategory:[],
-    ongkos_kirim:0,
-    total_price:0,
-    carts:[],
-    book_id:'',
-    books:[],
-    bookById:[],
-    userById:[],
-    id:'',
-    isLoading:true,
-    token:'',
-    photo:'',
-    nama_lengkap:'',
-    email:'',
-    kata_sandi:'',
-    is_login: false,
-    Bearer:'',
-    judul:'',
-    penulis:'',
-    jumlah_halaman:'',
-    tanggal_terbit:'',
-    isbn:'',
-    genre:'',
-    bahasa:'',
-    penerbit:'',
-    berat:0,
-    lebar:0,
-    panjang:0,
-    jenis_cover:'',
-    status:'',
-    harga:0,
-    totalBeli:[],
-    stok:[],
-    foto_buku:'',
-    keyword:'',
-    kategori:''
+  id_payment:'',
+  id_cart:'',
+  id_user:'',
+  adminAllPayment:[],
+  adminAllCart:[],
+  userData:[],
+  cart_id:0,
+  adminAllBook:[],
+  allUser:[],
+  bookOwn:[],
+  kode_pemesanan:'',
+  tanggal_pemesanan:'',
+  total_pembayaran:'',
+  userId:'',
+  listResults:[],
+  listCategory:[],
+  ongkos_kirim:0,
+  total_price:0,
+  carts:[],
+  book_id:'',
+  books:[],
+  bookById:[],
+  userById:[],
+  id:'',
+  isLoading:true,
+  token:'',
+  photo:'',
+  nama_lengkap:'',
+  email:'',
+  kata_sandi:'',
+  is_login: false,
+  Bearer:'',
+  judul:'',
+  penulis:'',
+  jumlah_halaman:'',
+  tanggal_terbit:'',
+  isbn:'',
+  genre:'',
+  bahasa:'',
+  penerbit:'',
+  berat:0,
+  lebar:0,
+  panjang:0,
+  jenis_cover:'',
+  status:'',
+  harga:0,
+  totalBeli:[],
+  stok:[],
+  foto_buku:'',
+  keyword:'',
+  kategori:''
 }
 
 export const store = createStore(initialState)
@@ -60,22 +61,17 @@ export const store = createStore(initialState)
 export const actions = store => ({
   changeInput : async (state,e) => {
     await store.setState({ [e.target.name]: e.target.value});
-    console.warn('kategori', store.getState().kategori)
   },
 
   changeInputCart : async (state,e) => {
-    console.warn('eeee', e.target);
-    console.warn('eeee', e.target.value);
-    console.warn('keyyy', e.target.key);
-    
     await store.setState({ 
       'stok':{ id: e.target.id,
         [e.target.name]: e.target.value}
     });
     state.totalBeli.push(store.getState().stok)
-    console.warn('Isi stok', state.totalBeli)
   },
 
+  // Function for Sign Up
   postSignUp : async (state) => {
       const nama_lengkap = state.nama_lengkap
       const kata_sandi = state.kata_sandi
@@ -85,8 +81,6 @@ export const actions = store => ({
           email: email,
           kata_sandi: kata_sandi
       };
-    //   console.warn('isi nama lengkap', nama_lengkap)
-
       const req = {
         method: "post",
         url: "http://0.0.0.0:1250/user",
@@ -101,13 +95,13 @@ export const actions = store => ({
                 store.setState({
                     "is_login": true
                 });
-            //   return response
           })
           .catch(error => {
               return false
       })
   },
 
+  // Function for Login
   postLogin : async (state) => {
     const kata_sandi = state.kata_sandi
     const email = state.email
@@ -115,7 +109,6 @@ export const actions = store => ({
         email: email,
         kata_sandi: kata_sandi
     };
-    console.warn('isi email', email)
 
     const req = {
       method: "post",
@@ -127,19 +120,17 @@ export const actions = store => ({
     };
 
     await axios(req)
-        .then(response => {
-          console.log('CEK ID', response.data)
-              // localStorage.setItem("id", response.data.id);
-              localStorage.setItem("email", email);
-              localStorage.setItem("is_login", true);
-              localStorage.setItem("token", response.data.token);
-          // console.log('cek state token', store.getState().token)
-        })
-        .catch(error => {
-            return false
+      .then(response => {
+        localStorage.setItem("email", email);
+        localStorage.setItem("is_login", true);
+        localStorage.setItem("token", response.data.token);
+      })
+      .catch(error => {
+          return false
     })
   },
 
+  // Function for user upload book
   postBook : async (state) => {
     const judul = state.judul
     const penulis = state.penulis
@@ -195,6 +186,7 @@ export const actions = store => ({
     })
   },
 
+  // Function for deleting Book
   deleteItem : async (state) => {
     const req = {
       method: "delete",
@@ -203,21 +195,18 @@ export const actions = store => ({
         Authorization: "Bearer " + localStorage.getItem('token')
       }
     };
-    console.log('isi req delete', req)
     await axios(req)
-        .then(response => {
-          console.log('cek token', response.data)
-              // localStorage.setItem("id", response.data.id);
-              store.setState({
-                  book_id:''
-              })
-          // console.log('cek state token', store.getState().token)
+      .then(response => {
+        store.setState({
+            book_id:''
         })
-        .catch(error => {
-            return false
+      })
+      .catch(error => {
+        return false
     })
   },
 
+  // Function for delete cart by user
   deleteCartItem : async (state) => {
     const req = {
       method: "delete",
@@ -226,21 +215,18 @@ export const actions = store => ({
         Authorization: "Bearer " + localStorage.getItem('token')
       }
     };
-    console.log('isi req delete', req)
     await axios(req)
-        .then(response => {
-          console.log('cek token', response.data)
-              // localStorage.setItem("id", response.data.id);
-              store.setState({
-                  book_id:''
-              })
-          // console.log('cek state token', store.getState().token)
+      .then(response => {
+        store.setState({
+            book_id:''
         })
-        .catch(error => {
-            return false
+    })
+    .catch(error => {
+        return false
     })
   },
 
+  // Function for update book by user
   updateBook : async (state) => {
     const judul = state.judul
     const penulis = state.penulis
@@ -278,8 +264,6 @@ export const actions = store => ({
       foto_buku : foto_buku,
       sinopsis : sinopsis
     };
-    console.log('isi berat', typeof(berat))
-
     const req = {
       method: "put",
       url: "http://0.0.0.0:1250/book/edit/"+state.book_id,
@@ -288,21 +272,18 @@ export const actions = store => ({
       },
       data: mybook
     };
-    console.warn('isi local token',localStorage.getItem('token'))
-    console.warn('isi mybook', mybook)
     await axios(req)
-        .then(response => {
-          console.log('user id', response.data.user_id)
-          localStorage.setItem('user_id', response.data.user_id)
-          return response
-        })
-        .catch(error => {
-          return false
+      .then(response => {
+        localStorage.setItem('user_id', response.data.user_id)
+        return response
+      })
+      .catch(error => {
+        return false
     })
   },
 
+  // Function for add book to cart
   addCartItem : async (state) => {
-    console.log('ISI STATE ADD CART', state.bookById)
     const book_id = state.bookById.id
     const judul = state.bookById.judul
     const penulis = state.bookById.penulis
@@ -331,17 +312,16 @@ export const actions = store => ({
       },
       data: buybook
     };
-    console.log('CEK ISI BUY BOOK', buybook)
     await axios(req)
-        .then(response => {
-          console.log('data di CART', response.data)
-          return response
-        })
-        .catch(error => {
-          return false
+      .then(response => {
+        return response
+      })
+      .catch(error => {
+        return false
     })
   },
 
+  // Function for calculating total price
   Calculate : async (state) => {
     const req = {
       method: "get",
@@ -350,13 +330,11 @@ export const actions = store => ({
         Authorization: "Bearer " + localStorage.getItem('token')
       }
     };
-    console.log(req)
     await axios(req)
         .then(response => {
           store.setState({
             "total_price": response.data
           })
-          console.log('isi', response.data)
           return response
         })
         .catch(error => {
@@ -366,6 +344,7 @@ export const actions = store => ({
 
   },
 
+  // Function for getting expedition price
   CalculateExpeditionPrice : async (state) => {
     const nama_jalan = state.nama_jalan
     const rt_rw = state.rt_rw
@@ -394,19 +373,18 @@ export const actions = store => ({
       data: myaddress
     };
     await axios(req)
-        .then(response => {
-          console.log('ongkir', response.data)
-          store.setState({
-            'ongkos_kirim':response.data
-          })
-          console.log('isi ongkir', store.getState().ongkos_kirim)
-          return response
+      .then(response => {
+        store.setState({
+          'ongkos_kirim':response.data
         })
-        .catch(error => {
-          return false
+        return response
+      })
+      .catch(error => {
+        return false
     })
   },
 
+  // Function for getting final transaction price 
   FinalTransactionPayment : async (state) => {
     const req = {
       method: "post",
@@ -415,22 +393,21 @@ export const actions = store => ({
         Authorization: "Bearer " + localStorage.getItem('token')
       }
     };
-
     await axios(req)
-        .then(response => {
-          console.log('isi final payment',response.data)
-          store.setState({
-            'total_pembayaran':response.data.total_biaya,
-            'tanggal_pemesanan':response.data.tanggal_pemesanan,
-            'kode_pemesanan':response.data.nomor_pemesanan
-          })
-          return response
+      .then(response => {
+        store.setState({
+          'total_pembayaran':response.data.total_biaya,
+          'tanggal_pemesanan':response.data.tanggal_pemesanan,
+          'kode_pemesanan':response.data.nomor_pemesanan
         })
-        .catch(error => {
-          return false
+        return response
+      })
+      .catch(error => {
+        return false
     })
   },
 
+  // Function for searching book by title or writer
   searchBook : async (state) => {
     const req = {
       method: "get",
@@ -441,21 +418,20 @@ export const actions = store => ({
     };
 
     await axios(req)
-        .then(response => {
-          console.log('isi searching',response.data)
-          store.setState({
-            'listResults':response.data
-          })
-          return response
+      .then(response => {
+        store.setState({
+          'listResults':response.data
         })
-        .catch(error => {
-          return false
+        return response
+      })
+      .catch(error => {
+        return false
     })
   },
 
+  // Function for searching and grouping user by category
   categoryBook : async (state,e) => {
     store.setState({ [e.target.name]: e.target.value });
-    console.log('isi kategori', store.getState().kategori)
     const req = {
       method: "get",
       url: "http://0.0.0.0:1250/book/category?keyword="+store.getState().kategori,
@@ -469,19 +445,16 @@ export const actions = store => ({
           store.setState({
             'listCategory':response.data
           })
-          console.log('isi list kategori', store.getState().listCategory)
-          // return response
         })
         .catch(error => {
           return false
     })
   },
 
+  // Function for updating amount of buying item
   updateBuy : async (state) => {
     
     const listBuy = state.totalBeli
-    console.log('isi list buy', listBuy)
-
     for (const product of listBuy) {
       const buybook = {
         stok : product.stok
@@ -494,10 +467,8 @@ export const actions = store => ({
         },
         data: buybook
       };
-      console.log('CEK UPDATE BOOK', buybook)
       await axios(req)
           .then(response => {
-            console.log('data uPDATE CART', response.data)
             return response
           })
           .catch(error => {
@@ -506,6 +477,7 @@ export const actions = store => ({
     }
   },
 
+  // Function for deleting user by admin
   deleteUser : async (state,e) => {
     const req = {
       method: "delete",
@@ -514,19 +486,18 @@ export const actions = store => ({
         Authorization: "Bearer " + localStorage.getItem('token')
       }
     };
-    console.log('isi req delete', req)
     await axios(req)
-        .then(response => {
-          console.log('cek DELETE', response.data)
-              store.setState({
-                  id_user:''
-              })
-        })
-        .catch(error => {
-            return false
+      .then(response => {
+        store.setState({
+              id_user:''
+          })
+    })
+      .catch(error => {
+        return false
     })
   },
 
+  // Function for deleting cart on user side
   deleteCart : async (state,e) => {
     const req = {
       method: "delete",
@@ -535,18 +506,17 @@ export const actions = store => ({
         Authorization: "Bearer " + localStorage.getItem('token')
       }
     };
-    console.log('isi req delete', req)
     await axios(req)
-        .then(response => {
-          console.log('cek DELETE', response.data)
-              store.setState({
-                  id_user:''
-              })
-        })
-        .catch(error => {
-            return false
+      .then(response => {
+        store.setState({
+          id_user:''
+          })
+      })
+      .catch(error => {
+        return false
     })
   }
+
   });
 
 
