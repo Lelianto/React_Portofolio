@@ -14,7 +14,7 @@ class BookDetail extends React.Component {
         await this.props.addCartItem()
         // console.warn('string cek', localStorage.getItem('is_login'))
         if (localStorage.getItem('token') !== null){
-            alert('Buku telah dimasukkan ke dalam Keranjang')
+            alert('Buku telah ditambahkan ke dalam Keranjang')
             this.props.history.push("/");
         }
     }

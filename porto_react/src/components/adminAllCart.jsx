@@ -10,27 +10,42 @@ import axios from 'axios'
 
 class AccessAllCarts extends React.Component {
     
-    componentDidMount = () => {
+    getAllCart = () => {
         const req = {
-        method: "get",
-        url: "http://0.0.0.0:1250/cart/allcart",
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem('token')
-        },
-        params: {
-            
+            method: "get",
+            url: "http://0.0.0.0:1250/cart/allcart",
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem('token')
+            },
+            params: {
+                
+            }
+            }; 
+            console.log(req)
+            axios(req)
+                .then(function (response) {
+                    store.setState({ adminAllCart: response.data, isLoading:false})
+                    console.log(response.data)
+                    return response
+                })
+                .catch(function (error){
+                    store.setState({ isLoading: false})
+                })
+    }
+    doDelete = async (e) => {
+        console.log('isi ID Cart', e)
+        store.setState({
+            'id_cart': e
+        })
+        await this.props.deleteCart()
+        if (localStorage.getItem('token') !== null){
+            this.getAllCart()
+            this.props.history.push("/carts");
         }
-        }; 
-        console.log(req)
-        axios(req)
-            .then(function (response) {
-                store.setState({ adminAllCart: response.data, isLoading:false})
-                console.log(response.data)
-                return response
-            })
-            .catch(function (error){
-                store.setState({ isLoading: false})
-            })
+    }
+
+    componentDidMount = () => {
+        this.getAllCart()
     };
 
     render() {
@@ -79,8 +94,8 @@ class AccessAllCarts extends React.Component {
                         </div>
                         )}
                     </div>
-                    <div className='col-md-2' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Harga Buku</div>
+                    <div className='col-md-1' style={{border:'1px black solid'}}>
+                        <div style={{borderBottom:'1px black solid'}}>Harga</div>
                         {adminAllCart.map((cart,i) =>
                         <div className='col-md-12' style={{marginTop:'15px'}}>
                             {cart.harga}
@@ -95,10 +110,18 @@ class AccessAllCarts extends React.Component {
                         </div>
                         )}
                     </div>
+                    <div className='col-md-1' style={{border:'1px black solid'}}>
+                        <div style={{borderBottom:'1px black solid'}}>Delete</div>
+                        {adminAllCart.map((cart,i) =>
+                        <button style={{fontSize:'10px',marginTop:'12px'}} onClick={()=>this.doDelete(cart.id)}>
+                            Delete
+                        </button>
+                        )}
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-export default connect("adminAllCart, token, is_login",actions)(withRouter(AccessAllCarts));
+export default connect("adminAllCart, id_cart, token, is_login",actions)(withRouter(AccessAllCarts));

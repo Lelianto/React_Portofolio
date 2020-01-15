@@ -2,6 +2,8 @@ import createStore from 'unistore';
 import axios from 'axios';
 
 const initialState = {
+    id_cart:'',
+    id_user:'',
     adminAllPayment:[],
     adminAllCart:[],
     userData:[],
@@ -506,6 +508,48 @@ export const actions = store => ({
             return false
       })
     }
+  },
+
+  deleteUser : async (state,e) => {
+    const req = {
+      method: "delete",
+      url: "http://0.0.0.0:1250/user/"+state.id_user,
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem('token')
+      }
+    };
+    console.log('isi req delete', req)
+    await axios(req)
+        .then(response => {
+          console.log('cek DELETE', response.data)
+              store.setState({
+                  id_user:''
+              })
+        })
+        .catch(error => {
+            return false
+    })
+  },
+
+  deleteCart : async (state,e) => {
+    const req = {
+      method: "delete",
+      url: "http://0.0.0.0:1250/cart/product/"+state.id_cart,
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem('token')
+      }
+    };
+    console.log('isi req delete', req)
+    await axios(req)
+        .then(response => {
+          console.log('cek DELETE', response.data)
+              store.setState({
+                  id_user:''
+              })
+        })
+        .catch(error => {
+            return false
+    })
   }
   });
 

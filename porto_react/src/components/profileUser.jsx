@@ -111,6 +111,7 @@ class ProfileUser extends React.Component {
                                         <button type="button" class="btn btn-success" onClick={this.handleSignOut}>Log Out</button>
                                     </label>
                                 </div>
+                                
                             </div>
                         
                     </div>
