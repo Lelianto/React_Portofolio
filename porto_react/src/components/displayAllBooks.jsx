@@ -50,9 +50,6 @@ class AllBooks extends React.Component {
                     case 404 :
                         this.props.history.push('/404')
                         break
-                    case 422 :
-                        this.props.history.push('/422')
-                        break
                     case 500 :
                         this.props.history.push('/500')
                         break

@@ -11,10 +11,13 @@ class SignIn extends React.Component {
 
     doLogin = async () => {
         await this.props.postLogin()
-        console.warn('string cek', localStorage.getItem('is_login'))
         if (localStorage.getItem('token') !== null){
             this.props.history.push("/profile");
         }
+        else {
+          alert('Email atau Password Anda Salah...')
+          return <Redirect to={{ pathname: "/login" }} />;
+      }
     }
 
     render() {
@@ -38,10 +41,7 @@ class SignIn extends React.Component {
             </div>
             )
           }
-        if (localStorage.getItem('token') !== null){
-            alert('Email atau Password Anda Salah...')
-            return <Redirect to={{ pathname: "/profile" }} />;
-        } else {        
+        else {        
         return (
         <div className="wrapper fadeInDown">
             <div id="formContent">

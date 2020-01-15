@@ -11,7 +11,6 @@ class SignUp extends React.Component {
 
     doSignUp = async () => {
         await this.props.postSignUp()
-        console.warn('string cek', this.props.is_login)
         if (this.props.is_login){
             this.props.history.push("/profile");
         }
