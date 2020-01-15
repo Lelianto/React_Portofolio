@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/bookDetail.css';
 import '../styles/loading.css'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'
@@ -171,72 +171,7 @@ class BookDetail extends React.Component {
             )
         } 
         else if (localStorage.getItem('email')==='lian@alterra.id'){
-            return (
-                <div>
-                    <div className='container' style={{paddingTop: '150px'}}>
-                        <div className='row'>
-                            <div className='col-md-4 book-photo'>
-                                <img style={{width:'100%'}} src={foto_buku}></img>
-                            </div>
-                            <div className='col-md-5'>
-                                <div className='row'>
-                                    <div className='col-sm-12 book-title'>{judul}</div>
-                                    <div className='col-sm-12 book-status'>{status}</div>
-                                    <div className='col-sm-12 book-writer'>{penulis}</div>
-                                    <div className='col-sm-12'>
-                                        <div className='row list-detail'>
-                                            <div className='col-sm-5 book-detail-content'>Jumlah Halaman</div>
-                                            <div className='col-sm-7 book-detail-content'>{jumlah_halaman}</div>
-                                            <div className='col-sm-5 book-detail-content'>Tanggal Terbit</div>
-                                            <div className='col-sm-7 book-detail-content'>{tanggal_terbit}</div>
-                                            <div className='col-sm-5 book-detail-content'>ISBN</div>
-                                            <div className='col-sm-7 book-detail-content'>{isbn}</div>
-                                            <div className='col-sm-5 book-detail-content'>Genre</div>
-                                            <div className='col-sm-7 book-detail-content'>{genre}</div>
-                                            <div className='col-sm-5 book-detail-content'>Bahasa</div>
-                                            <div className='col-sm-7 book-detail-content'>{bahasa}</div>
-                                            <div className='col-sm-5 book-detail-content'>Penerbit</div>
-                                            <div className='col-sm-7 book-detail-content'>{penerbit}</div>
-                                            <div className='col-sm-5 book-detail-content'>Berat</div>
-                                            <div className='col-sm-7 book-detail-content'>{berat} kg</div>
-                                            <div className='col-sm-5 book-detail-content'>Lebar</div>
-                                            <div className='col-sm-7 book-detail-content'>{lebar} cm</div>
-                                            <div className='col-sm-5 book-detail-content'>Panjang</div>
-                                            <div className='col-sm-7 book-detail-content'>{panjang} cm</div>
-                                            <div className='col-sm-5 book-detail-content'>Stok</div>
-                                            <div className='col-sm-7 book-detail-content'>{stok} exemplar</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='col-md-3' style={{ backgroundColor: 'aliceblue', borderRadius: '5%', marginBottom:'250px' }}>
-                                <div className='row' style={{ paddingTop:'25px', paddingLeft: '10px', paddingRight: '10px'}} >
-                                    <div className='col-md-6'>{jenis_cover}</div>
-                                    <div className='col-md-6'>Rp {harga}</div>
-                                </div>
-                                <div className='row'>
-                                    <div className='col-md-12' style={{ paddingTop:'55px'}}>
-                                        <label><Link to='/updateproduct'>
-                                            <button type="button" class="btn btn-success">Update</button></Link>
-                                        </label>
-                                    </div>
-                                    <div className='col-md-12' style={{ paddingTop:'55px'}}>
-                                        <label>
-                                            <button type="button" class="btn btn-success" onClick={this.doDelete}>Delete</button>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='row'>
-                            <div className='col-md-12 book-description'>Deskripsi</div>
-                            <div className='col-md-12 book-description-content'>
-                                {sinopsis}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )
+            return <Redirect to={{ pathname: "/books" }} />;
         } else {
             return (
                 <div>

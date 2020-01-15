@@ -26,16 +26,11 @@ class AllBooks extends React.Component {
         url: "http://0.0.0.0:1250/book",
         headers: {
             Authorization: "Bearer " + localStorage.getItem('token')
-        },
-        params: {
-            
         }
         }; 
-        console.log(req)
         axios(req)
             .then(function (response) {
                 store.setState({ books: response.data, isLoading:false})
-                console.log(response.data)
                 return response
             })
             .catch((error)=>{

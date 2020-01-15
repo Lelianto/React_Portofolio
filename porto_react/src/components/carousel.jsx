@@ -14,20 +14,20 @@ class Carousel extends React.Component {
         return (
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style={{paddingTop: '85px'}}>
                 <div class="carousel-inner">
-                    <div class="carousel-item active"><Link to='/category'>
+                    <div class="carousel-item active"><Link to='/discount'>
                         <img class="d-block w-100" src={promo1} alt="First slide" /></Link>
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src={promo2} alt="Second slide" />
+                    <div class="carousel-item"><Link to='/discount'>
+                        <img class="d-block w-100" src={promo2} alt="Second slide" /></Link>
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src={promo3} alt="Third slide"/>
+                    <div class="carousel-item"><Link to='/discount'>
+                        <img class="d-block w-100" src={promo3} alt="Third slide"/></Link>
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src={promo4} alt="Fourth slide"/>
+                    <div class="carousel-item"><Link to='/discount'>
+                        <img class="d-block w-100" src={promo4} alt="Fourth slide"/></Link>
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src={promo5} alt="Fifth slide"/>
+                    <div class="carousel-item"><Link to='/discount'>
+                        <img class="d-block w-100" src={promo5} alt="Fifth slide"/></Link>
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

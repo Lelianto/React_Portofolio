@@ -18,12 +18,16 @@ import DisplayAllBook from '../pages/adminAllBook';
 import DisplayAllCart from '../pages/adminAllCart';
 import DisplayAllPayment from '../pages/adminAllPayment';
 import NotMatch from '../pages/notMatch';
-
 import Error401 from '../pages/error401Pages';
 import Error403 from '../pages/error403Pages';
 import Error404 from '../pages/error404Pages';
 import Error422 from '../pages/error422Pages';
 import Error500 from '../pages/error500Pages';
+import AboutUs from '../pages/aboutPage';
+import RuleInUs from '../pages/rulePage';
+import HelpPage from '../pages/helpPage';
+import ContactUs from '../pages/contactUs';
+import PromoPage from '../pages/promoDiscount';
 
 const MainRoute = () => {
     return (
@@ -51,6 +55,11 @@ const MainRoute = () => {
                     <Route exact path='/404' component={Error404} />
                     <Route exact path='/422' component={Error422} />
                     <Route exact path='/500' component={Error500} />
+                    <Route exact path='/about' component={AboutUs} />
+                    <Route exact path='/rule' component={RuleInUs} />
+                    <Route exact path='/help' component={HelpPage} />
+                    <Route exact path='/contact' component={ContactUs} />
+                    <Route exact path='/discount' component={PromoPage} />
                     <Route component={NotMatch} />
                 </Switch>
             </BrowserRouter>

@@ -375,7 +375,6 @@ export const actions = store => ({
     const provinsi = state.provinsi
     const kode_pos = state.kode_pos
     const nomor_telepon = state.nomor_telepon
-    console.log('KOTA', kota_kabupaten)
     const myaddress = {
       nama_jalan: nama_jalan,
       rt_rw: rt_rw,
@@ -386,8 +385,6 @@ export const actions = store => ({
       kode_pos : kode_pos,
       nomor_telepon : nomor_telepon
     };
-    console.log('isi my address', myaddress)
-
     const req = {
       method: "post",
       url: "http://0.0.0.0:1250/payment/ongkir",
@@ -396,15 +393,13 @@ export const actions = store => ({
       },
       data: myaddress
     };
-    console.warn('isi local token',localStorage.getItem('token'))
-    console.warn('isi mybook', myaddress)
     await axios(req)
         .then(response => {
           console.log('ongkir', response.data)
           store.setState({
             'ongkos_kirim':response.data
           })
-          // localStorage.setItem('user_id', response.data.user_id)
+          console.log('isi ongkir', store.getState().ongkos_kirim)
           return response
         })
         .catch(error => {

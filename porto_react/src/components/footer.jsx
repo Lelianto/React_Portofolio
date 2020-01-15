@@ -2,9 +2,6 @@ import React from 'react';
 import '../styles/bootstrap.min.css'
 import '../styles/main.css';
 import { Link } from 'react-router-dom'
-import ig from '../images/instagram.png'
-import fb from '../images/facebook.png'
-import tw from '../images/twitter.png'
 
 class Footer extends React.Component {
     render (){
@@ -14,17 +11,17 @@ class Footer extends React.Component {
                 <div className="row">
                     <div className="col-md-1">
                     </div>
-                    <div className="col-md-3 bottom1">
+                    <div className="col-md-3 bottom1"><Link to='/about' style={{textDecoration:'none', color:'black'}}>
                         <div className="add">
                             Tentang Kutubuku
-                        </div>
+                        </div></Link>
                     </div>
                     <div className="col-md-1">
                     </div>
-                    <div className="col-md-3 bottom1">
+                    <div className="col-md-3 bottom1"><Link to='/help' style={{textDecoration:'none', color:'black'}}>
                         <div className="add">
                             Bantuan
-                        </div>
+                        </div></Link>
                     </div>
                     <div className="col-md-4 bottom-right">
                         <div>
@@ -33,17 +30,17 @@ class Footer extends React.Component {
                     </div>
                     <div className="col-md-1">
                     </div>
-                    <div className="col-md-3 bottom0">
+                    <div className="col-md-3 bottom0"><Link to='/rule' style={{textDecoration:'none', color:'black'}}>
                         <div className="add">
                             Ketentuan Kerjasama
-                        </div>
+                        </div></Link>
                     </div>
                     <div className="col-md-1">
                     </div>
-                    <div className="col-md-3 bottom0">
+                    <div className="col-md-3 bottom0"><Link to='/contact' style={{textDecoration:'none', color:'black'}}>
                         <div className="add">
                             Hubungi Kami
-                        </div>
+                        </div></Link>
                     </div>
                 </div>
             </div>

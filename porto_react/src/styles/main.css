@@ -1,12 +1,3 @@
-@font-face {
-    font-family: 'koln_messe-deutzregular';
-    src: url('./fonts/kolnmessedeutz.woff') format('woff2'),
-         url('./fonts/kolnmessedeutz.woff2') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
 .logo-react {
     width: 60px;
 }
@@ -30,7 +21,6 @@ header {
 }
 
 .toko {
-    font-family: 'koln_messe-deutzregular';
     margin-top: -3px;
     font-size: 30px;
     font-weight: bold;
