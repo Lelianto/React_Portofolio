@@ -6,11 +6,10 @@ import '../styles/loading.css'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
-import axios from 'axios'
 
 
 class SearchResults extends React.Component {
-
+    // Function to go to book detail information
     goToBook = async (book) => {
         store.setState({ book_id: book.id })
         this.props.history.push("/bookdetail/"+store.getState().book_id);
@@ -65,5 +64,4 @@ class SearchResults extends React.Component {
     }
 }
 
-// export default SearchResults;
-export default connect("listResults, books, book_id, token, is_login, judul, penulis, status, harga, foto_buku, isLoading",actions)(withRouter(SearchResults));
+export default connect("listResults, books, book_id, token, is_login, isLoading",actions)(withRouter(SearchResults));

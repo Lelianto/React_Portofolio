@@ -7,17 +7,14 @@ import { store, actions } from '../store'
 import axios from 'axios'
 
 class ProfileUser extends React.Component {
-
+    // Function for Admin sign out
     handleSignOut = async () => {
         await localStorage.removeItem('token');
         await localStorage.removeItem('is_login');
         await localStorage.removeItem('email');
-        console.warn('cek log out', localStorage.getItem('token'))
         this.props.history.push("/");
     };
-
     render() {
-        const email = localStorage.getItem('email')
         if (localStorage.getItem('token') == null){
             return <Redirect to={{ pathname: "/login" }} />;
         } else {

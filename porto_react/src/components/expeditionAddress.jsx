@@ -7,10 +7,12 @@ import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'
 
-// const perulangan = ['1','2','3','4','5','6','7','8','9','10']
-
 class CartDetail extends React.Component {
+    // Function to get expedetion price
     doExpeditionPrice = async () => {
+        store.setState({
+            'address':false
+        })
         await this.props.CalculateExpeditionPrice()
         if (localStorage.getItem('token') !== null){
             this.props.history.push("/expedition");
@@ -115,7 +117,7 @@ class CartDetail extends React.Component {
                                 type="text" 
                                 id="expedition8" 
                                 className="" 
-                                name="provinsi" 
+                                name="nomor_telepon" 
                                 placeholder="Masukkan Nomor Telepon"
                                 onChange={e => this.props.changeInput(e)} />
 

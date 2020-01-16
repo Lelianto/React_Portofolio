@@ -9,12 +9,12 @@ import axios from 'axios'
 
 
 class AllBooks extends React.Component {
-
+    // Function to go to book information detail
     goToBook = async (book) => {
         store.setState({ book_id: book.id })
         this.props.history.push("/bookdetail/"+store.getState().book_id);
         }
-
+    // Function to get all book and display it into homepage
     componentDidMount = () => {
 
         const req = {
@@ -24,6 +24,7 @@ class AllBooks extends React.Component {
             Authorization: "Bearer " + localStorage.getItem('token')
         }
         }; 
+        const self = this
         axios(req)
             .then(function (response) {
                 store.setState({ books: response.data, isLoading:false})
@@ -33,16 +34,16 @@ class AllBooks extends React.Component {
                 store.setState({ isLoading: false})
                 switch (error.response.status) {
                     case 401 :
-                        this.props.history.push('/401')
+                        self.props.history.push('/login')
                         break
                     case 403 :
-                        this.props.history.push('/403')
+                        self.props.history.push('/403')
                         break
                     case 404 :
-                        this.props.history.push('/404')
+                        self.props.history.push('/404')
                         break
                     case 500 :
-                        this.props.history.push('/500')
+                        self.props.history.push('/500')
                         break
                     default :
                         break
@@ -85,7 +86,7 @@ class AllBooks extends React.Component {
                         <div className='col-md-3'>
                             <div className='row box-all-books'>
                                 <div className='col-md-12 box-all-books-photo'>
-                                    <img style={{ width:'100%'}} src={book.foto_buku} alt=""/>
+                                    <img  style={{ width:'100%'}} src={book.foto_buku} alt=""/>
                                 </div>
                                 <div className='col-md-12 box-all-books-title' onClick={event => this.goToBook(book)}>{book.judul}</div>
                                 <div className='col-md-12 box-all-books-writer'>{book.penulis}</div>
@@ -99,4 +100,4 @@ class AllBooks extends React.Component {
     }
 }
 
-export default connect("books, book_id, token, is_login, judul, penulis, status, harga, foto_buku,isLoading",actions)(withRouter(AllBooks));
+export default connect("books, book_id, token, is_login, isLoading",actions)(withRouter(AllBooks));

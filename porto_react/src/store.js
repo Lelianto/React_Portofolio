@@ -53,7 +53,17 @@ const initialState = {
   stok:[],
   foto_buku:'',
   keyword:'',
-  kategori:''
+  kategori:'',
+  disable:true,
+  address: true,
+  nama_jalan:'',
+  rt_rw:'',
+  kelurahan:'',     
+  kecamatan:'',
+  kota_kabupaten:'', 
+  provinsi:'',
+  kode_pos:'',
+  nomor_telepon:''
 }
 
 export const store = createStore(initialState)
@@ -333,7 +343,8 @@ export const actions = store => ({
     await axios(req)
         .then(response => {
           store.setState({
-            "total_price": response.data
+            "total_price": response.data,
+            "disable": false
           })
           return response
         })

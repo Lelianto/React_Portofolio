@@ -3,7 +3,6 @@ import '../styles/bootstrap.min.css';
 import '../styles/style.css';
 
 class HelpYou extends React.Component {
-
     render() {
         return (
             <body>

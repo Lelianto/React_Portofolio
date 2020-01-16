@@ -11,48 +11,42 @@ import axios from 'axios'
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
 
 class ProfileUser extends React.Component {
-
+    // Function for user sign out
     handleSignOut = async () => {
         await localStorage.removeItem('token');
         await localStorage.removeItem('is_login');
         await localStorage.removeItem('email');
-        console.warn('cek log out', localStorage.getItem('token'))
         this.props.history.push("/");
     };
 
     componentDidMount = () => {
-
         const req = {
         method: "get",
         url: "http://0.0.0.0:1250/user/profile",
         headers: {
             Authorization: "Bearer " + localStorage.getItem('token')
-        },
-        params: {
-            
         }
         }; 
-        console.log(req)
+        const self = this
         axios(req)
             .then(function (response) {
                 store.setState({ userData: response.data, isLoading:false})
-                console.log(response.data)
                 return response
             })
             .catch((error)=>{
                 store.setState({ isLoading: false})
                 switch (error.response.status) {
                     case 401 :
-                        this.props.history.push('/401')
+                        self.props.history.push('/login')
                         break
                     case 403 :
-                        this.props.history.push('/403')
+                        self.props.history.push('/403')
                         break
                     case 404 :
-                        this.props.history.push('/login')
+                        self.props.history.push('/404')
                         break
                     case 500 :
-                        this.props.history.push('/500')
+                        self.props.history.push('/500')
                         break
                     default :
                         break

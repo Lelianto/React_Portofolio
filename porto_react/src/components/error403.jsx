@@ -4,7 +4,6 @@ import '../styles/style.css';
 import { withRouter, Link, Redirect } from 'react-router-dom'
 
 class NotFound extends React.Component {
-
     render() {
         return (
             <body>

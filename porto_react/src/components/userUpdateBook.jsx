@@ -1,19 +1,16 @@
 import React from 'react';
 import '../styles/userUploadBook.css';
 import '../styles/bootstrap.min.css'
-import logo from '../images/navigasi-logo.png';
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'unistore/react'
-import { store, actions } from '../store'
+import { actions } from '../store'
 
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
 
-
 class UserUpload extends React.Component {
-
+    // Function for updating book by user
     doUpdateBook = async () => {
         await this.props.updateBook()
-        console.warn('string cek', localStorage.getItem('is_login'))
         if (localStorage.getItem('token') !== null){
             this.props.history.push("/profile");
         }
@@ -164,5 +161,5 @@ class UserUpload extends React.Component {
         )
     }
 }
-// export default UserUpload;
-export default connect("Bearer,bahasa,status, genre, is_login",actions)(withRouter(UserUpload));
+
+export default connect("Bearer, bahasa, status, genre, is_login",actions)(withRouter(UserUpload));

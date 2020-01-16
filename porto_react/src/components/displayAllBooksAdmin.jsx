@@ -9,52 +9,44 @@ import axios from 'axios'
 
 
 class AdminAllBooks extends React.Component {
-
+    // Function to go to book information detail
     goToBook = async (book) => {
-        console.warn('cek isi buku', book.id)
-        // localStorage.setItem("book_id", book.id);
         store.setState({ book_id: book.id })
-        // console.warn('cek isi buku', store.getState().book_id)
         this.props.history.push("/bookdetail/"+store.getState().book_id);
-        // window.open("/bookdetail/"+localStorage.getItem('book_id'))
         }
-
+    
+    // Function to get all book and display it into homepage
     componentDidMount = () => {
-
         const req = {
         method: "get",
         url: "http://0.0.0.0:1250/book",
         headers: {
             Authorization: "Bearer " + localStorage.getItem('token')
-        },
-        params: {
-            
         }
         }; 
-        console.log(req)
+        const self = this
         axios(req)
             .then(function (response) {
                 store.setState({ books: response.data, isLoading:false})
-                console.log(response.data)
                 return response
             })
             .catch((error)=>{
                 store.setState({ isLoading: false})
                 switch (error.response.status) {
                     case 401 :
-                        this.props.history.push('/401')
+                        self.props.history.push('/401')
                         break
                     case 403 :
-                        this.props.history.push('/403')
+                        self.props.history.push('/403')
                         break
                     case 404 :
-                        this.props.history.push('/404')
+                        self.props.history.push('/404')
                         break
                     case 422 :
-                        this.props.history.push('/422')
+                        self.props.history.push('/422')
                         break
                     case 500 :
-                        this.props.history.push('/500')
+                        self.props.history.push('/500')
                         break
                     default :
                         break
@@ -63,13 +55,33 @@ class AdminAllBooks extends React.Component {
     };
 
     render() {
-        const { books } = this.props
+        const { books, isLoading } = this.props
         const displayAvailableBooks = books.filter(item => {
             if (item.foto_buku !== null && item.judul !== null && item.penulis !== null && item.harga !== null && item.berat !== null) {
                 return item;
             }
             return false
         });
+        if(isLoading){
+            return (
+            <div>
+              <body style={{paddingTop:'200px'}}>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-md-5'>
+                  </div>
+                  <div className='col-md-2'>
+                    <div class="loader"></div>
+                  </div>
+                  <div className='col-md-5'>
+                  </div>
+                </div>
+               
+              </div>
+            </body>
+            </div>
+            )
+          }
         if(localStorage.getItem('email')=='lian@alterra.id'){
             return (
                 <div className='container' style={{paddingTop:'90px'}}>
@@ -117,5 +129,4 @@ class AdminAllBooks extends React.Component {
     }
 }
 
-// export default AdminAllBooks;
-export default connect("books, book_id, token, is_login, judul, penulis, status, harga, foto_buku",actions)(withRouter(AdminAllBooks));
+export default connect("books, book_id, token, is_login, isLoading",actions)(withRouter(AdminAllBooks));

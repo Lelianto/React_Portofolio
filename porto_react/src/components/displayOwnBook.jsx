@@ -9,12 +9,12 @@ import axios from 'axios'
 
 
 class DisplayOwnBook extends React.Component {
-
+    // Function to go to book detail information
     goToBook = async (book) => {
         store.setState({ book_id: book.id })
         this.props.history.push("/bookdetail/"+store.getState().book_id);
         }
-    
+    // Function to get all book which user has
     componentDidMount = () => {
 
         const req = {
@@ -22,32 +22,28 @@ class DisplayOwnBook extends React.Component {
         url: "http://0.0.0.0:1250/book/mine",
         headers: {
             Authorization: "Bearer " + localStorage.getItem('token')
-        },
-        params: {
-            
         }
         }; 
-        console.log(req)
+        const self = this
         axios(req)
             .then(function (response) {
                 store.setState({ bookOwn: response.data, isLoading:false})
-                console.log('ISI DATA',response.data)
                 return response
             })
             .catch((error)=>{
                 store.setState({ isLoading: false})
                 switch (error.response.status) {
                     case 401 :
-                        this.props.history.push('/401')
+                        self.props.history.push('/login')
                         break
                     case 403 :
-                        this.props.history.push('/403')
+                        self.props.history.push('/403')
                         break
                     case 404 :
-                        this.props.history.push('/404')
+                        self.props.history.push('/404')
                         break
                     case 500 :
-                        this.props.history.push('/500')
+                        self.props.history.push('/500')
                         break
                     default :
                         break
@@ -104,5 +100,4 @@ class DisplayOwnBook extends React.Component {
     }
 }
 
-// export default DisplayOwnBook;
-export default connect("bookOwn, books, book_id, token, is_login, judul, penulis, status, harga, foto_buku, isLoading",actions)(withRouter(DisplayOwnBook));
+export default connect("bookOwn, books, book_id, token, is_login, isLoading",actions)(withRouter(DisplayOwnBook));

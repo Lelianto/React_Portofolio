@@ -1,10 +1,9 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/style.css';
-import { withRouter, Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class NoMatch extends React.Component {
-
     render() {
         return (
             <body>
@@ -23,4 +22,3 @@ class NoMatch extends React.Component {
 }
 
 export default NoMatch
-// export default connect("Bearer, userById, email, kata_sandi, is_login",actions)(withRouter(NoMatch));

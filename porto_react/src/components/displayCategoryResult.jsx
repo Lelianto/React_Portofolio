@@ -8,21 +8,40 @@ import { store, actions } from '../store'
 import axios from 'axios'
 
 class CategoryFilterResult extends React.Component {
-
+    // Function to go to book detail information
     goToBook = async (book) => {
         store.setState({ book_id: book.id })
         this.props.history.push("/bookdetail/"+store.getState().book_id);
         }
-
+        
     render() {
-        const { listCategory } = this.props
+        const { listCategory, isLoading } = this.props
         const displayAvailableBooks = listCategory.filter(item => {
             if (item.foto_buku !== null && item.judul !== null && item.penulis !== null && item.harga !== null && item.berat !== null) {
                 return item;
             }
             return false
         });
-        console.log('ISI List', this.props.listCategory)
+        if(isLoading){
+            return (
+            <div>
+              <body style={{paddingTop:'200px'}}>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-md-5'>
+                  </div>
+                  <div className='col-md-2'>
+                    <div class="loader"></div>
+                  </div>
+                  <div className='col-md-5'>
+                  </div>
+                </div>
+               
+              </div>
+            </body>
+            </div>
+            )
+          }
         return (
             <div className='container' style={{paddingTop:'110px'}}>
                 <div className='row'>
@@ -44,5 +63,4 @@ class CategoryFilterResult extends React.Component {
     }
 }
 
-// export default CategoryFilterResult;
-export default connect("listCategory, books, book_id, token, is_login, judul, penulis, status, harga, foto_buku",actions)(withRouter(CategoryFilterResult));
+export default connect("listCategory, books, book_id, token, is_login, isLoading",actions)(withRouter(CategoryFilterResult));

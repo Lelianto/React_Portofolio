@@ -4,19 +4,10 @@ import '../styles/profileUser.css';
 import '../styles/loading.css';
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
-import { store, actions } from '../store'
+import { actions } from '../store'
 import foto from '../images/fotobank.jpg'
 
 class PaymentConfirm extends React.Component {
-
-    handleSignOut = async () => {
-        await localStorage.removeItem('token');
-        await localStorage.removeItem('is_login');
-        await localStorage.removeItem('email');
-        console.warn('cek log out', localStorage.getItem('token'))
-        this.props.history.push("/");
-    };
-
     render() {
         const { kode_pemesanan, tanggal_pemesanan, total_pembayaran } = this.props
         if(this.props.isLoading){

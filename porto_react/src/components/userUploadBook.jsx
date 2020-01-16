@@ -9,7 +9,7 @@ import { store, actions } from '../store'
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
 
 class UserUpload extends React.Component {
-
+    // Function for uploading book by user
     doAddBook = async () => {
         await this.props.postBook()
         console.warn('string cek', localStorage.getItem('is_login'))
@@ -163,5 +163,5 @@ class UserUpload extends React.Component {
         )
     }
 }
-// export default UserUpload;
-export default connect("Bearer,bahasa,status, genre, is_login",actions)(withRouter(UserUpload));
+
+export default connect("Bearer, bahasa, status, genre, is_login",actions)(withRouter(UserUpload));

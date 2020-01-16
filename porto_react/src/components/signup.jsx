@@ -9,81 +9,81 @@ import { store, actions } from '../store';
 
 class SignUp extends React.Component {
 
-    doSignUp = async () => {
-        await this.props.postSignUp()
-        if (this.props.is_login){
-            this.props.history.push("/profile");
-        }
+  doSignUp = async () => {
+    await this.props.postSignUp()
+    if (this.props.is_login){
+        this.props.history.push("/profile");
     }
+  }
 
-    render() {
-        if(this.props.isLoading){
-            return (
-            <div>
-              <body style={{paddingTop:'200px'}}>
-              <div className='container'>
-                <div className='row'>
-                  <div className='col-md-5'>
-                  </div>
-                  <div className='col-md-2'>
-                    <div class="loader"></div>
-                  </div>
-                  <div className='col-md-5'>
-                  </div>
-                </div>
-               
-              </div>
-            </body>
-            </div>
-            )
-          }
+  render() {
+    if(this.props.isLoading){
         return (
-        <div className="wrapper fadeInDown">
-            <div id="formContent">
-                <div className="fadeIn first">
-                <img style={{ marginTop:'30px', marginBottom:'30px', width:'50%'}} src={logo} id="icon" alt="User Icon" />
-                </div>
-
-                    {/* <!-- Login Form --> */}
-                    <form onSubmit={e => e.preventDefault()}>
-                        <input 
-                        type="text" 
-                        id="login" 
-                        className="fadeIn second" 
-                        name="nama_lengkap" 
-                        placeholder="Nama Lengkap"
-                        onChange={e => this.props.changeInput(e)} />
-                        <input 
-                        type="text" 
-                        id="login" 
-                        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
-                        className="fadeIn second" 
-                        name="email" 
-                        placeholder="Email"
-                        onChange={e => this.props.changeInput(e)} />
-                        <input 
-                        type="password" 
-                        id="password" 
-                        className="fadeIn third" 
-                        name="kata_sandi" 
-                        placeholder="Kata Sandi"
-                        onChange={e => this.props.changeInput(e)} />
-                        <input 
-                        type="submit" 
-                        className="fadeIn fourth" 
-                        value="Sign Up" 
-                        onClick={this.doSignUp}/>
-                    </form>
-
-                {/* <!-- Remind Passowrd --> */}
-                <div id="formFooter">
-                <Link className="underlineHover" to="/">Back to Home</Link>
-                </div>
-
+        <div>
+          <body style={{paddingTop:'200px'}}>
+          <div className='container'>
+            <div className='row'>
+              <div className='col-md-5'>
+              </div>
+              <div className='col-md-2'>
+                <div class="loader"></div>
+              </div>
+              <div className='col-md-5'>
+              </div>
             </div>
-            </div>
+            
+          </div>
+        </body>
+        </div>
         )
-    }
+      }
+    return (
+    <div className="wrapper fadeInDown">
+        <div id="formContent">
+            <div className="fadeIn first">
+            <img style={{ marginTop:'30px', marginBottom:'30px', width:'50%'}} src={logo} id="icon" alt="User Icon" />
+            </div>
+
+                {/* <!-- Login Form --> */}
+                <form onSubmit={e => e.preventDefault()}>
+                    <input 
+                    type="text" 
+                    id="login" 
+                    className="fadeIn second" 
+                    name="nama_lengkap" 
+                    placeholder="Nama Lengkap"
+                    onChange={e => this.props.changeInput(e)} />
+                    <input 
+                    type="text" 
+                    id="login" 
+                    pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                    className="fadeIn second" 
+                    name="email" 
+                    placeholder="Email"
+                    onChange={e => this.props.changeInput(e)} />
+                    <input 
+                    type="password" 
+                    id="password" 
+                    className="fadeIn third" 
+                    name="kata_sandi" 
+                    placeholder="Kata Sandi"
+                    onChange={e => this.props.changeInput(e)} />
+                    <input 
+                    type="submit" 
+                    className="fadeIn fourth" 
+                    value="Sign Up" 
+                    onClick={this.doSignUp}/>
+                </form>
+
+            {/* <!-- Remind Passowrd --> */}
+            <div id="formFooter">
+            <Link className="underlineHover" to="/">Back to Home</Link>
+            </div>
+
+        </div>
+        </div>
+    )
+  }
 }
 
 export default connect("nama_lengkap, email, kata_sandi, is_login, isLoading",actions)(withRouter(SignUp));

@@ -1,8 +1,9 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/cartDetail.css';
-import '../styles/loading.css'
-import { withRouter, Link } from 'react-router-dom'
+import '../styles/loading.css';
+import emptylogo from '../images/empty.jpg'
+import { withRouter, Link} from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'
@@ -10,42 +11,38 @@ import axios from 'axios'
 const perulangan = ['1','2','3','4','5','6','7','8','9','10']
 
 class CartDetail extends React.Component {
-
+    // Function to get all cart's content from database
     getAllCart = ()=> {
         const req = {
             method: "get",
             url: "http://0.0.0.0:1250/cart/allcart",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
-            },
-            params: {
-                
             }
             }; 
-            console.log(req)
+            const self = this
             axios(req)
                 .then(function (response) {
                     store.setState({ carts: response.data, isLoading:false})
-                    console.log('ISI Response Data',response.data)
                     return response
                 })
                 .catch((error)=>{
                     store.setState({ isLoading: false})
                     switch (error.response.status) {
                         case 401 :
-                            this.props.history.push('/401')
+                            self.props.history.push('/401')
                             break
                         case 403 :
-                            this.props.history.push('/403')
+                            self.props.history.push('/403')
                             break
                         case 404 :
-                            this.props.history.push('/404')
+                            self.props.history.push('/404')
                             break
                         case 422 :
-                            this.props.history.push('/422')
+                            self.props.history.push('/login')
                             break
                         case 500 :
-                            this.props.history.push('/500')
+                            self.props.history.push('/500')
                             break
                         default :
                             break
@@ -53,6 +50,7 @@ class CartDetail extends React.Component {
                 })
     }
 
+    // Function to delete product in cart by ID (from database)
     doDeleteCart = async (e) => {
         console.log('isi target e', e)
         store.setState({
@@ -65,6 +63,7 @@ class CartDetail extends React.Component {
         }
     }
 
+    // Function to get total price and display it into cart price
     doTotalPrice = async () => {
         await this.props.updateBuy()
         await this.props.Calculate()
@@ -73,6 +72,7 @@ class CartDetail extends React.Component {
         }
     }
 
+    // Function to execute getAllCart
     componentDidMount = () => {
         this.getAllCart()
     };
@@ -85,6 +85,24 @@ class CartDetail extends React.Component {
             }
             return false
         })
+        if(listInCart.length<1){
+            localStorage.setItem("cart_content", false)
+            return (
+                <div>
+                    <div className='container'>
+                        <div className='row' style={{paddingTop:'120px'}}>
+                            <div className='col-md-4'>
+                            </div>
+                            <div className='col-md-4'>
+                                <img style={{width:'100%'}} src={emptylogo} alt=""/>
+                            </div>
+                            <div className='col-md-4'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
         if(this.props.isLoading){
             return (
             <div>
@@ -138,16 +156,22 @@ class CartDetail extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='col-sm-3'>
+                                <div className='col-sm-3' style={{fontSize:'15px'}}>
                                     <div>
-                                        <label for="exampleFormControlSelect1">Banyak Pembelian</label>
+                                        Telah Ditambahkan
+                                    </div>
+                                    <div style={{fontWeight:'bold'}}>
+                                        {content.stok} Buku
+                                    </div>
+                                    <div>
+                                        <label for="exampleFormControlSelect1" style={{paddingTop:'50px'}}>Pembarui Jumlah</label>
                                         <select class="form-control" id={content.id} name='stok' onChange={e => this.props.changeInputCart(e)}required>
                                             {perulangan.map((total,i) =>
                                             <option id={content.id}  value={total}>{total}</option>
                                             )}
                                         </select>
                                     </div>
-                                    <button onClick={()=>this.doDeleteCart(content.id)} style={{fontSize:'12px', marginTop:'30px'}}>
+                                    <button className='btn' onClick={()=>this.doDeleteCart(content.id)} style={{fontSize:'12px', marginTop:'20px'}}>
                                         Hapus dari Keranjang
                                     </button>
                                 </div>
@@ -171,5 +195,4 @@ class CartDetail extends React.Component {
     }
 }
 
-// export default CartDetail;
 export default connect("carts, token, is_login, isLoading",actions)(withRouter(CartDetail));

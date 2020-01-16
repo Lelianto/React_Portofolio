@@ -1,3 +1,21 @@
+@font-face {
+    font-family: 'arista_2.0regular';
+    src: url('../fonts/arista2.0.woff2') format('woff2'),
+         url('../fonts/arista2.0.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'arista_2.0_alternateregular';
+    src: url('../fonts/arista2.0alternate.woff2') format('woff2'),
+         url('../fonts/arista2.0alternate.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .logo-react {
     width: 60px;
 }
@@ -21,9 +39,9 @@ header {
 }
 
 .toko {
+    font-family:'arista_2.0regular';
     margin-top: -3px;
     font-size: 30px;
-    font-weight: bold;
     color: black;
 }
 

@@ -10,7 +10,6 @@ import promo5 from '../images/promo5.jpg';
 const listPhoto = [promo1,promo2,promo3,promo4,promo5]
 
 class PromoDiscount extends React.Component {
-
     render() {
         return (
             <body>

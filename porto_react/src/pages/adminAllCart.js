@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import Profile from '../components/profileUser';
 import Admin from '../components/profileAdmin';
 import AllCart from '../components/adminAllCart';
 

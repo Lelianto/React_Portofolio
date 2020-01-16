@@ -11,10 +11,6 @@ class BookDetail extends React.Component {
     // Fungsi untuk menambahkan produk ke keranjang
     doAddCart = async () => {
         await this.props.addCartItem()
-        if (localStorage.getItem('token') !== null){
-            alert('Buku telah ditambahkan ke dalam Keranjang')
-            this.props.history.push("/");
-        }
     }
 
     // Fungsi untuk menghapus buku oleh User (Buku milik sendiri)
@@ -34,22 +30,39 @@ class BookDetail extends React.Component {
             Authorization: "Bearer " + localStorage.getItem('token')
         }
         }; 
-        console.warn('isi param', req)
+        const self = this
         await axios(req)
             .then(function(response) {
                 store.setState({ bookById: response.data, isLoading:false})
-                console.warn('isi response', response.data)
                 return response
             })
             .catch(function(error){
+                // const self = this
                 store.setState({ isLoading: false})
-                console.warn('isi error', error)
+                switch (error.response.status) {
+                    case 401 :
+                        self.props.history.push('/401')
+                        break
+                    case 403 :
+                        self.props.history.push('/403')
+                        break
+                    case 404 :
+                        self.props.history.push('/404')
+                        break
+                    case 422 :
+                        self.props.history.push('/422')
+                        break
+                    case 500 :
+                        self.props.history.push('/500')
+                        break
+                    default :
+                        break
+                }
             })
     };
 
     render() {
         const { bookById } = this.props
-        console.log('isi loading', this.props.isLoading)
         const judul = bookById.judul
         const penulis = bookById.penulis
         const jumlah_halaman = bookById.jumlah_halaman
@@ -204,7 +217,7 @@ class BookDetail extends React.Component {
                                 <div className='row'>
                                     <div className='col-md-12' style={{ paddingTop:'55px'}}>
                                         <label>
-                                            <button type="button" class="btn btn-success" onClick={this.doAddCart}>Masukkan Ke Keranjang</button>
+                                            <button type="button" class="btn btn-success" onClick={this.doAddCart} data-toggle="modal" data-target="#exampleModalCenter">Masukkan Ke Keranjang</button>
                                         </label>
                                     </div>
                                 </div>
@@ -214,6 +227,21 @@ class BookDetail extends React.Component {
                             <div className='col-md-12 book-description'>Deskripsi</div>
                             <div className='col-md-12 book-description-content'>
                                 {sinopsis}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header" style={{backgroundColor:'teal', color:'white'}}>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Pemberitahuan</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Buku telah ditambahkan ke dalam Keranjang
+                            </div>
                             </div>
                         </div>
                     </div>
