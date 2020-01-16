@@ -37,7 +37,6 @@ class BookDetail extends React.Component {
                 return response
             })
             .catch(function(error){
-                // const self = this
                 store.setState({ isLoading: false})
                 switch (error.response.status) {
                     case 401 :

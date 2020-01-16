@@ -17,28 +17,8 @@ class SignUp extends React.Component {
   }
 
   render() {
-    if(this.props.isLoading){
-        return (
-        <div>
-          <body style={{paddingTop:'200px'}}>
-          <div className='container'>
-            <div className='row'>
-              <div className='col-md-5'>
-              </div>
-              <div className='col-md-2'>
-                <div class="loader"></div>
-              </div>
-              <div className='col-md-5'>
-              </div>
-            </div>
-            
-          </div>
-        </body>
-        </div>
-        )
-      }
     return (
-    <div className="wrapper fadeInDown">
+    <div className="wrapper fadeInDown" style={{marginTop:'-60px',marginBottom:'-25px'}}>
         <div id="formContent">
             <div className="fadeIn first">
             <img style={{ marginTop:'30px', marginBottom:'30px', width:'50%'}} src={logo} id="icon" alt="User Icon" />
@@ -77,7 +57,7 @@ class SignUp extends React.Component {
 
             {/* <!-- Remind Passowrd --> */}
             <div id="formFooter">
-            <Link className="underlineHover" to="/">Back to Home</Link>
+            <Link style={{textDecoration:'none'}} className="underlineHover" to="/">Back to Home</Link>
             </div>
 
         </div>

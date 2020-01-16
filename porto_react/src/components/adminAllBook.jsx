@@ -77,7 +77,7 @@ class AccessAllBook extends React.Component {
                             </div>
                         )}
                     </div>
-                    <div className='col-md-3' style={{fontSize:'10px',border:'1px black solid'}}>
+                    <div className='col-md-2' style={{fontSize:'10px',border:'1px black solid'}}>
                         <div style={{fontSize:'10px',borderBottom:'1px black solid'}}>Judul Buku</div>
                         {adminAllBook.map((book,i) =>
                         <div style={{fontSize:'10px',marginTop:'12px'}}>
@@ -133,7 +133,7 @@ class AccessAllBook extends React.Component {
                         </button>
                         )}
                     </div>
-                    <div className='col-md-1' style={{fontSize:'10px',border:'1px black solid'}}>
+                    <div className='col-md-2' style={{fontSize:'10px',border:'1px black solid'}}>
                         <div style={{fontSize:'10px',borderBottom:'1px black solid'}}>Email</div>
                         {adminAllBook.map((book,i) =>
                         <div style={{fontSize:'10px',marginTop:'12px'}}>

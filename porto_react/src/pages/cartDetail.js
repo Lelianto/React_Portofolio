@@ -7,7 +7,7 @@ import CartDetailTotalPrice from '../components/cartDetailTotalPrice';
 class CartDetail extends Component {
   render() {
     localStorage.setItem("cart_content", true)
-    if(localStorage.getItem('cart_content')==true){
+    if(localStorage.getItem('cart_content')){
       return (
         <div>
           <Header/>

@@ -11,6 +11,11 @@ import axios from 'axios'
 const perulangan = ['1','2','3','4','5','6','7','8','9','10']
 
 class CartDetail extends React.Component {
+    // Function to go to book detail information
+    goToBook = async (book_id) => {
+        store.setState({ 'book_id': book_id })
+        this.props.history.push("/bookdetail/"+store.getState().book_id);
+        }
     // Function to get all cart's content from database
     getAllCart = ()=> {
         const req = {
@@ -69,6 +74,7 @@ class CartDetail extends React.Component {
         await this.props.Calculate()
         if (localStorage.getItem('token') !== null){
             this.props.history.push("/cart");
+            this.getAllCart()
         }
     }
 
@@ -85,18 +91,25 @@ class CartDetail extends React.Component {
             }
             return false
         })
+        console.log('isi cart', listInCart)
         if(listInCart.length<1){
             localStorage.setItem("cart_content", false)
             return (
                 <div>
                     <div className='container'>
-                        <div className='row' style={{paddingTop:'120px'}}>
-                            <div className='col-md-4'>
+                        <div className='row' style={{paddingTop:'100px', textAlign:'center'}}>
+                            <div className='col-md-2'>
                             </div>
-                            <div className='col-md-4'>
-                                <img style={{width:'100%'}} src={emptylogo} alt=""/>
+                            <div className='col-md-8'>
+                                <img style={{width:'70%'}} src={emptylogo} alt=""/>
+                                <h1>
+                                    Aku kosong...
+                                </h1>
+                                <h1>
+                                    Isi aku dengan buku-buku favoritmu...
+                                </h1> 
                             </div>
-                            <div className='col-md-4'>
+                            <div className='col-md-2'>
                             </div>
                         </div>
                     </div>
@@ -135,10 +148,10 @@ class CartDetail extends React.Component {
                                     <img style={{width:'100%'}} src={content.foto_buku}></img>
                                 </div>
                                 <div className='col-sm-5'>
-                                    <div className='row'>
+                                    <div className='row'><Link style={{textDecoration:'none', color:'black'}} onClick={event => this.goToBook(content.book_id)}>
                                         <div className='col-sm-12 detail-book-cart1'>
                                             {content.judul}
-                                        </div>
+                                        </div></Link>
                                     </div>
                                     <div className='row'>
                                         <div className='col-sm-12 detail-book-cart2'>
@@ -157,21 +170,21 @@ class CartDetail extends React.Component {
                                     </div>
                                 </div>
                                 <div className='col-sm-3' style={{fontSize:'15px'}}>
-                                    <div>
+                                    <div style={{fontSize:'12px'}}>
                                         Telah Ditambahkan
                                     </div>
-                                    <div style={{fontWeight:'bold'}}>
+                                    <div style={{fontSize:'20px', fontWeight:'bold'}}>
                                         {content.stok} Buku
                                     </div>
                                     <div>
-                                        <label for="exampleFormControlSelect1" style={{paddingTop:'50px'}}>Pembarui Jumlah</label>
+                                        <label for="exampleFormControlSelect1" style={{paddingTop:'40px'}}>Pembarui Jumlah</label>
                                         <select class="form-control" id={content.id} name='stok' onChange={e => this.props.changeInputCart(e)}required>
                                             {perulangan.map((total,i) =>
                                             <option id={content.id}  value={total}>{total}</option>
                                             )}
                                         </select>
                                     </div>
-                                    <button className='btn' onClick={()=>this.doDeleteCart(content.id)} style={{fontSize:'12px', marginTop:'20px'}}>
+                                    <button className='btn' onClick={()=>this.doDeleteCart(content.id)} style={{fontSize:'11px', marginTop:'20px'}}>
                                         Hapus dari Keranjang
                                     </button>
                                 </div>

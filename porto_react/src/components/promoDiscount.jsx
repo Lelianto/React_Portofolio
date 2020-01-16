@@ -19,7 +19,7 @@ class PromoDiscount extends React.Component {
                             <h1> Daftar Promo dan Diskon</h1>
                        </div>
                     {listPhoto.map((photo,i)=>
-                       <div className='col-md-6'>
+                       <div className='col-md-6 imagepromo'>
                            <img style={{width:'100%'}} src={photo} alt=""/>
                        </div>
                        )}

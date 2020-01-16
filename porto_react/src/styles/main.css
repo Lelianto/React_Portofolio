@@ -16,16 +16,26 @@
 
 }
 
+@font-face {
+    font-family: 'Poppins';
+    src: url('https://fonts.googleapis.com/css?family=Poppins&display=swap') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 .logo-react {
     width: 60px;
 }
 
 header {
+    font-family:'arista_2.0regular';
     margin-top: 0px;
     position: fixed;
     width: 100%;
     z-index: 5;
-    background-color: #55d7c3;
+    background-color: #63b7af;
     padding-top: 13px;
     -webkit-box-shadow: 0px 0px 6px 2px rgba(193,195,199,1);
     -moz-box-shadow: 0px 0px 6px 2px rgba(193,195,199,1);
@@ -142,7 +152,7 @@ header {
 }
 
 .dropbtn {
-    background-color: #55d7c3;
+    background-color: #63b7af;
     color:black !important;
     font-size: 20px;
     border: none;
@@ -158,12 +168,13 @@ header {
   
 .dropdown-content {
         border-radius: 5%;
+        border-color: #63b7af;
         display: none;
         position: absolute;
-        background-color: #55d7c3;
+        background-color: #63b7af;
         min-width: 160px;
         border: none;
-        margin-top: -7px;
+        margin-top: -15px;
         z-index: 1;
         margin-left: 85px;
   }
@@ -175,24 +186,28 @@ header {
     display: block;
   }
   
-.dropdown-content a:hover {background-color: #55d7c3;}
+.dropdown-content a:hover {background-color: #63b7af;}
   
 .dropdown:hover .dropdown-content {
     display: block;
   }
   
 .dropdown:hover .dropbtn {
-    background-color: #55d7c3;
+    background-color: #63b7af;
   }
 
+div {
+    font-family: 'Poppins', sans-serif;
+}
 
 /* ---------- footer --------- */
 
 footer {
+    font-family:'arista_2.0regular';
     margin-top: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: #55d7c3;
+    background-color: #63b7af;
     position: relative;
     width: 100%;
     bottom: 0px;

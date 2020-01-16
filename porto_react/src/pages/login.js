@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Login from '../components/signin';
 import SignUp from '../components/signup';
+import '../styles/index.css';
 
 class LoginPage extends Component {
   render() {
     return (
-      <div>
+      <div className='bodylogin'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-6'>

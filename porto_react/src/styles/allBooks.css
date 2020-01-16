@@ -14,6 +14,22 @@
     padding-bottom: 14px;
 }
 
+/* [1] The container */
+.box-all-books-photo  {
+    height: 100%; /* [1.1] Set it as per your need */
+    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+  }
+  
+/* [2] Transition property for smooth transformation of images */
+.box-all-books-photo  img {
+transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.box-all-books-photo:hover img {
+transform: scale(1.5);
+}
+
 .box-all-books-title {
     text-align: left;
     font-size: 18px;
