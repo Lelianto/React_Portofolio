@@ -1,12 +1,11 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/profileUser.css';
-import '../styles/loading.css'
-import { withRouter, Link, Redirect } from 'react-router-dom'
-import { connect } from 'unistore/react'
-import NotFound from './notFound'
-import { store, actions } from '../store'
-import axios from 'axios'
+import '../styles/loading.css';
+import { withRouter, Link, Redirect } from 'react-router-dom';
+import { connect } from 'unistore/react';
+import { store, actions } from '../store';
+import axios from 'axios';
 
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
 
@@ -95,14 +94,14 @@ class ProfileUser extends React.Component {
                         <div className='row'>
                             <div className='col-md-1'>
                             </div>
-                            <div className='col-md-11'>
+                            <div className='col-md-11 col-sm-12'>
                                 Alamat email : {userData.email}
                             </div>
                         </div>
                     </div>   
-                    <div className='container container-user'>
+                    <div className='container'>
                         <div className='row space-under-button'>
-                            <div className='col-md-1'>
+                            <div className='col-md-2'>
                             </div>
                             <div className='col-md-4'>
                                 <label>
@@ -111,9 +110,7 @@ class ProfileUser extends React.Component {
                                     </Link>
                                 </label>
                             </div>
-                            <div className='col-md-4'>
-                                
-                            </div>
+
                             <div className='col-md-3 button-logout'>
                                 <label>
                                     <button type="button" class="btn btn-success" onClick={this.handleSignOut}>Log Out</button>

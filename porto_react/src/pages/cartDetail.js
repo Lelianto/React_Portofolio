@@ -4,9 +4,13 @@ import Footer from '../components/footer';
 import CartDetails from '../components/cartDetails';
 import CartDetailTotalPrice from '../components/cartDetailTotalPrice';
 import { store } from '../store';
+import { Redirect } from 'react-router-dom'
 
 class CartDetail extends Component {
   render() {
+    if(localStorage.getItem('token')==null){
+      return <Redirect to={{ pathname: "/login" }} />;
+    }
     if(store.getState().length_cart>=0){
       return (
         <div>

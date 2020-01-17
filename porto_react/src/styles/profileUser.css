@@ -26,3 +26,23 @@
     margin-top: 50px;
     margin-bottom: 20px;
 }
+
+@media screen and (max-width: 600px){
+    .user-full-name {
+        padding-top: 420px;
+    }
+    .container-user {
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    .button-logout {
+        margin-bottom: -45px;
+    }
+}

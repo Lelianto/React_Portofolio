@@ -52,6 +52,14 @@ transform: scale(1.5);
     padding-bottom: 14px;
 }
 
-
+@media screen and (max-width: 600px) {
+    div .col-sm-6 {
+        width: 165px;
+    }
+    .bottom-right {
+        padding-top: 30px;
+        padding-bottom: 40px;
+    }
+}
 
 
