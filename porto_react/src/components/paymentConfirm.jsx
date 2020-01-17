@@ -10,26 +10,26 @@ import foto from '../images/fotobank.jpg'
 class PaymentConfirm extends React.Component {
     render() {
         const { kode_pemesanan, tanggal_pemesanan, total_pembayaran } = this.props
-        // if(this.props.isLoading){
-        //     return (
-        //     <div>
-        //       <body style={{paddingTop:'200px'}}>
-        //       <div className='container'>
-        //         <div className='row'>
-        //           <div className='col-md-5'>
-        //           </div>
-        //           <div className='col-md-2'>
-        //             <div class="loader"></div>
-        //           </div>
-        //           <div className='col-md-5'>
-        //           </div>
-        //         </div>
+        if(this.props.isLoading){
+            return (
+            <div>
+              <body style={{paddingTop:'200px'}}>
+              <div className='container'>
+                <div className='row'>
+                  <div className='col-md-5'>
+                  </div>
+                  <div className='col-md-2'>
+                    <div class="loader"></div>
+                  </div>
+                  <div className='col-md-5'>
+                  </div>
+                </div>
                
-        //       </div>
-        //     </body>
-        //     </div>
-        //     )
-        //   }
+              </div>
+            </body>
+            </div>
+            )
+          }
         if (localStorage.getItem('token') == null){
             return <Redirect to={{ pathname: "/login" }} />;
         } else {

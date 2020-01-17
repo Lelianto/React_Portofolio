@@ -16,10 +16,7 @@
 .border-user {
     border-bottom: rgb(210, 223, 202) 1px solid;
     padding-bottom: 30px;
-}
-
-.button-logout {
-    
+    padding-top: 120px;
 }
 
 .space-under-button {
