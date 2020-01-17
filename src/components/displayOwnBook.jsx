@@ -16,7 +16,6 @@ class DisplayOwnBook extends React.Component {
         }
     // Function to get all book which user has
     componentDidMount = () => {
-
         const req = {
         method: "get",
         url: "http://0.0.0.0:1250/book/mine",
@@ -80,10 +79,10 @@ class DisplayOwnBook extends React.Component {
             )
           }
         return (
-            <div className='container' style={{paddingTop:'110px'}}>
+            <div className='container' style={{paddingTop:'90px'}}>
                 <div className='row'>
                     {displayAvailableBooks.map((book,i) =>
-                        <div className='col-md-3'>
+                        <div className='col-md-3 col-sm-6'>
                             <div className='row box-all-books'>
                                 <div className='col-md-12 box-all-books-photo'>
                                     <img style={{ width:'100%'}} src={book.foto_buku} alt=""/>

@@ -253,7 +253,7 @@
     width:60%;
   }
 
-@media(max-width:767px){
+@media screen and (max-width: 600px){
     input[type=text], input[type=password] {
       background-color: #f6f6f6;
       border: none;
@@ -295,5 +295,7 @@
       min-height: 100%;
       margin-top: 50px;
       padding: 0;
+      padding-top: 85px;
     }
+
 }

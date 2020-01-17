@@ -16,10 +16,7 @@
 .border-user {
     border-bottom: rgb(210, 223, 202) 1px solid;
     padding-bottom: 30px;
-}
-
-.button-logout {
-    
+    padding-top: 120px;
 }
 
 .space-under-button {
@@ -28,8 +25,8 @@
 }
 
 @media screen and (max-width: 600px){
-    .user-full-name {
-        padding-top: 420px;
+    .user-full-name1 {
+        padding-top: 220px;
     }
     .container-user {
         padding-left: 0;
@@ -44,5 +41,8 @@
     }
     .button-logout {
         margin-bottom: -45px;
+    }
+    h6{
+        font-size: 24px;
     }
 }

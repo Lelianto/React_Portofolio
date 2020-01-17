@@ -184,37 +184,37 @@ class BookDetail extends React.Component {
                                     <div className='col-sm-12 book-writer'>{penulis}</div>
                                     <div className='col-sm-12'>
                                         <div className='row list-detail'>
-                                            <div className='col-sm-5 book-detail-content'>Jumlah Halaman</div>
-                                            <div className='col-sm-7 book-detail-content'>{jumlah_halaman}</div>
-                                            <div className='col-sm-5 book-detail-content'>Tanggal Terbit</div>
-                                            <div className='col-sm-7 book-detail-content'>{tanggal_terbit}</div>
-                                            <div className='col-sm-5 book-detail-content'>ISBN</div>
-                                            <div className='col-sm-7 book-detail-content'>{isbn}</div>
-                                            <div className='col-sm-5 book-detail-content'>Genre</div>
-                                            <div className='col-sm-7 book-detail-content'>{genre}</div>
-                                            <div className='col-sm-5 book-detail-content'>Bahasa</div>
-                                            <div className='col-sm-7 book-detail-content'>{bahasa}</div>
-                                            <div className='col-sm-5 book-detail-content'>Penerbit</div>
-                                            <div className='col-sm-7 book-detail-content'>{penerbit}</div>
-                                            <div className='col-sm-5 book-detail-content'>Berat</div>
-                                            <div className='col-sm-7 book-detail-content'>{berat} kg</div>
-                                            <div className='col-sm-5 book-detail-content'>Lebar</div>
-                                            <div className='col-sm-7 book-detail-content'>{lebar} cm</div>
-                                            <div className='col-sm-5 book-detail-content'>Panjang</div>
-                                            <div className='col-sm-7 book-detail-content'>{panjang} cm</div>
-                                            <div className='col-sm-5 book-detail-content'>Stok</div>
-                                            <div className='col-sm-7 book-detail-content'>{stok} exemplar</div>
+                                            <div className='col-sm-5 col-6 book-detail-content'>Jumlah Halaman</div>
+                                            <div className='col-sm-7 col-6 book-detail-content'>{jumlah_halaman}</div>
+                                            <div className='col-sm-5 col-6 book-detail-content'>Tanggal Terbit</div>
+                                            <div className='col-sm-7 col-6 book-detail-content'>{tanggal_terbit}</div>
+                                            <div className='col-sm-5 col-6 book-detail-content'>ISBN</div>
+                                            <div className='col-sm-7 col-6 book-detail-content'>{isbn}</div>
+                                            <div className='col-sm-5 col-6 book-detail-content'>Genre</div>
+                                            <div className='col-sm-7 col-6 book-detail-content'>{genre}</div>
+                                            <div className='col-sm-5 col-6 book-detail-content'>Bahasa</div>
+                                            <div className='col-sm-7 col-6 book-detail-content'>{bahasa}</div>
+                                            <div className='col-sm-5 col-6 book-detail-content'>Penerbit</div>
+                                            <div className='col-sm-7 col-6 book-detail-content'>{penerbit}</div>
+                                            <div className='col-sm-5 col-6 book-detail-content'>Berat</div>
+                                            <div className='col-sm-7 col-6 book-detail-content'>{berat} kg</div>
+                                            <div className='col-sm-5 col-6 book-detail-content'>Lebar</div>
+                                            <div className='col-sm-7 col-6 book-detail-content'>{lebar} cm</div>
+                                            <div className='col-sm-5 col-6 book-detail-content'>Panjang</div>
+                                            <div className='col-sm-7 col-6 book-detail-content'>{panjang} cm</div>
+                                            <div className='col-sm-5 col-6 book-detail-content'>Stok</div>
+                                            <div className='col-sm-7 col-6 book-detail-content'>{stok} exemplar</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className='col-md-3' style={{ backgroundColor: 'aliceblue', borderRadius: '5%', marginBottom:'250px' }}>
-                                <div className='row' style={{ paddingTop:'25px', paddingLeft: '10px', paddingRight: '10px'}} >
+                            <div className='col-md-3 book-pricing-box' >
+                                <div className='row book-pricing'  >
                                     <div className='col-md-6'>{jenis_cover}</div>
                                     <div className='col-md-6'>Rp {harga}</div>
                                 </div>
                                 <div className='row'>
-                                    <div className='col-md-12' style={{ paddingTop:'55px'}}>
+                                    <div className='col-md-12' style={{ paddingTop:'55px', paddingBottom:'20px'}}>
                                         <label>
                                             <button type="button" class="btn btn-success" onClick={this.doAddCart} data-toggle="modal" data-target="#exampleModalCenter">Masukkan Ke Keranjang</button>
                                         </label>

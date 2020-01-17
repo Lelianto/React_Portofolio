@@ -52,6 +52,21 @@ transform: scale(1.5);
     padding-bottom: 14px;
 }
 
+.top-body{
+    padding-top: 110px;
+}
 
+@media screen and (max-width: 600px) {
+    div .col-sm-6 {
+        width: 165px;
+    }
+    .bottom-right {
+        padding-top: 30px;
+        padding-bottom: 40px;
+    }
+    .top-body {
+        padding-top: 375px;
+    }
+}
 
 

@@ -127,7 +127,7 @@ class CartDetail extends React.Component {
         else if(this.props.isLoading){
             return (
             <div>
-              <body style={{paddingTop:'200px'}}>
+              <body className='top-body-cart3'>
               <div className='container'>
                 <div className='row'>
                   <div className='col-md-5'>
@@ -146,18 +146,18 @@ class CartDetail extends React.Component {
           }
         return (
             <div>
-                <div className='container' style={{paddingTop:'120px'}}>
+                <div className='container top-body-cart'>
                     <div className='row'>
                         <form onSubmit={e => e.preventDefault()}>
                         {listInCart.map((content,i)=>
-                        <div>
-                            <div className='col-md-12 cart-book-detail'>
+                        <div className='cart-body'>
+                            <div className='col-12 cart-book-detail'>
                                 <div className='col-sm-3'>
                                     <img style={{width:'100%'}} src={content.foto_buku}/>
                                 </div>
-                                <div className='col-sm-5'>
+                                <div className='col-sm-5 col-8'>
                                     <div className='row'><Link style={{textDecoration:'none', color:'black'}} onClick={event => this.goToBook(content.book_id)}>
-                                        <div className='col-sm-12 detail-book-cart1'>
+                                        <div className='col-sm-12  col-4 detail-book-cart1'>
                                             {content.judul}
                                         </div></Link>
                                     </div>
