@@ -3,6 +3,7 @@ import axios from 'axios';
 
 // Initialization global state
 const initialState = {
+  length_cart:0,
   id_payment:'',
   id_cart:'',
   id_user:'',
@@ -65,7 +66,8 @@ const initialState = {
   kode_pos:'',
   nomor_telepon:'',
   validasiPostBuku:false,
-  validasiUpdateBuku:false
+  validasiUpdateBuku:false,
+  cart_content:true
 }
 
 export const store = createStore(initialState)

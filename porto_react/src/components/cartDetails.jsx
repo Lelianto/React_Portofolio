@@ -13,9 +13,12 @@ const perulangan = ['1','2','3','4','5','6','7','8','9','10']
 class CartDetail extends React.Component {
     // Function to go to book detail information
     goToBook = async (book_id) => {
-        store.setState({ 'book_id': book_id })
+        store.setState({ 
+            'book_id': book_id
+        })
         this.props.history.push("/bookdetail/"+store.getState().book_id);
         }
+
     // Function to get all cart's content from database
     getAllCart = ()=> {
         const req = {
@@ -28,7 +31,11 @@ class CartDetail extends React.Component {
             const self = this
             axios(req)
                 .then(function (response) {
-                    store.setState({ carts: response.data, isLoading:false})
+                    store.setState({ 
+                        carts: response.data, 
+                        isLoading:false,
+                        'cart_content':true 
+                    })
                     return response
                 })
                 .catch((error)=>{
@@ -58,10 +65,11 @@ class CartDetail extends React.Component {
     // Function to delete product in cart by ID (from database)
     doDeleteCart = async (e) => {
         store.setState({
-            'cart_id': e
+            'cart_id': e,
+            "disable" : true
         })
         await this.props.deleteCartItem()
-        if (localStorage.getItem('token') !== null){
+        if (store.getState().length_cart>0){
             this.getAllCart()
             this.props.history.push("/cart");
         }
@@ -72,8 +80,8 @@ class CartDetail extends React.Component {
         await this.props.updateBuy()
         await this.props.Calculate()
         if (localStorage.getItem('token') !== null){
-            this.props.history.push("/cart");
             this.getAllCart()
+            this.props.history.push("/cart");
         }
     }
 
@@ -90,9 +98,11 @@ class CartDetail extends React.Component {
             }
             return false
         })
-        console.log('isi cart', listInCart)
+        store.setState({
+            'length_cart':listInCart.length
+        })
+        console.warn('isi', store.getState().length_cart)
         if(listInCart.length<1){
-            localStorage.setItem("cart_content", false)
             return (
                 <div>
                     <div className='container'>
@@ -104,9 +114,9 @@ class CartDetail extends React.Component {
                                 <h1>
                                     Aku kosong...
                                 </h1>
-                                <h1>
+                                <h3>
                                     Isi aku dengan buku-buku favoritmu...
-                                </h1> 
+                                </h3> 
                             </div>
                             <div className='col-md-2'>
                             </div>
@@ -115,7 +125,7 @@ class CartDetail extends React.Component {
                 </div>
             )
         }
-        if(this.props.isLoading){
+        else if(this.props.isLoading){
             return (
             <div>
               <body style={{paddingTop:'200px'}}>

@@ -4,8 +4,8 @@ import '../styles/bootstrap.min.css';
 import profile from '../images/profile.png';
 import cart from '../images/cart.webp';
 import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'unistore/react'
-import { actions } from '../store'
+import { connect } from 'unistore/react';
+import { actions } from '../store';
 
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop', 'Antologi Puisi']
 
@@ -79,7 +79,7 @@ class Header extends React.Component {
                         <nav>
                             <ul className="list-unstyled navigate">
                                 <li className="navi1">
-                                    <Link to="/profile">
+                                    <Link to="/profile" className="">
                                         <img className="navi2" src={profile} alt=""/>
                                         </Link></li>
                                 <li className="navi1">

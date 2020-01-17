@@ -3,11 +3,11 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import CartDetails from '../components/cartDetails';
 import CartDetailTotalPrice from '../components/cartDetailTotalPrice';
+import { store } from '../store';
 
 class CartDetail extends Component {
   render() {
-    localStorage.setItem("cart_content", true)
-    if(localStorage.getItem('cart_content')){
+    if(store.getState().length_cart>0){
       return (
         <div>
           <Header/>
@@ -27,7 +27,7 @@ class CartDetail extends Component {
           </div>
         </div>
       );
-    }
+    } else {
     return (
       <div>
         <Header/>
@@ -39,7 +39,7 @@ class CartDetail extends Component {
           <Footer/>
         </div>
       </div>
-    );
+    )};
   }
 }
 

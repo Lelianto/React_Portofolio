@@ -20,7 +20,8 @@ class CartDetailTotalPrice extends React.Component {
         axios(req)
             .then(function(response) {
               store.setState({
-                "total_price": response.data
+                "total_price": response.data,
+                'disable': true
               })
               return response
             })
@@ -49,6 +50,9 @@ class CartDetailTotalPrice extends React.Component {
   };
 
   render() {
+      if(store.getState().length_cart==0){
+        return <Redirect to={{ pathname: "/cart" }} />;
+      }
       if(this.props.isLoading){
           return (
           <div >
