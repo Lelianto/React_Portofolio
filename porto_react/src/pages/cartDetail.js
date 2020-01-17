@@ -7,7 +7,7 @@ import { store } from '../store';
 
 class CartDetail extends Component {
   render() {
-    if(store.getState().length_cart>0){
+    if(store.getState().length_cart>=0){
       return (
         <div>
           <Header/>
@@ -27,19 +27,7 @@ class CartDetail extends Component {
           </div>
         </div>
       );
-    } else {
-    return (
-      <div>
-        <Header/>
-        <div style={{paddingBottom:'100px'}}>
-          <CartDetails/>
-        </div>
-      <p></p>
-        <div>
-          <Footer/>
-        </div>
-      </div>
-    )};
+    } 
   }
 }
 

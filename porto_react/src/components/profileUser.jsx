@@ -19,6 +19,7 @@ class ProfileUser extends React.Component {
         this.props.history.push("/");
     };
 
+    // Function to get user data for profile
     componentDidMount = () => {
         const req = {
         method: "get",

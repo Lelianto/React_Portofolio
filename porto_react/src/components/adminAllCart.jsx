@@ -6,7 +6,6 @@ import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'
 
-
 class AccessAllCarts extends React.Component {
     // Fungsi untuk mengambil semua list cart dari database
     getAllCart = () => {
@@ -78,7 +77,7 @@ class AccessAllCarts extends React.Component {
                         )}
                     </div>
                     <div className='col-md-1' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Jumlah Beli</div>
+                        <div style={{borderBottom:'1px black solid'}}>Total Beli</div>
                         {adminAllCart.map((cart,i) =>
                             <div className='col-md-12' style={{marginTop:'15px'}}>
                                 {cart.stok}

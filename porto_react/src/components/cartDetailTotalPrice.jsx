@@ -50,7 +50,7 @@ class CartDetailTotalPrice extends React.Component {
   };
 
   render() {
-      if(store.getState().length_cart==0){
+      if(store.getState().length_cart===0){
         return <Redirect to={{ pathname: "/cart" }} />;
       }
       if(this.props.isLoading){

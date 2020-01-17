@@ -9,7 +9,6 @@ import promo4 from '../images/promo4.jpg';
 import promo5 from '../images/promo5.jpg';
 
 class Carousel extends React.Component {
-
     render() {
         return (
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style={{paddingTop: '80px'}}>

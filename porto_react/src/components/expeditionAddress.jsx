@@ -2,10 +2,9 @@ import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/cartDetail.css';
 import '../styles/loading.css'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
-import axios from 'axios'
 
 class CartDetail extends React.Component {
     // Function to get expedetion price

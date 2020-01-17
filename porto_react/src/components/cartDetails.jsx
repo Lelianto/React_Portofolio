@@ -93,7 +93,7 @@ class CartDetail extends React.Component {
     render() {
         const { carts } = this.props
         const listInCart = carts.filter(item => {
-            if (item.email == localStorage.getItem('email') && item.foto_buku !== null && item.judul !== null && item.harga !== null && item.status_cart == false && item.berat !== null) {
+            if (item.email === localStorage.getItem('email') && item.foto_buku !== null && item.judul !== null && item.harga !== null && item.status_cart === false && item.berat !== null) {
                 return item;
             }
             return false
@@ -101,25 +101,24 @@ class CartDetail extends React.Component {
         store.setState({
             'length_cart':listInCart.length
         })
-        console.warn('isi', store.getState().length_cart)
         if(listInCart.length<1){
             return (
                 <div>
                     <div className='container'>
-                        <div className='row' style={{paddingTop:'100px', textAlign:'center'}}>
-                            <div className='col-md-2'>
+                        <div className='row' style={{paddingTop:'170px', paddingBottom:'80px', textAlign:'center'}}>
+                            <div className='col-md-6'>
                             </div>
-                            <div className='col-md-8'>
+                            <div className='col-md-6'>
                                 <img style={{width:'70%'}} src={emptylogo} alt=""/>
-                                <h1>
-                                    Aku kosong...
-                                </h1>
                                 <h3>
+                                    Aku kosong...
+                                </h3>
+                                <h6>
                                     Isi aku dengan buku-buku favoritmu...
-                                </h3> 
+                                </h6> 
                             </div>
-                            <div className='col-md-2'>
-                            </div>
+                            {/* <div className='col-md-2'>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -154,7 +153,7 @@ class CartDetail extends React.Component {
                         <div>
                             <div className='col-md-12 cart-book-detail'>
                                 <div className='col-sm-3'>
-                                    <img style={{width:'100%'}} src={content.foto_buku}></img>
+                                    <img style={{width:'100%'}} src={content.foto_buku}/>
                                 </div>
                                 <div className='col-sm-5'>
                                     <div className='row'><Link style={{textDecoration:'none', color:'black'}} onClick={event => this.goToBook(content.book_id)}>

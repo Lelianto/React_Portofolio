@@ -3,8 +3,7 @@ import '../styles/bootstrap.min.css';
 import '../styles/profileUser.css';
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
-import { store, actions } from '../store'
-import axios from 'axios'
+import { actions } from '../store'
 
 class ProfileUser extends React.Component {
     // Function for Admin sign out

@@ -8,7 +8,7 @@ import { connect } from 'unistore/react'
 import { store, actions } from '../store';
 
 class SignUp extends React.Component {
-
+  // Function for doing SignUp
   doSignUp = async () => {
     await this.props.postSignUp()
     if (this.props.is_login){
@@ -18,7 +18,7 @@ class SignUp extends React.Component {
 
   render() {
     return (
-    <div className="wrapper fadeInDown" style={{marginTop:'-60px',marginBottom:'-25px'}}>
+    <div className="wrapper fadeInDown" style={{marginTop:'-60px'}}>
         <div id="formContent">
             <div className="fadeIn first">
             <img style={{ marginTop:'30px', marginBottom:'30px', width:'50%'}} src={logo} id="icon" alt="User Icon" />

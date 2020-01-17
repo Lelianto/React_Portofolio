@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/style.css';
-import { withRouter, Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class NotFound extends React.Component {
     render() {

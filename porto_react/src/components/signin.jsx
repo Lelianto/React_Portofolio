@@ -8,7 +8,7 @@ import { connect } from 'unistore/react'
 import { actions } from '../store'
 
 class SignIn extends React.Component {
-  // Function for login
+  // Function for Login
   doLogin = async () => {
     await this.props.postLogin()
     if (localStorage.getItem('token') !== null){
