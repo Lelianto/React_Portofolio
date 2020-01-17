@@ -11,7 +11,7 @@ import promo5 from '../images/promo5.jpg';
 class Carousel extends React.Component {
     render() {
         return (
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style={{paddingTop: '80px'}}>
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active"><Link to='/discount'>
                         <img class="d-block w-100" src={promo1} alt="First slide" /></Link>

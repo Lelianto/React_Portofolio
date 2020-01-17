@@ -21,6 +21,8 @@ class ProfileUser extends React.Component {
                 <div>
                     <div className='container user-full-name container-user'>
                         <div className='row'>
+                            <div className='col-md-1'>
+                            </div>
                             <div className='col-md-6'>
                                 <h3 className='border-user'>Hai, ADMIN</h3>
                             </div>

@@ -8,7 +8,7 @@ import AdminAllBooks from '../components/displayAllBooksAdmin';
 
 class HomePage extends Component {
   render() {
-    if(localStorage.getItem('email')=='lian@alterra.id'){
+    if(localStorage.getItem('email')==='lian@alterra.id'){
       return (
         <div>
           <Header/>

@@ -30,7 +30,7 @@
 }
 
 header {
-    font-family:'arista_2.0regular';
+    font-family: 'arista_2.0regular';
     margin-top: 0px;
     position: fixed;
     width: 100%;
@@ -40,6 +40,10 @@ header {
     -webkit-box-shadow: 0px 0px 6px 2px rgba(193,195,199,1);
     -moz-box-shadow: 0px 0px 6px 2px rgba(193,195,199,1);
     box-shadow: 0px 0px 6px 2px rgba(193,195,199,1);
+}
+
+.img-class {
+    width: 100%;
 }
 .logo-name {
     padding-top: 13px;
@@ -115,6 +119,7 @@ header {
 
 .search {
     margin-left: 35px;
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 .user_in {
@@ -197,7 +202,7 @@ header {
   }
 
 div {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins';
 }
 
 /* ---------- footer --------- */
@@ -214,7 +219,7 @@ footer {
 }
 
 .bottom0 {
-    padding-top: 10px;
+    margin-top: 30px;
     text-align: left;
     padding-left: 50px;
     border-left: white 2px solid;
@@ -232,4 +237,101 @@ footer {
 
 .add {
     padding-left: 35px;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        font-family:'arista_2.0regular';
+        margin-top: 0px;
+        position: absolute;
+        width: 100%;
+        z-index: 5;
+        background-color: #63b7af;
+        padding-top: 13px;
+        -webkit-box-shadow: 0px 0px 6px 2px rgba(193,195,199,1);
+        -moz-box-shadow: 0px 0px 6px 2px rgba(193,195,199,1);
+        box-shadow: 0px 0px 6px 2px rgba(193,195,199,1);
+    }
+    .logo-name {
+        padding-top: 13px;
+        color: rgb(17, 0, 255);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .dropbtn {
+        background-color: #63b7af;
+        color: black !important;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+        margin-top: 0;
+        margin-left: 0;
+    }
+
+    .btn-info {
+        color: #fff;
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        display: block;
+        margin: auto;
+        width: 61%;
+        margin-right: 0;
+        margin-left: 105px;
+        margin-top: -25px;
+    }
+    .list-unstyled {
+        padding-left: 0;
+        list-style: none;
+        color: gray;
+        margin-left: 142px;
+    }
+    .dropdown-content {
+        border-radius: 5%;
+        border-color: #63b7af;
+        display: none;
+        position: absolute;
+        background-color: #63b7af;
+        min-width: 160px;
+        border: none;
+        margin-top: -15px;
+        z-index: 1;
+        margin-left: 0px;
+    }
+    .toko {
+        font-family: 'arista_2.0regular';
+        margin-top: -3px;
+        font-size: 44px;
+        color: black;
+        padding: 25px;
+    }
+    div .col-sm-6 {
+        width: 180px;
+    }
+    .add {
+        padding-left: 0px;
+    }
+    footer {
+        font-family: 'arista_2.0regular';
+        margin-top: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: #63b7af;
+        position: relative;
+        width: 100%;
+        bottom: 0px
+    }
+    .bottom0 {
+        text-align: left;
+        border-left: white 2px solid;
+        margin-left: 40px;
+        margin-top: 5px;
+    }
+
+    .bottom1 {
+        text-align: left;
+        border-left: white 2px solid;
+        margin-left: 40px;
+        margin-top: 5px;
+    }
 }

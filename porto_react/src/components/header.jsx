@@ -13,16 +13,12 @@ class Header extends React.Component {
     // Function for searching fiture (user input)
     doSearchBook = async () => {
         await this.props.searchBook()
-        if (localStorage.getItem('token') !== null){
-            this.props.history.push("/search");
-        }
+        this.props.history.push("/search");
     }
     // Function for filter fiture (by category)
     doSearchCategoryBook = async (e) => {
         await this.props.categoryBook(e)
-        if (localStorage.getItem('token') !== null){
-            this.props.history.push("/category");
-        }
+        this.props.history.push("/category");
     }
 
     render (){

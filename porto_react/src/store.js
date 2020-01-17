@@ -433,11 +433,7 @@ export const actions = store => ({
     const req = {
       method: "get",
       url: "http://0.0.0.0:1250/book/search?keyword="+store.getState().keyword,
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem('token')
-      }
     };
-
     await axios(req)
       .then(response => {
         store.setState({
@@ -455,10 +451,7 @@ export const actions = store => ({
     store.setState({ [e.target.name]: e.target.value });
     const req = {
       method: "get",
-      url: "http://0.0.0.0:1250/book/category?keyword="+store.getState().kategori,
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem('token')
-      }
+      url: "http://0.0.0.0:1250/book/category?keyword="+store.getState().kategori
     };
 
     await axios(req)

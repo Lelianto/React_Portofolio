@@ -102,7 +102,7 @@ class BookDetail extends React.Component {
         else if (localStorage.getItem('email')==bookById.email_user) {
             return (
                 <div>
-                    <div className='container' style={{paddingTop: '150px'}}>
+                    <div className='container ' style={{paddingTop: '150px'}}>
                         <div className='row'>
                             <div className='col-md-4 book-photo'>
                                 <img style={{width:'100%'}} src={foto_buku}></img>

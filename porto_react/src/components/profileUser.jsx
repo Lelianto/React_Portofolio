@@ -84,6 +84,8 @@ class ProfileUser extends React.Component {
                 <div>
                     <div className='container user-full-name container-user'>
                         <div className='row'>
+                            <div className='col-md-1'>
+                            </div>
                             <div className='col-md-6'>
                                 <h3 className='border-user'>Hai, {userData.nama_lengkap}</h3>
                             </div>
@@ -91,33 +93,33 @@ class ProfileUser extends React.Component {
                     </div>
                     <div className='container alamat-email container-user'>
                         <div className='row'>
-                            <div className='col-md-12'>
+                            <div className='col-md-1'>
+                            </div>
+                            <div className='col-md-11'>
                                 Alamat email : {userData.email}
                             </div>
                         </div>
-                    </div>
-                    
+                    </div>   
                     <div className='container container-user'>
-                    
-                            <div className='row space-under-button'>
-                                <div className='col-md-4'>
-                                    <label>
-                                        <Link to='/sell'>
-                                            <button type="button" class="btn btn-success">Jual Buku</button>
-                                        </Link>
-                                    </label>
-                                </div>
-                                <div className='col-md-4'>
-                                    
-                                </div>
-                                <div className='col-md-4 button-logout'>
-                                    <label>
-                                        <button type="button" class="btn btn-success" onClick={this.handleSignOut}>Log Out</button>
-                                    </label>
-                                </div>
+                        <div className='row space-under-button'>
+                            <div className='col-md-1'>
+                            </div>
+                            <div className='col-md-4'>
+                                <label>
+                                    <Link to='/sell'>
+                                        <button type="button" class="btn btn-success">Jual Buku</button>
+                                    </Link>
+                                </label>
+                            </div>
+                            <div className='col-md-4'>
                                 
                             </div>
-                        
+                            <div className='col-md-3 button-logout'>
+                                <label>
+                                    <button type="button" class="btn btn-success" onClick={this.handleSignOut}>Log Out</button>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             )

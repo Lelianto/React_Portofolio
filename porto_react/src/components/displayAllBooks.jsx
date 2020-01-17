@@ -83,14 +83,14 @@ class AllBooks extends React.Component {
             <div className='container' style={{marginTop:'40px'}}>
                 <div className='row'>
                     {displayAvailableBooks.map((book,i) =>
-                        <div className='col-md-3'>
+                        <div className='col-md-3 col-sm-6'>
                             <div className='row box-all-books'>
-                                <div className='col-md-12 box-all-books-photo'>
-                                    <img  style={{ width:'100%'}} src={book.foto_buku} alt=""/>
+                                <div className='col-md-12 col-sm-12 box-all-books-photo'>
+                                    <img  className='img-class' src={book.foto_buku} alt=""/>
                                 </div>
-                                <div className='col-md-12 box-all-books-title' onClick={event => this.goToBook(book)}>{book.judul}</div>
-                                <div className='col-md-12 box-all-books-writer'>{book.penulis}</div>
-                                <div className='col-md-12 box-all-books-price'>Rp {book.harga}</div>
+                                <div className='col-md-12 col-sm-12 box-all-books-title' onClick={event => this.goToBook(book)}>{book.judul}</div>
+                                <div className='col-md-12 col-sm-12 box-all-books-writer'>{book.penulis}</div>
+                                <div className='col-md-12 col-sm-12 box-all-books-price'>Rp {book.harga}</div>
                             </div>
                         </div>
                     )}
