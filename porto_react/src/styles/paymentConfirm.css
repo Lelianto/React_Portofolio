@@ -1,0 +1,51 @@
+.container-user {
+    padding-left: 250px;
+    padding-right: 250px;
+    text-align: left;
+}
+
+.alamat-email {
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.user-full-name {
+    padding-top: 130px;
+}
+
+.border-user {
+    border-bottom: rgb(210, 223, 202) 1px solid;
+    padding-bottom: 30px;
+}
+
+.button-logout {
+    
+}
+
+.space-under-button {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 600px){
+    .user-full-name1 {
+        padding-top: 220px;
+    }
+    .container-user {
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    .button-logout {
+        margin-bottom: -45px;
+    }
+    h6{
+        font-size: 24px;
+    }
+}

@@ -55,13 +55,13 @@ class CartDetailTotalPrice extends React.Component {
               }
           })
     };
+
     render() {
-        console.log('nomor telepon', store.getState().nomor_telepon)
         const { total_price, ongkos_kirim } = this.props
         const total_payment = total_price + ongkos_kirim
         if (store.getState().nama_jalan =='' && store.getState().address == false){
             return (
-                <div className="fadeInDown" style={{paddingTop:'180px'}}>
+                <div className="fadeInDown empty-form">
                     <div id="formContent">
                         <div className="fadeIn first">
                         <div style={{fontWeight:'bold', padding:'70px'}}>
@@ -74,7 +74,7 @@ class CartDetailTotalPrice extends React.Component {
         } 
         else if (store.getState().rt_rw =='' && store.getState().address == false){
             return (
-                <div className="fadeInDown" style={{paddingTop:'180px'}}>
+                <div className="fadeInDown empty-form">
                     <div id="formContent">
                         <div className="fadeIn first">
                         <div style={{fontWeight:'bold', padding:'70px'}}>
@@ -87,7 +87,7 @@ class CartDetailTotalPrice extends React.Component {
         }
         else if (store.getState().kelurahan =='' && store.getState().address == false){
             return (
-                <div className="fadeInDown" style={{paddingTop:'180px'}}>
+                <div className="fadeInDown empty-form">
                     <div id="formContent">
                         <div className="fadeIn first">
                         <div style={{fontWeight:'bold', padding:'70px'}}>
@@ -100,7 +100,7 @@ class CartDetailTotalPrice extends React.Component {
         }
         else if (store.getState().kecamatan =='' && store.getState().address == false){
             return (
-                <div className="fadeInDown" style={{paddingTop:'180px'}}>
+                <div className="fadeInDown empty-form">
                     <div id="formContent">
                         <div className="fadeIn first">
                         <div style={{fontWeight:'bold', padding:'70px'}}>
@@ -113,7 +113,7 @@ class CartDetailTotalPrice extends React.Component {
         } 
         else if (store.getState().kota_kabupaten =='' && store.getState().address == false){
             return (
-                <div className="fadeInDown" style={{paddingTop:'180px'}}>
+                <div className="fadeInDown empty-form">
                     <div id="formContent">
                         <div className="fadeIn first">
                         <div style={{fontWeight:'bold', padding:'70px'}}>
@@ -126,7 +126,7 @@ class CartDetailTotalPrice extends React.Component {
         }   
         else if (store.getState().provinsi =='' && store.getState().address == false){
             return (
-                <div className="fadeInDown" style={{paddingTop:'180px'}}>
+                <div className="fadeInDown empty-form">
                     <div id="formContent">
                         <div className="fadeIn first">
                         <div style={{fontWeight:'bold', padding:'70px'}}>
@@ -139,7 +139,7 @@ class CartDetailTotalPrice extends React.Component {
         }  
         else if (store.getState().kode_pos =='' && store.getState().address == false){
             return (
-                <div className="fadeInDown" style={{paddingTop:'180px'}}>
+                <div className="fadeInDown empty-form">
                     <div id="formContent">
                         <div className="fadeIn first">
                         <div style={{fontWeight:'bold', padding:'70px'}}>
@@ -152,7 +152,7 @@ class CartDetailTotalPrice extends React.Component {
         } 
         else if (store.getState().nomor_telepon =='' && store.getState().address == false){
             return (
-                <div className="fadeInDown" style={{paddingTop:'180px'}}>
+                <div className="fadeInDown empty-form">
                     <div id="formContent">
                         <div className="fadeIn first">
                         <div style={{fontWeight:'bold', padding:'70px'}}>
@@ -185,7 +185,7 @@ class CartDetailTotalPrice extends React.Component {
           }
         return (
             <div>
-                <div className='container' style={{paddingTop:'175px'}}>
+                <div className='container top-body-cart2'>
                     <div className='col-md-12' style={{ backgroundColor: 'aliceblue', borderRadius: '5%', marginBottom:'250px' }}>
                         <div className='row' style={{ paddingTop:'25px', paddingLeft: '23px', paddingRight: '23px', textAlign:'left'}} >
                             <div className='col-md-6'>Subtotal</div>

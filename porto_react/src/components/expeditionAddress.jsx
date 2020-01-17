@@ -41,7 +41,7 @@ class CartDetail extends React.Component {
           }
         return (
             <div>
-                <div className='container' style={{paddingTop:'120px'}}>
+                <div className='container top-body-cart1' >
                     <div className='row'>
                         <div className='col-md-12'>
                             <form onSubmit={e => e.preventDefault()}>

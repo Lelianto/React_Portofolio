@@ -41,10 +41,10 @@ class CategoryFilterResult extends React.Component {
             )
           }
         return (
-            <div className='container' style={{paddingTop:'110px'}}>
+            <div className='container top-body'>
                 <div className='row'>
                     {displayAvailableBooks.map((book,i) =>
-                        <div className='col-md-3'>
+                        <div className='col-md-3 col-sm-6'>
                             <div className='row box-all-books'>
                                 <div className='col-md-12 box-all-books-photo'>
                                     <img style={{ width:'100%'}} src={book.foto_buku} alt=""/>
