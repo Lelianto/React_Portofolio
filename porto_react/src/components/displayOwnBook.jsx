@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/allBooks.css';
 import '../styles/loading.css'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'

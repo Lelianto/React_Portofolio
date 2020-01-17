@@ -1,11 +1,9 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/allBooks.css';
-import bookphoto from '../images/book.jpg'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter} from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
-import axios from 'axios'
 
 class CategoryFilterResult extends React.Component {
     // Function to go to book detail information

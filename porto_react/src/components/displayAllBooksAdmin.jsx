@@ -1,8 +1,7 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/allBooks.css';
-import bookphoto from '../images/book.jpg'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter} from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'
@@ -82,7 +81,7 @@ class AdminAllBooks extends React.Component {
             </div>
             )
           }
-        if(localStorage.getItem('email')=='lian@alterra.id'){
+        if(localStorage.getItem('email')==='lian@alterra.id'){
             return (
                 <div className='container' style={{paddingTop:'90px'}}>
                     <div className='row'>

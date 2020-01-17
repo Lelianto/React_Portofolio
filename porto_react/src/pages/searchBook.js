@@ -3,10 +3,9 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import ResultBooks from '../components/displaySearchResult';
 import NoMatch from '../components/noMatch';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react'
-import { store, actions } from '../store'
-
+import { actions } from '../store'
 
 class SearchPage extends Component {
   render() {
