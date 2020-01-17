@@ -30,7 +30,7 @@ class ProfileUser extends React.Component {
         const self = this
         axios(req)
             .then(function (response) {
-                store.setState({ userData: response.data, isLoading:false})
+                store.setState({ userData: response.data, isLoading:false, validasiPostBuku: false, validasiUpdateBuku: false})
                 return response
             })
             .catch((error)=>{

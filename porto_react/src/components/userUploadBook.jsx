@@ -12,15 +12,14 @@ class UserUpload extends React.Component {
     // Function for uploading book by user
     doAddBook = async () => {
         await this.props.postBook()
-        console.warn('string cek', localStorage.getItem('is_login'))
-        if (localStorage.getItem('token') !== null){
-            this.props.history.push("/");
+        if (store.getState().validasiPostBuku){
+            this.props.history.push("/profile");
         }
     }
-
+    
     render() {
         return (
-        <div className="container wrapper-new fadeInDown" style={{paddingTop:'100px'}}>
+            <div className="container wrapper-new fadeInDown" style={{paddingTop:'100px'}}>
             <div className='row'>
             <div id="">
                 <div className="fadeIn first">
@@ -164,4 +163,4 @@ class UserUpload extends React.Component {
     }
 }
 
-export default connect("Bearer, bahasa, status, genre, is_login",actions)(withRouter(UserUpload));
+export default connect("is_login",actions)(withRouter(UserUpload));

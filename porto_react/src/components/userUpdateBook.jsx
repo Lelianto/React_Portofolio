@@ -3,7 +3,7 @@ import '../styles/userUploadBook.css';
 import '../styles/bootstrap.min.css'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'unistore/react'
-import { actions } from '../store'
+import { store, actions } from '../store'
 
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
 
@@ -11,7 +11,7 @@ class UserUpload extends React.Component {
     // Function for updating book by user
     doUpdateBook = async () => {
         await this.props.updateBook()
-        if (localStorage.getItem('token') !== null){
+        if (store.getState().validasiUpdateBuku){
             this.props.history.push("/profile");
         }
     }

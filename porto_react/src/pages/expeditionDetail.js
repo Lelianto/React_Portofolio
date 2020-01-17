@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../components/header';
+import Header from '../components/headerFix';
 import Footer from '../components/footer';
 import Address from '../components/expeditionAddress';
 import ExpeditionPrice from '../components/expeditionTotalPrice';

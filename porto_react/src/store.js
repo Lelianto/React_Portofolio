@@ -63,7 +63,9 @@ const initialState = {
   kota_kabupaten:'', 
   provinsi:'',
   kode_pos:'',
-  nomor_telepon:''
+  nomor_telepon:'',
+  validasiPostBuku:false,
+  validasiUpdateBuku:false
 }
 
 export const store = createStore(initialState)
@@ -189,6 +191,9 @@ export const actions = store => ({
     };
     await axios(req)
         .then(response => {
+          store.setState({
+            'validasiPostBuku':true
+          })
           return response
         })
         .catch(error => {
@@ -285,6 +290,9 @@ export const actions = store => ({
     await axios(req)
       .then(response => {
         localStorage.setItem('user_id', response.data.user_id)
+        store.setState({
+          'validasiUpdateBuku':true
+        })
         return response
       })
       .catch(error => {

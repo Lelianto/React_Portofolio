@@ -40,6 +40,9 @@ class PaymentConfirm extends React.Component {
                             <div className='col-md-6'>
                                 <h3 className='border-user'>Informasi Pemesanan</h3>
                             </div>
+                            <div className='col-md-6'>
+                                <Link style={{textDecoration:'none', color:'teal', fontWeight:'bold', fontSize:'15px', padding:'20px'}} to='/'>Back to Home</Link> 
+                            </div>
                         </div>
                     </div>
                     <div className='container alamat-email container-user'>

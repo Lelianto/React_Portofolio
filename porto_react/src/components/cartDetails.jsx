@@ -57,7 +57,6 @@ class CartDetail extends React.Component {
 
     // Function to delete product in cart by ID (from database)
     doDeleteCart = async (e) => {
-        console.log('isi target e', e)
         store.setState({
             'cart_id': e
         })
