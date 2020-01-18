@@ -6,6 +6,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import { store, actions } from '../store';
 import axios from 'axios';
+
 class CartDetailTotalPrice extends React.Component {
   // Function to display total price inside the cart
   componentDidMount = () => {

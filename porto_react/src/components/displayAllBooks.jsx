@@ -19,10 +19,7 @@ class AllBooks extends React.Component {
 
         const req = {
         method: "get",
-        url: "http://0.0.0.0:1250/book",
-        headers: {
-            Authorization: "Bearer " + localStorage.getItem('token')
-        }
+        url: "http://0.0.0.0:1250/book"
         }; 
         const self = this
         axios(req)

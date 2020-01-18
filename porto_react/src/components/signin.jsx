@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/masuk.css';
 import '../styles/bootstrap.min.css'
 import '../styles/loading.css'
-import logo from '../images/logo.png';
+import logo from '../images/bug-logo.png';
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { actions } from '../store'
