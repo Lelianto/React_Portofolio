@@ -104,8 +104,8 @@ class CartDetail extends React.Component {
         if(listInCart.length<1){
             return (
                 <div>
-                    <div className='container'>
-                        <div className='row' style={{paddingTop:'170px', paddingBottom:'80px', textAlign:'center'}}>
+                    <div className='container top-body-cart4'>
+                        <div className='row' style={{ paddingBottom:'80px', textAlign:'center'}}>
                             <div className='col-md-6'>
                             </div>
                             <div className='col-md-6'>

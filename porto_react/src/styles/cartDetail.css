@@ -42,7 +42,6 @@ textarea{
 .top-body-cart{
     padding-top: 120px;
 }
-
 .top-body-cart1{
     padding-top: 120px;
 }
@@ -51,6 +50,12 @@ textarea{
 }
 .top-body-cart3{
     padding-top: 200px;
+}
+.top-body-cart4{
+    padding-top: 120px;
+}
+.top-body-cart5{
+    padding-top: 120px;
 }
 .empty-form{
     padding-top: 180px;
@@ -118,5 +123,12 @@ textarea{
     }
     .empty-form{
         padding-top: 80px;
+    }
+    .top-body-cart4{
+        padding-top: 470px;
+    }
+    .top-body-cart5{
+        padding-top: 50px;
+        margin-bottom: -260px;
     }
 }

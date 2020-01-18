@@ -7,7 +7,7 @@ class ContactUs extends React.Component {
     render() {
         return (
             <body>
-                <div className="container">
+                <div className="container top-body-about">
                     <div className="row">
                         <div className="col-md-12" style={{textAlign:'justify', paddingTop:'120px'}}>
                             <h1>Hubungi Kami</h1>

@@ -81,7 +81,7 @@ class ProfileUser extends React.Component {
         } else {
             return (
                 <div>
-                    <div className='container user-full-name container-user'>
+                    <div className='container top-body-user user-full-name container-user'>
                         <div className='row'>
                             <div className='col-md-1'>
                             </div>

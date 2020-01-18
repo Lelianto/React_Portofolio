@@ -120,6 +120,9 @@ body {
 }
 
 @media screen and (max-width: 600px) {
+  .top-body-about{
+    padding-top: 320px;
+  }
   #notfound {
     padding-top: 1075px;
     margin-bottom: -300px;

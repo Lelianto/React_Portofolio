@@ -6,7 +6,7 @@ class RuleInUs extends React.Component {
     render() {
         return (
             <body>
-                <div className="container">
+                <div className="container top-body-about">
                     <div className="row">
                         <div className="col-md-12" style={{textAlign:'justify', paddingTop:'120px'}}>
                             <h1>Ketentuan Kerjasama</h1>

@@ -28,8 +28,11 @@
 }
 
 @media screen and (max-width: 600px){
-    .user-full-name {
+    .top-body-user{
         padding-top: 420px;
+    }
+    .user-full-name {
+        padding-top: 320px !important;
     }
     .container-user {
         padding-left: 0;
