@@ -86,8 +86,6 @@ class AccessAllPayments extends React.Component {
                         </div>
                         </form>
                     </div>
-
-                    
                 </div>
                 <div className='row'>
                 <table class="table table-bordered">

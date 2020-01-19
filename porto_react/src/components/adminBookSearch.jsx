@@ -7,7 +7,7 @@ import { store, actions } from '../store'
 import axios from 'axios'
 
 
-class AccessAllBook extends React.Component {
+class SearchAllBook extends React.Component {
     // Fungsi untuk mengambil semua list buku dari database
     getListBook =()=>{
         const req = {
@@ -67,9 +67,14 @@ class AccessAllBook extends React.Component {
     doSearchBook = async () => {
         this.props.history.push("/books/search");
     }
-
     render() {
-        const { adminAllBook } = this.props
+        const { adminAllBook, adminProductKeyword } = this.props
+        const searchResult = adminAllBook.filter(item => {
+            if (item.judul.toLowerCase() == adminProductKeyword.toLowerCase() ||item.penulis.toLowerCase() == adminProductKeyword.toLowerCase() || item.genre.toLowerCase() == adminProductKeyword.toLowerCase() || item.status.toLowerCase() == adminProductKeyword.toLowerCase() || item.email_user.toLowerCase() == adminProductKeyword.toLowerCase()) {
+                return item;
+            }
+            return false
+        });
         return (
             <div className='container-fluid' style={{paddingTop:'50px'}}>
                 <div className='row'>
@@ -92,7 +97,7 @@ class AccessAllBook extends React.Component {
                                 <div className="active-cyan-4 mb-4" style={{marginLeft:'-135px'}}>
                                     <button class="btn btn-info my-sm-0" 
                                     type="submit"
-                                    onClick={this.doSearchBook}
+                                    onClick={this.doSearchPayment}
                                     >Search</button>
                                 </div>
                             </div>
@@ -116,7 +121,7 @@ class AccessAllBook extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {adminAllBook.map((book,i) =>
+                            {searchResult.map((book,i) =>
                             <tr>
                                 <td>{book.id}</td>
                                 <td>{book.judul}</td>
@@ -142,4 +147,4 @@ class AccessAllBook extends React.Component {
     }
 }
 
-export default connect("adminAllBook, isLoading",actions)(withRouter(AccessAllBook));
+export default connect("adminProductKeyword ,adminAllBook, isLoading",actions)(withRouter(SearchAllBook));

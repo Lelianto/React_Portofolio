@@ -60,7 +60,6 @@ class SearchAllPayments extends React.Component {
             }
             return false
         });
-        console.log(searchResult)
         return (
             <div className='container' style={{paddingTop:'50px'}}>
                 <div className='row'>

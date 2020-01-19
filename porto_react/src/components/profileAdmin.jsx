@@ -24,7 +24,7 @@ class ProfileUser extends React.Component {
                             <div className='col-md-1'>
                             </div>
                             <div className='col-md-6'>
-                                <h3 className='border-user'>Hai, ADMIN</h3>
+                                <h3 className='border-user1'>Hai, ADMIN</h3>
                             </div>
                             <div className='col-md-4 button-logout'>
                                 <label>
@@ -36,7 +36,7 @@ class ProfileUser extends React.Component {
  
                     <div className='container' style={{marginTop:'20px', marginLeft:'105px'}}>
                         <div className='row'>
-                            <div className='btn btn-success col-md-2'><Link to='/users' style={{textDecoration:'none', color:'white'}}>
+                            <div className='btn btn-secondary col-md-2'><Link to='/users' style={{textDecoration:'none', color:'white'}}>
                                 <p style={{paddingTop:'15px'}}>Semua User</p></Link>
                             </div>
                             <div className='col-md-1'></div>
@@ -44,11 +44,11 @@ class ProfileUser extends React.Component {
                                 <p style={{paddingTop:'15px'}}>Semua Produk</p></Link>
                             </div>
                             <div className='col-md-1'></div>
-                            <div className='btn btn-success col-md-2'><Link to='/carts' style={{textDecoration:'none', color:'white'}}>
+                            <div className='btn btn-warning col-md-2'><Link to='/carts' style={{textDecoration:'none', color:'white'}}>
                                 <p style={{paddingTop:'15px'}}>Semua Cart</p></Link>
                             </div>
                             <div className='col-md-1'></div>
-                            <div className='btn btn-success col-md-2' ><Link to='/payments' style={{textDecoration:'none', color:'white'}}>
+                            <div className='btn btn-info col-md-2' ><Link to='/payments' style={{textDecoration:'none', color:'white'}}>
                                 <p style={{paddingTop:'15px'}}>Semua Transaksi</p></Link>
                             </div>
                             <div className='col-md-1'></div>
