@@ -79,17 +79,22 @@ class DisplayOwnBook extends React.Component {
             )
           }
         return (
-            <div className='container' style={{paddingTop:'90px'}}>
+            <div className='container' style={{paddingTop:'30px'}}>
                 <div className='row'>
+                    <div className='col-md-12'>
+                        <h3 style={{textAlign:'left', paddingLeft:'0px'}} className='col-md-12 border-user1'>
+                            Buku Milikmu
+                        </h3>
+                    </div>
                     {displayAvailableBooks.map((book,i) =>
-                        <div className='col-md-3 col-sm-6'>
+                        <div className='col-md-6 col-sm-12'>
                             <div className='row box-all-books'>
-                                <div className='col-md-12 box-all-books-photo'>
+                                <div className='col-md-12 col-sm-12 box-all-books-photo'>
                                     <img style={{ width:'100%'}} src={book.foto_buku} alt=""/>
                                 </div>
-                                <div className='col-md-12 box-all-books-title' onClick={event => this.goToBook(book)}>{book.judul}</div>
-                                <div className='col-md-12 box-all-books-writer'>{book.penulis}</div>
-                                <div className='col-md-12 box-all-books-price'>Rp {book.harga}</div>
+                                <div className='col-md-12 col-sm-12 box-all-books-title' onClick={event => this.goToBook(book)}>{book.judul}</div>
+                                <div className='col-md-12 col-sm-12 box-all-books-writer'>{book.penulis}</div>
+                                <div className='col-md-12 col-sm-12 box-all-books-price'>Rp {book.harga}</div>
                             </div>
                         </div>
                     )}

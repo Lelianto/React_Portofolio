@@ -8,6 +8,7 @@ const initialState = {
   id_cart:'',
   id_user:'',
   adminAllPayment:[],
+  userAllCart:[],
   adminAllCart:[],
   userData:[],
   cart_id:0,

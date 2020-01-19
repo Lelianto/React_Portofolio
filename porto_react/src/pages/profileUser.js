@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import Profile from '../components/profileUser';
+import Transaction from '../components/transactionHistory';
 import Admin from '../components/profileAdmin';
 import OwnBooks from '../components/displayOwnBook';
 import '../styles/loading.css'
@@ -23,8 +24,17 @@ class ProfileUser extends Component {
     return (
       <div>
         <Header/>
-        <Profile/>
-        <OwnBooks/>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-6'>
+              <Profile/>
+              <OwnBooks/>
+            </div>
+            <div className='col-md-6'>
+              <Transaction/>
+            </div>
+          </div>
+        </div>
       <p></p>
         <div>
           <Footer/>

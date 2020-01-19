@@ -18,8 +18,14 @@
     padding-bottom: 30px;
 }
 
+.border-user1 {
+    border-bottom: rgb(210, 223, 202) 1px solid;
+    padding-bottom: 30px;
+    padding-top: 0px;
+}
+
 .button-logout {
-    
+    padding-left: 150px;
 }
 
 .space-under-button {
@@ -30,6 +36,12 @@
 @media screen and (max-width: 600px){
     .top-body-user{
         padding-top: 420px;
+    }
+    .border-user1 {
+        border-bottom: rgb(210, 223, 202) 1px solid;
+        padding-bottom: 30px;
+        padding-top: 120px;
+        padding-left: 0px !important;
     }
     .user-full-name {
         padding-top: 320px !important;
@@ -45,7 +57,11 @@
         margin-right: 0px;
         margin-left: 0px;
     }
-    .button-logout {
-        margin-bottom: -45px;
+    .button-sell{
+        margin-left: -65px;
     }
+    .button-logout {
+        margin-left: -67px;
+    }
+
 }

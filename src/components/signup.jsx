@@ -1,31 +1,27 @@
 import React from 'react';
 import '../styles/masuk.css';
-import '../styles/bootstrap.min.css'
-import '../styles/loading.css'
+import '../styles/bootstrap.min.css';
+import '../styles/loading.css';
 import logo from '../images/bug-logo.png';
-import { withRouter, Link, Redirect } from 'react-router-dom'
-import { connect } from 'unistore/react'
-import { actions } from '../store'
+import { withRouter, Link } from 'react-router-dom';
+import { connect } from 'unistore/react';
+import { actions } from '../store';
 
-class SignIn extends React.Component {
-  // Function for Login
-  doLogin = async () => {
-    await this.props.postLogin()
-    if (localStorage.getItem('token') !== null){
+class SignUp extends React.Component {
+  // Function for doing SignUp
+  doSignUp = async () => {
+    await this.props.postSignUp()
+    if (this.props.is_login){
         this.props.history.push("/profile");
-    }
-    else {
-      alert('Email atau Password Anda Salah...')
-      return <Redirect to={{ pathname: "/login" }} />;
     }
   }
 
-  render() { 
+  render() {
     return (
-    <div className="wrapper fadeInDown" style={{marginTop:'-50px',marginBottom:'60px'}}>
+    <div className="wrapper fadeInDown" style={{marginTop:'-60px'}}>
         <div id="formContent">
             <div className="fadeIn first">
-            <img style={{ marginTop:'60px', marginBottom:'60px', width:'30%'}} src={logo} id="icon" alt="User Icon" />
+            <img style={{ marginTop:'30px', marginBottom:'30px', width:'50%'}} src={logo} id="icon" alt="User Icon" />
             </div>
 
                 {/* <!-- Login Form --> */}
@@ -33,6 +29,14 @@ class SignIn extends React.Component {
                     <input 
                     type="text" 
                     id="login" 
+                    className="fadeIn second" 
+                    name="nama_lengkap" 
+                    placeholder="Nama Lengkap"
+                    onChange={e => this.props.changeInput(e)} />
+                    <input 
+                    type="text" 
+                    id="login" 
+                    pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
                     className="fadeIn second" 
                     name="email" 
                     placeholder="Email"
@@ -47,22 +51,19 @@ class SignIn extends React.Component {
                     <input 
                     type="submit" 
                     className="fadeIn fourth" 
-                    value="Log In" 
-                    onClick={this.doLogin}/>
+                    value="Sign Up" 
+                    onClick={this.doSignUp}/>
                 </form>
 
             {/* <!-- Remind Passowrd --> */}
-            
             <div id="formFooter">
-            <Link style={{textDecoration:'none'}} className="underlineHover" to="/signup">Sign Up</Link><p> </p>
             <Link style={{textDecoration:'none'}} className="underlineHover" to="/">Back to Home</Link>
             </div>
 
         </div>
         </div>
     )
-
   }
 }
 
-export default connect("Bearer, email, kata_sandi, is_login, isLoading",actions)(withRouter(SignIn));
+export default connect("nama_lengkap, email, kata_sandi, is_login, isLoading",actions)(withRouter(SignUp));

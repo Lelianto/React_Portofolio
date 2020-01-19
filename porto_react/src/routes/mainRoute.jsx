@@ -4,6 +4,7 @@ import { Provider } from 'unistore/react';
 import { store } from '../store';
 import Homepage from '../pages/index';
 import LoginPage from '../pages/login';
+import SignUpPage from '../pages/signup';
 import Profile from '../pages/profileUser';
 import BookDetail from '../pages/bookDetail';
 import Cart from '../pages/cartDetail';
@@ -37,6 +38,7 @@ const MainRoute = () => {
                     {/* PAGES ROUTING */}
                     <Route exact path="/" component={Homepage} />
                     <Route exact path='/login' component={LoginPage} />
+                    <Route exact path='/signup' component={SignUpPage} />
                     <Route exact path='/profile' component={Profile} />
                     <Route path='/bookdetail/:id' component={BookDetail} />
                     <Route exact path='/cart' component={Cart} />

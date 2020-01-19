@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import Login from '../components/signin';
+import SignUp from '../components/signup';
 import '../styles/index.css';
 
-class LoginPage extends Component {
+class SignUpPage extends Component {
   render() {
     return (
       <div className='bodylogin'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-12'>
-            <Login/>
+            <SignUp/>
             </div>
           </div>
         </div>
@@ -18,4 +18,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+export default SignUpPage;

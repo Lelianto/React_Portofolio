@@ -18,10 +18,10 @@ class SignUp extends React.Component {
 
   render() {
     return (
-    <div className="wrapper fadeInDown" style={{marginTop:'-60px'}}>
+    <div className="wrapper fadeInDown" style={{marginTop:'-50px', marginBottom:'100px'}}>
         <div id="formContent">
             <div className="fadeIn first">
-            <img style={{ marginTop:'30px', marginBottom:'30px', width:'50%'}} src={logo} id="icon" alt="User Icon" />
+            <img style={{ marginTop:'30px', marginBottom:'30px', width:'30%'}} src={logo} id="icon" alt="User Icon" />
             </div>
 
                 {/* <!-- Login Form --> */}

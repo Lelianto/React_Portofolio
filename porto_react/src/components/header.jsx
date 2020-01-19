@@ -32,16 +32,16 @@ class Header extends React.Component {
                         <Link to='/' style={{textDecoration:'none'}}>
                         <h4 className="toko">kutubuku.com</h4></Link>
                     </div>
-                    <div className="col-md-2">
+                    <div className="col-md-2 dropdown-position">
                         <div className="dropdown">
-                            <button className="dropbtn">
-                                <p className="kategori" >Kategori</p></button>
-                                <select className="dropdown-content" name='kategori' onClick={e => this.doSearchCategoryBook(e)}>
-                                {allGenres.map((genre,i)=>
-                                <option style={{fontSize:'20px'}} value={genre}>
-                                {genre}</option>
-                                )}
-                                </select>
+                            <select className="dropdown" name='kategori' onClick={e => this.doSearchCategoryBook(e)}>
+                            <option style={{fontSize:'20px'}} value=''>
+                            Kategori</option>
+                            {allGenres.map((genre,i)=>
+                            <option style={{fontSize:'15px'}} value={genre}>
+                            {genre}</option>
+                            )}
+                            </select>
                         </div>
                     </div>
                     <div className="col-md-6 search">

@@ -30,14 +30,16 @@ class ProfileUser extends React.Component {
         const self = this
         axios(req)
             .then(function (response) {
+                console.log(response.data)
                 store.setState({ userData: response.data, isLoading:false, validasiPostBuku: false, validasiUpdateBuku: false})
+                console.log('isi user data', store.getState().userData)
                 return response
             })
             .catch((error)=>{
                 store.setState({ isLoading: false})
                 switch (error.response.status) {
                     case 401 :
-                        self.props.history.push('/login')
+                        self.props.history.push('/401')
                         break
                     case 403 :
                         self.props.history.push('/403')
@@ -81,39 +83,33 @@ class ProfileUser extends React.Component {
         } else {
             return (
                 <div>
-                    <div className='container top-body-user user-full-name container-user'>
+                    <div className='container top-body-user user-full-name'>
                         <div className='row'>
-                            <div className='col-md-1'>
-                            </div>
                             <div className='col-md-6'>
-                                <h3 className='border-user'>Hai, {userData.nama_lengkap}</h3>
+                                <h3 style={{textAlign:'left'}} className='border-user1'>Hai, {userData.nama_lengkap}</h3>
                             </div>
                         </div>
                     </div>
-                    <div className='container alamat-email container-user'>
+                    <div className='container alamat-email'>
                         <div className='row'>
-                            <div className='col-md-1'>
-                            </div>
-                            <div className='col-md-11 col-sm-12'>
+                            <div style={{textAlign:'left'}} className='col-md-11 col-sm-12'>
                                 Alamat email : {userData.email}
                             </div>
                         </div>
                     </div>   
                     <div className='container'>
                         <div className='row space-under-button'>
-                            <div className='col-md-2'>
-                            </div>
-                            <div className='col-md-4'>
+                            <div className='col-md-2 col-sm-12 button-sell'>
                                 <label>
                                     <Link to='/sell'>
-                                        <button type="button" class="btn btn-success">Jual Buku</button>
+                                        <button type="button" class="btn btn-info">Jual Buku</button>
                                     </Link>
                                 </label>
                             </div>
 
-                            <div className='col-md-3 button-logout'>
+                            <div className='col-md-2 col-sm-12 button-logout'>
                                 <label>
-                                    <button type="button" class="btn btn-success" onClick={this.handleSignOut}>Log Out</button>
+                                    <button type="button" class="btn btn-danger" onClick={this.handleSignOut}>Log Out</button>
                                 </label>
                             </div>
                         </div>
