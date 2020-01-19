@@ -54,42 +54,29 @@ class AccessAllPayments extends React.Component {
 
     render() {
         const { adminAllPayment } = this.props
-        console.log('ISI ALL PAYMENTS', adminAllPayment)
         return (
-            <div className='container' style={{paddingTop:'110px', fontSize:'12px'}}>
+            <div className='container' style={{paddingTop:'50px'}}>
                 <div className='row'>
-                    <div className='col-md-2' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>ID Payment</div>
-                        {adminAllPayment.map((payment,i) =>
-                            <div className='col-md-12' style={{marginTop:'15px'}}>
-                                {payment.id}
-                            </div>
-                        )}
-                    </div>
-                    <div className='col-md-2' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Total Biaya</div>
-                        {adminAllPayment.map((payment,i) =>
-                            <div className='col-md-12' style={{marginTop:'15px', textAlign:'end'}}>
-                                Rp. {payment.total_biaya}
-                            </div>
-                        )}
-                    </div>
-                    <div className='col-md-4' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Nomor Pemesanan</div>
-                        {adminAllPayment.map((payment,i) =>
-                        <div className='col-md-12' style={{marginTop:'15px'}}>
-                            {payment.nomor_pemesanan}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-4' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Tanggal Pemesanan</div>
-                        {adminAllPayment.map((payment,i) =>
-                        <div className='col-md-12' style={{marginTop:'15px'}}>
-                            {payment.tanggal_pemesanan}
-                        </div>
-                        )}
-                    </div>
+                <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID Pemesanan</th>
+                                <th>Kode Pemesanan</th>
+                                <th>Total Pembayaran</th>
+                                <th>Tanggal Pemesanan</th>				
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {adminAllPayment.map((payment,i) =>
+                            <tr>
+                                <td>{payment.id}</td>
+                                <td>{payment.nomor_pemesanan}</td>
+                                <td>{payment.total_biaya}</td>
+                                <td>{payment.tanggal_pemesanan}</td>
+                            </tr>
+                            )}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         )

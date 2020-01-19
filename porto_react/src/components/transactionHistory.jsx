@@ -90,23 +90,23 @@ class TransactionHistory extends React.Component {
                         <h3 style={{textAlign:'left',paddingTop:'20px', paddingBottom:'20px'}}>Riwayat Transaksi</h3>
                     </div>
                     <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Judul Buku</th>
-                            <th>Harga Buku</th>
-                            <th>Jumlah Pembelian</th>				
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {displayUserAllCart.map((cart,i) =>
-                        <tr>
-                            <td>{cart.judul}</td>
-                            <td>{cart.harga}</td>
-                            <td>{cart.stok}</td>
-                        </tr>
-                        )}
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th>Judul Buku</th>
+                                <th>Harga Buku</th>
+                                <th>Jumlah Pembelian</th>				
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {displayUserAllCart.map((cart,i) =>
+                            <tr>
+                                <td>{cart.judul}</td>
+                                <td>{cart.harga}</td>
+                                <td>{cart.stok}</td>
+                            </tr>
+                            )}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         

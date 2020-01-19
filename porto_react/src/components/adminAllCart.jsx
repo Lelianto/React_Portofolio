@@ -66,72 +66,40 @@ class AccessAllCarts extends React.Component {
     render() {
         const { adminAllCart } = this.props
         return (
-            <div className='container' style={{paddingTop:'110px', fontSize:'12px'}}>
+            <div className='container' style={{paddingTop:'50px'}}>
                 <div className='row'>
-                    <div className='col-md-1' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>ID Cart</div>
-                        {adminAllCart.map((cart,i) =>
-                            <div className='col-md-12' style={{marginTop:'15px'}}>
-                                {cart.id}
-                            </div>
-                        )}
-                    </div>
-                    <div className='col-md-1' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Total Beli</div>
-                        {adminAllCart.map((cart,i) =>
-                            <div className='col-md-12' style={{marginTop:'15px'}}>
-                                {cart.stok}
-                            </div>
-                        )}
-                    </div>
-                    <div className='col-md-4' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Judul Buku</div>
-                        {adminAllCart.map((cart,i) =>
-                        <div className='col-md-12' style={{marginTop:'15px'}}>
-                            {cart.judul}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-1' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>ID Pembeli</div>
-                        {adminAllCart.map((cart,i) =>
-                        <div className='col-md-12' style={{marginTop:'15px'}}>
-                            {cart.user_id}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-1' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>ID Buku</div>
-                        {adminAllCart.map((cart,i) =>
-                        <div className='col-md-12' style={{marginTop:'15px'}}>
-                            {cart.book_id}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-1' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Harga</div>
-                        {adminAllCart.map((cart,i) =>
-                        <div className='col-md-12' style={{marginTop:'15px'}}>
-                            {cart.harga}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-2' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Status</div>
-                        {adminAllCart.map((cart,i) =>
-                        <div className='col-md-12' style={{marginTop:'15px'}}>
-                            {cart.status_jual}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-1' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Delete</div>
-                        {adminAllCart.map((cart,i) =>
-                        <button style={{fontSize:'10px',marginTop:'12px'}} onClick={()=>this.doDelete(cart.id)}>
-                            Delete
-                        </button>
-                        )}
-                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID Keranjang</th>
+                                <th>ID Pembeli</th>
+                                <th>ID Buku</th>
+                                <th>Judul Buku</th>
+                                <th>Harga</th>
+                                <th>Banyak Pembelian</th>
+                                <th>Status Jual</th>
+                                <th>Hapus Akun</th>				
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {adminAllCart.map((cart,i) =>
+                            <tr>
+                                <td>{cart.id}</td>
+                                <td>{cart.user_id}</td>
+                                <td>{cart.book_id}</td>
+                                <td>{cart.judul}</td>
+                                <td>{cart.harga}</td>
+                                <td>{cart.stok}</td>
+                                <td>{cart.status_jual}</td>
+                                <td>
+                                    <button style={{fontSize:'10px'}} onClick={()=>this.doDelete(cart.id)}>
+                                Delete
+                                    </button>
+                                </td>
+                            </tr>
+                            )}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         )

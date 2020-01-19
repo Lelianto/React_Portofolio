@@ -67,80 +67,44 @@ class AccessAllBook extends React.Component {
     render() {
         const { adminAllBook } = this.props
         return (
-            <div className='container-fluid' style={{paddingTop:'110px'}}>
+            <div className='container-fluid' style={{paddingTop:'50px'}}>
                 <div className='row'>
-                    <div className='col-md-1' style={{fontSize:'10px',border:'1px black solid'}}>
-                        <div style={{fontSize:'10px',borderBottom:'1px black solid'}}>ID Buku</div>
-                        {adminAllBook.map((book,i) =>
-                            <div style={{fontSize:'10px',marginTop:'12px'}}>
-                                {book.id}
-                            </div>
-                        )}
-                    </div>
-                    <div className='col-md-2' style={{fontSize:'10px',border:'1px black solid'}}>
-                        <div style={{fontSize:'10px',borderBottom:'1px black solid'}}>Judul Buku</div>
-                        {adminAllBook.map((book,i) =>
-                        <div style={{fontSize:'10px',marginTop:'12px'}}>
-                            {book.judul}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-2' style={{fontSize:'10px',border:'1px black solid'}}>
-                        <div style={{fontSize:'10px',borderBottom:'1px black solid'}}>Penulis</div>
-                        {adminAllBook.map((book,i) =>
-                        <div style={{fontSize:'10px',marginTop:'12px'}}>
-                            {book.penulis}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-1' style={{fontSize:'10px',border:'1px black solid'}}> 
-                        <div style={{fontSize:'10px',borderBottom:'1px black solid'}}>Genre</div>
-                        {adminAllBook.map((book,i) =>
-                        <div style={{fontSize:'10px',marginTop:'12px'}}>
-                            {book.genre}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-1' style={{fontSize:'10px',border:'1px black solid'}}>
-                        <div style={{fontSize:'10px',borderBottom:'1px black solid'}}>Harga</div>
-                        {adminAllBook.map((book,i) =>
-                        <div style={{fontSize:'10px',marginTop:'12px'}}>
-                            {book.harga}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-1' style={{fontSize:'10px',border:'1px black solid'}}>
-                        <div style={{fontSize:'10px',borderBottom:'1px black solid'}}>Stok</div>
-                        {adminAllBook.map((book,i) =>
-                        <div style={{fontSize:'10px', marginTop:'12px'}}>
-                            {book.stok}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-1' style={{fontSize:'10px',border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>ID User</div>
-                        {adminAllBook.map((book,i) =>
-                        <div style={{fontSize:'10px',marginTop:'12px'}}>
-                            {book.user_id}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-1' style={{fontSize:'10px',border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Delete</div>
-                        {adminAllBook.map((book,i) =>
-                        <button style={{fontSize:'8px',marginTop:'9px'}} onClick={()=>this.doDelete(book.id)}>
-                            Delete
-                        </button>
-                        )}
-                    </div>
-                    <div className='col-md-2' style={{fontSize:'10px',border:'1px black solid'}}>
-                        <div style={{fontSize:'10px',borderBottom:'1px black solid'}}>Email</div>
-                        {adminAllBook.map((book,i) =>
-                        <div style={{fontSize:'10px',marginTop:'12px'}}>
-                            {book.email_user}
-                        </div>
-                        )}
-                    </div>
+                <table class="table table-bordered" style={{fontSize:'12px'}}>
+                        <thead>
+                            <tr>
+                                <th>ID Buku</th>
+                                <th>Judul Buku</th>
+                                <th>Penulis</th>
+                                <th>Genre</th>	
+                                <th>Harga</th>
+                                <th>Status Jual</th>
+                                <th>Stok</th>
+                                <th>ID User</th>
+                                <th>Email User</th>
+                                <th>Hapus Akun</th>				
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {adminAllBook.map((book,i) =>
+                            <tr>
+                                <td>{book.id}</td>
+                                <td>{book.judul}</td>
+                                <td>{book.penulis}</td>
+                                <td>{book.genre}</td>
+                                <td>{book.harga}</td>
+                                <td>{book.status}</td>
+                                <td>{book.stok}</td>
+                                <td>{book.user_id}</td>
+                                <td>{book.email_user}</td>
+                                <td>
+                                    <button style={{fontSize:'10px'}} onClick={()=>this.doDelete(book.id)}>
+                                Delete
+                                    </button>
+                                </td>
+                            </tr>
+                            )}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         )

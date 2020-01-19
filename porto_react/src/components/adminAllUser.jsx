@@ -67,42 +67,32 @@ class AccessAllUser extends React.Component {
     render() {
         const { allUser } = this.props
         return (
-            <div className='container' style={{fontSize:'12px', paddingTop:'110px'}}>
+            <div className='container' style={{paddingTop:'50px'}}>
                 <div className='row'>
-                    <div className='col-md-2'>
-                    </div>
-                    <div className='col-md-2' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>ID User</div>
-                        {allUser.map((user,i) =>
-                            <div className='col-md-12' style={{marginTop:'15px'}}>
-                                {user.id}
-                            </div>
-                        )}
-                    </div>
-                    <div className='col-md-3' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Nama Lengkap</div>
-                        {allUser.map((user,i) =>
-                        <div className='col-md-12' style={{marginTop:'15px'}}>
-                            {user.nama_lengkap}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-3' style={{border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Alamat Email</div>
-                        {allUser.map((user,i) =>
-                        <div className='col-md-12' style={{ marginTop:'15px'}}>
-                            {user.email}
-                        </div>
-                        )}
-                    </div>
-                    <div className='col-md-1' style={{fontSize:'10px',border:'1px black solid'}}>
-                        <div style={{borderBottom:'1px black solid'}}>Delete</div>
-                        {allUser.map((user,i) =>
-                        <button style={{fontSize:'10px',marginTop:'13px'}} onClick={()=>this.doDelete(user.id)}>
-                            Delete
-                        </button>
-                        )}
-                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID User</th>
+                                <th>Nama Lengkap</th>
+                                <th>Email User</th>
+                                <th>Hapus Akun</th>				
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {allUser.map((user,i) =>
+                            <tr>
+                                <td>{user.id}</td>
+                                <td>{user.nama_lengkap}</td>
+                                <td>{user.email}</td>
+                                <td>
+                                    <button style={{fontSize:'10px'}} onClick={()=>this.doDelete(user.id)}>
+                                Delete
+                                    </button>
+                                </td>
+                            </tr>
+                            )}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         )
