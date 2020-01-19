@@ -7,7 +7,7 @@ import { store, actions } from '../store'
 import axios from 'axios'
 
 
-class AccessAllPayments extends React.Component {
+class SearchAllPayments extends React.Component {
     // Fungsi untuk mengambil semua list payment dari database
     getAllPayment = () => {
         const req = {
@@ -52,11 +52,15 @@ class AccessAllPayments extends React.Component {
         this.getAllPayment()
     };
 
-    doSearchPayment = async () => {
-        this.props.history.push("/payments/search");
-    }
     render() {
-        const { adminAllPayment } = this.props
+        const { adminAllPayment, adminKeyword } = this.props
+        const searchResult = adminAllPayment.filter(item => {
+            if (item.nomor_pemesanan == adminKeyword ) {
+                return item;
+            }
+            return false
+        });
+        console.log(searchResult)
         return (
             <div className='container' style={{paddingTop:'50px'}}>
                 <div className='row'>
@@ -79,15 +83,13 @@ class AccessAllPayments extends React.Component {
                                 <div className="active-cyan-4 mb-4" style={{marginLeft:'-135px'}}>
                                     <button class="btn btn-info my-sm-0" 
                                     type="submit"
-                                    onClick={this.doSearchPayment}
+                                    onClick={this.doSearchBook}
                                     >Search</button>
                                 </div>
                             </div>
                         </div>
                         </form>
                     </div>
-
-                    
                 </div>
                 <div className='row'>
                 <table class="table table-bordered">
@@ -100,7 +102,7 @@ class AccessAllPayments extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {adminAllPayment.map((payment,i) =>
+                            {searchResult.map((payment,i) =>
                             <tr>
                                 <td>{payment.id}</td>
                                 <td>{payment.nomor_pemesanan}</td>
@@ -116,4 +118,4 @@ class AccessAllPayments extends React.Component {
     }
 }
 
-export default connect("adminAllPayment, isLoading",actions)(withRouter(AccessAllPayments));
+export default connect("adminAllPayment, adminKeyword, isLoading",actions)(withRouter(SearchAllPayments));

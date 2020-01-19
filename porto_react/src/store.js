@@ -3,6 +3,7 @@ import axios from 'axios';
 
 // Initialization global state
 const initialState = {
+  adminKeyword:'',
   length_cart:0,
   id_payment:'',
   id_cart:'',

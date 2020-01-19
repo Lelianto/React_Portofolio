@@ -23,7 +23,6 @@ class SearchResults extends React.Component {
             }
             return false
         });
-        console.log('isi buku', listResults)
         if(this.props.isLoading){
             return (
             <div>

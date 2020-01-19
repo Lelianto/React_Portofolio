@@ -18,6 +18,7 @@ import DisplayAllUser from '../pages/adminAllUser';
 import DisplayAllBook from '../pages/adminAllBook';
 import DisplayAllCart from '../pages/adminAllCart';
 import DisplayAllPayment from '../pages/adminAllPayment';
+import DisplayPaymentSearch from '../pages/adminPaymentResult';
 import NotMatch from '../pages/notMatch';
 import Error401 from '../pages/error401Pages';
 import Error403 from '../pages/error403Pages';
@@ -52,6 +53,7 @@ const MainRoute = () => {
                     <Route exact path='/books' component={DisplayAllBook} />
                     <Route exact path='/carts' component={DisplayAllCart} />
                     <Route exact path='/payments' component={DisplayAllPayment} />
+                    <Route exact path='/payments/search' component={DisplayPaymentSearch} />
                     <Route exact path='/401' component={Error401} />
                     <Route exact path='/403' component={Error403} />
                     <Route exact path='/404' component={Error404} />
