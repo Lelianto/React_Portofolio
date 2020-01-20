@@ -19,7 +19,7 @@ class CartDetailTotalPrice extends React.Component {
     componentDidMount = () => {
         const req = {
             method: "get",
-            url: "http://0.0.0.0:1250/cart/total",
+            url: store.getState().baseUrl+"/cart/total",
             headers: {
               Authorization: "Bearer " + localStorage.getItem('token')
             }
@@ -28,7 +28,7 @@ class CartDetailTotalPrice extends React.Component {
           axios(req)
               .then(function(response) {
                 store.setState({
-                  "total_price": response.data,
+                  "totalPrice": response.data,
                   'isLoading':false
                 })
                 return response
@@ -57,9 +57,9 @@ class CartDetailTotalPrice extends React.Component {
     };
 
     render() {
-        const { total_price, ongkos_kirim } = this.props
-        const total_payment = total_price + ongkos_kirim
-        if (store.getState().nama_jalan =='' && store.getState().address == false){
+        const { totalPrice, shippingCost } = this.props
+        const totalPayment = totalPrice + shippingCost
+        if (store.getState().streetName =='' && store.getState().address == false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -72,7 +72,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         } 
-        else if (store.getState().rt_rw =='' && store.getState().address == false){
+        else if (store.getState().rtRw =='' && store.getState().address == false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -85,7 +85,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         }
-        else if (store.getState().kelurahan =='' && store.getState().address == false){
+        else if (store.getState().village =='' && store.getState().address == false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -98,7 +98,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         }
-        else if (store.getState().kecamatan =='' && store.getState().address == false){
+        else if (store.getState().region =='' && store.getState().address == false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -111,7 +111,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         } 
-        else if (store.getState().kota_kabupaten =='' && store.getState().address == false){
+        else if (store.getState().cityState =='' && store.getState().address == false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -124,7 +124,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         }   
-        else if (store.getState().provinsi =='' && store.getState().address == false){
+        else if (store.getState().province =='' && store.getState().address == false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -137,7 +137,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         }  
-        else if (store.getState().kode_pos =='' && store.getState().address == false){
+        else if (store.getState().postalCode =='' && store.getState().address == false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -150,7 +150,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         } 
-        else if (store.getState().nomor_telepon =='' && store.getState().address == false){
+        else if (store.getState().phoneNumber =='' && store.getState().address == false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -189,15 +189,15 @@ class CartDetailTotalPrice extends React.Component {
                     <div className='col-md-12' style={{ backgroundColor: 'aliceblue', borderRadius: '5%', marginBottom:'250px' }}>
                         <div className='row' style={{ paddingTop:'25px', paddingLeft: '23px', paddingRight: '23px', textAlign:'left'}} >
                             <div className='col-md-6'>Subtotal</div>
-                            <div className='col-md-6'>Rp {total_price}</div>
+                            <div className='col-md-6'>Rp {totalPrice}</div>
                         </div>
                         <div className='row' style={{ paddingTop:'25px', paddingLeft: '23px', paddingRight: '23px', textAlign:'left'}} >
                             <div className='col-md-6'>Ongkos Kirim</div>
-                            <div className='col-md-6'>Rp {ongkos_kirim}</div>
+                            <div className='col-md-6'>Rp {shippingCost}</div>
                         </div>
                         <div className='row' style={{ paddingTop:'25px', paddingLeft: '23px', paddingRight: '23px', textAlign:'left'}} >
                             <div className='col-md-6'>Total Bayar</div>
-                            <div className='col-md-6'>Rp {total_payment}</div>
+                            <div className='col-md-6'>Rp {totalPayment}</div>
                         </div>
                         <div className='row'>
                             <div className='col-md-12' style={{ paddingTop:'55px', marginBottom: '25px'}}>
@@ -214,4 +214,4 @@ class CartDetailTotalPrice extends React.Component {
     }
 }
 
-export default connect("carts, total_price, ongkos_kirim, token, is_login, isLoading",actions)(withRouter(CartDetailTotalPrice));
+export default connect("carts, totalPrice, shippingCost, token, isLoading",actions)(withRouter(CartDetailTotalPrice));

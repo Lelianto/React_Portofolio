@@ -11,19 +11,19 @@ import { store, actions } from '../store'
 class SearchResults extends React.Component {
     // Function to go to book detail information
     goToBook = async (book) => {
-        store.setState({ book_id: book.id })
-        this.props.history.push("/bookdetail/"+store.getState().book_id);
+        store.setState({ bookId: book.id })
+        this.props.history.push("/bookdetail/"+store.getState().bookId);
         }
 
     render() {
-        const { listResults } = this.props
+        const { listResults, isLoading } = this.props
         const displayAvailableBooks = listResults.filter(item => {
             if (item.foto_buku !== null && item.judul !== null && item.penulis !== null && item.harga !== null && item.berat !== null) {
                 return item;
             }
             return false
         });
-        if(this.props.isLoading){
+        if(isLoading){
             return (
             <div>
               <body style={{paddingTop:'200px'}}>
@@ -64,4 +64,4 @@ class SearchResults extends React.Component {
     }
 }
 
-export default connect("listResults, books, book_id, token, is_login, isLoading",actions)(withRouter(SearchResults));
+export default connect("listResults, books, bookId, token, isLoading",actions)(withRouter(SearchResults));

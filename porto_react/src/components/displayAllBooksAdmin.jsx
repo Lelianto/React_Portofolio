@@ -10,15 +10,15 @@ import axios from 'axios'
 class AdminAllBooks extends React.Component {
     // Function to go to book information detail
     goToBook = async (book) => {
-        store.setState({ book_id: book.id })
-        this.props.history.push("/bookdetail/"+store.getState().book_id);
+        store.setState({ bookId: book.id })
+        this.props.history.push("/bookdetail/"+store.getState().bookId);
         }
     
     // Function to get all book and display it into homepage
     componentDidMount = () => {
         const req = {
         method: "get",
-        url: "http://0.0.0.0:1250/book",
+        url: store.getState().baseUrl+"/book",
         headers: {
             Authorization: "Bearer " + localStorage.getItem('token')
         }
@@ -26,11 +26,16 @@ class AdminAllBooks extends React.Component {
         const self = this
         axios(req)
             .then(function (response) {
-                store.setState({ books: response.data, isLoading:false})
+                store.setState({ 
+                    books: response.data, 
+                    isLoading:false
+                })
                 return response
             })
             .catch((error)=>{
-                store.setState({ isLoading: false})
+                store.setState({ 
+                    isLoading: false
+                })
                 switch (error.response.status) {
                     case 401 :
                         self.props.history.push('/401')
@@ -128,4 +133,4 @@ class AdminAllBooks extends React.Component {
     }
 }
 
-export default connect("books, book_id, token, is_login, isLoading",actions)(withRouter(AdminAllBooks));
+export default connect("books, bookId, token, isLoading",actions)(withRouter(AdminAllBooks));

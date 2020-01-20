@@ -12,7 +12,7 @@ class AccessAllUser extends React.Component {
     getAllUser = () => {
         const req = {
             method: "get",
-            url: "http://0.0.0.0:1250/user",
+            url: store.getState().baseUrl+"/user",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
             }
@@ -24,7 +24,9 @@ class AccessAllUser extends React.Component {
                     return response
                 })
                 .catch((error)=>{
-                    store.setState({ isLoading: false})
+                    store.setState({ 
+                        isLoading: false
+                    })
                     switch (error.response.status) {
                         case 401 :
                             self.props.history.push('/401')
@@ -50,7 +52,7 @@ class AccessAllUser extends React.Component {
     // Fungsi untuk menghapus user dari database sesuai ID
     doDelete = async (e) => {
         store.setState({
-            'id_user': e
+            'userId': e
         })
         await this.props.deleteUser()
         if (localStorage.getItem('token') !== null){

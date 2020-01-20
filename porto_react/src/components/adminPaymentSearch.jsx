@@ -12,7 +12,7 @@ class SearchAllPayments extends React.Component {
     getAllPayment = () => {
         const req = {
             method: "get",
-            url: "http://0.0.0.0:1250/payment_confirm/all",
+            url: store.getState().baseUrl+"/payment_confirm/all",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
             }
@@ -20,7 +20,10 @@ class SearchAllPayments extends React.Component {
             const self = this
             axios(req)
                 .then(function (response) {
-                    store.setState({ adminAllPayment: response.data, isLoading:false})
+                    store.setState({ 
+                        adminAllPayment: response.data, 
+                        isLoading:false
+                    })
                     return response
                 })
                 .catch((error)=>{

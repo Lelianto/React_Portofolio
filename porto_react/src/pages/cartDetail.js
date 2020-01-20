@@ -11,7 +11,7 @@ class CartDetail extends Component {
     if(localStorage.getItem('token')==null){
       return <Redirect to={{ pathname: "/login" }} />;
     }
-    if(store.getState().length_cart>=0){
+    if(store.getState().lengthCart>=0){
       return (
         <div>
           <Header/>

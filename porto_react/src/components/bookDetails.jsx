@@ -25,7 +25,7 @@ class BookDetail extends React.Component {
     componentDidMount = async () => {
         const req = {
         method: "get",
-        url: "http://0.0.0.0:1250/book/edit/" + this.props.match.params.id ,
+        url: store.getState().baseUrl+"/book/edit/" + this.props.match.params.id ,
         headers: {
             Authorization: "Bearer " + localStorage.getItem('token')
         }
@@ -33,11 +33,16 @@ class BookDetail extends React.Component {
         const self = this
         await axios(req)
             .then(function(response) {
-                store.setState({ bookById: response.data, isLoading:false})
+                store.setState({ 
+                    bookById: response.data, 
+                    isLoading:false
+                })
                 return response
             })
             .catch(function(error){
-                store.setState({ isLoading: false})
+                store.setState({ 
+                    isLoading: false
+                })
                 switch (error.response.status) {
                     case 401 :
                         self.props.history.push('/401')
@@ -250,4 +255,4 @@ class BookDetail extends React.Component {
     }
 }
 
-export default connect("bookById, book_id, isLoading",actions)(withRouter(BookDetail));
+export default connect("bookById, bookId, isLoading",actions)(withRouter(BookDetail));

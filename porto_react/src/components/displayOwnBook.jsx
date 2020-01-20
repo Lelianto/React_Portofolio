@@ -11,14 +11,16 @@ import axios from 'axios'
 class DisplayOwnBook extends React.Component {
     // Function to go to book detail information
     goToBook = async (book) => {
-        store.setState({ book_id: book.id })
-        this.props.history.push("/bookdetail/"+store.getState().book_id);
+        store.setState({ 
+            bookId: book.id 
+        })
+        this.props.history.push("/bookdetail/"+store.getState().bookId);
         }
     // Function to get all book which user has
     componentDidMount = () => {
         const req = {
         method: "get",
-        url: "http://0.0.0.0:1250/book/mine",
+        url: store.getState().baseUrl+"/book/mine",
         headers: {
             Authorization: "Bearer " + localStorage.getItem('token')
         }
@@ -104,4 +106,4 @@ class DisplayOwnBook extends React.Component {
     }
 }
 
-export default connect("bookOwn, books, book_id, token, is_login, isLoading",actions)(withRouter(DisplayOwnBook));
+export default connect("bookOwn, books, bookId, token, isLoading",actions)(withRouter(DisplayOwnBook));

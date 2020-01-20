@@ -53,7 +53,7 @@ class CartDetail extends React.Component {
                                 type="text" 
                                 id="expedition1" 
                                 className="" 
-                                name="nama_jalan" 
+                                name="streetName" 
                                 placeholder="Masukkan Nama Jalan"
                                 onChange={e => this.props.changeInput(e)} />
                                 
@@ -62,7 +62,7 @@ class CartDetail extends React.Component {
                                 type="text" 
                                 id="expedition2" 
                                 className="" 
-                                name="rt_rw" 
+                                name="rtRw" 
                                 placeholder="Masukkan RT/RW"
                                 onChange={e => this.props.changeInput(e)} />
 
@@ -71,7 +71,7 @@ class CartDetail extends React.Component {
                                 type="text" 
                                 id="expedition3" 
                                 className="" 
-                                name="kelurahan" 
+                                name="village" 
                                 placeholder="Masukkan Nama Kelurahan"
                                 onChange={e => this.props.changeInput(e)} />
 
@@ -80,7 +80,7 @@ class CartDetail extends React.Component {
                                 type="text" 
                                 id="expedition4" 
                                 className="" 
-                                name="kecamatan" 
+                                name="region" 
                                 placeholder="Masukkan Nama Kecamatan"
                                 onChange={e => this.props.changeInput(e)} />
 
@@ -89,7 +89,7 @@ class CartDetail extends React.Component {
                                 type="text" 
                                 id="expedition5" 
                                 className="" 
-                                name="kota_kabupaten" 
+                                name="cityState" 
                                 placeholder="Masukkan Nama Kota atau Kabupaten"
                                 onChange={e => this.props.changeInput(e)} required/>
 
@@ -98,7 +98,7 @@ class CartDetail extends React.Component {
                                 type="text" 
                                 id="expedition6" 
                                 className="" 
-                                name="provinsi" 
+                                name="province" 
                                 placeholder="Masukkan Nama Provinsi"
                                 onChange={e => this.props.changeInput(e)} />
 
@@ -107,7 +107,7 @@ class CartDetail extends React.Component {
                                 type="text" 
                                 id="expedition7" 
                                 className="" 
-                                name="kode_pos" 
+                                name="postalCode" 
                                 placeholder="Masukkan Kode Pos"
                                 onChange={e => this.props.changeInput(e)} />
 
@@ -116,7 +116,7 @@ class CartDetail extends React.Component {
                                 type="text" 
                                 id="expedition8" 
                                 className="" 
-                                name="nomor_telepon" 
+                                name="phoneNumber" 
                                 placeholder="Masukkan Nomor Telepon"
                                 onChange={e => this.props.changeInput(e)} />
 
@@ -136,4 +136,4 @@ class CartDetail extends React.Component {
     }
 }
 
-export default connect("carts, token, is_login, isLoading",actions)(withRouter(CartDetail));
+export default connect("carts, token, isLoading",actions)(withRouter(CartDetail));

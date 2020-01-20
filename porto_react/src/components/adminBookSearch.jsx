@@ -12,7 +12,7 @@ class SearchAllBook extends React.Component {
     getListBook =()=>{
         const req = {
             method: "get",
-            url: "http://0.0.0.0:1250/book",
+            url: store.getState().baseUrl+"/book",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
             }
@@ -20,11 +20,16 @@ class SearchAllBook extends React.Component {
             const self = this
             axios(req)
                 .then(function (response) {
-                    store.setState({ adminAllBook: response.data, isLoading:false})
+                    store.setState({ 
+                        adminAllBook: response.data, 
+                        isLoading:false
+                    })
                     return response
                 })
                 .catch((error)=>{
-                    store.setState({ isLoading: false})
+                    store.setState({ 
+                        isLoading: false
+                    })
                     switch (error.response.status) {
                         case 401 :
                             self.props.history.push('/401')
@@ -50,7 +55,7 @@ class SearchAllBook extends React.Component {
     // Fungsi untuk menghapus buku dari database sesuai ID
     doDelete = async (e) => {
         store.setState({
-            'book_id': e
+            'bookId': e
         })
         await this.props.deleteItem()
         if (localStorage.getItem('token') !== null){

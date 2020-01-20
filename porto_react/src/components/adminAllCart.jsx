@@ -11,7 +11,7 @@ class AccessAllCarts extends React.Component {
     getAllCart = () => {
         const req = {
             method: "get",
-            url: "http://0.0.0.0:1250/cart/allcart",
+            url: store.getState().baseUrl+"/cart/allcart",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
             }
@@ -19,7 +19,10 @@ class AccessAllCarts extends React.Component {
             const self = this
             axios(req)
                 .then(function (response) {
-                    store.setState({ adminAllCart: response.data, isLoading:false})
+                    store.setState({ 
+                        adminAllCart: response.data, 
+                        isLoading:false
+                    })
                     return response
                 })
                 .catch((error)=>{
@@ -49,7 +52,7 @@ class AccessAllCarts extends React.Component {
     // Fungsi untuk menghapus cart dari database sesuai ID
     doDelete = async (e) => {
         store.setState({
-            'id_cart': e
+            'cartId': e
         })
         await this.props.deleteCart()
         if (localStorage.getItem('token') !== null){
@@ -106,4 +109,4 @@ class AccessAllCarts extends React.Component {
     }
 }
 
-export default connect("adminAllCart, isLoading , id_cart",actions)(withRouter(AccessAllCarts));
+export default connect("adminAllCart, isLoading , cartId",actions)(withRouter(AccessAllCarts));

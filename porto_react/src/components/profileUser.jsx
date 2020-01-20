@@ -22,7 +22,7 @@ class ProfileUser extends React.Component {
     componentDidMount = () => {
         const req = {
         method: "get",
-        url: "http://0.0.0.0:1250/user/profile",
+        url: store.getState().baseUrl+"/user/profile",
         headers: {
             Authorization: "Bearer " + localStorage.getItem('token')
         }
@@ -30,13 +30,18 @@ class ProfileUser extends React.Component {
         const self = this
         axios(req)
             .then(function (response) {
-                console.log(response.data)
-                store.setState({ userData: response.data, isLoading:false, validasiPostBuku: false, validasiUpdateBuku: false})
-                console.log('isi user data', store.getState().userData)
+                store.setState({ 
+                    userData: response.data, 
+                    isLoading:false, 
+                    validasiPostBuku: false, 
+                    validasiUpdateBuku: false
+                })
                 return response
             })
             .catch((error)=>{
-                store.setState({ isLoading: false})
+                store.setState({ 
+                    isLoading: false
+                })
                 switch (error.response.status) {
                     case 401 :
                         self.props.history.push('/401')
@@ -120,4 +125,4 @@ class ProfileUser extends React.Component {
     }
 }
 
-export default connect("userData, userById, email, kata_sandi, is_login, isLoading",actions)(withRouter(ProfileUser));
+export default connect("userData, userById, email, isLoading",actions)(withRouter(ProfileUser));

@@ -14,16 +14,16 @@ class CartDetail extends React.Component {
     // Function to go to book detail information
     goToBook = async (book_id) => {
         store.setState({ 
-            'book_id': book_id
+            'bookId': book_id
         })
-        this.props.history.push("/bookdetail/"+store.getState().book_id);
+        this.props.history.push("/bookdetail/"+store.getState().bookId);
         }
 
     // Function to get all cart's content from database
     getAllCart = ()=> {
         const req = {
             method: "get",
-            url: "http://0.0.0.0:1250/cart/allcart",
+            url: store.getState().baseUrl+"/cart/allcart",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
             }
@@ -34,12 +34,14 @@ class CartDetail extends React.Component {
                     store.setState({ 
                         carts: response.data, 
                         isLoading:false,
-                        'cart_content':true 
+                        'cartContent':true 
                     })
                     return response
                 })
                 .catch((error)=>{
-                    store.setState({ isLoading: false})
+                    store.setState({ 
+                        isLoading: false
+                    })
                     switch (error.response.status) {
                         case 401 :
                             self.props.history.push('/401')
@@ -65,11 +67,11 @@ class CartDetail extends React.Component {
     // Function to delete product in cart by ID (from database)
     doDeleteCart = async (e) => {
         store.setState({
-            'cart_id': e,
+            'userCartId': e,
             "disable" : true
         })
         await this.props.deleteCartItem()
-        if (store.getState().length_cart>0){
+        if (store.getState().lengthCart>0){
             this.getAllCart()
             this.props.history.push("/cart");
         }
@@ -99,7 +101,7 @@ class CartDetail extends React.Component {
             return false
         })
         store.setState({
-            'length_cart':listInCart.length
+            'lengthCart':listInCart.length
         })
         if(listInCart.length<1){
             return (
@@ -216,4 +218,4 @@ class CartDetail extends React.Component {
     }
 }
 
-export default connect("carts, token, is_login, isLoading",actions)(withRouter(CartDetail));
+export default connect("carts, token, isLoading",actions)(withRouter(CartDetail));

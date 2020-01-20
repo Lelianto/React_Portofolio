@@ -41,7 +41,7 @@ class SignIn extends React.Component {
                     type="password" 
                     id="password" 
                     className="fadeIn third" 
-                    name="kata_sandi" 
+                    name="password" 
                     placeholder="Kata Sandi"
                     onChange={e => this.props.changeInput(e)} />
                     <input 
@@ -65,4 +65,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default connect("Bearer, email, kata_sandi, is_login, isLoading",actions)(withRouter(SignIn));
+export default connect("Bearer, email, password, isLoading",actions)(withRouter(SignIn));

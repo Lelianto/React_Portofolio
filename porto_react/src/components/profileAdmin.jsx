@@ -60,4 +60,4 @@ class ProfileUser extends React.Component {
     }
 }
 
-export default connect("Bearer, userById, email, kata_sandi, is_login",actions)(withRouter(ProfileUser));
+export default connect("Bearer, userById, email",actions)(withRouter(ProfileUser));

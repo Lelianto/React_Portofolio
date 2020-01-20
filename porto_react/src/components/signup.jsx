@@ -11,7 +11,7 @@ class SignUp extends React.Component {
   // Function for doing SignUp
   doSignUp = async () => {
     await this.props.postSignUp()
-    if (this.props.is_login){
+    if (this.prop){
         this.props.history.push("/profile");
     }
   }
@@ -45,7 +45,7 @@ class SignUp extends React.Component {
                     type="password" 
                     id="password" 
                     className="fadeIn third" 
-                    name="kata_sandi" 
+                    name="password" 
                     placeholder="Kata Sandi"
                     onChange={e => this.props.changeInput(e)} />
                     <input 
@@ -66,4 +66,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default connect("nama_lengkap, email, kata_sandi, is_login, isLoading",actions)(withRouter(SignUp));
+export default connect("nama_lengkap, email, password, isLoading",actions)(withRouter(SignUp));

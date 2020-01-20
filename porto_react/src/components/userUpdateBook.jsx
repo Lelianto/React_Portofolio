@@ -1,9 +1,7 @@
 import React from 'react';
 import '../styles/userUploadBook.css';
 import '../styles/bootstrap.min.css'
-import { withRouter } from 'react-router-dom'
-import { connect } from 'unistore/react'
-import { store, actions } from '../store'
+import { store } from '../store'
 
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
 
@@ -29,29 +27,29 @@ class UserUpload extends React.Component {
                     <form onSubmit={e => e.preventDefault()}>
                         <input 
                         type="text" 
-                        id="judul"  
-                        name="judul" 
+                        id="title"  
+                        name="title" 
                         placeholder="Masukkan Judul Buku"
                         onChange={e => this.props.changeInput(e)} required/>
 
                         <input 
                         type="text" 
-                        id="penulis"  
-                        name="penulis" 
+                        id="writer"  
+                        name="writer" 
                         placeholder="Masukkan Nama Penulis"
                         onChange={e => this.props.changeInput(e)} required/>
 
                         <input 
                         type="text" 
-                        id="jumlah_halaman"  
-                        name="jumlah_halaman" 
+                        id="totalPage"  
+                        name="totalPage" 
                         placeholder="Masukkan Jumlah Halaman"
                         onChange={e => this.props.changeInput(e)} required/>
 
                         <input 
                         type="text" 
-                        id="tanggal_terbit"  
-                        name="tanggal_terbit" 
+                        id="publishDate"  
+                        name="publishDate" 
                         placeholder="Masukkan Tanggal Terbit"
                         onChange={e => this.props.changeInput(e)} required/>
 
@@ -111,8 +109,8 @@ class UserUpload extends React.Component {
 
                         <input 
                         type="text" 
-                        id="jenis_cover"  
-                        name="jenis_cover" 
+                        id="bookCover"  
+                        name="bookCover" 
                         placeholder="Masukkan Jenis Sampul (Soft Cover atau Hard Cover)"
                         onChange={e => this.props.changeInput(e)} required/>
 
@@ -141,8 +139,8 @@ class UserUpload extends React.Component {
 
                         <input 
                         type="text" 
-                        id="foto_buku"  
-                        name="foto_buku" 
+                        id="bookPhoto"  
+                        name="bookPhoto" 
                         placeholder="Masukkan Foto Buku"
                         onChange={e => this.props.changeInput(e)} required/>
 
@@ -162,4 +160,4 @@ class UserUpload extends React.Component {
     }
 }
 
-export default connect("Bearer, bahasa, status, genre, is_login",actions)(withRouter(UserUpload));
+export default UserUpload;

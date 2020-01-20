@@ -12,10 +12,7 @@ class AccessAllBook extends React.Component {
     getListBook =()=>{
         const req = {
             method: "get",
-            url: "http://0.0.0.0:1250/book",
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('token')
-            }
+            url: store.getState().baseUrl+"/book"
             }; 
             const self = this
             axios(req)
@@ -50,7 +47,7 @@ class AccessAllBook extends React.Component {
     // Fungsi untuk menghapus buku dari database sesuai ID
     doDelete = async (e) => {
         store.setState({
-            'book_id': e
+            'bookId': e
         })
         await this.props.deleteItem()
         if (localStorage.getItem('token') !== null){

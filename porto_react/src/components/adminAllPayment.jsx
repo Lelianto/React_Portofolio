@@ -12,7 +12,7 @@ class AccessAllPayments extends React.Component {
     getAllPayment = () => {
         const req = {
             method: "get",
-            url: "http://0.0.0.0:1250/payment_confirm/all",
+            url: store.getState().baseUrl+"/payment_confirm/all",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
             }
@@ -20,11 +20,16 @@ class AccessAllPayments extends React.Component {
             const self = this
             axios(req)
                 .then(function (response) {
-                    store.setState({ adminAllPayment: response.data, isLoading:false})
+                    store.setState({ 
+                        adminAllPayment: response.data, 
+                        isLoading:false
+                    })
                     return response
                 })
                 .catch((error)=>{
-                    store.setState({ isLoading: false})
+                    store.setState({ 
+                        isLoading: false
+                    })
                     switch (error.response.status) {
                         case 401 :
                             self.props.history.push('/401')
@@ -50,11 +55,12 @@ class AccessAllPayments extends React.Component {
     // Untuk menjalankan Fungsi getListPayment
     componentDidMount = () => {
         this.getAllPayment()
-    };
+    }
 
     doSearchPayment = async () => {
         this.props.history.push("/payments/search");
     }
+
     render() {
         const { adminAllPayment } = this.props
         return (

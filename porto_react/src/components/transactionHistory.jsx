@@ -7,13 +7,11 @@ import { connect } from 'unistore/react';
 import { store, actions } from '../store';
 import axios from 'axios';
 
-const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
-
 class TransactionHistory extends React.Component {
     getAllCart = () => {
         const req = {
             method: "get",
-            url: "http://0.0.0.0:1250/cart/allcart",
+            url: store.getState().baseUrl+"/cart/allcart",
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('token')
             }
@@ -21,13 +19,16 @@ class TransactionHistory extends React.Component {
             const self = this
             axios(req)
                 .then(function (response) {
-                    store.setState({ userAllCart: response.data, isLoading:false})
-                    console.warn('isi', store.getState().userAllCart)
+                    store.setState({ 
+                        userAllCart: response.data, 
+                        isLoading:false
+                    })
                     return response
                 })
                 .catch((error)=>{
-                    console.log('isi error', JSON.stringify('error'))
-                    store.setState({ isLoading: false})
+                    store.setState({ 
+                        isLoading: false
+                    })
                     switch (error.response.status) {
                         case 401 :
                             self.props.history.push('/401')
@@ -115,4 +116,4 @@ class TransactionHistory extends React.Component {
     }
 }
 
-export default connect("userAllCart, userData, userById, email, kata_sandi, is_login, isLoading",actions)(withRouter(TransactionHistory));
+export default connect("userAllCart, userData, userById, email, isLoading",actions)(withRouter(TransactionHistory));

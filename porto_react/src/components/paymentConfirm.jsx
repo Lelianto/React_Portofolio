@@ -9,7 +9,7 @@ import foto from '../images/fotobank.jpg'
 
 class PaymentConfirm extends React.Component {
     render() {
-        const { kode_pemesanan, tanggal_pemesanan, total_pembayaran } = this.props
+        const { orderCode, orderDate, totalPayment } = this.props
         if(this.props.isLoading){
             return (
             <div>
@@ -51,7 +51,7 @@ class PaymentConfirm extends React.Component {
                                 Kode Pemesanan
                             </div>
                             <div className='col-md-6' style={{marginTop:'10px'}}>
-                                {kode_pemesanan}
+                                {orderCode}
                             </div>
                         </div>
                         <div className='row'>
@@ -59,7 +59,7 @@ class PaymentConfirm extends React.Component {
                                 Tanggal Pemesanan
                             </div>
                             <div className='col-md-6' style={{marginTop:'30px'}}>
-                                {tanggal_pemesanan}
+                                {orderDate}
                             </div>
                         </div>
                         <div className='row'>
@@ -67,7 +67,7 @@ class PaymentConfirm extends React.Component {
                                 Total Pembayaran
                             </div>
                             <div className='col-md-6' style={{marginTop:'30px'}}>
-                                Rp. {total_pembayaran}
+                                Rp. {totalPayment}
                             </div>
                         </div>
                         <div className='row' style={{marginTop:'30px'}}>
@@ -80,4 +80,4 @@ class PaymentConfirm extends React.Component {
     }
 }
 
-export default connect("kode_pemesanan, tanggal_pemesanan, total_pembayaran, kata_sandi, is_login, isLoading",actions)(withRouter(PaymentConfirm));
+export default connect("orderCode, orderDate, totalPayment, isLoading",actions)(withRouter(PaymentConfirm));

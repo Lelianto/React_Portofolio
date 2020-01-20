@@ -34,7 +34,7 @@ class Header extends React.Component {
                     </div>
                     <div className="col-md-4 logo-name" style={{paddingBottom:'15px'}}>
                         <Link to='/' style={{textDecoration:'none', textAlign:'center'}}>
-                        <h4 className="toko">kutubuku.com</h4></Link>
+                        <h4 className="toko">kutubuku.store</h4></Link>
                     </div>
                     <div className="col-md-4">
                     </div>
@@ -45,4 +45,4 @@ class Header extends React.Component {
     }
 }
 
-export default connect("keyword, kategori, is_login",actions)(withRouter(Header));
+export default connect("keyword, kategori",actions)(withRouter(Header));

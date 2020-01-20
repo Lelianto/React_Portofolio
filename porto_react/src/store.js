@@ -3,30 +3,30 @@ import axios from 'axios';
 
 // Initialization global state
 const initialState = {
+  baseUrl:'https://kutubuku.store',
   adminProductKeyword:'',
   adminKeyword:'',
-  length_cart:0,
-  id_payment:'',
-  id_cart:'',
-  id_user:'',
+  lengthCart:0,
+  paymentId:'', //id_payment (n)
+  cartId:'', //id_cart (n)
+  userId:'', //id_user (ada)
   adminAllPayment:[],
   userAllCart:[],
   adminAllCart:[],
   userData:[],
-  cart_id:0,
+  userCartId:0, //cart_id (ada)
   adminAllBook:[],
   allUser:[],
   bookOwn:[],
-  kode_pemesanan:'',
-  tanggal_pemesanan:'',
-  total_pembayaran:'',
-  userId:'',
+  orderCode:'', //kode_pemesanan (ada)
+  orderDate:'', //tanggal_pemesanan
+  totalPayment:'', //total_pembayaran  
   listResults:[],
   listCategory:[],
-  ongkos_kirim:0,
-  total_price:0,
+  shippingCost:0,//ongkos_kirim  
+  totalPrice:0, //total_price  
   carts:[],
-  book_id:'',
+  bookId:'',//book_id  
   books:[],
   bookById:[],
   userById:[],
@@ -34,15 +34,16 @@ const initialState = {
   isLoading:true,
   token:'',
   photo:'',
-  nama_lengkap:'',
+  fullName:'',//nama_lengkap  
   email:'',
-  kata_sandi:'',
-  is_login: false,
+  password:'',//kata_sandi  
+  isLogin: false,//is_login (ada)
   Bearer:'',
-  judul:'',
-  penulis:'',
-  jumlah_halaman:'',
-  tanggal_terbit:'',
+  title:'',
+  writer:'',
+  pageTitle:'',//judul_halaman
+  totalPage:0, //jumlah_halaman
+  publishDate:'',
   isbn:'',
   genre:'',
   bahasa:'',
@@ -50,27 +51,27 @@ const initialState = {
   berat:0,
   lebar:0,
   panjang:0,
-  jenis_cover:'',
+  bookCover:'',
   status:'',
   harga:0,
   totalBeli:[],
   stok:[],
-  foto_buku:'',
+  bookPhoto:'',
   keyword:'',
   kategori:'',
   disable:true,
   address: true,
-  nama_jalan:'',
-  rt_rw:'',
-  kelurahan:'',     
-  kecamatan:'',
-  kota_kabupaten:'', 
-  provinsi:'',
-  kode_pos:'',
-  nomor_telepon:'',
+  streetName:'',
+  rtRw:'',
+  village:'', // kelurahan     
+  region:'', // kecamatan
+  cityState:'', // kota_kabupaten 
+  province:'', // provinsi
+  postalCode:'', //kode_pos
+  phoneNumber:'', // nomor_telepon
   validasiPostBuku:false,
   validasiUpdateBuku:false,
-  cart_content:true
+  cartContent:true // cart_content
 }
 
 export const store = createStore(initialState)
@@ -90,17 +91,17 @@ export const actions = store => ({
 
   // Function for Sign Up
   postSignUp : async (state) => {
-      const nama_lengkap = state.nama_lengkap
-      const kata_sandi = state.kata_sandi
+      const fullName= state.fullName      
+      const password= state.password      
       const email = state.email
       const mydata = {
-          nama_lengkap: nama_lengkap,
+          nama_lengkap: fullName,
           email: email,
-          kata_sandi: kata_sandi
+          kata_sandi: password      
       };
       const req = {
         method: "post",
-        url: "http://0.0.0.0:1250/user",
+        url: state.baseUrl+"/user",
         headers: {
           "Content-Type": "application/json"
         },
@@ -110,7 +111,7 @@ export const actions = store => ({
       await axios(req)
           .then(response => {
                 store.setState({
-                    "is_login": true
+                    "is_Lgin": true
                 });
           })
           .catch(error => {
@@ -120,16 +121,15 @@ export const actions = store => ({
 
   // Function for Login
   postLogin : async (state) => {
-    const kata_sandi = state.kata_sandi
+    const password= state.password    
     const email = state.email
     const mydata = {
         email: email,
-        kata_sandi: kata_sandi
-    };
+        kata_sandi: password    };
 
     const req = {
       method: "post",
-      url: "http://0.0.0.0:1250/token",
+      url: state.baseUrl+"/token",
       headers: {
         "Content-Type": "application/json"
       },
@@ -139,7 +139,7 @@ export const actions = store => ({
     await axios(req)
       .then(response => {
         localStorage.setItem("email", email);
-        localStorage.setItem("is_login", true);
+        localStorage.setItem("is_Lgin", true);
         localStorage.setItem("token", response.data.token);
       })
       .catch(error => {
@@ -149,10 +149,10 @@ export const actions = store => ({
 
   // Function for user upload book
   postBook : async (state) => {
-    const judul = state.judul
-    const penulis = state.penulis
-    const jumlah_halaman = state.jumlah_halaman
-    const tanggal_terbit = state.tanggal_terbit
+    const judul = state.title
+    const penulis = state.writer
+    const jumlah_halaman= state.totalPage    
+    const tanggal_terbit = state.publishDate
     const isbn = state.isbn
     const genre = state.genre
     const bahasa = state.bahasa
@@ -160,11 +160,11 @@ export const actions = store => ({
     const berat = state.berat * 1
     const lebar = state.lebar * 1
     const panjang = state.panjang * 1
-    const jenis_cover = state.jenis_cover
+    const jenis_cover = state.bookCover
     const status = state.status
     const harga = state.harga * 1
     const stok = state.stok * 1
-    const foto_buku = state.foto_buku
+    const foto_buku = state.bookPhoto
     const sinopsis = state.sinopsis
     const mybook = {
       judul : judul,
@@ -188,7 +188,7 @@ export const actions = store => ({
 
     const req = {
       method: "post",
-      url: "http://0.0.0.0:1250/book",
+      url: state.baseUrl+"/book",
       headers: {
         Authorization: "Bearer " + localStorage.getItem('token')
       },
@@ -210,7 +210,7 @@ export const actions = store => ({
   deleteItem : async (state) => {
     const req = {
       method: "delete",
-      url: "http://0.0.0.0:1250/book/edit/"+state.book_id,
+      url: state.baseUrl+"/book/edit/"+state.book_Id,
       headers: {
         Authorization: "Bearer " + localStorage.getItem('token')
       }
@@ -218,7 +218,7 @@ export const actions = store => ({
     await axios(req)
       .then(response => {
         store.setState({
-            book_id:''
+            book_Id:''
         })
       })
       .catch(error => {
@@ -230,7 +230,7 @@ export const actions = store => ({
   deleteCartItem : async (state) => {
     const req = {
       method: "delete",
-      url: "http://0.0.0.0:1250/cart/product/"+state.cart_id,
+      url: state.baseUrl+"/cart/product/"+state.userCartId,
       headers: {
         Authorization: "Bearer " + localStorage.getItem('token')
       }
@@ -238,7 +238,7 @@ export const actions = store => ({
     await axios(req)
       .then(response => {
         store.setState({
-            book_id:''
+            book_Id:''
         })
     })
     .catch(error => {
@@ -248,10 +248,10 @@ export const actions = store => ({
 
   // Function for update book by user
   updateBook : async (state) => {
-    const judul = state.judul
-    const penulis = state.penulis
-    const jumlah_halaman = state.jumlah_halaman
-    const tanggal_terbit = state.tanggal_terbit
+    const judul = state.title
+    const penulis = state.writer
+    const totalPage = state.totalPage    
+    const tanggal_terbit = state.publishDate
     const isbn = state.isbn
     const genre = state.genre
     const bahasa = state.bahasa
@@ -259,16 +259,16 @@ export const actions = store => ({
     const berat = state.berat * 1
     const lebar = state.lebar * 1
     const panjang = state.panjang * 1
-    const jenis_cover = state.jenis_cover
+    const jenis_cover = state.bookCover
     const status = state.status
     const harga = state.harga * 1
     const stok = state.stok * 1
-    const foto_buku = state.foto_buku
+    const foto_buku = state.bookPhoto
     const sinopsis = state.sinopsis
     const mybook = {
       judul : judul,
       penulis : penulis,
-      jumlah_halaman : jumlah_halaman,
+      jumlah_halaman : totalPage,
       tanggal_terbit : tanggal_terbit,
       isbn : isbn,
       genre : genre,
@@ -286,7 +286,7 @@ export const actions = store => ({
     };
     const req = {
       method: "put",
-      url: "http://0.0.0.0:1250/book/edit/"+state.book_id,
+      url: state.baseUrl+"/book/edit/"+state.book_I,
       headers: {
         Authorization: "Bearer " + localStorage.getItem('token')
       },
@@ -329,7 +329,7 @@ export const actions = store => ({
     };
     const req = {
       method: "post",
-      url: "http://0.0.0.0:1250/cart/add",
+      url: state.baseUrl+"/cart/add",
       headers: {
         Authorization: "Bearer " + localStorage.getItem('token')
       },
@@ -348,7 +348,7 @@ export const actions = store => ({
   Calculate : async (state) => {
     const req = {
       method: "get",
-      url: "http://0.0.0.0:1250/cart/total",
+      url: state.baseUrl+"/cart/total",
       headers: {
         Authorization: "Bearer " + localStorage.getItem('token')
       }
@@ -356,7 +356,7 @@ export const actions = store => ({
     await axios(req)
         .then(response => {
           store.setState({
-            "total_price": response.data,
+            "totalPrice": response.data,
             "disable": false
           })
           return response
@@ -370,14 +370,14 @@ export const actions = store => ({
 
   // Function for getting expedition price
   CalculateExpeditionPrice : async (state) => {
-    const nama_jalan = state.nama_jalan
+    const nama_jalan = state.streetName
     const rt_rw = state.rt_rw
-    const kelurahan = state.kelurahan
-    const kecamatan = state.kecamatan
-    const kota_kabupaten = state.kota_kabupaten
-    const provinsi = state.provinsi
-    const kode_pos = state.kode_pos
-    const nomor_telepon = state.nomor_telepon
+    const kelurahan = state.village
+    const kecamatan = state.region
+    const kota_kabupaten = state.cityState
+    const provinsi = state.province
+    const kode_pos = state.postalCode
+    const nomor_telepon = state.phoneNumber
     const myaddress = {
       nama_jalan: nama_jalan,
       rt_rw: rt_rw,
@@ -390,7 +390,7 @@ export const actions = store => ({
     };
     const req = {
       method: "post",
-      url: "http://0.0.0.0:1250/payment/ongkir",
+      url: state.baseUrl+"/payment/ongkir",
       headers: {
         Authorization: "Bearer " + localStorage.getItem('token')
       },
@@ -399,7 +399,7 @@ export const actions = store => ({
     await axios(req)
       .then(response => {
         store.setState({
-          'ongkos_kirim':response.data
+          'shippingCost':response.data
         })
         return response
       })
@@ -412,7 +412,7 @@ export const actions = store => ({
   FinalTransactionPayment : async (state) => {
     const req = {
       method: "post",
-      url: "http://0.0.0.0:1250/payment_confirm/bill",
+      url: state.baseUrl+"/payment_confirm/bill",
       headers: {
         Authorization: "Bearer " + localStorage.getItem('token')
       }
@@ -420,9 +420,9 @@ export const actions = store => ({
     await axios(req)
       .then(response => {
         store.setState({
-          'total_pembayaran':response.data.total_biaya,
-          'tanggal_pemesanan':response.data.tanggal_pemesanan,
-          'kode_pemesanan':response.data.nomor_pemesanan
+          'totalPayment':response.data.total_biaya,
+          'orderDate':response.data.tanggal_pemesanan,
+          'orderCode':response.data.nomor_pemesanan
         })
         return response
       })
@@ -435,7 +435,7 @@ export const actions = store => ({
   searchBook : async (state) => {
     const req = {
       method: "get",
-      url: "http://0.0.0.0:1250/book/search?keyword="+store.getState().keyword,
+      url: state.baseUrl+"/book/search?keyword="+store.getState().keyword,
     };
     await axios(req)
       .then(response => {
@@ -454,7 +454,7 @@ export const actions = store => ({
     store.setState({ [e.target.name]: e.target.value });
     const req = {
       method: "get",
-      url: "http://0.0.0.0:1250/book/category?keyword="+store.getState().kategori
+      url: state.baseUrl+"/book/category?keyword="+store.getState().kategori
     };
 
     await axios(req)
@@ -478,7 +478,7 @@ export const actions = store => ({
       };
       const req = {
         method: "put",
-        url: "http://0.0.0.0:1250/cart/product/"+product.id,
+        url: state.baseUrl+"/cart/product/"+product.id,
         headers: {
           Authorization: "Bearer " + localStorage.getItem('token')
         },
@@ -498,7 +498,7 @@ export const actions = store => ({
   deleteUser : async (state,e) => {
     const req = {
       method: "delete",
-      url: "http://0.0.0.0:1250/user/"+state.id_user,
+      url: state.baseUrl+"/user/"+state.userId,
       headers: {
         Authorization: "Bearer " + localStorage.getItem('token')
       }
@@ -506,7 +506,7 @@ export const actions = store => ({
     await axios(req)
       .then(response => {
         store.setState({
-              id_user:''
+              userId:''
           })
     })
       .catch(error => {
@@ -518,7 +518,7 @@ export const actions = store => ({
   deleteCart : async (state,e) => {
     const req = {
       method: "delete",
-      url: "http://0.0.0.0:1250/cart/product/"+state.id_cart,
+      url: state.baseUrl+"/cart/product/"+state.cartId,
       headers: {
         Authorization: "Bearer " + localStorage.getItem('token')
       }
@@ -526,7 +526,7 @@ export const actions = store => ({
     await axios(req)
       .then(response => {
         store.setState({
-          id_user:''
+          userId:''
           })
       })
       .catch(error => {

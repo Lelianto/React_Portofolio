@@ -8,8 +8,10 @@ import { store, actions } from '../store'
 class CategoryFilterResult extends React.Component {
     // Function to go to book detail information
     goToBook = async (book) => {
-        store.setState({ book_id: book.id })
-        this.props.history.push("/bookdetail/"+store.getState().book_id);
+        store.setState({ 
+            bookId: book.id 
+        })
+        this.props.history.push("/bookdetail/"+store.getState().bookId);
         }
         
     render() {
@@ -61,4 +63,4 @@ class CategoryFilterResult extends React.Component {
     }
 }
 
-export default connect("listCategory, books, book_id, token, is_login, isLoading",actions)(withRouter(CategoryFilterResult));
+export default connect("listCategory, books, bookId, token, isLoading",actions)(withRouter(CategoryFilterResult));
