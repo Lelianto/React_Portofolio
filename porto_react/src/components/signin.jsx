@@ -1,13 +1,25 @@
 import React from 'react';
 import '../styles/masuk.css';
 import '../styles/bootstrap.min.css'
-import '../styles/loading.css'
+import '../styles/loading.css';
 import logo from '../images/bug-logo.png';
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
-import { actions } from '../store'
+import { actions, store } from '../store'
 
 class SignIn extends React.Component {
+  // Handle see password
+  handlePass = () => {
+    if (this.props.typeText == "password") {
+      store.setState({
+        typeText:"text"
+      })
+    } else {
+      store.setState({
+        typeText:"password"
+      })
+    }
+  }
   // Function for Login
   doLogin = async () => {
     await this.props.postLogin()
@@ -21,6 +33,7 @@ class SignIn extends React.Component {
   }
 
   render() { 
+    // console.log(this.props.typeText)
     return (
     <div className="wrapper fadeInDown" style={{marginTop:'-50px',marginBottom:'60px'}}>
         <div id="formContent">
@@ -38,12 +51,15 @@ class SignIn extends React.Component {
                     placeholder="Email"
                     onChange={e => this.props.changeInput(e)} />
                     <input 
-                    type="password" 
+                    type={this.props.typeText} 
                     id="password" 
                     className="fadeIn third" 
                     name="password" 
                     placeholder="Kata Sandi"
                     onChange={e => this.props.changeInput(e)} />
+                    <p></p>
+                    <input style={{fontSize:'12px', textAlign:'left'}} type="checkbox" onClick={this.handlePass}/>Show Password
+                    <p></p>
                     <input 
                     type="submit" 
                     className="fadeIn fourth" 
@@ -59,10 +75,11 @@ class SignIn extends React.Component {
             </div>
 
         </div>
+        
         </div>
     )
 
   }
 }
 
-export default connect("Bearer, email, password, isLoading",actions)(withRouter(SignIn));
+export default connect("typeText, Bearer, email, password, isLoading",actions)(withRouter(SignIn));

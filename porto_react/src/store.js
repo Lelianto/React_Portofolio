@@ -3,6 +3,7 @@ import axios from 'axios';
 // https://kutubuku.store
 // Initialization global state
 const initialState = {
+  typeText:'password',
   bookEmptyStock:[],
   baseUrl:'http://0.0.0.0:5000',
   remainingBook:'',

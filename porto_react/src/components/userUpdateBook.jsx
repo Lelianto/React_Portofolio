@@ -36,6 +36,7 @@ class UserUpload extends React.Component {
                         type="text" 
                         id="writer"  
                         name="writer" 
+                        pattern="^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$"
                         placeholder="Masukkan Nama Penulis"
                         onChange={e => this.props.changeInput(e)} required/>
 
@@ -43,6 +44,7 @@ class UserUpload extends React.Component {
                         type="text" 
                         id="totalPage"  
                         name="totalPage" 
+                        pattern="^[0-9]*$"
                         placeholder="Masukkan Jumlah Halaman"
                         onChange={e => this.props.changeInput(e)} required/>
 
@@ -50,6 +52,7 @@ class UserUpload extends React.Component {
                         type="text" 
                         id="publishDate"  
                         name="publishDate" 
+                        pattern="(\b(1[0-2]|0[1-9])\/([1-9]([0-9]{3}))\b)"
                         placeholder="Masukkan Tanggal Terbit"
                         onChange={e => this.props.changeInput(e)} required/>
 
@@ -57,6 +60,7 @@ class UserUpload extends React.Component {
                         type="text" 
                         id="isbn"  
                         name="isbn" 
+                        pattern="(\b([0-9]{13})\b)"
                         placeholder="Masukkan Nomor ISBN"
                         onChange={e => this.props.changeInput(e)} required/>
 
@@ -90,13 +94,15 @@ class UserUpload extends React.Component {
                         type="text" 
                         id="berat"  
                         name="berat" 
+                        pattern="(^[0-9]*|[.][0-9]*)*$"
                         placeholder="Masukkan Berat Buku (kg)"
                         onChange={e => this.props.changeInput(e)} required/>
 
                         <input 
                         type="text" 
                         id="lebar"  
-                        name="lebar" 
+                        name="lebar"
+                        pattern="(^[0-9]*|[.][0-9]*)*$"
                         placeholder="Masukkan Lebar Buku (cm)"
                         onChange={e => this.props.changeInput(e)} required/>
 
@@ -104,6 +110,7 @@ class UserUpload extends React.Component {
                         type="text" 
                         id="panjang"  
                         name="panjang" 
+                        pattern="(^[0-9]*|[.][0-9]*)*$"
                         placeholder="Masukkan Panjang Buku (cm)"
                         onChange={e => this.props.changeInput(e)} required/>
 
@@ -127,6 +134,7 @@ class UserUpload extends React.Component {
                         type="text" 
                         id="harga"  
                         name="harga" 
+                        pattern="^[0-9]*$"
                         placeholder="Masukkan Harga Buku"
                         onChange={e => this.props.changeInput(e)} required/>
 
@@ -134,6 +142,7 @@ class UserUpload extends React.Component {
                         type="text" 
                         id="stok"  
                         name="stok" 
+                        pattern="^[0-9]*$"
                         placeholder="Masukkan Stok Buku"
                         onChange={e => this.props.changeInput(e)} required/>
 

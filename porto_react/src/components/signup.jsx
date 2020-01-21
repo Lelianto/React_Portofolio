@@ -5,7 +5,7 @@ import '../styles/loading.css'
 import logo from '../images/bug-logo.png';
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'unistore/react'
-import { actions } from '../store';
+import { actions, store } from '../store';
 
 class SignUp extends React.Component {
   // Function for doing SignUp
@@ -13,6 +13,19 @@ class SignUp extends React.Component {
     await this.props.postSignUp()
     if (this.prop){
         this.props.history.push("/profile");
+    }
+  }
+
+  // Handle see password
+  handlePass = () => {
+    if (this.props.typeText == "password") {
+      store.setState({
+        typeText:"text"
+      })
+    } else {
+      store.setState({
+        typeText:"password"
+      })
     }
   }
 
@@ -43,12 +56,15 @@ class SignUp extends React.Component {
                     placeholder="Email"
                     onChange={e => this.props.changeInput(e)} />
                     <input 
-                    type="password" 
+                    type={this.props.typeText} 
                     id="password" 
                     className="fadeIn third" 
                     name="password"
                     placeholder="Kata Sandi"
                     onChange={e => this.props.changeInput(e)} />
+                    <p></p>
+                    <input style={{fontSize:'12px', textAlign:'left'}} type="checkbox" onClick={this.handlePass}/>Show Password
+                    <p></p>
                     <input 
                     type="submit" 
                     className="fadeIn fourth" 
@@ -67,4 +83,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default connect("nama_lengkap, email, password, isLoading",actions)(withRouter(SignUp));
+export default connect("typeText,nama_lengkap, email, password, isLoading",actions)(withRouter(SignUp));
