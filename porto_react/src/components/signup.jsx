@@ -32,6 +32,7 @@ class SignUp extends React.Component {
                     className="fadeIn second" 
                     name="nama_lengkap" 
                     placeholder="Nama Lengkap"
+                    pattern="^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$"
                     onChange={e => this.props.changeInput(e)} />
                     <input 
                     type="text" 
@@ -45,7 +46,7 @@ class SignUp extends React.Component {
                     type="password" 
                     id="password" 
                     className="fadeIn third" 
-                    name="password" 
+                    name="password"
                     placeholder="Kata Sandi"
                     onChange={e => this.props.changeInput(e)} />
                     <input 
