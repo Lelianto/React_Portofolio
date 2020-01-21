@@ -100,8 +100,10 @@ class CartDetail extends React.Component {
             }
             return false
         })
+        console.log(this.props.bookEmptyStock)
+
         store.setState({
-            'lengthCart':listInCart.length
+            'lengthCart':listInCart.length,
         })
         if(listInCart.length<1){
             return (
@@ -206,7 +208,7 @@ class CartDetail extends React.Component {
                         <div>
                             <div className='col-md-12' style={{ paddingTop:'25px', marginBottom: '25px'}}>
                                 <label>
-                                    <button type="button" class="btn btn-success" onClick={this.doTotalPrice}>Finalisasi Jumlah Beli</button>
+                                    <button data-toggle="modal" data-target="#exampleModalCenter" type="button" class="btn btn-success" onClick={this.doTotalPrice}>Finalisasi Jumlah Beli</button>
                                 </label>
                             </div>
                         </div>
@@ -218,4 +220,4 @@ class CartDetail extends React.Component {
     }
 }
 
-export default connect("carts, token, isLoading",actions)(withRouter(CartDetail));
+export default connect("carts, token, isLoading, bookEmptyStock",actions)(withRouter(CartDetail));

@@ -8,57 +8,16 @@ import axios from 'axios'
 
 
 class SearchAllPayments extends React.Component {
-    // Fungsi untuk mengambil semua list payment dari database
-    getAllPayment = () => {
-        const req = {
-            method: "get",
-            url: store.getState().baseUrl+"/payment_confirm/all",
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('token')
-            }
-            }; 
-            const self = this
-            axios(req)
-                .then(function (response) {
-                    store.setState({ 
-                        adminAllPayment: response.data, 
-                        isLoading:false
-                    })
-                    return response
-                })
-                .catch((error)=>{
-                    store.setState({ isLoading: false})
-                    switch (error.response.status) {
-                        case 401 :
-                            self.props.history.push('/401')
-                            break
-                        case 403 :
-                            self.props.history.push('/403')
-                            break
-                        case 404 :
-                            self.props.history.push('/404')
-                            break
-                        case 422 :
-                            self.props.history.push('/422')
-                            break
-                        case 500 :
-                            self.props.history.push('/500')
-                            break
-                        default :
-                            break
-                    }
-                })
+    // Function for searching payment based on payment code
+    doSearchPayment = async () => {
+        await this.props.searchPayment()
+        this.props.history.push("/payments/search");
     }
 
-    // Untuk menjalankan Fungsi getListPayment
-    componentDidMount = () => {
-        this.getAllPayment()
-    };
-
     render() {
-        const { adminAllPayment, adminKeyword } = this.props
-        const searchResult = adminAllPayment.filter(item => {
-            if (item.nomor_pemesanan == adminKeyword ) {
+        const { listResults } = this.props
+        const searchResult = listResults.filter(item => {
+            if (item.nomor_pemesanan !== null) {
                 return item;
             }
             return false
@@ -76,8 +35,8 @@ class SearchAllPayments extends React.Component {
                                     type="search" 
                                     placeholder="Cari Nomor Pemesanan" 
                                     aria-label="Search"
-                                    id="adminKeyword"
-                                    name="adminKeyword"
+                                    id="keyword"
+                                    name="keyword"
                                     onChange={(e) => this.props.changeInput(e)}/>
                                 </div>
                             </div>
@@ -85,7 +44,7 @@ class SearchAllPayments extends React.Component {
                                 <div className="active-cyan-4 mb-4" style={{marginLeft:'-135px'}}>
                                     <button class="btn btn-info my-sm-0" 
                                     type="submit"
-                                    onClick={this.doSearchBook}
+                                    onClick={this.doSearchPayment}
                                     >Search</button>
                                 </div>
                             </div>
@@ -120,4 +79,4 @@ class SearchAllPayments extends React.Component {
     }
 }
 
-export default connect("adminAllPayment, adminKeyword, isLoading",actions)(withRouter(SearchAllPayments));
+export default connect("listResults ,adminAllPayment, adminKeyword, isLoading",actions)(withRouter(SearchAllPayments));

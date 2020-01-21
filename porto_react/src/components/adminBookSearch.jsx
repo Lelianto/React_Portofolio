@@ -8,49 +8,6 @@ import axios from 'axios'
 
 
 class SearchAllBook extends React.Component {
-    // Fungsi untuk mengambil semua list buku dari database
-    getListBook =()=>{
-        const req = {
-            method: "get",
-            url: store.getState().baseUrl+"/book",
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem('token')
-            }
-            }; 
-            const self = this
-            axios(req)
-                .then(function (response) {
-                    store.setState({ 
-                        adminAllBook: response.data, 
-                        isLoading:false
-                    })
-                    return response
-                })
-                .catch((error)=>{
-                    store.setState({ 
-                        isLoading: false
-                    })
-                    switch (error.response.status) {
-                        case 401 :
-                            self.props.history.push('/401')
-                            break
-                        case 403 :
-                            self.props.history.push('/403')
-                            break
-                        case 404 :
-                            self.props.history.push('/404')
-                            break
-                        case 422 :
-                            self.props.history.push('/422')
-                            break
-                        case 500 :
-                            self.props.history.push('/500')
-                            break
-                        default :
-                            break
-                    }
-                })
-    }
     
     // Fungsi untuk menghapus buku dari database sesuai ID
     doDelete = async (e) => {
@@ -64,18 +21,16 @@ class SearchAllBook extends React.Component {
         }
     }
     
-    // Untuk menjalankan Fungsi getListBook
-    componentDidMount = () => {
-        this.getListBook()
-    };
-
+    // Function for searching fiture (admin input)
     doSearchBook = async () => {
+        await this.props.searchBook()
         this.props.history.push("/books/search");
     }
+
     render() {
-        const { adminAllBook, adminProductKeyword } = this.props
-        const searchResult = adminAllBook.filter(item => {
-            if (item.judul.toLowerCase() == adminProductKeyword.toLowerCase() ||item.penulis.toLowerCase() == adminProductKeyword.toLowerCase() || item.genre.toLowerCase() == adminProductKeyword.toLowerCase() || item.status.toLowerCase() == adminProductKeyword.toLowerCase() || item.email_user.toLowerCase() == adminProductKeyword.toLowerCase()) {
+        const { listResults } = this.props
+        const searchResult = listResults.filter(item => {
+            if (item.penulis !== null && item.judul !== null && item.genre !== null && item.email_user !== null) {
                 return item;
             }
             return false
@@ -93,8 +48,8 @@ class SearchAllBook extends React.Component {
                                     type="search" 
                                     placeholder="Cari Judul, Penulis, Genre, Status Jual" 
                                     aria-label="Search"
-                                    id="adminProductKeyword"
-                                    name="adminProductKeyword"
+                                    id="keyword"
+                                    name="keyword"
                                     onChange={(e) => this.props.changeInput(e)}/>
                                 </div>
                             </div>
@@ -102,7 +57,7 @@ class SearchAllBook extends React.Component {
                                 <div className="active-cyan-4 mb-4" style={{marginLeft:'-135px'}}>
                                     <button class="btn btn-info my-sm-0" 
                                     type="submit"
-                                    onClick={this.doSearchPayment}
+                                    onClick={this.doSearchBook}
                                     >Search</button>
                                 </div>
                             </div>
@@ -152,4 +107,4 @@ class SearchAllBook extends React.Component {
     }
 }
 
-export default connect("adminProductKeyword ,adminAllBook, isLoading",actions)(withRouter(SearchAllBook));
+export default connect("listResults,adminProductKeyword ,adminAllBook, isLoading",actions)(withRouter(SearchAllBook));

@@ -10,9 +10,7 @@ import axios from 'axios'
 class BookDetail extends React.Component {
     // Fungsi untuk menambahkan produk ke keranjang
     doAddCart = async () => {
-        // await this.props.addCartItem()
         await this.props.addCartItem()
-        // console.log(responseData)
     }
 
     // Fungsi untuk menghapus buku oleh User (Buku milik sendiri)

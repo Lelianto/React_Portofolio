@@ -58,6 +58,7 @@ class AccessAllPayments extends React.Component {
     }
 
     doSearchPayment = async () => {
+        await this.props.searchPayment()
         this.props.history.push("/payments/search");
     }
 
@@ -76,8 +77,8 @@ class AccessAllPayments extends React.Component {
                                     type="search" 
                                     placeholder="Cari Nomor Pemesanan" 
                                     aria-label="Search"
-                                    id="adminKeyword"
-                                    name="adminKeyword"
+                                    id="keyword"
+                                    name="keyword"
                                     onChange={(e) => this.props.changeInput(e)}/>
                                 </div>
                             </div>

@@ -50,6 +50,13 @@ class CartDetailTotalPrice extends React.Component {
         })
   };
 
+  resetCart = () => {
+    store.setState({
+      bookEmptyStock:[],
+      disable:true
+    })
+    this.props.history.push('/cart')
+  }
   render() {
       if(store.getState().lengthCart===0){
         return <Redirect to={{ pathname: "/cart" }} />;
@@ -74,6 +81,27 @@ class CartDetailTotalPrice extends React.Component {
           </div>
           )
         }
+      if(store.getState().bookEmptyStock.length>0){
+        return(
+          <div className='book-empty' tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                  <div class="modal-header" style={{backgroundColor:'teal', color:'white'}}>
+                      <h6 class="modal-title" id="exampleModalLongTitle">Stok buku ini tidak mencukupi.</h6>
+                      <button onClick={this.resetCart}  type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  {store.getState().bookEmptyStock.map((item,i)=>
+                  <div class="modal-body">
+                      {i+1}. {item}
+                  </div>
+                  )}
+                  </div>
+              </div>
+          </div>
+        )
+      }
       return (
           <div>
               <div className='container top-body-cart5'>

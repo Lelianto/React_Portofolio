@@ -61,10 +61,12 @@ class AccessAllBook extends React.Component {
         this.getListBook()
     };
 
+    // Function for searching fiture (admin input)
     doSearchBook = async () => {
+        await this.props.searchBook()
         this.props.history.push("/books/search");
     }
-
+    
     render() {
         const { adminAllBook } = this.props
         return (
@@ -80,8 +82,8 @@ class AccessAllBook extends React.Component {
                                     type="search" 
                                     placeholder="Cari Judul, Penulis, Genre, Status Jual" 
                                     aria-label="Search"
-                                    id="adminProductKeyword"
-                                    name="adminProductKeyword"
+                                    id="keyword"
+                                    name="keyword"
                                     onChange={(e) => this.props.changeInput(e)}/>
                                 </div>
                             </div>
