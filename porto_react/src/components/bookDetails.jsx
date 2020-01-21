@@ -10,7 +10,9 @@ import axios from 'axios'
 class BookDetail extends React.Component {
     // Fungsi untuk menambahkan produk ke keranjang
     doAddCart = async () => {
+        // await this.props.addCartItem()
         await this.props.addCartItem()
+        // console.log(responseData)
     }
 
     // Fungsi untuk menghapus buku oleh User (Buku milik sendiri)
@@ -234,25 +236,45 @@ class BookDetail extends React.Component {
                             </div>
                         </div>
                     </div>
+                    {this.props.addCartStatus=='stok buku telah habis'?
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header" style={{backgroundColor:'teal', color:'white'}}>
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Pemberitahuan</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Buku telah habis
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    :
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header" style={{backgroundColor:'teal', color:'white'}}>
-                                <h5 class="modal-title" id="exampleModalLongTitle">Pemberitahuan</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                Buku telah ditambahkan ke dalam Keranjang
-                            </div>
-                            </div>
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header" style={{backgroundColor:'teal', color:'white'}}>
+                            <h5 class="modal-title" id="exampleModalLongTitle">Pemberitahuan</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Buku telah ditambahkan ke dalam Keranjang
+                        </div>
                         </div>
                     </div>
                 </div>
+            
+                    }
+            </div>
+
             )
         }
     }
 }
 
-export default connect("bookById, bookId, isLoading",actions)(withRouter(BookDetail));
+export default connect("addCartStatus, bookById, bookId, isLoading",actions)(withRouter(BookDetail));

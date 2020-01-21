@@ -1,9 +1,10 @@
 import createStore from 'unistore';
 import axios from 'axios';
-
+// https://kutubuku.store
 // Initialization global state
 const initialState = {
-  baseUrl:'https://kutubuku.store',
+  baseUrl:'http://0.0.0.0:5000',
+  addCartStatus:'',
   adminProductKeyword:'',
   adminKeyword:'',
   lengthCart:0,
@@ -337,7 +338,11 @@ export const actions = store => ({
     };
     await axios(req)
       .then(response => {
-        return response
+        console.log(response.data.message)
+        store.setState({
+          'addCartStatus':response.data.message
+        })
+        // return response.data.message
       })
       .catch(error => {
         return false
