@@ -6,6 +6,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import { store, actions } from '../store';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
 
@@ -15,6 +16,7 @@ class ProfileUser extends React.Component {
         await localStorage.removeItem('token');
         await localStorage.removeItem('is_login');
         await localStorage.removeItem('email');
+        swal("Terima Kasih!", "Silakan login kembali untuk berburu buku!", "success");
         this.props.history.push("/");
     };
 
@@ -98,7 +100,7 @@ class ProfileUser extends React.Component {
                     <div className='container alamat-email'>
                         <div className='row'>
                             <div style={{textAlign:'left'}} className='col-md-11 col-sm-12'>
-                                Alamat email : {userData.email}
+                                {userData.email}
                             </div>
                         </div>
                     </div>   

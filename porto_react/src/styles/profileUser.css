@@ -5,8 +5,8 @@
 }
 
 .alamat-email {
-    padding-top: 30px;
-    padding-bottom: 10px;
+    padding-bottom: 30px;
+    border-bottom: rgb(210, 223, 202) 1px solid;
 }
 
 .user-full-name {
@@ -19,8 +19,6 @@
 }
 
 .border-user1 {
-    border-bottom: rgb(210, 223, 202) 1px solid;
-    padding-bottom: 30px;
     padding-top: 0px;
 }
 

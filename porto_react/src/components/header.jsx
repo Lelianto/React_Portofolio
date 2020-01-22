@@ -6,6 +6,7 @@ import cart from '../images/cart.webp';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
+import swal from 'sweetalert';
 
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop', 'Antologi Puisi']
 
@@ -22,6 +23,7 @@ class Header extends React.Component {
     }
 
     render (){
+        // swal("Selamat Datang di Kutubuku.store");
         if(localStorage.getItem('email')=='lian@alterra.id'){
             return (
                 <header>
@@ -35,8 +37,8 @@ class Header extends React.Component {
                             </div>
                             <div className="col-md-2 dropdown-position">
                                 <div className="dropdown">
-                                    <select className="dropdown" name='kategori' onClick={e => this.doSearchCategoryBook(e)}>
-                                    <option style={{fontSize:'20px'}} value=''>
+                                    <select className="dropdown categorial" name='kategori' onClick={e => this.doSearchCategoryBook(e)}>
+                                    <option style={{fontSize:'15px'}} value=''>
                                     Kategori</option>
                                     {allGenres.map((genre,i)=>
                                     <option style={{fontSize:'15px'}} value={genre}>
@@ -99,8 +101,8 @@ class Header extends React.Component {
                     </div>
                     <div className="col-md-2 dropdown-position">
                         <div className="dropdown">
-                            <select className="dropdown" name='kategori' onClick={e => this.doSearchCategoryBook(e)}>
-                            <option style={{fontSize:'20px'}} value=''>
+                            <select className="dropdown categorial" name='kategori' onClick={e => this.doSearchCategoryBook(e)}>
+                            <option style={{fontSize:'15px'}} value=''>
                             Kategori</option>
                             {allGenres.map((genre,i)=>
                             <option style={{fontSize:'15px'}} value={genre}>

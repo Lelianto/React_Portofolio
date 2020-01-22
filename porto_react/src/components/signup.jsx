@@ -6,13 +6,15 @@ import logo from '../images/bug-logo.png';
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { actions, store } from '../store';
+import swal from 'sweetalert'
 
 class SignUp extends React.Component {
   // Function for doing SignUp
   doSignUp = async () => {
     await this.props.postSignUp()
     if (store.getState().isSignUp){
-        this.props.history.push("/login");
+      swal("Selamat!", "Anda berhasil mendaftar!", "success");
+      this.props.history.push("/login");
     }
   }
 
