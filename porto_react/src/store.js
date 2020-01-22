@@ -1,8 +1,9 @@
 import createStore from 'unistore';
 import axios from 'axios';
-
+// https://kutubuku.store
 // Initialization global state
 const initialState = {
+  isSignUp:false,
   typeText:'password',
   bookEmptyStock:[],
   baseUrl:'https://kutubuku.store',
@@ -112,15 +113,14 @@ export const actions = store => ({
         },
         data: mydata
       };
-
       await axios(req)
-          .then(response => {
-                store.setState({
-                    "isLogin": true
-                });
-          })
-          .catch(error => {
-              return false
+        .then(response => {
+            store.setState({
+                isSignUp: true
+            });
+        })
+        .catch(error => {
+          return false
       })
   },
 
