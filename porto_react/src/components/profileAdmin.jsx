@@ -13,6 +13,7 @@ class ProfileUser extends React.Component {
         await localStorage.removeItem('email');
         this.props.history.push("/");
     };
+
     render() {
         if (localStorage.getItem('token') == null){
             return <Redirect to={{ pathname: "/login" }} />;
@@ -28,7 +29,7 @@ class ProfileUser extends React.Component {
                             </div>
                             <div className='col-md-4 button-logout'>
                                 <label>
-                                    <button type="button" class="btn btn-success" onClick={this.handleSignOut}>Log Out</button>
+                                    <button type="button" class="btn btn-danger" onClick={this.handleSignOut}>Log Out</button>
                                 </label>
                             </div>
                         </div>

@@ -14,6 +14,7 @@ class AllBooks extends React.Component {
         store.setState({ bookId: book.id })
         this.props.history.push("/bookdetail/"+store.getState().bookId);
         }
+        
     // Function to get all book and display it into homepage
     componentDidMount = () => {
         const req = {

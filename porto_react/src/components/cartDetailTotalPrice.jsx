@@ -50,6 +50,7 @@ class CartDetailTotalPrice extends React.Component {
         })
   };
 
+  // Function for recall cart
   resetCart = () => {
     store.setState({
       bookEmptyStock:[],
@@ -57,6 +58,7 @@ class CartDetailTotalPrice extends React.Component {
     })
     this.props.history.push('/cart')
   }
+  
   render() {
       if(store.getState().lengthCart===0){
         return <Redirect to={{ pathname: "/cart" }} />;

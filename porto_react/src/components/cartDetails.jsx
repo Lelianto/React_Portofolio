@@ -100,8 +100,6 @@ class CartDetail extends React.Component {
             }
             return false
         })
-        console.log(this.props.bookEmptyStock)
-
         store.setState({
             'lengthCart':listInCart.length,
         })
