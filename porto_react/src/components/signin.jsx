@@ -33,7 +33,6 @@ class SignIn extends React.Component {
   }
 
   render() { 
-    // console.log(this.props.typeText)
     return (
     <div className="wrapper fadeInDown" style={{marginTop:'-50px',marginBottom:'60px'}}>
         <div id="formContent">
