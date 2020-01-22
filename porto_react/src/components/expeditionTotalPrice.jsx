@@ -1,17 +1,19 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/cartDetail.css';
-import '../styles/loading.css'
-import { withRouter } from 'react-router-dom'
-import { connect } from 'unistore/react'
-import { store, actions } from '../store'
+import '../styles/loading.css';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'unistore/react';
+import { store, actions } from '../store';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 class CartDetailTotalPrice extends React.Component {
     // Function for finalize cart
     doPay = async () => {
         await this.props.FinalTransactionPayment()
         if (localStorage.getItem('token') !== null){
+            swal("Terima Kasih Telah Berbelanja!", "Silakan lakukan pembayaran Anda!", "success");
             this.props.history.push("/payment");
         }
     }

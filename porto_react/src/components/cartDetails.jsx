@@ -100,6 +100,7 @@ class CartDetail extends React.Component {
             }
             return false
         })
+        
         store.setState({
             'lengthCart':listInCart.length,
         })
@@ -187,7 +188,7 @@ class CartDetail extends React.Component {
                                         {content.stok} Buku
                                     </div>
                                     <div>
-                                        <label for="exampleFormControlSelect1" style={{paddingTop:'40px'}}>Pembarui Jumlah</label>
+                                        <label for="exampleFormControlSelect1" style={{paddingTop:'40px'}}>Perbarui Jumlah</label>
                                         <select class="form-control" id={content.id} name='stok' onChange={e => this.props.changeInputCart(e)}required>
                                             {perulangan.map((total,i) =>
                                             <option id={content.id}  value={total}>{total}</option>

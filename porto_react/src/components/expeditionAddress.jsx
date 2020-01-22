@@ -54,6 +54,7 @@ class CartDetail extends React.Component {
                                 id="expedition1" 
                                 className="" 
                                 name="streetName" 
+                                pattern="[0-9a-zA-Z][^#<>\~!;$^%{}?]{1,255}$"
                                 placeholder="Masukkan Nama Jalan"
                                 onChange={e => this.props.changeInput(e)} />
                                 
@@ -64,6 +65,7 @@ class CartDetail extends React.Component {
                                 className="" 
                                 name="rtRw" 
                                 placeholder="Masukkan RT/RW"
+                                pattern="[0-9][0-9]\/[0-9][0-9]"
                                 onChange={e => this.props.changeInput(e)} />
 
                                 <input 
@@ -72,6 +74,7 @@ class CartDetail extends React.Component {
                                 id="expedition3" 
                                 className="" 
                                 name="village" 
+                                pattern="[0-9a-zA-Z][^#<>\~;$^%{}?]{1,40}$"
                                 placeholder="Masukkan Nama Kelurahan"
                                 onChange={e => this.props.changeInput(e)} />
 
@@ -81,6 +84,7 @@ class CartDetail extends React.Component {
                                 id="expedition4" 
                                 className="" 
                                 name="region" 
+                                pattern="[a-zA-Z][^#<>\~;$^%{}?]{1,40}$"
                                 placeholder="Masukkan Nama Kecamatan"
                                 onChange={e => this.props.changeInput(e)} />
 
@@ -90,6 +94,7 @@ class CartDetail extends React.Component {
                                 id="expedition5" 
                                 className="" 
                                 name="cityState" 
+                                pattern="[a-zA-Z][^#<>\~;$^%{}?]{1,40}$"
                                 placeholder="Masukkan Nama Kota atau Kabupaten"
                                 onChange={e => this.props.changeInput(e)} required/>
 
@@ -99,6 +104,7 @@ class CartDetail extends React.Component {
                                 id="expedition6" 
                                 className="" 
                                 name="province" 
+                                pattern="[a-zA-Z][^#<>\~;$^%{}?]{1,40}$"
                                 placeholder="Masukkan Nama Provinsi"
                                 onChange={e => this.props.changeInput(e)} />
 
@@ -108,6 +114,7 @@ class CartDetail extends React.Component {
                                 id="expedition7" 
                                 className="" 
                                 name="postalCode" 
+                                pattern="(\b([0-9]{5})\b)"
                                 placeholder="Masukkan Kode Pos"
                                 onChange={e => this.props.changeInput(e)} />
 
@@ -117,6 +124,7 @@ class CartDetail extends React.Component {
                                 id="expedition8" 
                                 className="" 
                                 name="phoneNumber" 
+                                pattern="(\+62((\d{3}([ -]\d{3,})([-]\d{4,})?)|(\d+)))|(\(\d+\) \d+)|\d{3}( \d+)+|(\d+[-]\d+)|\d+"
                                 placeholder="Masukkan Nomor Telepon"
                                 onChange={e => this.props.changeInput(e)} />
 

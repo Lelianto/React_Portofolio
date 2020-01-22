@@ -6,11 +6,17 @@ import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'
+import swal from 'sweetalert';
 
 class BookDetail extends React.Component {
     // Fungsi untuk menambahkan produk ke keranjang
     doAddCart = async () => {
         await this.props.addCartItem()
+        if(this.props.addCartStatus=='stok buku telah habis'){
+            swal("Maaf", "Stok buku habis untuk saat ini", "success")
+        } else {
+            swal("Selamat!", "Buku telah ditambahkan ke keranjang!", "success")
+        }
     }
 
     // Fungsi untuk menghapus buku oleh User (Buku milik sendiri)
@@ -221,7 +227,7 @@ class BookDetail extends React.Component {
                                 <div className='row'>
                                     <div className='col-md-12' style={{ paddingTop:'55px', paddingBottom:'20px'}}>
                                         <label>
-                                            <button type="button" class="btn btn-success" onClick={this.doAddCart} data-toggle="modal" data-target="#exampleModalCenter">Masukkan Ke Keranjang</button>
+                                            <button type="button" class="btn btn-success" onClick={this.doAddCart} >Masukkan Ke Keranjang</button>
                                         </label>
                                     </div>
                                 </div>
@@ -234,40 +240,6 @@ class BookDetail extends React.Component {
                             </div>
                         </div>
                     </div>
-                    {this.props.addCartStatus=='stok buku telah habis'?
-                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                <div class="modal-header" style={{backgroundColor:'teal', color:'white'}}>
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Pemberitahuan</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    Buku telah habis
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    :
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                        <div class="modal-header" style={{backgroundColor:'teal', color:'white'}}>
-                            <h5 class="modal-title" id="exampleModalLongTitle">Pemberitahuan</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Buku telah ditambahkan ke dalam Keranjang
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            
-                    }
             </div>
 
             )
