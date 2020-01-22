@@ -1,13 +1,14 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/profileUser.css';
-import photo1 from '../images/employee.png'
-import photo2 from '../images/books.png'
-import photo3 from '../images/supermarket.png'
-import photo4 from '../images/buy.png'
-import { withRouter, Link, Redirect } from 'react-router-dom'
-import { connect } from 'unistore/react'
-import { actions } from '../store'
+import photo1 from '../images/employee.png';
+import photo2 from '../images/books.png';
+import photo3 from '../images/supermarket.png';
+import photo4 from '../images/buy.png';
+import { withRouter, Link, Redirect } from 'react-router-dom';
+import { connect } from 'unistore/react';
+import { actions } from '../store';
+import swal from 'sweetalert';
 
 class ProfileUser extends React.Component {
     // Function for Admin sign out
@@ -15,6 +16,7 @@ class ProfileUser extends React.Component {
         await localStorage.removeItem('token');
         await localStorage.removeItem('is_login');
         await localStorage.removeItem('email');
+        swal("Terima Kasih!", "Silakan login kembali untuk mengakses data!", "success");
         this.props.history.push("/");
     };
 
@@ -45,7 +47,7 @@ class ProfileUser extends React.Component {
                                 <p style={{paddingTop:'15px'}}>User <img style={{width:'30px'}} src={photo1}></img> </p></Link>
                             </div>
                             <div className='col-md-1'></div>
-                            <div className='btn btn-success col-md-2'><Link to='/books' style={{textDecoration:'none', color:'white'}}>
+                            <div className='btn btn-light col-md-2'><Link to='/books' style={{textDecoration:'none', color:'white'}}>
                                 <p style={{paddingTop:'15px'}}>Produk <img style={{width:'30px'}} src={photo2}></img> </p></Link>
                             </div>
                             <div className='col-md-1'></div>

@@ -2,6 +2,8 @@ import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/profileUser.css';
 import '../styles/loading.css';
+import photo from '../images/books.png';
+import photo1 from '../images/exit.png';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import { store, actions } from '../store';
@@ -109,14 +111,14 @@ class ProfileUser extends React.Component {
                             <div className='col-md-2 col-sm-12 button-sell'>
                                 <label>
                                     <Link to='/sell'>
-                                        <button type="button" class="btn btn-info">Jual Buku</button>
+                                        <button type="button" class="btn btn-info">Jual Buku <img style={{width:'25px'}} src={photo}></img> </button>
                                     </Link>
                                 </label>
                             </div>
 
                             <div className='col-md-2 col-sm-12 button-logout'>
                                 <label>
-                                    <button type="button" class="btn btn-danger" onClick={this.handleSignOut}>Log Out</button>
+                                    <button type="button" class="btn btn-danger" onClick={this.handleSignOut}>Log Out <img style={{width:'25px'}} src={photo1}></img></button>
                                 </label>
                             </div>
                         </div>

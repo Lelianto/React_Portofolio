@@ -93,10 +93,10 @@ class AdminAllBooks extends React.Component {
                         {displayAvailableBooks.map((book,i) =>
                             <div className='col-md-3'>
                                 <div className='row box-all-books'>
-                                    <div className='col-md-12 box-all-books-photo'>
+                                    <div className='col-md-12 '>
                                         {book.id}
                                     </div>
-                                    <div className='col-md-12 box-all-books-photo'>
+                                    <div className='col-md-12 '>
                                         {book.email_user}
                                     </div>
                                     <div className='col-md-12 box-all-books-photo'>

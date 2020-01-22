@@ -5,6 +5,7 @@ import '../styles/loading.css'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
+import photo from '../images/books.png'
 import axios from 'axios'
 
 
@@ -86,7 +87,7 @@ class DisplayOwnBook extends React.Component {
                     <div className='col-md-12 border-user2'>
                         <div>
                         <h3 style={{textAlign:'left', paddingLeft:'0px'}} className='col-md-12 '>
-                            Buku Milikmu
+                            Buku Milikmu <img style={{width:'50px'}} src={photo}></img>
                         </h3>
                         </div>
                     </div>
