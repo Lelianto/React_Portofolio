@@ -1,7 +1,9 @@
 import React from 'react';
 import '../styles/userUploadBook.css';
-import '../styles/bootstrap.min.css'
-import { store } from '../store'
+import '../styles/bootstrap.min.css';
+import { withRouter } from 'react-router-dom'
+import { connect } from 'unistore/react'
+import { actions, store } from '../store'
 
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
 
@@ -169,4 +171,4 @@ class UserUpload extends React.Component {
     }
 }
 
-export default UserUpload;
+export default connect("",actions)(withRouter(UserUpload));

@@ -83,8 +83,8 @@ export const store = createStore(initialState)
 
 export const actions = store => ({
   changeInput : async (state,e) => {
+    console.log(e.target.name)
     await store.setState({ [e.target.name]: e.target.value});
-    console.log(state.keyword)
   },
 
   changeInputCart : async (state,e) => {
