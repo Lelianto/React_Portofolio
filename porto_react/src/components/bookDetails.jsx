@@ -60,7 +60,7 @@ class BookDetail extends React.Component {
                         self.props.history.push('/404')
                         break
                     case 422 :
-                        self.props.history.push('/422')
+                        self.props.history.push('/login')
                         break
                     case 500 :
                         self.props.history.push('/500')

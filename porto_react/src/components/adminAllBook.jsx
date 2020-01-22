@@ -70,12 +70,14 @@ class AccessAllBook extends React.Component {
     render() {
         const { adminAllBook } = this.props
         return (
-            <div className='container-fluid' style={{paddingTop:'50px'}}>
+            <div className='container' style={{paddingTop:'50px'}}>
                 <div className='row'>
-                    <div className="col-md-6 search">
+                    <div className="col-md-12 search">
                         <form onSubmit={e => e.preventDefault()}>
                         <div className='row'>
-                            <div className='col-md-9'>
+                            <div className='col-md-3'>
+                            </div>
+                            <div className='col-md-6'>
                                 <div className="active-cyan-4 mb-4">
                                     <input class="form-control mr-sm-2" 
                                     style={{ width:"90%"}} 
@@ -90,7 +92,7 @@ class AccessAllBook extends React.Component {
                             <div className='col-md-3'>
                                 <div className="active-cyan-4 mb-4" style={{marginLeft:'-135px'}}>
                                     <button class="btn btn-info my-sm-0" 
-                                    type="submit"
+                                    type="submit" style={{marginLeft:'-190px'}}
                                     onClick={this.doSearchBook}
                                     >Search</button>
                                 </div>
@@ -127,7 +129,7 @@ class AccessAllBook extends React.Component {
                                 <td>{book.user_id}</td>
                                 <td>{book.email_user}</td>
                                 <td>
-                                    <button style={{fontSize:'10px'}} onClick={()=>this.doDelete(book.id)}>
+                                    <button className='btn btn-danger' style={{fontSize:'10px'}} onClick={()=>this.doDelete(book.id)}>
                                 Delete
                                     </button>
                                 </td>

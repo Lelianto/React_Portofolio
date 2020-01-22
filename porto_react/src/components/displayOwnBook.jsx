@@ -83,16 +83,18 @@ class DisplayOwnBook extends React.Component {
         return (
             <div className='container' style={{paddingTop:'30px'}}>
                 <div className='row'>
-                    <div className='col-md-12'>
-                        <h3 style={{textAlign:'left', paddingLeft:'0px'}} className='col-md-12 border-user1'>
+                    <div className='col-md-12 border-user2'>
+                        <div>
+                        <h3 style={{textAlign:'left', paddingLeft:'0px'}} className='col-md-12 '>
                             Buku Milikmu
                         </h3>
+                        </div>
                     </div>
                     {displayAvailableBooks.map((book,i) =>
                         <div className='col-md-6 col-sm-12'>
                             <div className='row box-all-books'>
                                 <div className='col-md-12 col-sm-12 box-all-books-photo'>
-                                    <img style={{ width:'100%'}} src={book.foto_buku} alt=""/>
+                                    <img style={{ width:'100%', height:'325px'}} src={book.foto_buku} alt=""/>
                                 </div>
                                 <div className='col-md-12 col-sm-12 box-all-books-title' onClick={event => this.goToBook(book)}>{book.judul}</div>
                                 <div className='col-md-12 col-sm-12 box-all-books-writer'>{book.penulis}</div>

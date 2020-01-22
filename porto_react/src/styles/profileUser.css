@@ -3,9 +3,42 @@
     padding-right: 250px;
     text-align: left;
 }
+.btn-secondary{
+    background-color: rgb(3, 2, 63);
+    border-color: rgb(3, 2, 63);
+}
+.btn-secondary:hover{
+    background-color: rgb(37, 36, 107);
+    border-color: rgb(37, 36, 107);
+}
+.btn-success{
+    background-color: rgb(6, 4, 116);
+    border-color: rgb(6, 4, 116);
+}
+.btn-success:hover{
+    background-color: rgb(90, 89, 153);
+    border-color: rgb(90, 89, 153);
+}
+.btn-warning{
+    background-color: rgb(29, 27, 165);
+    border-color: rgb(29, 27, 165);
+}
+.btn-warning:hover{
+    background-color: rgb(134, 133, 179);
+    border-color: rgb(134, 133, 179);
+}
+.btn-dark{
+    background-color: rgb(63, 61, 199);
+    border-color: rgb(63, 61, 199);
+}
+.btn-dark:hover{
+    background-color: rgb(134, 133, 167);
+    border-color: rgb(134, 133, 167);
+}
 
 .alamat-email {
-    padding-bottom: 30px;
+    padding-top: 0px !important;
+    padding-bottom: 30px !important;
     border-bottom: rgb(210, 223, 202) 1px solid;
 }
 
@@ -20,6 +53,10 @@
 
 .border-user1 {
     padding-top: 0px;
+}
+.border-user2 {
+    padding-top: 20px;
+    border-top: rgb(210, 223, 202) 1px solid;
 }
 
 .button-logout {

@@ -95,7 +95,7 @@ class AccessAllCarts extends React.Component {
                                 <td>{cart.stok}</td>
                                 <td>{cart.status_jual}</td>
                                 <td>
-                                    <button style={{fontSize:'10px'}} onClick={()=>this.doDelete(cart.id)}>
+                                    <button className='btn btn-danger' style={{fontSize:'10px'}} onClick={()=>this.doDelete(cart.id)}>
                                 Delete
                                     </button>
                                 </td>

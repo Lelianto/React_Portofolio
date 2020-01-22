@@ -87,7 +87,7 @@ class AccessAllUser extends React.Component {
                                 <td>{user.nama_lengkap}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    <button style={{fontSize:'10px'}} onClick={()=>this.doDelete(user.id)}>
+                                    <button className='btn btn-danger' style={{fontSize:'10px'}} onClick={()=>this.doDelete(user.id)}>
                                 Delete
                                     </button>
                                 </td>

@@ -1,6 +1,10 @@
 import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/profileUser.css';
+import photo1 from '../images/employee.png'
+import photo2 from '../images/books.png'
+import photo3 from '../images/supermarket.png'
+import photo4 from '../images/buy.png'
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { actions } from '../store'
@@ -38,19 +42,19 @@ class ProfileUser extends React.Component {
                     <div className='container' style={{marginTop:'20px', marginLeft:'105px'}}>
                         <div className='row'>
                             <div className='btn btn-secondary col-md-2'><Link to='/users' style={{textDecoration:'none', color:'white'}}>
-                                <p style={{paddingTop:'15px'}}>Semua User</p></Link>
+                                <p style={{paddingTop:'15px'}}>User <img style={{width:'30px'}} src={photo1}></img> </p></Link>
                             </div>
                             <div className='col-md-1'></div>
                             <div className='btn btn-success col-md-2'><Link to='/books' style={{textDecoration:'none', color:'white'}}>
-                                <p style={{paddingTop:'15px'}}>Semua Produk</p></Link>
+                                <p style={{paddingTop:'15px'}}>Produk <img style={{width:'30px'}} src={photo2}></img> </p></Link>
                             </div>
                             <div className='col-md-1'></div>
                             <div className='btn btn-warning col-md-2'><Link to='/carts' style={{textDecoration:'none', color:'white'}}>
-                                <p style={{paddingTop:'15px'}}>Semua Cart</p></Link>
+                                <p style={{paddingTop:'15px'}}>Cart <img style={{width:'30px'}} src={photo3}></img> </p></Link>
                             </div>
                             <div className='col-md-1'></div>
-                            <div className='btn btn-info col-md-2' ><Link to='/payments' style={{textDecoration:'none', color:'white'}}>
-                                <p style={{paddingTop:'15px'}}>Semua Transaksi</p></Link>
+                            <div className='btn btn-dark col-md-2' ><Link to='/payments' style={{textDecoration:'none', color:'white'}}>
+                                <p style={{paddingTop:'15px'}}>Transaksi <img style={{width:'30px'}} src={photo4}></img> </p></Link>
                             </div>
                             <div className='col-md-1'></div>
                         </div>
