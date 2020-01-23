@@ -1,8 +1,20 @@
 import createStore from 'unistore';
 import axios from 'axios';
-// https://kutubuku.store
-// Initialization global state
+
+/**
+ *
+ * @version 1.0.1
+ * @author [Lelianto Eko Pradana](https://github.com/Lelianto)
+ * @param {boolean} isSignUp User doing sign up status
+ * @param {string} typeText Type of input password (password or text)
+ * @param {list} bookEmptyStock Contains books with empty stock
+ * @param {string} remainingBook 
+ * @param {string} addCartStatus Contains response message of stock status
+ * 
+ */
+
 const initialState = {
+  discount:'',
   isSignUp:false,
   typeText:'password',
   bookEmptyStock:[],
@@ -83,7 +95,10 @@ export const store = createStore(initialState)
 
 export const actions = store => ({
   changeInput : async (state,e) => {
-    console.log(e.target.name)
+    await store.setState({ [e.target.name]: e.target.value});
+  },
+
+  changeInputDiscount : async (state,e) => {
     await store.setState({ [e.target.name]: e.target.value});
   },
 
@@ -144,7 +159,7 @@ export const actions = store => ({
     await axios(req)
       .then(response => {
         localStorage.setItem("email", email);
-        localStorage.setItem("is_Lgin", true);
+        localStorage.setItem("isLogin", true);
         localStorage.setItem("token", response.data.token);
       })
       .catch(error => {
@@ -342,7 +357,6 @@ export const actions = store => ({
     };
     await axios(req)
       .then(response => {
-        console.log(response.data.message)
         store.setState({
           'addCartStatus':response.data.message
         })

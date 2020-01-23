@@ -13,6 +13,32 @@ class CartDetail extends React.Component {
             'address':false
         })
         await this.props.CalculateExpeditionPrice()
+        if(store.getState().discount=='ABCD'){
+            const newPrice = store.getState().totalPrice - 2/100*store.getState().totalPrice
+            store.setState({
+                totalPrice: newPrice
+            })
+        } else if(store.getState().discount=='BCDE'){
+            const newPrice = store.getState().totalPrice - 4/100*store.getState().totalPrice
+            store.setState({
+                totalPrice: newPrice
+            })
+        } else if(store.getState().discount=='CDEF'){
+            const newPrice = store.getState().totalPrice - 6/100*store.getState().totalPrice
+            store.setState({
+                totalPrice: newPrice
+            })
+        } else if(store.getState().discount=='DEFG'){
+            const newPrice = store.getState().totalPrice - 8/100*store.getState().totalPrice
+            store.setState({
+                totalPrice: newPrice
+            })
+        } else if(store.getState().discount=='EFGH'){
+            const newPrice = store.getState().totalPrice - 10/100*store.getState().totalPrice
+            store.setState({
+                totalPrice: newPrice
+            })
+        }
         if (localStorage.getItem('token') !== null){
             this.props.history.push("/expedition");
         }
@@ -128,6 +154,14 @@ class CartDetail extends React.Component {
                                 placeholder="Masukkan Nomor Telepon"
                                 onChange={e => this.props.changeInput(e)} />
 
+                                <input 
+                                style={{textAlign:'left'}}
+                                type="text" 
+                                id="expedition8" 
+                                className="" 
+                                name="discount" 
+                                placeholder="Masukkan Kode Promo"
+                                onChange={e => this.props.changeInputDiscount(e)} />
                                 <div>
                                     <div style={{ paddingTop:'25px', marginBottom: '25px'}}>
                                         <label>
@@ -144,4 +178,4 @@ class CartDetail extends React.Component {
     }
 }
 
-export default connect("carts, token, isLoading",actions)(withRouter(CartDetail));
+export default connect("carts,discount,totalPrice token, isLoading",actions)(withRouter(CartDetail));

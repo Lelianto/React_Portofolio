@@ -216,4 +216,4 @@ class CartDetailTotalPrice extends React.Component {
     }
 }
 
-export default connect("carts, totalPrice, shippingCost, token, isLoading",actions)(withRouter(CartDetailTotalPrice));
+export default connect("carts, discount, totalPrice, shippingCost, token, isLoading",actions)(withRouter(CartDetailTotalPrice));

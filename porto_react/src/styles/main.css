@@ -123,10 +123,21 @@ header {
 }
 
 .categorial{
-    padding:5px !important;
-    margin-top: -5px !important;
-    font-weight: bold;
-    border-radius: 20px;
+    padding:6px !important;
+    margin-top: -7px !important;
+    font-size: 16px !important;
+    border-radius: 5px;
+    color: white;
+    background-color: #17a2b8;
+}
+
+.categorial:hover{
+    padding:6px !important;
+    margin-top: -7px !important;
+    font-size: 16px !important;
+    border-radius: 5px;
+    color: white;
+    background-color: #038ca1;
 }
 
 .user_in {
