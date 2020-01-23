@@ -50,6 +50,15 @@ class CartDetailTotalPrice extends React.Component {
         })
   };
 
+  // Function to get total price
+  doTotalPrice = async () => {
+    await this.props.updateBuy()
+    await this.props.Calculate()
+    if (localStorage.getItem('token') !== null){
+        this.props.history.push("/expedition");
+    }
+  }
+
   // Function for recall cart
   resetCart = () => {
     store.setState({
@@ -60,6 +69,7 @@ class CartDetailTotalPrice extends React.Component {
   }
   
   render() {
+      // this.props.newTotalPrice
       if(store.getState().lengthCart===0){
         return <Redirect to={{ pathname: "/cart" }} />;
       }
@@ -110,12 +120,12 @@ class CartDetailTotalPrice extends React.Component {
                   <div className='col-md-12' style={{ backgroundColor: 'aliceblue', borderRadius: '5%', marginBottom:'250px' }}>
                       <div className='row' style={{ paddingTop:'25px', paddingLeft: '23px', paddingRight: '23px'}} >
                           <div className='col-md-6'>Subtotal</div>
-                          <div className='col-md-6'>Rp {this.props.totalPrice}</div>
+                          <div className='col-md-6'>Rp {this.props.newSubTotal}</div>
                       </div>
                       <div className='row'>
                           <div className='col-md-12' style={{ paddingTop:'55px', marginBottom: '25px'}}>
                               <label><Link to='/expedition'>
-                                  <button type="button" class="btn btn-success" disabled={this.props.disable}>Lanjutkan Pembelian</button></Link>
+                                  <button type="button" class="btn btn-success" onClick={this.doTotalPrice} disabled={this.props.disable}>Lanjutkan Pembelian</button></Link>
                               </label>
                           </div>
                       </div>
@@ -126,4 +136,4 @@ class CartDetailTotalPrice extends React.Component {
   }
 }
 
-export default connect("carts, totalPrice, token, isLoading, disable",actions)(withRouter(CartDetailTotalPrice));
+export default connect("carts, totalPrice, token, isLoading, disable, newSubTotal",actions)(withRouter(CartDetailTotalPrice));

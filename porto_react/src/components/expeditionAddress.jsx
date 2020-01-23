@@ -91,7 +91,6 @@ class CartDetail extends React.Component {
                                 className="" 
                                 name="rtRw" 
                                 placeholder="Masukkan RT/RW"
-                                pattern="[0-9][0-9]\/[0-9][0-9]"
                                 onChange={e => this.props.changeInput(e)} />
 
                                 <input 
@@ -100,7 +99,6 @@ class CartDetail extends React.Component {
                                 id="expedition3" 
                                 className="" 
                                 name="village" 
-                                pattern="[0-9a-zA-Z][^#<>\~;$^%{}?]{1,40}$"
                                 placeholder="Masukkan Nama Kelurahan"
                                 onChange={e => this.props.changeInput(e)} />
 

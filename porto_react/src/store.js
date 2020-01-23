@@ -18,7 +18,7 @@ const initialState = {
   isSignUp:false,
   typeText:'password',
   bookEmptyStock:[],
-  baseUrl:'https://kutubuku.store',
+  baseUrl:'http://0.0.0.0:5000',
   remainingBook:'',
   addCartStatus:'',
   adminProductKeyword:'',
@@ -88,7 +88,9 @@ const initialState = {
   phoneNumber:'',
   validasiPostBuku:false,
   validasiUpdateBuku:false,
-  cartContent:true 
+  cartContent:true,
+  newSubTotal:0,
+  newTotalPrice:[] 
 }
 
 export const store = createStore(initialState)
@@ -102,7 +104,23 @@ export const actions = store => ({
     await store.setState({ [e.target.name]: e.target.value});
   },
 
-  changeInputCart : async (state,e) => {
+  changeInputCart : async (state,e, index, price) => {
+    console.log(`${e.target.value}`.length)
+    
+    if(`${e.target.value}`.length>0){
+      store.setState({
+        disable:false
+      })
+    } else{
+      store.setState({
+        disable:true
+      })
+    }
+    const u = store.getState().newTotalPrice
+    u[index] = e.target.value * 1 * price
+    const sum = u.reduce((firstIndex, toLastIndex)=> firstIndex + toLastIndex ,0)
+
+    store.setState({ newSubTotal : sum })
     await store.setState({ 
       'stok':{ id: e.target.id,
         [e.target.name]: e.target.value}
@@ -355,6 +373,7 @@ export const actions = store => ({
       },
       data: buybook
     };
+    console.log(buybook)
     await axios(req)
       .then(response => {
         store.setState({
@@ -377,6 +396,7 @@ export const actions = store => ({
     };
     await axios(req)
         .then(response => {
+          console.log(response.data)
           store.setState({
             "totalPrice": response.data,
             "disable": false
@@ -393,7 +413,7 @@ export const actions = store => ({
   // Function for getting expedition price
   CalculateExpeditionPrice : async (state) => {
     const nama_jalan = state.streetName
-    const rt_rw = state.rt_rw
+    const rt_rw = state.rtRw
     const kelurahan = state.village
     const kecamatan = state.region
     const kota_kabupaten = state.cityState
@@ -418,14 +438,17 @@ export const actions = store => ({
       },
       data: myaddress
     };
+    console.log(req)
     await axios(req)
       .then(response => {
+        console.log(response.data)
         store.setState({
           'shippingCost':response.data
         })
         return response
       })
       .catch(error => {
+        console.log(error)
         return false
     })
   },
@@ -514,6 +537,7 @@ export const actions = store => ({
               }
               return false
             })
+            console.log(listInCart)
             const listBooks = []
             for(const book of listInCart){
               if(response.data.message=='stok buku tidak mencukupi' && book.book_id){
@@ -576,7 +600,6 @@ export const actions = store => ({
       method: "get",
       url: state.baseUrl+"/payment_confirm/code?keyword="+store.getState().keyword
     };
-    console.log(req)
     await axios(req)
       .then(response => {
         store.setState({

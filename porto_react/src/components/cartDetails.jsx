@@ -31,6 +31,7 @@ class CartDetail extends React.Component {
             const self = this
             axios(req)
                 .then(function (response) {
+                    console.log(response.data)
                     store.setState({ 
                         carts: response.data, 
                         isLoading:false,
@@ -77,16 +78,6 @@ class CartDetail extends React.Component {
         }
     }
 
-    // Function to get total price and display it into cart price
-    doTotalPrice = async () => {
-        await this.props.updateBuy()
-        await this.props.Calculate()
-        if (localStorage.getItem('token') !== null){
-            this.getAllCart()
-            this.props.history.push("/cart");
-        }
-    }
-
     // Function to execute getAllCart
     componentDidMount = () => {
         this.getAllCart()
@@ -95,12 +86,13 @@ class CartDetail extends React.Component {
     render() {
         const { carts } = this.props
         const listInCart = carts.filter(item => {
-            if (item.email === localStorage.getItem('email') && item.foto_buku !== null && item.judul !== null && item.harga !== null && item.status_cart === false && item.berat !== null) {
+            if (item.email === localStorage.getItem('email') && item.foto_buku !== null && item.judul !== null && item.harga !== null && item.status_cart === false) {
+                console.warn('item', item);
                 return item;
             }
             return false
         })
-        
+        console.log('LIC',listInCart)
         store.setState({
             'lengthCart':listInCart.length,
         })
@@ -146,76 +138,62 @@ class CartDetail extends React.Component {
             </body>
             </div>
             )
+          } 
+          else{
+              return (
+                  <div>
+                      <div className='container top-body-cart'>
+                          <div className='row'>
+                              <form onSubmit={e => e.preventDefault()}>
+                              {listInCart.map((content,i)=>
+                              <div className='cart-body'>
+                                  <div className='col-12 cart-book-detail'>
+                                      <div className='col-sm-3'>
+                                          <img style={{width:'100%'}} src={content.foto_buku}/>
+                                      </div>
+                                      <div className='col-sm-5 col-8'>
+                                          <div className='row'><Link style={{textDecoration:'none', color:'black'}} onClick={event => this.goToBook(content.book_id)}>
+                                              <div className='col-sm-12  col-4 detail-book-cart1'>
+                                                  {content.judul}
+                                              </div></Link>
+                                          </div>
+                                          <div className='row'>
+                                              <div className='col-sm-12 detail-book-cart2'>
+                                                  {content.penulis}
+                                              </div>
+                                          </div>
+                                          <div className='row'>
+                                              <div className='col-sm-12 detail-book-cart3'>
+                                                  {content.jenis_cover}
+                                              </div>
+                                          </div>
+                                          <div className='row'>
+                                              <div className='col-sm-12 detail-book-cart4'>
+                                                  Rp {content.harga}
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div className='col-sm-3' style={{fontSize:'15px'}}>
+                                          <div>
+                                              <label for="exampleFormControlSelect1" >Banyak Beli</label>
+                                              <input class="form-control" pattern="^[0-9]*$" id={content.id} name='stok' onChange={e => this.props.changeInputCart(e, i, content.harga)}required>
+                                              </input>
+                                          </div>
+                                          <button className='btn' onClick={()=>this.doDeleteCart(content.id)} style={{fontSize:'11px', marginTop:'20px'}}>
+                                              Hapus dari Keranjang
+                                          </button>
+                                      </div>
+                                  </div>
+                                  <div className='col-md-1'>
+                                  </div>
+                              </div>
+                              )}
+                          </form>
+                          </div>
+                      </div>
+                  </div>
+              )
           }
-        return (
-            <div>
-                <div className='container top-body-cart'>
-                    <div className='row'>
-                        <form onSubmit={e => e.preventDefault()}>
-                        {listInCart.map((content,i)=>
-                        <div className='cart-body'>
-                            <div className='col-12 cart-book-detail'>
-                                <div className='col-sm-3'>
-                                    <img style={{width:'100%'}} src={content.foto_buku}/>
-                                </div>
-                                <div className='col-sm-5 col-8'>
-                                    <div className='row'><Link style={{textDecoration:'none', color:'black'}} onClick={event => this.goToBook(content.book_id)}>
-                                        <div className='col-sm-12  col-4 detail-book-cart1'>
-                                            {content.judul}
-                                        </div></Link>
-                                    </div>
-                                    <div className='row'>
-                                        <div className='col-sm-12 detail-book-cart2'>
-                                            {content.penulis}
-                                        </div>
-                                    </div>
-                                    <div className='row'>
-                                        <div className='col-sm-12 detail-book-cart3'>
-                                            {content.jenis_cover}
-                                        </div>
-                                    </div>
-                                    <div className='row'>
-                                        <div className='col-sm-12 detail-book-cart4'>
-                                            Rp {content.harga}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='col-sm-3' style={{fontSize:'15px'}}>
-                                    <div style={{fontSize:'12px'}}>
-                                        Telah Ditambahkan
-                                    </div>
-                                    <div style={{fontSize:'20px', fontWeight:'bold'}}>
-                                        {content.stok} Buku
-                                    </div>
-                                    <div>
-                                        <label for="exampleFormControlSelect1" style={{paddingTop:'40px'}}>Perbarui Jumlah</label>
-                                        <select class="form-control" id={content.id} name='stok' onChange={e => this.props.changeInputCart(e)}required>
-                                            {perulangan.map((total,i) =>
-                                            <option id={content.id}  value={total}>{total}</option>
-                                            )}
-                                        </select>
-                                    </div>
-                                    <button className='btn' onClick={()=>this.doDeleteCart(content.id)} style={{fontSize:'11px', marginTop:'20px'}}>
-                                        Hapus dari Keranjang
-                                    </button>
-                                </div>
-                            </div>
-                            <div className='col-md-1'>
-                            </div>
-                        </div>
-                        )}
-                        <div>
-                            <div className='col-md-12' style={{ paddingTop:'25px', marginBottom: '25px'}}>
-                                <label>
-                                    <button data-toggle="modal" data-target="#exampleModalCenter" type="button" class="btn btn-success" onClick={this.doTotalPrice}>Finalisasi Jumlah Beli</button>
-                                </label>
-                            </div>
-                        </div>
-                    </form>
-                    </div>
-                </div>
-            </div>
-        )
     }
 }
 

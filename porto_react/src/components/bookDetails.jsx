@@ -13,7 +13,7 @@ class BookDetail extends React.Component {
     doAddCart = async () => {
         await this.props.addCartItem()
         if(this.props.addCartStatus=='stok buku telah habis'){
-            swal("Maaf", "Stok buku habis untuk saat ini", "success")
+            swal("Maaf", "Stok buku habis untuk saat ini", "warning")
         } else {
             swal("Selamat!", "Buku telah ditambahkan ke keranjang!", "success")
         }
