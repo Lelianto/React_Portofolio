@@ -10,7 +10,10 @@ import swal from 'sweetalert';
 
 class CartDetailTotalPrice extends React.Component {
     // Function for finalize cart
-    doPay = async () => {
+    doPay = async (totalPayment) => {
+        store.setState({
+            totalPayment:totalPayment
+        })
         await this.props.FinalTransactionPayment()
         if (localStorage.getItem('token') !== null){
             swal("Terima Kasih Telah Berbelanja!", "Silakan lakukan pembayaran Anda!", "success");
@@ -204,7 +207,7 @@ class CartDetailTotalPrice extends React.Component {
                         <div className='row'>
                             <div className='col-md-12' style={{ paddingTop:'55px', marginBottom: '25px'}}>
                                 <label>
-                                    <button type="button" class="btn btn-success"onClick={this.doPay} disabled={store.getState().address}>Bayar</button>
+                                    <button type="button" class="btn btn-success"onClick={()=>this.doPay(totalPayment)} disabled={store.getState().address}>Bayar</button>
                                 </label>
                             </div>
                         </div>

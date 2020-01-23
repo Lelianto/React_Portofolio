@@ -442,7 +442,7 @@ export const actions = store => ({
     await axios(req)
       .then(response => {
         store.setState({
-          'totalPayment':response.data.total_biaya,
+          'totalPayment':state.totalPayment,
           'orderDate':response.data.tanggal_pemesanan,
           'orderCode':response.data.nomor_pemesanan
         })
