@@ -44,19 +44,19 @@ class ProfileUser extends React.Component {
                     <div className='container' style={{marginTop:'20px', marginLeft:'105px'}}>
                         <div className='row'>
                             <div className='btn btn-secondary col-md-2'><Link to='/users' style={{textDecoration:'none', color:'white'}}>
-                                <p style={{paddingTop:'15px'}}>User <img style={{width:'30px'}} src={photo1}></img> </p></Link>
+                                <p style={{paddingTop:'15px'}}>User <img style={{width:'30px'}} src={photo1} alt='' ></img> </p></Link>
                             </div>
                             <div className='col-md-1'></div>
                             <div className='btn btn-light col-md-2'><Link to='/books' style={{textDecoration:'none', color:'white'}}>
-                                <p style={{paddingTop:'15px'}}>Produk <img style={{width:'30px'}} src={photo2}></img> </p></Link>
+                                <p style={{paddingTop:'15px'}}>Produk <img style={{width:'30px'}} src={photo2} alt=''></img> </p></Link>
                             </div>
                             <div className='col-md-1'></div>
                             <div className='btn btn-warning col-md-2'><Link to='/carts' style={{textDecoration:'none', color:'white'}}>
-                                <p style={{paddingTop:'15px'}}>Cart <img style={{width:'30px'}} src={photo3}></img> </p></Link>
+                                <p style={{paddingTop:'15px'}}>Cart <img style={{width:'30px'}} src={photo3} alt=''></img> </p></Link>
                             </div>
                             <div className='col-md-1'></div>
                             <div className='btn btn-dark col-md-2' ><Link to='/payments' style={{textDecoration:'none', color:'white'}}>
-                                <p style={{paddingTop:'15px'}}>Transaksi <img style={{width:'30px'}} src={photo4}></img> </p></Link>
+                                <p style={{paddingTop:'15px'}}>Transaksi <img style={{width:'30px'}} src={photo4} alt=''></img> </p></Link>
                             </div>
                             <div className='col-md-1'></div>
                         </div>

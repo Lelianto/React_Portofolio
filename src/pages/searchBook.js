@@ -10,7 +10,7 @@ import { actions } from '../store'
 class SearchPage extends Component {
   render() {
     const { listResults } = this.props
-    if( listResults.length == 0) {
+    if( listResults.length === 0) {
       return (
         <div>
           <Header/>

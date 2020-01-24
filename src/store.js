@@ -601,7 +601,7 @@ export const actions = store => ({
       await axios(req)
           .then(response => {
             const listInCart = store.getState().carts.filter(item => {
-              if (item.id == product.id && item.email === localStorage.getItem('email') && item.foto_buku !== null && item.judul !== null && item.harga !== null && item.status_cart === false && item.berat !== null) {
+              if (item.id === product.id && item.email === localStorage.getItem('email') && item.foto_buku !== null && item.judul !== null && item.harga !== null && item.status_cart === false && item.berat !== null) {
                   return item;
               }
               return false
@@ -609,7 +609,7 @@ export const actions = store => ({
             console.log('cek isi update buy',listInCart)
             const listBooks = []
             for(const book of listInCart){
-              if(response.data.message=='stok buku tidak mencukupi' && book.book_id){
+              if(response.data.message==='stok buku tidak mencukupi' && book.book_id){
                 listBooks.push(book.judul)
               }
             }

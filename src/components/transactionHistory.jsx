@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/profileUser.css';
 import '../styles/loading.css';
-import { withRouter, Link, Redirect } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import { store, actions } from '../store';
 import axios from 'axios';
@@ -55,7 +55,7 @@ class TransactionHistory extends React.Component {
     render() {
         const { userAllCart, isLoading } = this.props
         const displayUserAllCart = userAllCart.filter(item => {
-            if (item.status_cart == true && item.email == localStorage.getItem('email')) {
+            if (item.status_cart === true && item.email === localStorage.getItem('email')) {
                 return item;
             }
             return false

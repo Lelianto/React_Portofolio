@@ -11,7 +11,7 @@ import swal from 'sweetalert'
 class SignIn extends React.Component {
   // Handle see password
   handlePass = () => {
-    if (this.props.typeText == "password") {
+    if (this.props.typeText === "password") {
       store.setState({
         typeText:"text"
       })

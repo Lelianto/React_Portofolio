@@ -12,15 +12,15 @@ const listPhoto = [promo1,promo2,promo3,promo4,promo5]
 
 class PromoDiscount extends React.Component{
     checkDiscount = async (photo) =>{
-        if (photo == promo1){
+        if (photo === promo1){
             swal("KODE PROMO: ABCD", "Dapatkan diskon 2% dari total pembelian!", "info");
-        } else if (photo == promo2){
+        } else if (photo === promo2){
             swal("KODE PROMO: BCDE", "Dapatkan diskon 4% dari total pembelian!", "info");
-        } else if (photo == promo3){
+        } else if (photo === promo3){
             swal("KODE PROMO: CDEF", "Dapatkan diskon 6% dari total pembelian!", "info");
-        } else if (photo == promo4){
+        } else if (photo === promo4){
             swal("KODE PROMO: DEFG", "Dapatkan diskon 8% dari total pembelian!", "info");
-        } else if (photo == promo5){
+        } else if (photo === promo5){
             swal("KODE PROMO: EFGH", "Dapatkan diskon 10% dari total pembelian!", "info");
         }
     }

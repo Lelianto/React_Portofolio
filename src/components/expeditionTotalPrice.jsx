@@ -64,7 +64,7 @@ class CartDetailTotalPrice extends React.Component {
     render() {
         const { totalPrice, shippingCost } = this.props
         const totalPayment = totalPrice + shippingCost
-        if (store.getState().streetName =='' && store.getState().address == false){
+        if (store.getState().streetName ==='' && store.getState().address === false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -77,7 +77,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         } 
-        else if (store.getState().rtRw =='' && store.getState().address == false){
+        else if (store.getState().rtRw ==='' && store.getState().address === false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -90,7 +90,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         }
-        else if (store.getState().village =='' && store.getState().address == false){
+        else if (store.getState().village ==='' && store.getState().address === false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -103,7 +103,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         }
-        else if (store.getState().region =='' && store.getState().address == false){
+        else if (store.getState().region ==='' && store.getState().address === false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -116,7 +116,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         } 
-        else if (store.getState().cityState =='' && store.getState().address == false){
+        else if (store.getState().cityState ==='' && store.getState().address === false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -129,7 +129,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         }   
-        else if (store.getState().province =='' && store.getState().address == false){
+        else if (store.getState().province ==='' && store.getState().address === false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -142,7 +142,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         }  
-        else if (store.getState().postalCode =='' && store.getState().address == false){
+        else if (store.getState().postalCode ==='' && store.getState().address === false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">
@@ -155,7 +155,7 @@ class CartDetailTotalPrice extends React.Component {
                     </div>
                 )
         } 
-        else if (store.getState().phoneNumber =='' && store.getState().address == false){
+        else if (store.getState().phoneNumber ==='' && store.getState().address === false){
             return (
                 <div className="fadeInDown empty-form">
                     <div id="formContent">

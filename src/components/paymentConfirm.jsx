@@ -70,7 +70,7 @@ const PaymentConfirm =(props)=>{
                         </div>
                     </div>
                     <div className='row' style={{marginTop:'30px'}}>
-                        <img style={{width:'100%'}} src={foto}></img>
+                        <img style={{width:'100%'}} src={foto} alt=''></img>
                     </div>
                 </div>
             </div>

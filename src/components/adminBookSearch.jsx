@@ -4,7 +4,6 @@ import '../styles/allBooks.css';
 import { withRouter} from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { store, actions } from '../store'
-import axios from 'axios'
 
 
 class SearchAllBook extends React.Component {

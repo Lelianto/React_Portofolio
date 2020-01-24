@@ -13,27 +13,27 @@ class CartDetail extends React.Component {
             'address':false
         })
         await this.props.CalculateExpeditionPrice()
-        if(store.getState().discount=='ABCD'){
+        if(store.getState().discount==='ABCD'){
             const newPrice = store.getState().totalPrice - 2/100*store.getState().totalPrice
             store.setState({
                 totalPrice: newPrice
             })
-        } else if(store.getState().discount=='BCDE'){
+        } else if(store.getState().discount==='BCDE'){
             const newPrice = store.getState().totalPrice - 4/100*store.getState().totalPrice
             store.setState({
                 totalPrice: newPrice
             })
-        } else if(store.getState().discount=='CDEF'){
+        } else if(store.getState().discount==='CDEF'){
             const newPrice = store.getState().totalPrice - 6/100*store.getState().totalPrice
             store.setState({
                 totalPrice: newPrice
             })
-        } else if(store.getState().discount=='DEFG'){
+        } else if(store.getState().discount==='DEFG'){
             const newPrice = store.getState().totalPrice - 8/100*store.getState().totalPrice
             store.setState({
                 totalPrice: newPrice
             })
-        } else if(store.getState().discount=='EFGH'){
+        } else if(store.getState().discount==='EFGH'){
             const newPrice = store.getState().totalPrice - 10/100*store.getState().totalPrice
             store.setState({
                 totalPrice: newPrice

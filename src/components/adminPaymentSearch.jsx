@@ -3,9 +3,7 @@ import '../styles/bootstrap.min.css';
 import '../styles/allBooks.css';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'unistore/react'
-import { store, actions } from '../store'
-import axios from 'axios'
-
+import { actions } from '../store'
 
 class SearchAllPayments extends React.Component {
     // Function for searching payment based on payment code

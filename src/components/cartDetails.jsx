@@ -8,8 +8,6 @@ import { connect } from 'unistore/react'
 import { store, actions } from '../store'
 import axios from 'axios'
 
-const perulangan = ['1','2','3','4','5','6','7','8','9','10']
-
 class CartDetail extends React.Component {
     // Function to go to book detail information
     goToBook = async (book_id) => {
@@ -149,7 +147,7 @@ class CartDetail extends React.Component {
                               <div className='cart-body'>
                                   <div className='col-12 cart-book-detail'>
                                       <div className='col-sm-3'>
-                                          <img style={{width:'100%'}} src={content.foto_buku}/>
+                                          <img style={{width:'100%'}} src={content.foto_buku} alt=''/>
                                       </div>
                                       <div className='col-sm-5 col-8'>
                                           <div className='row'><Link style={{textDecoration:'none', color:'black'}} onClick={event => this.goToBook(content.book_id)}>

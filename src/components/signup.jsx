@@ -20,7 +20,7 @@ class SignUp extends React.Component {
 
   // Handle see password
   handlePass = () => {
-    if (this.props.typeText == "password") {
+    if (this.props.typeText === "password") {
       store.setState({
         typeText:"text"
       })

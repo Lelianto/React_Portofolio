@@ -6,7 +6,6 @@ import cart from '../images/cart.webp';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
-import swal from 'sweetalert';
 
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop', 'Antologi Puisi']
 
@@ -24,7 +23,7 @@ class Header extends React.Component {
 
     render (){
         // swal("Selamat Datang di Kutubuku.store");
-        if(localStorage.getItem('email')=='lian@alterra.id'){
+        if(localStorage.getItem('email')==='lian@alterra.id'){
             return (
                 <header>
                     <div className="container-fluid">

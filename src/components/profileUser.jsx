@@ -10,8 +10,6 @@ import { store, actions } from '../store';
 import axios from 'axios';
 import swal from 'sweetalert';
 
-const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
-
 class ProfileUser extends React.Component {
     // Function for user sign out
     handleSignOut = async () => {
@@ -111,14 +109,14 @@ class ProfileUser extends React.Component {
                             <div className='col-md-2 col-sm-12 button-sell'>
                                 <label>
                                     <Link to='/sell'>
-                                        <button type="button" class="btn btn-info">Jual Buku <img style={{width:'25px'}} src={photo}></img> </button>
+                                        <button type="button" class="btn btn-info">Jual Buku <img style={{width:'25px'}} src={photo} alt=''></img> </button>
                                     </Link>
                                 </label>
                             </div>
 
                             <div className='col-md-2 col-sm-12 button-logout'>
                                 <label>
-                                    <button type="button" class="btn btn-danger" onClick={this.handleSignOut}>Log Out <img style={{width:'25px'}} src={photo1}></img></button>
+                                    <button type="button" class="btn btn-danger" onClick={this.handleSignOut}>Log Out <img style={{width:'25px'}} src={photo1} alt=''></img></button>
                                 </label>
                             </div>
                         </div>

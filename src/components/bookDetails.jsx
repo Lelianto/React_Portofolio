@@ -12,7 +12,7 @@ class BookDetail extends React.Component {
     // Fungsi untuk menambahkan produk ke keranjang
     doAddCart = async () => {
         await this.props.addCartItem()
-        if(this.props.addCartStatus=='stok buku telah habis'){
+        if(this.props.addCartStatus==='stok buku telah habis'){
             swal("Maaf", "Stok buku habis untuk saat ini", "warning")
         } else {
             swal("Selamat!", "Buku telah ditambahkan ke keranjang!", "success")
@@ -110,13 +110,13 @@ class BookDetail extends React.Component {
             </div>
             )
           }
-        else if (localStorage.getItem('email')==bookById.email_user) {
+        else if (localStorage.getItem('email')===bookById.email_user) {
             return (
                 <div>
                     <div className='container ' style={{paddingTop: '150px'}}>
                         <div className='row'>
                             <div className='col-md-4 book-photo'>
-                                <img style={{width:'100%'}} src={foto_buku}></img>
+                                <img style={{width:'100%'}} src={foto_buku} alt=''></img>
                             </div>
                             <div className='col-md-5'>
                                 <div className='row'>
@@ -186,7 +186,7 @@ class BookDetail extends React.Component {
                     <div className='container' style={{paddingTop: '150px'}}>
                         <div className='row'>
                             <div className='col-md-4 book-photo'>
-                                <img style={{width:'100%'}} src={foto_buku}></img>
+                                <img style={{width:'100%'}} src={foto_buku} alt=''></img>
                             </div>
                             <div className='col-md-5'>
                                 <div className='row'>

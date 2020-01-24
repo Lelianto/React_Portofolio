@@ -87,7 +87,7 @@ class DisplayOwnBook extends React.Component {
                     <div className='col-md-12 border-user2'>
                         <div>
                         <h3 style={{textAlign:'left', paddingLeft:'0px'}} className='col-md-12 '>
-                            Buku Milikmu <img style={{width:'50px'}} src={photo}></img>
+                            Buku Milikmu <img style={{width:'50px'}} src={photo}alt=''></img>
                         </h3>
                         </div>
                     </div>

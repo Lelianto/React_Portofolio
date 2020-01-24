@@ -6,7 +6,7 @@ import AllCart from '../components/adminAllCart';
 
 class AdminAllCart extends Component {
   render() {
-    if (localStorage.getItem('email')=='lian@alterra.id'){
+    if (localStorage.getItem('email')==='lian@alterra.id'){
       return (
         <div>
           <Header/>
