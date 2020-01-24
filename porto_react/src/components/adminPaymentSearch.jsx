@@ -25,15 +25,17 @@ class SearchAllPayments extends React.Component {
         return (
             <div className='container' style={{paddingTop:'50px'}}>
                 <div className='row'>
-                    <div className="col-md-6 search">
+                    <div className="col-md-12 search">
                         <form onSubmit={e => e.preventDefault()}>
                         <div className='row'>
-                            <div className='col-md-9'>
+                            <div className='col-md-3'>
+                            </div>
+                            <div className='col-md-6'>
                                 <div className="active-cyan-4 mb-4">
                                     <input class="form-control mr-sm-2" 
                                     style={{ width:"90%"}} 
                                     type="search" 
-                                    placeholder="Cari Nomor Pemesanan" 
+                                    placeholder="Cari Nomor atau Tanggal Pemesanan" 
                                     aria-label="Search"
                                     id="keyword"
                                     name="keyword"
@@ -43,7 +45,7 @@ class SearchAllPayments extends React.Component {
                             <div className='col-md-3'>
                                 <div className="active-cyan-4 mb-4" style={{marginLeft:'-135px'}}>
                                     <button class="btn btn-info my-sm-0" 
-                                    type="submit"
+                                    type="submit" style={{marginLeft:'-190px'}}
                                     onClick={this.doSearchPayment}
                                     >Search</button>
                                 </div>

@@ -25,6 +25,9 @@ class SignIn extends React.Component {
   doLogin = async () => {
     await this.props.postLogin()
     if (localStorage.getItem('token') !== null){
+      store.setState({
+        typeText:"password"
+      })
       swal("Selamat!", "Anda berhasil masuk!", "success");
       this.props.history.push("/profile");
     }

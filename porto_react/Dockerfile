@@ -1,5 +1,5 @@
 FROM nginx:stable
-MAINTAINER Lelianto  "lian@alterra.id"
+MAINTAINER Lelianto "lian@alterra.id"
 
 RUN mkdir -p /alterra/www/reak
 RUN mkdir -p /alterra/logs/nginx

@@ -5,12 +5,83 @@ import axios from 'axios';
  *
  * @version 1.0.1
  * @author [Lelianto Eko Pradana](https://github.com/Lelianto)
+ * 
+ * @param initialState
  * @param {boolean} isSignUp User doing sign up status
  * @param {string} typeText Type of input password (password or text)
  * @param {list} bookEmptyStock Contains books with empty stock
  * @param {string} remainingBook 
  * @param {string} addCartStatus Contains response message of stock status
- * 
+ * @param adminProductKeyword
+ * @param adminKeyword
+ * @param lengthCart
+ * @param paymentId 
+ * @param cartId
+ * @param userId 
+ * @param adminAllPayment
+ * @param userAllCart
+ * @param adminAllCart
+ * @param userData
+ * @param userCartId 
+ * @param adminAllBook
+ * @param allUser
+ * @param bookOwn
+ * @param orderCode
+ * @param orderDate 
+ * @param totalPayment
+ * @param listResults
+ * @param listCategory
+ * @param shippingCost
+ * @param totalPrice
+ * @param carts
+ * @param bookId
+ * @param books
+ * @param bookById
+ * @param userById
+ * @param id
+ * @param isLoading
+ * @param token
+ * @param photo
+ * @param fullName
+ * @param email
+ * @param password
+ * @param isLogin
+ * @param Bearer
+ * @param title
+ * @param writer
+ * @param pageTitle
+ * @param totalPage
+ * @param publishDate
+ * @param isbn
+ * @param genre
+ * @param bahasa
+ * @param penerbit
+ * @param berat
+ * @param lebar
+ * @param panjang
+ * @param bookCover
+ * @param status
+ * @param harga
+ * @param totalBeli
+ * @param stok
+ * @param bookPhoto
+ * @param keyword
+ * @param kategori
+ * @param disable
+ * @param address
+ * @param streetName
+ * @param rtRw
+ * @param village   
+ * @param region 
+ * @param cityState
+ * @param province 
+ * @param postalCode 
+ * @param phoneNumber
+ * @param validasiPostBuku
+ * @param validasiUpdateBuku
+ * @param cartContent
+ * @param newSubTotal
+ * @param newTotalPrice
  */
 
 const initialState = {
@@ -18,7 +89,7 @@ const initialState = {
   isSignUp:false,
   typeText:'password',
   bookEmptyStock:[],
-  baseUrl:'http://0.0.0.0:5000',
+  baseUrl:'https://kutubuku.store',
   remainingBook:'',
   addCartStatus:'',
   adminProductKeyword:'',
@@ -324,7 +395,7 @@ export const actions = store => ({
     };
     const req = {
       method: "put",
-      url: state.baseUrl+"/book/edit/"+state.book_I,
+      url: state.baseUrl+"/book/edit/"+state.bookId,
       headers: {
         Authorization: "Bearer " + localStorage.getItem('token')
       },
@@ -373,7 +444,6 @@ export const actions = store => ({
       },
       data: buybook
     };
-    console.log(buybook)
     await axios(req)
       .then(response => {
         store.setState({
@@ -396,7 +466,6 @@ export const actions = store => ({
     };
     await axios(req)
         .then(response => {
-          console.log(response.data)
           store.setState({
             "totalPrice": response.data,
             "disable": false
@@ -438,10 +507,10 @@ export const actions = store => ({
       },
       data: myaddress
     };
-    console.log(req)
+    console.log('request ongkir',req)
     await axios(req)
       .then(response => {
-        console.log(response.data)
+        console.log('response ongkir',response.data)
         store.setState({
           'shippingCost':response.data
         })
@@ -537,7 +606,7 @@ export const actions = store => ({
               }
               return false
             })
-            console.log(listInCart)
+            console.log('cek isi update buy',listInCart)
             const listBooks = []
             for(const book of listInCart){
               if(response.data.message=='stok buku tidak mencukupi' && book.book_id){
