@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b8d8f69e.chunk.css",
+    "main.js": "/static/js/main.79ccc39a.chunk.js",
+    "main.js.map": "/static/js/main.79ccc39a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.88017583.js",
+    "runtime-main.js.map": "/static/js/runtime-main.88017583.js.map",
+    "static/js/2.2b9041a8.chunk.js": "/static/js/2.2b9041a8.chunk.js",
+    "static/js/2.2b9041a8.chunk.js.map": "/static/js/2.2b9041a8.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.f18c6e7f1c7638c2e536829ea0923389.js": "/precache-manifest.f18c6e7f1c7638c2e536829ea0923389.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.b8d8f69e.chunk.css.map": "/static/css/main.b8d8f69e.chunk.css.map",
+    "static/js/2.2b9041a8.chunk.js.LICENSE": "/static/js/2.2b9041a8.chunk.js.LICENSE",
+    "static/media/main.css": "/static/media/arista2.0alternate.768898fe.woff2",
+    "static/media/books.png": "/static/media/books.e8b47ab4.png",
+    "static/media/bug-logo.png": "/static/media/bug-logo.c22bda41.png",
+    "static/media/buy.png": "/static/media/buy.869394f0.png",
+    "static/media/cart.webp": "/static/media/cart.ef47b5a2.webp",
+    "static/media/employee.png": "/static/media/employee.ad0ef673.png",
+    "static/media/empty.jpg": "/static/media/empty.8e01d052.jpg",
+    "static/media/exit.png": "/static/media/exit.fd763635.png",
+    "static/media/fotobank.jpg": "/static/media/fotobank.107b1afb.jpg",
+    "static/media/promo1.jpg": "/static/media/promo1.3f8d18d8.jpg",
+    "static/media/promo2.jpg": "/static/media/promo2.aa74f58e.jpg",
+    "static/media/promo3.jpg": "/static/media/promo3.13a0c36a.jpg",
+    "static/media/promo4.jpg": "/static/media/promo4.bdcb8ec2.jpg",
+    "static/media/promo5.jpg": "/static/media/promo5.3f8d18d8.jpg",
+    "static/media/supermarket.png": "/static/media/supermarket.303c0294.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.88017583.js",
+    "static/js/2.2b9041a8.chunk.js",
+    "static/css/main.b8d8f69e.chunk.css",
+    "static/js/main.79ccc39a.chunk.js"
+  ]
+}
