@@ -12,75 +12,75 @@ import axios from 'axios';
  * @param {list} bookEmptyStock Contains books with empty stock
  * @param {string} remainingBook 
  * @param {string} addCartStatus Contains response message of stock status
- * @param adminProductKeyword
- * @param adminKeyword
- * @param lengthCart
- * @param paymentId 
- * @param cartId
- * @param userId 
+ * @param {string} adminProductKeyword
+ * @param {string} adminKeyword
+ * @param {integer} lengthCart
+ * @param {string} paymentId 
+ * @param {string} cartId
+ * @param {string} userId 
  * @param adminAllPayment
  * @param userAllCart
  * @param adminAllCart
  * @param userData
- * @param userCartId 
+ * @param {integer} userCartId 
  * @param adminAllBook
  * @param allUser
  * @param bookOwn
- * @param orderCode
- * @param orderDate 
- * @param totalPayment
+ * @param {string} orderCode
+ * @param {string} orderDate 
+ * @param {integer} totalPayment
  * @param listResults
  * @param listCategory
- * @param shippingCost
- * @param totalPrice
+ * @param {integer} shippingCost
+ * @param {integer} totalPrice
  * @param carts
  * @param bookId
  * @param books
  * @param bookById
  * @param userById
  * @param id
- * @param isLoading
+ * @param {boolean} isLoading
  * @param token
  * @param photo
  * @param fullName
  * @param email
  * @param password
- * @param isLogin
- * @param Bearer
- * @param title
- * @param writer
- * @param pageTitle
- * @param totalPage
- * @param publishDate
- * @param isbn
- * @param genre
- * @param bahasa
- * @param penerbit
- * @param berat
- * @param lebar
- * @param panjang
- * @param bookCover
- * @param status
- * @param harga
+ * @param {boolean} isLogin
+ * @param {string} Bearer
+ * @param {string} title
+ * @param {string} writer
+ * @param {string} pageTitle
+ * @param {integer} totalPage
+ * @param {string} publishDate
+ * @param {string} isbn
+ * @param {string} genre
+ * @param {string} bahasa
+ * @param {string} penerbit
+ * @param {integer} berat
+ * @param {integer} lebar
+ * @param {integer} panjang
+ * @param {string} bookCover
+ * @param {string} status
+ * @param {integer} harga
  * @param totalBeli
  * @param stok
- * @param bookPhoto
- * @param keyword
- * @param kategori
- * @param disable
- * @param address
- * @param streetName
- * @param rtRw
- * @param village   
- * @param region 
- * @param cityState
- * @param province 
- * @param postalCode 
- * @param phoneNumber
- * @param validasiPostBuku
- * @param validasiUpdateBuku
- * @param cartContent
- * @param newSubTotal
+ * @param {string} bookPhoto
+ * @param {string} keyword
+ * @param {string} kategori
+ * @param {boolean} disable
+ * @param {boolean} address
+ * @param {string} streetName
+ * @param {string} rtRw
+ * @param {string} village   
+ * @param {string} region 
+ * @param {string} cityState
+ * @param {string} province 
+ * @param {string} postalCode 
+ * @param {string} phoneNumber
+ * @param {boolean} validasiPostBuku
+ * @param {boolean} validasiUpdateBuku
+ * @param {boolean} cartContent
+ * @param {integer} newSubTotal
  * @param newTotalPrice
  */
 
@@ -176,8 +176,6 @@ export const actions = store => ({
   },
 
   changeInputCart : async (state,e, index, price) => {
-    console.log(`${e.target.value}`.length)
-    
     if(`${e.target.value}`.length>0){
       store.setState({
         disable:false
@@ -199,7 +197,13 @@ export const actions = store => ({
     state.totalBeli.push(store.getState().stok)
   },
 
-  // Function for Sign Up
+  /**
+   * @function postSignUp user sign up
+   *    a function to post user data to the database. 
+   *    here, the user does the account registration. 
+   * @method post
+   * @returns response by API endpoint 
+  */
   postSignUp : async (state) => {
       const fullName= state.fullName      
       const password= state.password      
@@ -228,7 +232,13 @@ export const actions = store => ({
       })
   },
 
-  // Function for Login
+  /**
+   * @function postLogin user sign in
+   *    a function to post user data to the database. 
+   *    here, the user enters a personal account. 
+   * @method post
+   * @returns response by API endpoint (user login)
+  */
   postLogin : async (state) => {
     const password= state.password    
     const email = state.email
@@ -256,7 +266,12 @@ export const actions = store => ({
     })
   },
 
-  // Function for user upload book
+  /**
+   * @function postBook 
+   *    a function used by users to upload books. 
+   * @method post
+   * @returns response by API endpoint (user post a book)
+  */
   postBook : async (state) => {
     const judul = state.title
     const penulis = state.writer
@@ -315,7 +330,12 @@ export const actions = store => ({
     })
   },
 
-  // Function for deleting Book
+  /**
+   * @function deleteItem 
+   *    a function to delete books by user or admin. 
+   * @method delete
+   * @returns response by API endpoint (delete book by ID)
+  */
   deleteItem : async (state) => {
     const req = {
       method: "delete",
@@ -335,7 +355,12 @@ export const actions = store => ({
     })
   },
 
-  // Function for delete cart by user
+  /**
+   * @function deleteCartItem 
+   *    a function to delete cart by user or admin. 
+   * @method delete
+   * @returns response by API endpoint (delete cart by ID)
+  */
   deleteCartItem : async (state) => {
     const req = {
       method: "delete",
@@ -355,7 +380,12 @@ export const actions = store => ({
     })
   },
 
-  // Function for update book by user
+  /**
+   * @function updateBook 
+   *    a function to update book by user. 
+   * @method put
+   * @returns response by API endpoint (update book by ID)
+  */
   updateBook : async (state) => {
     const judul = state.title
     const penulis = state.writer
@@ -414,7 +444,12 @@ export const actions = store => ({
     })
   },
 
-  // Function for add book to cart
+  /**
+   * @function addCartItem 
+   *    a function to add product to cart by user. 
+   * @method post
+   * @returns response by API endpoint (add product to cart database)
+  */
   addCartItem : async (state) => {
     const book_id = state.bookById.id
     const judul = state.bookById.judul
@@ -455,7 +490,12 @@ export const actions = store => ({
     })
   },
 
-  // Function for calculating total price
+  /**
+   * @function Calculate 
+   *    a function for calculating total price. 
+   * @method post
+   * @returns response by API endpoint (add product to cart database)
+  */
   Calculate : async (state) => {
     const req = {
       method: "get",
@@ -479,7 +519,12 @@ export const actions = store => ({
 
   },
 
-  // Function for getting expedition price
+  /**
+   * @function CalculateExpeditionPrice 
+   *    a function for getting expedition price.
+   * @method post
+   * @returns response by API endpoint (add product to cart database)
+  */
   CalculateExpeditionPrice : async (state) => {
     const nama_jalan = state.streetName
     const rt_rw = state.rtRw
@@ -522,7 +567,12 @@ export const actions = store => ({
     })
   },
 
-  // Function for getting final transaction price 
+  /**
+   * @function FinalTransactionPayment 
+   *    a function for getting final transaction price . 
+   * @method post
+   * @returns response by API endpoint (add product to cart database)
+  */
   FinalTransactionPayment : async (state) => {
     const req = {
       method: "post",
@@ -545,7 +595,12 @@ export const actions = store => ({
     })
   },
 
-  // Function for searching book by title or writer
+  /**
+   * @function searchBook 
+   *    a function for searching book by title or writer. 
+   * @method get
+   * @returns response by API endpoint (list of books by searching keyword)
+  */
   searchBook : async (state) => {
     const req = {
       method: "get",
@@ -564,7 +619,12 @@ export const actions = store => ({
     })
   },
 
-  // Function for searching and grouping user by category
+  /**
+   * @function categoryBook 
+   *    a function for searching and grouping user by category.
+   * @method get
+   * @returns response by API endpoint (list of books by category)
+  */
   categoryBook : async (state,e) => {
     store.setState({ [e.target.name]: e.target.value });
     const req = {
@@ -583,7 +643,12 @@ export const actions = store => ({
     })
   },
 
-  // Function for updating amount of buying item
+  /**
+   * @function updateBuy 
+   *    a function for updating amount of buying item. 
+   * @method put
+   * @returns response by API endpoint (update cart by id)
+  */
   updateBuy : async (state) => {
     const listBuy = state.totalBeli
     for (const product of listBuy) {
@@ -606,7 +671,6 @@ export const actions = store => ({
               }
               return false
             })
-            console.log('cek isi update buy',listInCart)
             const listBooks = []
             for(const book of listInCart){
               if(response.data.message==='stok buku tidak mencukupi' && book.book_id){
@@ -624,6 +688,12 @@ export const actions = store => ({
   },
 
   // Function for deleting user by admin
+  /**
+   * @function deleteUser 
+   *    a function for deleting user by admin. 
+   * @method delete
+   * @returns response by API endpoint (delete user by id)
+  */
   deleteUser : async (state,e) => {
     const req = {
       method: "delete",
@@ -643,7 +713,12 @@ export const actions = store => ({
     })
   },
 
-  // Function for deleting cart on user side
+  /**
+   * @function deleteCart 
+   *    a function for deleting cart on user side. 
+   * @method delete
+   * @returns response by API endpoint (delete product in cart by id)
+  */
   deleteCart : async (state,e) => {
     const req = {
       method: "delete",
@@ -663,7 +738,12 @@ export const actions = store => ({
     })
   },
 
-  // Function for searching payment by admin
+  /**
+   * @function searchPayment 
+   *    a function for searching payment by admin. 
+   * @method get
+   * @returns response by API endpoint (get payment code or date by user)
+  */
   searchPayment : async (state) => {
     const req = {
       method: "get",
