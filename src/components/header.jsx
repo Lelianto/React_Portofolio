@@ -66,7 +66,7 @@ class Header extends React.Component {
                                             <button class="btn btn-info my-sm-0" 
                                             type="submit"
                                             onClick={this.doSearchBook}
-                                            >Search</button>
+                                            >Cari</button>
                                         </div>
                                     </div>
                                 </div>

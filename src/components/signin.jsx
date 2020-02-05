@@ -44,7 +44,6 @@ class SignIn extends React.Component {
             <div className="fadeIn first">
             <img style={{ marginTop:'60px', marginBottom:'60px', width:'30%'}} src={logo} id="icon" alt="User Icon" />
             </div>
-
                 {/* <!-- Login Form --> */}
                 <form onSubmit={e => e.preventDefault()}>
                     <input 

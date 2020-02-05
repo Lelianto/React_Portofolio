@@ -85,12 +85,10 @@ class CartDetail extends React.Component {
         const { carts } = this.props
         const listInCart = carts.filter(item => {
             if (item.email === localStorage.getItem('email') && item.foto_buku !== null && item.judul !== null && item.harga !== null && item.status_cart === false) {
-                console.warn('item', item);
                 return item;
             }
             return false
         })
-        console.log('LIC',listInCart)
         store.setState({
             'lengthCart':listInCart.length,
         })
